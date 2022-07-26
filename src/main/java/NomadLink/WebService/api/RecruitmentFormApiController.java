@@ -45,7 +45,7 @@ public class RecruitmentFormApiController {
     }
 
     @Data
-    static class RecruitmentFormRequestDto { // Request DTO .
+    static class RecruitmentFormRequestDto { // Request DTO ...
 
         private String companyName; // 회사명
         private String managerName; // 담당자명
