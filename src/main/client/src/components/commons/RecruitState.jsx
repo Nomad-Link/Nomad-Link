@@ -1,8 +1,8 @@
-import styled from "styled-components";
 import ReceiptIcon from "@mui/icons-material/ReceiptLong";
 import ConsultIcon from "@mui/icons-material/Group";
 import WriteIcon from "@mui/icons-material/BorderColor";
 import RecruitStartIcon from "@mui/icons-material/FindInPage";
+import { Section, Box, Circle, Hr, Li, Phase, muiIcon } from "./RecruitState.style";
 
 function RecruitState() {
   return (
@@ -37,44 +37,4 @@ function RecruitState() {
     </Section>
   );
 }
-const Section = styled.section`
-  text-align: center;
-  margin: 20px auto;
-  display: block;
-`;
-const Box = styled.div`
-  width: 1000px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-const Circle = styled.div`
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  background-color: #b778ff;
-  color: #fff;
-  border-radius: 100%;
-  border: 1px solid #b778ff;
-`;
-const Hr = styled.hr`
-  width: 215px;
-  border-top: 1px solid #000;
-  margin: 15px 0 15px;
-`;
-const Li = styled.div`
-  width: 200px;
-  justify-content: center;
-  margin: 0 30px 0 30px;
-`;
-const muiIcon = {
-  fontSize: "35px",
-};
-const Phase = styled.h2`
-  list-style: none;
-  font-size: 24px;
-`;
 export default RecruitState;
