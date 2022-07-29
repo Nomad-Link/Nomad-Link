@@ -14,7 +14,7 @@ import {
   InputL,
   SendButton,
   Error,
-} from "./styledForm";
+} from "./RecruitForm.style";
 
 function RecruitForm() {
   const {
