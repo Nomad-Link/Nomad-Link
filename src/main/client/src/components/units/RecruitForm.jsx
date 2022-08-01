@@ -24,10 +24,27 @@ function RecruitForm() {
   } = useForm();
 
   const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
   const onSubmit = (data) => {
-    console.log(data);
-    setText(JSON.stringify(data));
-    // setText(data.techStack);
+    const recruitmentFormRequestDto = {
+      companyName: data.companyName,
+      managerName: data.managerName,
+      managerPhoneNumber: data.managerPhoneNumber,
+      managerEmail: data.managerEmail,
+      recruitmentPosition: data.recruitmentPosition,
+      projectDescription: data.projectDescription,
+      projectPeriod: data.projectPeriod,
+      roleDescription: data.roleDescription,
+      minimumAnnual: data.minimumAnnual,
+      essentialSkillStack: data.essentialSkillStack,
+      optionalSkillStack: data.optionalSkillStack,
+      keywords: data.keywords,
+      maximumSalary: data.maximumSalary,
+      etcComment: data.etcComment,
+    };
+    console.log(recruitmentFormRequestDto);
+    setText(JSON.stringify(recruitmentFormRequestDto));
+    setTitle(recruitmentFormRequestDto.companyName);
   };
 
   return (
@@ -51,10 +68,14 @@ function RecruitForm() {
               <Label>담당자 이름</Label>
               <InputS
                 placeholder="ex) 홍길동"
-                style={errors.managerName ? { border: "2px solid #ff0000" } : {}}
+                style={
+                  errors.managerName ? { border: "2px solid #ff0000" } : {}
+                }
                 {...register("managerName", { required: true })}
               />
-              {errors.managerName && <Error>담당자 이름을 입력해 주세요.</Error>}
+              {errors.managerName && (
+                <Error>담당자 이름을 입력해 주세요.</Error>
+              )}
             </InputDiv>
           </BoxFlex>
           <BoxFlex>
@@ -63,37 +84,45 @@ function RecruitForm() {
               <InputS
                 placeholder="ex) 010-1234-5678"
                 style={
-                  errors.managerPhoneNumber ? { border: "2px solid #ff0000" } : {}
+                  errors.managerPhoneNumber
+                    ? { border: "2px solid #ff0000" }
+                    : {}
                 }
                 {...register("managerPhoneNumber", {
                   required: true,
                   pattern: /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/,
                 })}
               />
-              {errors.managerPhoneNumber && errors.managerPhoneNumber.type === "required" && (
-                <Error>연락처를 작성해 주세요.</Error>
-              )}
-              {errors.managerPhoneNumber && errors.managerPhoneNumber.type === "pattern" && (
-                <Error>연락처 형식에 맞게 작성해 주세요. (지역번호 X)</Error>
-              )}
+              {errors.managerPhoneNumber &&
+                errors.managerPhoneNumber.type === "required" && (
+                  <Error>연락처를 작성해 주세요.</Error>
+                )}
+              {errors.managerPhoneNumber &&
+                errors.managerPhoneNumber.type === "pattern" && (
+                  <Error>연락처 형식에 맞게 작성해 주세요. (지역번호 X)</Error>
+                )}
             </InputDiv>
             <InputDiv>
               <Label>이메일</Label>
               <InputS
                 placeholder="ex) qwer1234@abc.com"
-                style={errors.managerEmail ? { border: "2px solid #ff0000" } : {}}
+                style={
+                  errors.managerEmail ? { border: "2px solid #ff0000" } : {}
+                }
                 {...register("managerEmail", {
                   required: true,
                   pattern:
                     /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
                 })}
               />
-              {errors.managerEmail && errors.managerEmail.type === "required" && (
-                <Error>이메일을 작성해 주세요.</Error>
-              )}
-              {errors.managerEmail && errors.managerEmail.type === "pattern" && (
-                <Error>이메일 형식에 맞게 작성해 주세요.</Error>
-              )}
+              {errors.managerEmail &&
+                errors.managerEmail.type === "required" && (
+                  <Error>이메일을 작성해 주세요.</Error>
+                )}
+              {errors.managerEmail &&
+                errors.managerEmail.type === "pattern" && (
+                  <Error>이메일 형식에 맞게 작성해 주세요.</Error>
+                )}
             </InputDiv>
           </BoxFlex>
         </div>
@@ -104,33 +133,15 @@ function RecruitForm() {
               <Label>채용 직책</Label>
               <InputS
                 placeholder="ex) Spring 개발자"
-                style={errors.recruitmentPosition ? { border: "2px solid #ff0000" } : {}}
-                {...register("recruitmentPosition", { required: true })}
-              />
-              {errors.recruitmentPosition && <Error>채용 직책을 입력해 주세요.</Error>}
-            </InputDiv>
-            <InputDiv>
-              <Label>채용 직책</Label>
-              <InputS
-                placeholder="ex) Spring 개발자"
-                style={errors.recruitmentPosition ? { border: "2px solid #ff0000" } : {}}
-                {...register("recruitmentPosition", { required: true })}
-              />
-              {errors.recruitmentPosition && <Error>채용 직책을 입력해 주세요.</Error>}
-            </InputDiv>
-          </BoxFlex>
-          <BoxFlex>
-            <InputDiv>
-              <Label>프로젝트 설명</Label>
-              <InputS
-                placeholder="ex) 상품 관리 시스템"
                 style={
-                  errors.projectDescription ? { border: "2px solid #ff0000" } : {}
+                  errors.recruitmentPosition
+                    ? { border: "2px solid #ff0000" }
+                    : {}
                 }
-                {...register("projectDescription", { required: true })}
+                {...register("recruitmentPosition", { required: true })}
               />
-              {errors.projectDescription && (
-                <Error>프로젝트 설명을 입력해 주세요.</Error>
+              {errors.recruitmentPosition && (
+                <Error>채용 직책을 입력해 주세요.</Error>
               )}
             </InputDiv>
             <InputDiv>
@@ -142,7 +153,39 @@ function RecruitForm() {
                 }
                 {...register("roleDescription", { required: true })}
               />
-              {errors.roleDescription && <Error>역할 설명을 입력해 주세요.</Error>}
+              {errors.roleDescription && (
+                <Error>역할 설명을 입력해 주세요.</Error>
+              )}
+            </InputDiv>
+          </BoxFlex>
+          <BoxFlex>
+            <InputDiv>
+              <Label>프로젝트 설명</Label>
+              <InputS
+                placeholder="ex) 상품 관리 시스템"
+                style={
+                  errors.projectDescription
+                    ? { border: "2px solid #ff0000" }
+                    : {}
+                }
+                {...register("projectDescription", { required: true })}
+              />
+              {errors.projectDescription && (
+                <Error>프로젝트 설명을 입력해 주세요.</Error>
+              )}
+            </InputDiv>
+            <InputDiv>
+              <Label>프로젝트 기간</Label>
+              <InputS
+                placeholder="ex) xxxx.xx.xx 까지 상용화"
+                style={
+                  errors.projectPeriod ? { border: "2px solid #ff0000" } : {}
+                }
+                {...register("projectPeriod", { required: true })}
+              />
+              {errors.projectPeriod && (
+                <Error>프로젝트 기간을 입력해 주세요.</Error>
+              )}
             </InputDiv>
           </BoxFlex>
         </div>
@@ -210,7 +253,9 @@ function RecruitForm() {
             <InputL
               placeholder="ex) Spring, Spring Boot, JPA, Thymeleaf, Lombok, MySQL"
               style={
-                errors.essentialSkillStack ? { border: "2px solid #ff0000" } : {}
+                errors.essentialSkillStack
+                  ? { border: "2px solid #ff0000" }
+                  : {}
               }
               {...register("essentialSkillStack", { required: true })}
             />
@@ -239,10 +284,10 @@ function RecruitForm() {
               <Label>채용 공고 상 키워드</Label>
               <InputS
                 placeholder="ex) Spring Developer"
-                style={errors.etcComment ? { border: "2px solid #ff0000" } : {}}
-                {...register("etcComment", { required: true })}
+                style={errors.keywords ? { border: "2px solid #ff0000" } : {}}
+                {...register("keywords", { required: true })}
               />
-              {errors.etcComment && (
+              {errors.keywords && (
                 <Error>채용 공고 상 키워드를 입력해 주세요.</Error>
               )}
             </InputDiv>
@@ -264,14 +309,24 @@ function RecruitForm() {
             <Label>기타 코멘트</Label>
             <InputM
               placeholder="ex) 학사 졸업자 우대"
-              style={errors.comment ? { border: "2px solid #ff0000" } : {}}
-              {...register("comment", { required: true })}
+              style={errors.etcComment ? { border: "2px solid #ff0000" } : {}}
+              {...register("etcComment", { required: true })}
             />
-            {errors.comment && <Error>기타 코멘트를 입력해 주세요.</Error>}
+            {errors.etcComment && <Error>기타 코멘트를 입력해 주세요.</Error>}
           </BoxBlock>
         </div>
         <SendButton type="submit" />
-        <p>{text}</p>
+        {/* TEST DIV */}
+        <div
+          style={{
+            border: "3px solid black",
+            borderRadius: "5px",
+          }}
+        >
+          <p>{title}</p>
+          <hr />
+          <p>{text}</p>
+        </div>
       </form>
     </Section>
   );
