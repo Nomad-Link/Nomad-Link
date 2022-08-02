@@ -1,17 +1,30 @@
-import { useState } from "react";
 import { post } from "axios";
 import { useForm } from "react-hook-form";
-import { Section, BoxFlex, BoxBlock, Hr, InputDiv, Title, Label, InputS, InputM, InputR, InputL, SendButton, Error, } from "./RecruitForm.style";
+import { useNavigate } from "react-router-dom";
+import {
+  Section,
+  BoxFlex,
+  BoxBlock,
+  Hr,
+  InputDiv,
+  Title,
+  Label,
+  InputS,
+  InputM,
+  InputR,
+  InputL,
+  SendButton,
+  Error,
+} from "./RecruitForm.style";
 
 function RecruitForm() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const [text, setText] = useState("");
-  const [title, setTitle] = useState("");
   const onSubmit = (data) => {
     const recruitmentFormRequestDto = {
       companyName: data.companyName,
@@ -29,19 +42,16 @@ function RecruitForm() {
       maximumSalary: data.maximumSalary,
       etcComment: data.etcComment,
     };
-    console.log(recruitmentFormRequestDto);
-    setText(JSON.stringify(recruitmentFormRequestDto));
-    setTitle(recruitmentFormRequestDto.companyName);
-
-    postData(recruitmentFormRequestDto);
+    formData(recruitmentFormRequestDto);
   };
 
-  async function postData(data) {
-    const url = `/api/enterprise/recruit/form`;
+  async function formData(data) {
+    const url = "/api/enterprise/recruit/form";
 
     try {
-      const response = await post(url, { data });
+      const response = await post(url, data);
       console.log(response);
+      navigate("/api/enterprise/recruit/complete");
     } catch (error) {
       console.error(error);
     }
@@ -316,17 +326,6 @@ function RecruitForm() {
           </BoxBlock>
         </div>
         <SendButton type="submit" />
-        {/* TEST DIV */}
-        <div
-          style={{
-            border: "3px solid black",
-            borderRadius: "5px",
-          }}
-        >
-          <p>{title}</p>
-          <hr />
-          <p>{text}</p>
-        </div>
       </form>
     </Section>
   );

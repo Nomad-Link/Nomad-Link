@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { Main, Title } from "./Page.style";
 import RecruitState from "../components/commons/RecruitState";
 import RecruitForm from "../components/units/RecruitForm";
 
@@ -14,13 +14,4 @@ function PageRecruit() {
     </Main>
   );
 }
-const Main = styled.main`
-  width: 1000px;
-  justify-content: center;
-  margin: auto;
-`
-const Title = styled.section`
-  padding: 100px;
-  text-align: center;
-`;
 export default PageRecruit;
