@@ -1,21 +1,7 @@
 import { useState } from "react";
 import { post } from "axios";
 import { useForm } from "react-hook-form";
-import {
-  Section,
-  BoxFlex,
-  BoxBlock,
-  Hr,
-  InputDiv,
-  Title,
-  Label,
-  InputS,
-  InputM,
-  InputR,
-  InputL,
-  SendButton,
-  Error,
-} from "./RecruitForm.style";
+import { Section, BoxFlex, BoxBlock, Hr, InputDiv, Title, Label, InputS, InputM, InputR, InputL, SendButton, Error, } from "./RecruitForm.style";
 
 function RecruitForm() {
   const {
