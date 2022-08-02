@@ -14,7 +14,7 @@ function Desktop() {
       <Header />
       <Routes>
         <Route path="/" element={<PageMain />} />
-        <Route path="/recruit" element={<PageRecruit />} />
+        <Route path="/api/enterprise/recruit/form" element={<PageRecruit />} />
       </Routes>
       <Footer />
     </Router>
