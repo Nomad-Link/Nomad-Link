@@ -34,7 +34,7 @@ function RecruitForm() {
       managerEmail: data.managerEmail,
       recruitmentPosition: data.recruitmentPosition,
       projectDescription: data.projectDescription,
-      projectPeriod: data.projectPeriod,
+      recruitmentType: data.recruitmentType,
       roleDescription: data.roleDescription,
       minimumAnnual: data.minimumAnnual,
       essentialSkillStack: data.essentialSkillStack,
@@ -189,15 +189,15 @@ function RecruitForm() {
               )}
             </InputDiv>
             <InputDiv>
-              <Label>프로젝트 기간</Label>
+              <Label>채용 유형</Label>
               <InputS
-                placeholder="ex) xxxx.xx.xx 까지 상용화"
+                placeholder="ex) 정규직 or 계약직 or 프리랜서"
                 style={
-                  errors.projectPeriod ? { border: "2px solid #ff0000" } : {}
+                  errors.recruitmentType ? { border: "2px solid #ff0000" } : {}
                 }
-                {...register("projectPeriod", { required: true })}
+                {...register("recruitmentType", { required: true })}
               />
-              {errors.projectPeriod && (
+              {errors.recruitmentType && (
                 <Error>프로젝트 기간을 입력해 주세요.</Error>
               )}
             </InputDiv>
