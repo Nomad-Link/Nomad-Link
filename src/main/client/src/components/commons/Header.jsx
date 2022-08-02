@@ -54,7 +54,7 @@ function Header() {
             <PersonIcon sx={muiServiceIcon} />
             <MenuIcon>개인 서비스</MenuIcon>
           </SLink>
-          <SLink to={"/recruit"}>
+          <SLink to={"/api/enterprise/recruit/form"}>
             <ApartmentIcon sx={muiServiceIcon} />
             <MenuIcon>기업 서비스</MenuIcon>
           </SLink>

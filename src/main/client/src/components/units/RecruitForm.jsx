@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { post } from "axios";
 import { useForm } from "react-hook-form";
 import {
   Section,
@@ -45,7 +46,20 @@ function RecruitForm() {
     console.log(recruitmentFormRequestDto);
     setText(JSON.stringify(recruitmentFormRequestDto));
     setTitle(recruitmentFormRequestDto.companyName);
+
+    postData(recruitmentFormRequestDto);
   };
+
+  async function postData(data) {
+    const url = `/api/enterprise/recruit/form`;
+
+    try {
+      const response = await post(url, { data });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <Section>
