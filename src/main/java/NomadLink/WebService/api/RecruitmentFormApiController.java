@@ -22,7 +22,7 @@ public class RecruitmentFormApiController {
     private final RecruitmentFormService recruitmentFormService;
 
     @PostMapping("/api/enterprise/recruit/form")
-    public RecruitmentFormResponseDto saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
+    public void saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
         recruitmentForm.setCompanyName(recruitmentFormRequestDto.getCompanyName());
@@ -41,8 +41,6 @@ public class RecruitmentFormApiController {
         recruitmentForm.setEtcComment(recruitmentFormRequestDto.getEtcComment());
 
         recruitmentFormService.enroll(recruitmentForm);
-
-        return new RecruitmentFormResponseDto(recruitmentFormRequestDto.getCompanyName());
     }
 
     @Data
