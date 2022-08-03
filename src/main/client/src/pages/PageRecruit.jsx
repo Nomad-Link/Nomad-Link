@@ -1,6 +1,6 @@
 import { Main, Title } from "./Page.style";
 import RecruitState from "../components/commons/RecruitState";
-import RecruitForm from "../components/units/RecruitForm";
+import RecruitForm from "../components/units/recruit/RecruitForm";
 
 function PageRecruit() {
   return (
