@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Main, Title, Button } from "./Page.style";
+import { Main, Title, Button } from "../Page.style";
 
-function PageComplete() {
+function RecruitComplete() {
   const navigate = useNavigate();
 
   return (
@@ -15,4 +15,4 @@ function PageComplete() {
   );
 }
 
-export default PageComplete;
+export default RecruitComplete;

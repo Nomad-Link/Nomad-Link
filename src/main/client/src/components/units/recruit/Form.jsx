@@ -15,9 +15,9 @@ import {
   InputL,
   SendButton,
   Error,
-} from "./RecruitForm.style";
+} from "./Form.style";
 
-function RecruitForm() {
+function Form() {
   const navigate = useNavigate();
   const {
     register,
@@ -330,4 +330,4 @@ function RecruitForm() {
     </Section>
   );
 }
-export default RecruitForm;
+export default Form;

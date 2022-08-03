@@ -2,9 +2,9 @@ import ReceiptIcon from "@mui/icons-material/ReceiptLong";
 import ConsultIcon from "@mui/icons-material/Group";
 import WriteIcon from "@mui/icons-material/BorderColor";
 import RecruitStartIcon from "@mui/icons-material/FindInPage";
-import { Section, Box, Circle, Hr, Li, Phase, muiIcon } from "./RecruitState.style";
+import { Section, Box, Circle, Hr, Li, Phase, muiIcon } from "./Procedure.style";
 
-function RecruitState() {
+function Procedure() {
   return (
     <Section>
       <Box>
@@ -37,4 +37,4 @@ function RecruitState() {
     </Section>
   );
 }
-export default RecruitState;
+export default Procedure;
