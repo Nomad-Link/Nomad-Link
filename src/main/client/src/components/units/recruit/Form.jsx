@@ -51,7 +51,7 @@ function Form() {
     try {
       const response = await post(url, data);
       console.log(response);
-      navigate("/api/enterprise/recruit/complete");
+      navigate("/enterprise/recruit/complete");
     } catch (error) {
       console.error(error);
     }

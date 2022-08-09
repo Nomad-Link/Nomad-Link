@@ -1,6 +1,6 @@
-import { Main, Title } from "../Page.style";
-import Procedure from "../../components/commons/Procedure";
-import Form from "../../components/units/recruit/Form";
+import { Main, Title } from "../../Page.style";
+import Procedure from "../../../components/commons/Procedure";
+import Form from "../../../components/units/recruit/Form";
 
 function RecruitForm() {
   return (

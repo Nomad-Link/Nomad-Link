@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Main, Title, Button } from "../Page.style";
+import { Main, Title, Button } from "../../Page.style";
 
 function RecruitComplete() {
   const navigate = useNavigate();
