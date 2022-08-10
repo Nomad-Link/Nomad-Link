@@ -9,20 +9,20 @@ function List() {
 
   useEffect(() => {
     axios
-      .get(`https://jsonplaceholder.typicode.com/todos`, {
+      .get(`/enterprise/recruit/developers`, {
         params: {
-          TechStack: initialState.TechStack,
-          Nation: initialState.Nation,
-          EmployeeType: initialState.EmployeeType,
+          techStacks: initialState.techStacks,
+          nation: initialState.nation,
+          employeeType: initialState.employeeType,
         },
       })
-      .then((response) => setUser(response.data))
+      .then((response) => setUser(response.data.data))
       .catch((error) => console.log(error));
   }, [initialState]);
 //
   return (
     <Section>
-      <p style={{ color: "white" }}>{JSON.stringify(initialState.TechStack)}</p>
+      <p style={{ color: "white" }}>{JSON.stringify(initialState.techStacks)}</p>
       <textarea
         rows={35}
         cols={100}
