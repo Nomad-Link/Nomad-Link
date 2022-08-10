@@ -1,25 +1,25 @@
 export const initialState = {
-  TechStack: [],
-  Nation: null,
-  EmployeeType: null,
+  techStacks: [],
+  nation: null,
+  employeeType: null,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case `Set${action.item}`:
-      return { ...state, TechStack: [...state.TechStack, action.item] };
+      return { ...state, techStacks: [...state.techStacks, action.item] };
     case `Del${action.item}`:
       return {
         ...state,
-        TechStack: [
-          ...state.TechStack.filter((element) => element !== action.item),
+        techStacks: [
+          ...state.techStacks.filter((element) => element !== action.item),
         ],
       };
     case `SetInput`:
       return {
         ...state,
-        Nation: action.nation,
-        EmployeeType: action.employeeType,
+        nation: action.nation,
+        employeeType: action.employeeType,
       };
     default:
       return state;
