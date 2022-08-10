@@ -19,7 +19,7 @@ function List() {
       .then((response) => setUser(response.data))
       .catch((error) => console.log(error));
   }, [initialState]);
-
+//
   return (
     <Section>
       <p style={{ color: "white" }}>{JSON.stringify(initialState.TechStack)}</p>
