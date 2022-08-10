@@ -11,7 +11,9 @@ function List() {
     axios
       .get(`https://jsonplaceholder.typicode.com/todos`, {
         params: {
-          title: initialState.techStack,
+          TechStack: initialState.TechStack,
+          Nation: initialState.Nation,
+          EmployeeType: initialState.EmployeeType,
         },
       })
       .then((response) => setUser(response.data))
@@ -20,7 +22,7 @@ function List() {
 
   return (
     <Section>
-      <p style={{ color: "white" }}>{JSON.stringify(initialState.techStack)}</p>
+      <p style={{ color: "white" }}>{JSON.stringify(initialState.TechStack)}</p>
       <textarea
         rows={35}
         cols={100}

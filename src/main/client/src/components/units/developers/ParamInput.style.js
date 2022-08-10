@@ -16,7 +16,7 @@ export const Select = styled.select`
   font-size: 18px;
   border: none;
   font-weight: bold;
-  width: 100px;
+  width: 150px;
   height: 30px;
   margin: 10px;
   padding: 5px;
