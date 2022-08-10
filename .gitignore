@@ -5,6 +5,11 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+src/main/resources
+src/main/client/yarn.lock
+src/main/client/package-lock.json
+src/main/client/package.json
+
 ### STS ###
 .apt_generated
 .classpath

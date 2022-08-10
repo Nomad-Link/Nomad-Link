@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class MemberAndTechStackApiController {
+public class MemberAndTechStackApiController { // test 주석
 
     private final MemberRepository memberRepository;
 
