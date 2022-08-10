@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const HeaderDiv = styled.header`
+export const ResHeader = styled.header`
+  min-width: 1000px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 10px;
+`
+export const HeaderDiv = styled.div`
   width: 1000px;
   justify-content: center;
   margin: auto;

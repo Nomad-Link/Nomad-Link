@@ -36,6 +36,7 @@ export const InputS = styled.input`
   margin: auto;
   margin-bottom: 15px;
   padding-left: 10px;
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   border: 2px solid #000;
   border-radius: 10px;
@@ -59,7 +60,7 @@ export const InputL = styled.textarea`
   margin-bottom: 15px;
   padding-top: 10px;
   padding-left: 10px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   border: 2px solid #000;
   border-radius: 10px;

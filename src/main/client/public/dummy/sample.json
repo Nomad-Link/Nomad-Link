@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Abraham Kedar",
+    "title": "3-6 년차 서버 개발자",
+    "techStack": ["Spring", "SpringBoot", "Flask", "NLP", "Django"]
+  },
+  {
+    "name": "Juan Enkalada",
+    "title": "1-3 년차 프론트엔드 개발자",
+    "techStack": ["Html", "Css", "Angular.js", "React.js", "Vue.js"]
+  },
+  {
+    "name": "Timi",
+    "title": "10 년차 서버 개발자",
+    "techStack": [
+      "Spring",
+      "SpringBoot",
+      "Statistics / Analysis",
+      "NLP",
+      "Computer Vision"
+    ]
+  },
+  {
+    "name": "Careorl ",
+    "title": "10 년차 프론트 개발자",
+    "techStack": [
+      "Html",
+      "Css",
+      "Node.js",
+      "Publishing",
+      "Angular.js",
+      "React.js",
+      "Computer Vision",
+      "Vue.js"
+    ]
+  },
+  {
+    "name": "Gimhins",
+    "title": "5 년차 서버 개발자",
+    "techStack": ["Spring", "SpringBoot", "Node.js", "Publishing", "React.js"]
+  }
+]

@@ -15,9 +15,9 @@ import {
   InputL,
   SendButton,
   Error,
-} from "./RecruitForm.style";
+} from "./Form.style";
 
-function RecruitForm() {
+function Form() {
   const navigate = useNavigate();
   const {
     register,
@@ -51,7 +51,7 @@ function RecruitForm() {
     try {
       const response = await post(url, data);
       console.log(response);
-      navigate("/api/enterprise/recruit/complete");
+      navigate("/enterprise/recruit/complete");
     } catch (error) {
       console.error(error);
     }
@@ -330,4 +330,4 @@ function RecruitForm() {
     </Section>
   );
 }
-export default RecruitForm;
+export default Form;
