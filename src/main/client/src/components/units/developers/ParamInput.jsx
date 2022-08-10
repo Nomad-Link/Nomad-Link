@@ -39,16 +39,16 @@ function ParamInput() {
     <Section>
       <Select onChange={handleNation}>
         <option value="null">-- 전체 국가 --</option>
-        <option value="India">인도</option>
-        <option value="China">중국</option>
-        <option value="Vietnam">베트남</option>
-        <option value="Philippines">필리핀</option>
+        <option value="INDIA">인도</option>
+        <option value="CHINA">중국</option>
+        <option value="VIETNAM">베트남</option>
+        <option value="PHILIPPINE">필리핀</option>
       </Select>
       <Select onChange={handleType}>
         <option value="null">-- 전체 유형 --</option>
-        <option value="Permanent">정규직</option>
-        <option value="Temporary">계약직</option>
-        <option value="Free">프리랜서</option>
+        <option value="PULLTIME">정규직</option>
+        <option value="PARTTIME">계약직</option>
+        <option value="FREELANCER">프리랜서</option>
       </Select>
       <InputSkillSet placeholder="스킬셋을 입력하세요." />
       <SearchIcon
