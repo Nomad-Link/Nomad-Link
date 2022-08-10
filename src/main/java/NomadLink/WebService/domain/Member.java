@@ -29,6 +29,12 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
 
+    @Enumerated(EnumType.STRING)
+    private Nation nation;
+
+    @Enumerated(EnumType.STRING)
+    private EmployeeType employeeType;
+
     @OneToMany(mappedBy = "member")
     private List<TechStack> techStacks = new ArrayList<>(); // 일대다 연관관계 매핑 (한명의 개발자는 여러개의 기술 스택을 가질 수 있다.)
 

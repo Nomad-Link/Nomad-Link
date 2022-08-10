@@ -1,9 +1,6 @@
 package NomadLink.WebService;
 
-import NomadLink.WebService.domain.Annual;
-import NomadLink.WebService.domain.Member;
-import NomadLink.WebService.domain.Role;
-import NomadLink.WebService.domain.TechStack;
+import NomadLink.WebService.domain.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -33,7 +30,7 @@ public class MemberAndTechStackDataInit {
 
         public void dbInit1() {
             //== member1 start ==//
-            Member member1 = createMember("test1UserId", "test1RealName", "test1Password", Annual.TWOTOFOUR, "010-0000-0000", "test1@gmail.com", Role.SERVER);
+            Member member1 = createMember("test1UserId", "test1RealName", "test1Password", Annual.TWOTOFOUR, "010-0000-0000", "test1@gmail.com", Role.SERVER, Nation.INDIA, EmployeeType.FULLTIME);
             em.persist(member1);
 
             TechStack member1TechStack1 = createTechStack("Spring");
@@ -70,7 +67,7 @@ public class MemberAndTechStackDataInit {
             //== member1 end ==//
 
             //== member2 start ==//
-            Member member2 = createMember("test2UserId", "test2RealName", "test2Password", Annual.FIVETOSEVEN, "010-0000-0000", "test2@gmail.com", Role.FRONTEND);
+            Member member2 = createMember("test2UserId", "test2RealName", "test2Password", Annual.FIVETOSEVEN, "010-0000-0000", "test2@gmail.com", Role.FRONTEND, Nation.VIETNAM, EmployeeType.PARTTIME);
 
             TechStack member2TechStack1 = createTechStack("Html");
             em.persist(member2TechStack1);
@@ -95,7 +92,7 @@ public class MemberAndTechStackDataInit {
             //== member2 end ==//
         }
 
-        private Member createMember(String userId, String realName, String password, Annual annual, String phoneNumber, String Email, Role role) {
+        private Member createMember(String userId, String realName, String password, Annual annual, String phoneNumber, String Email, Role role, Nation nation, EmployeeType employeeType) {
             Member member = new Member();
             member.setUserId(userId);
             member.setRealName(realName);
@@ -104,6 +101,8 @@ public class MemberAndTechStackDataInit {
             member.setPhoneNumber(phoneNumber);
             member.setEmail(Email);
             member.setRole(role);
+            member.setNation(nation);
+            member.setEmployeeType(employeeType);
 
             return member;
         }

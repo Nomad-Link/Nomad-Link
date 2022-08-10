@@ -1,9 +1,6 @@
 package NomadLink.WebService.api;
 
-import NomadLink.WebService.domain.Annual;
-import NomadLink.WebService.domain.Member;
-import NomadLink.WebService.domain.Role;
-import NomadLink.WebService.domain.TechStack;
+import NomadLink.WebService.domain.*;
 import NomadLink.WebService.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class MemberAndTechStackApiController { // test 주석
+public class MemberAndTechStackApiController {
 
     private final MemberRepository memberRepository;
 
@@ -38,6 +35,8 @@ public class MemberAndTechStackApiController { // test 주석
         private String realName;
         private Annual annual;
         private Role role;
+        private Nation nation;
+        private EmployeeType employeeType;
         private List<TechStackResponseDto> techStacks;
 
         public MemberWithTechStacksResponseDto(Member member) {
@@ -45,6 +44,8 @@ public class MemberAndTechStackApiController { // test 주석
             realName = member.getRealName();
             annual = member.getAnnual();
             role = member.getRole();
+            nation = member.getNation();
+            employeeType = member.getEmployeeType();
 
             // DTO안에 엔티티가 있으면 안된다!!!!!!!!!! TechStack 조차도 DTO로 변경해야한다.
             techStacks = member.getTechStacks().stream()
