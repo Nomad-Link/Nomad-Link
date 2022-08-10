@@ -21,7 +21,7 @@ public class RecruitmentFormApiController {
 
     private final RecruitmentFormService recruitmentFormService;
 
-    @PostMapping("/api/enterprise/recruit/form")
+    @PostMapping("/enterprise/recruit/form")
     public RecruitmentFormResponseDto saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
