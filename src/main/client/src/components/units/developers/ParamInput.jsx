@@ -46,7 +46,7 @@ function ParamInput() {
       </Select>
       <Select onChange={handleType}>
         <option value="null">-- 전체 유형 --</option>
-        <option value="PULLTIME">정규직</option>
+        <option value="FULLTIME">정규직</option>
         <option value="PARTTIME">계약직</option>
         <option value="FREELANCER">프리랜서</option>
       </Select>

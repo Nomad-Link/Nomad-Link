@@ -21,13 +21,15 @@ function ParamHashtag() {
     if (!active) {
       dispatch({
         type: `Set${name}`,
-        item: `${name}`,
+        item: {techName: name},
+        name: name
       });
       setActive(true);
     } else {
       dispatch({
         type: `Del${name}`,
-        item: `${name}`,
+        item: {techName: name},
+        name: name
       });
       setActive(false);
     }

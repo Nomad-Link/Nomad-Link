@@ -6,9 +6,9 @@ export const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case `Set${action.item}`:
-      return { ...state, techStacks: [...state.techStacks, action.item] };
-    case `Del${action.item}`:
+    case `Set${action.name}`:
+      return { ...state, techStacks: [...state.techStacks, action.item], };
+    case `Del${action.name}`:
       return {
         ...state,
         techStacks: [

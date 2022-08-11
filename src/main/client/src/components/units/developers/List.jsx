@@ -9,20 +9,42 @@ function List() {
 
   useEffect(() => {
     axios
-      .get(`/enterprise/recruit/developers`, {
-        params: {
-          techStacks: initialState.techStacks,
-          nation: initialState.nation,
-          employeeType: initialState.employeeType,
-        },
-      })
+      .get(`/enterprise/recruit/developers`)
       .then((response) => setUser(response.data.data))
       .catch((error) => console.log(error));
-  }, [initialState]);
-//
+  }, []);
+
+  console.log(user);
+
+  const ResultMap = user.filter((x) =>
+    initialState.employeeType === null
+      ? {}
+      : x.employeeType === initialState.employeeType
+  );
+
   return (
     <Section>
-      <p style={{ color: "white" }}>{JSON.stringify(initialState.techStacks)}</p>
+      <p style={{ color: "white" }}>
+        {JSON.stringify(initialState.techStacks)}
+      </p>
+      <div>
+        {ResultMap.map((m, index) => {
+          return (
+            <div key={index} style={{ margin: "20px" }}>
+              <p>annual: {m.annual}</p>
+              <p>employeeType: {m.employeeType}</p>
+              <p>nation: {m.nation}</p>
+              <p>realName: {m.realName}</p>
+              <p>role: {m.role}</p>
+              <p>
+                techStacks: {m.techStacks[0].techName},{" "}
+                {m.techStacks[1].techName}, {m.techStacks[2].techName},
+                {m.techStacks[3].techName}, {m.techStacks[4].techName}
+              </p>
+            </div>
+          );
+        })}
+      </div>
       <textarea
         rows={35}
         cols={100}
