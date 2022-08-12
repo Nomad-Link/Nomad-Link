@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useStateValue } from "../../../store/StateProvider";
 
 function ParamHashtag() {
-  const [initialState, dispatch] = useStateValue();
+  const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [active1, setActive1] = useState(false);
   const [active2, setActive2] = useState(false);
   const [active3, setActive3] = useState(false);
@@ -117,13 +117,6 @@ function ParamHashtag() {
           Computer Vision
         </Tag>
       </TagBox>
-      <textarea
-        className="margin"
-        rows={16}
-        cols={90}
-        value={JSON.stringify(initialState, null, 5)}
-        readOnly={true}
-      />
     </Section>
   );
 }
