@@ -1,10 +1,10 @@
-import { Section } from "./List.style";
+import { Section } from "./DeveloperList.style";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useStateValue } from "../../../store/StateProvider";
-import EmployeeProfile from "../../commons/EmployeeProfile";
+import { useStateValue } from "../../store/StateProvider";
+import EmployeeProfile from "./EmployeeProfile";
 
-function List() {
+function DeveloperList({bgColor, unitColor}) {
   const [initialState] = useStateValue();
   const [user, setUser] = useState([]);
 
@@ -15,22 +15,19 @@ function List() {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(user);
+  // console.log(user);
 
-  const testMap = user.filter((x) =>
-    initialState.employeeType === null
-      ? {}
-      : x.employeeType === initialState.employeeType
-  );
+  // const testMap = user.filter((x) =>
+  //   initialState.nation === null ? {} : x.nation === initialState.nation
+  // );
 
   return (
-    <Section>
-      <p style={{ color: "white" }}>
-        {JSON.stringify(initialState.techStacks)}
-      </p>
-      {testMap.map((m, indexA) => {
+    <Section bgColor={bgColor}>
+      <p>{JSON.stringify(initialState.techStacks)}</p>
+      {user.map((m, indexA) => {
         return (
           <EmployeeProfile
+            unitColor={unitColor}
             key={indexA}
             realName={m.realName}
             nation={m.nation}
@@ -55,4 +52,4 @@ function List() {
   );
 }
 
-export default List;
+export default DeveloperList;

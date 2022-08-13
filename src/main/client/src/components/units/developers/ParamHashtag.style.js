@@ -21,7 +21,7 @@ export const Tag = styled.button`
   font-size: 18px;
   background-color: #c9c8c8;
   border: 2px solid #c9c8c8;
-  border-radius: 20px;
+  border-radius: 15px;
 
   &:hover {
     background-color: #e7e7e7;
