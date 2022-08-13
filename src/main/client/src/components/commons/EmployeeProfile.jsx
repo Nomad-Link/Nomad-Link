@@ -1,21 +1,43 @@
-import { Div, ProfileImage, InformationDiv, Title } from "./EmployeeProfile.style";
+import {
+  Div,
+  ProfileImage,
+  InformationDiv,
+  TitleBox,
+  Title,
+  Name,
+  Nation,
+  MoreButton,
+  Role,
+  TechStackBox,
+  TechName,
+} from "./EmployeeProfile.style";
 
-function EmployeeProfile({ realName, nation, role, techStacks }) {
+function EmployeeProfile({ unitColor, realName, nation, role, techStacks }) {
   return (
-    <Div>
-      <ProfileImage alt="" src={require("./testimage.png")} />
+    <Div unitColor={unitColor}>
+      <ProfileImage alt="" src={require("./testimage.jpg")} />
       <InformationDiv>
-        <Title>
-          <h1>{realName}</h1>
-          <p>{nation}</p>
-          <p>자세히 보기</p>
-        </Title>
-        <p>{role}</p>
-        <div style={{ display: "flex" }}>
+        <TitleBox>
+          <Title>
+            <Name>{realName}</Name>
+            <Nation>{nation}</Nation>
+          </Title>
+          <MoreButton>자세히 보기</MoreButton>
+        </TitleBox>
+        <Role>{role}</Role>
+        <TechStackBox>
           {techStacks.map((p, indexB) => {
-            return <p key={indexB}>{p.techName},&nbsp;</p>;
+            return (
+              <TechName key={indexB}>
+                {p.techName.length > 13 ? (
+                  <span style={{ fontSize: "12px" }}>{p.techName}</span>
+                ) : (
+                  <span>{p.techName}</span>
+                )}
+              </TechName>
+            );
           })}
-        </div>
+        </TechStackBox>
       </InformationDiv>
     </Div>
   );

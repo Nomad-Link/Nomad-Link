@@ -12,6 +12,7 @@ function ParamInput() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [nation, setNation] = useState(null);
   const [employeeType, setEmployeeType] = useState(null);
+  const [searchParams, setSearchParams] = useState(null);
 
   const handleNation = (e) => {
     if (e.target.value === "null") {
@@ -25,6 +26,13 @@ function ParamInput() {
       setEmployeeType(null);
     } else {
       setEmployeeType(e.target.value);
+    }
+  };
+  const handleSearch = (e) => {
+    if (e.target.value === "") {
+      setSearchParams(null);
+    } else {
+      setSearchParams(e.target.value);
     }
   };
 
@@ -50,7 +58,7 @@ function ParamInput() {
         <option value="PARTTIME">계약직</option>
         <option value="FREELANCER">프리랜서</option>
       </Select>
-      <InputSkillSet placeholder="스킬셋을 입력하세요." />
+      <InputSkillSet onChange={handleSearch} placeholder="스킬셋을 입력하세요." />
       <SearchIcon
         sx={muiSearchIcon}
         onClick={() =>
@@ -58,6 +66,7 @@ function ParamInput() {
             type: `SetInput`,
             nation: nation,
             employeeType: employeeType,
+            searchParams: searchParams,
           })
         }
       />

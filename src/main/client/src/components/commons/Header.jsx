@@ -20,6 +20,7 @@ import {
   muiMenuIcon,
   muiServiceIcon,
 } from "./Header.style";
+import TestLink from "./TestLink";
 
 function Header() {
   return (
@@ -63,6 +64,7 @@ function Header() {
           </DivRight>
         </Box>
       </HeaderDiv>
+      <TestLink />
     </ResHeader>
   );
 }

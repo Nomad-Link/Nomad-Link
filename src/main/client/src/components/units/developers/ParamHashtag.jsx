@@ -28,7 +28,6 @@ function ParamHashtag() {
     } else {
       dispatch({
         type: `Del${name}`,
-        item: {techName: name},
         name: name
       });
       setActive(false);
@@ -44,27 +43,27 @@ function ParamHashtag() {
       <TagBox>
         <Tag
           style={active1 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active1, setActive1, `React.js`)}
+          onClick={() => SetTag(active1, setActive1, `Publishing`)}
         >
-          React.js
+          Publishing
         </Tag>
         <Tag
           style={active2 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active2, setActive2, `Vue.js`)}
+          onClick={() => SetTag(active2, setActive2, `Flutter`)}
         >
-          Vue.js
+          Flutter
         </Tag>
         <Tag
           style={active3 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active3, setActive3, `Angular.js`)}
+          onClick={() => SetTag(active3, setActive3, `Dart`)}
         >
-          Angular.js
+          Dart
         </Tag>
         <Tag
           style={active4 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active4, setActive4, `Publishing`)}
+          onClick={() => SetTag(active4, setActive4, `React.js`)}
         >
-          Publishing
+          React.js
         </Tag>
         <Tag
           style={active5 ? { backgroundColor: "lightgreen" } : {}}
@@ -82,9 +81,9 @@ function ParamHashtag() {
       <TagBox>
         <Tag
           style={active7 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active7, setActive7, `Flask`)}
+          onClick={() => SetTag(active7, setActive7, `Thymeleaf`)}
         >
-          Flask
+          Thymeleaf
         </Tag>
         <Tag
           style={active8 ? { backgroundColor: "lightgreen" } : {}}
@@ -94,27 +93,27 @@ function ParamHashtag() {
         </Tag>
         <Tag
           style={active9 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active9, setActive9, `SpringBoot`)}
+          onClick={() => SetTag(active9, setActive9, `Docker`)}
         >
-          SpringBoot
+          Docker
         </Tag>
         <Tag
           style={active10 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active10, setActive10, `Statistics / Analysis`)}
+          onClick={() => SetTag(active10, setActive10, `Kotlin`)}
         >
-          Statistics / Analysis
+          Kotlin
         </Tag>
         <Tag
           style={active11 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active11, setActive11, `NLP`)}
+          onClick={() => SetTag(active11, setActive11, `Angular.js`)}
         >
-          NLP
+          Angular.js
         </Tag>
         <Tag
           style={active12 ? { backgroundColor: "lightgreen" } : {}}
-          onClick={() => SetTag(active12, setActive12, `Computer Vision`)}
+          onClick={() => SetTag(active12, setActive12, `Swift`)}
         >
-          Computer Vision
+          Swift
         </Tag>
       </TagBox>
     </Section>
