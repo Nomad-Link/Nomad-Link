@@ -10,13 +10,6 @@ export const Main = styled.main`
 export const Title = styled.section`
   padding: 100px;
 `;
-
-export const Button = styled.button`
-  background-color: #000;
-  color: #fff;
-  padding: 15px;
-  border: 1px solid #000;
-  border-radius: 20px;
-  font-size: 25px;
-  font-weight: bold;
+export const Text = styled.h3`
+  padding: 10px;
 `;
