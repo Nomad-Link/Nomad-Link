@@ -1,11 +1,14 @@
 package NomadLink.WebService.api;
 
 import NomadLink.WebService.domain.*;
+import NomadLink.WebService.repository.EnterpriseSearchOption;
 import NomadLink.WebService.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,6 +27,19 @@ public class MemberAndTechStackApiController {
         List<MemberWithTechStacksResponseDto> collect = members.stream()
                                 .map(member -> new MemberWithTechStacksResponseDto(member))
                                 .collect(Collectors.toList());
+
+        return collect;
+    }
+
+    @PostMapping("/enterprise/recruit/developers")
+    public List<MemberWithTechStacksResponseDto> findMembersWithTechStacksByOption(@RequestParam("nation") Nation nation, @RequestParam("employeeType") EmployeeType employeeType, @RequestParam("techStack") String techStack) {
+        EnterpriseSearchOption enterpriseSearchOption = new EnterpriseSearchOption(nation, employeeType, techStack);
+
+        List<Member> members = memberRepository.findByOption(enterpriseSearchOption);
+
+        List<MemberWithTechStacksResponseDto> collect = members.stream()
+                .map(member -> new MemberWithTechStacksResponseDto(member))
+                .collect(Collectors.toList());
 
         return collect;
     }

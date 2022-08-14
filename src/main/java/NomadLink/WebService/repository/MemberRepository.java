@@ -3,8 +3,10 @@ package NomadLink.WebService.repository;
 import NomadLink.WebService.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -30,6 +32,57 @@ public class MemberRepository {
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
+    }
+
+    public List<Member> findByOption(EnterpriseSearchOption enterpriseSearchOption) {
+        String jpql = "select m from Member m join m.techStacks ts";
+        boolean isFirstCondition = true;
+
+        if (enterpriseSearchOption.getNation() != null) {
+            if (isFirstCondition) {
+                jpql += " where";
+                isFirstCondition = false;
+            } else {
+                jpql += " and";
+            }
+            jpql += " m.nation = :nation";
+        }
+
+        if (enterpriseSearchOption.getEmployeeType() != null) {
+            if (isFirstCondition) {
+                jpql += " where";
+                isFirstCondition = false;
+            } else {
+                jpql += " and";
+            }
+            jpql += " m.employeeType = :employeeType";
+        }
+
+        if (StringUtils.hasText(enterpriseSearchOption.getTechStack())) {
+            if (isFirstCondition) {
+                jpql += " where";
+                isFirstCondition = false;
+            } else {
+                jpql += " and";
+            }
+            jpql += " ts.techName like :techStack";
+        }
+
+        TypedQuery<Member> query = em.createQuery(jpql, Member.class).setMaxResults(1000);
+
+        if (enterpriseSearchOption.getNation() != null) {
+            query.setParameter("nation", enterpriseSearchOption.getNation());
+        }
+
+        if (enterpriseSearchOption.getEmployeeType() != null) {
+            query.setParameter("employeeType", enterpriseSearchOption.getEmployeeType());
+        }
+
+        if (StringUtils.hasText(enterpriseSearchOption.getTechStack())) {
+            query.setParameter("techStack", enterpriseSearchOption.getTechStack());
+        }
+
+        return query.getResultList();
     }
 
 }
