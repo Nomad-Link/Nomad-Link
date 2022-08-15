@@ -1,28 +1,30 @@
 package NomadLink.WebService.api;
 
-import NomadLink.WebService.domain.Annual;
-import NomadLink.WebService.domain.RecruitmentForm;
+import NomadLink.WebService.domain.*;
+import NomadLink.WebService.repository.MemberRepository;
 import NomadLink.WebService.service.RecruitmentFormService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class RecruitmentFormApiController {
 
     private final RecruitmentFormService recruitmentFormService;
+    private final MemberRepository memberRepository;
 
     @PostMapping("/enterprise/recruit/form")
-    public RecruitmentFormResponseDto saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
+    public String saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
         recruitmentForm.setCompanyName(recruitmentFormRequestDto.getCompanyName());
@@ -42,7 +44,19 @@ public class RecruitmentFormApiController {
 
         recruitmentFormService.enroll(recruitmentForm);
 
-        return new RecruitmentFormResponseDto(recruitmentFormRequestDto.getCompanyName());
+        return "redirect:/enterprise/recruit/complete"; // PRG 패턴 이용(Post => Redirect => Get)
+    }
+
+    @ResponseBody
+    @GetMapping("/enterprise/recruit/complete")
+    public  List<MemberWithTechStacksResponseDto> fourDevelopers() {
+        List<Member> members = memberRepository.findFourDevelopers();
+
+        List<MemberWithTechStacksResponseDto> collect = members.stream()
+                .map(member -> new MemberWithTechStacksResponseDto(member))
+                .collect(Collectors.toList());
+
+        return collect;
     }
 
     @Data
@@ -67,10 +81,40 @@ public class RecruitmentFormApiController {
     }
 
     @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    static class RecruitmentFormResponseDto {
-        private String companyName;
+    static class MemberWithTechStacksResponseDto {
+
+        private Long id;
+        private String realName;
+        private Annual annual;
+        private Role role;
+        private Nation nation;
+        private EmployeeType employeeType;
+        private List<TechStackResponseDto> techStacks;
+
+        public MemberWithTechStacksResponseDto(Member member) {
+            id = member.getId();
+            realName = member.getRealName();
+            annual = member.getAnnual();
+            role = member.getRole();
+            nation = member.getNation();
+            employeeType = member.getEmployeeType();
+
+            // DTO안에 엔티티가 있으면 안된다!!!!!!!!!! TechStack 조차도 DTO로 변경해야한다.
+            techStacks = member.getTechStacks().stream()
+                    .map(techStack -> new TechStackResponseDto(techStack))
+                    .collect(Collectors.toList());
+        }
+
+    }
+
+    @Data
+    static class TechStackResponseDto {
+        private String techName;
+
+        public TechStackResponseDto(TechStack techStack) {
+            techName = techStack.getTechName();
+        }
+
     }
 
 }

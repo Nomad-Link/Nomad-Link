@@ -1,12 +1,14 @@
 package NomadLink.WebService.repository;
 
 import NomadLink.WebService.domain.Member;
+import NomadLink.WebService.domain.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -83,6 +85,37 @@ public class MemberRepository {
         }
 
         return query.getResultList();
+    }
+
+    public List<Member> findFourDevelopers() {
+        List<Member> serverDevelopers = em.createQuery("select m from Member m where m.role = :role", Member.class)
+                .setParameter("role", Role.SERVER)
+                .getResultList();
+
+        List<Member> frontendDevelopers = em.createQuery("select m from Member m where m.role = :role", Member.class)
+                .setParameter("role", Role.FRONTEND)
+                .getResultList();
+
+        List<Member> androidDevelopers = em.createQuery("select m from Member m where m.role = :role", Member.class)
+                .setParameter("role", Role.ANDROID)
+                .getResultList();
+
+        List<Member> iosDevelopers = em.createQuery("select m from Member m where m.role = :role", Member.class)
+                .setParameter("role", Role.IOS)
+                .getResultList();
+
+        Member serverDeveloper = serverDevelopers.get(0);
+        Member frontendDeveloper = frontendDevelopers.get(0);
+        Member androidDeveloper = androidDevelopers.get(0);
+        Member iosDeveloper = iosDevelopers.get(0);
+
+        List<Member> collect = new ArrayList<>();
+        collect.add(serverDeveloper);
+        collect.add(frontendDeveloper);
+        collect.add(androidDeveloper);
+        collect.add(iosDeveloper);
+
+        return collect;
     }
 
 }
