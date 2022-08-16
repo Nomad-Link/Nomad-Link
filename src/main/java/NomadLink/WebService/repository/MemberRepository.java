@@ -37,7 +37,7 @@ public class MemberRepository {
     }
 
     public List<Member> findByOption(EnterpriseSearchOption enterpriseSearchOption) {
-        String jpql = "select m from Member m join m.techStacks ts";
+        String jpql = "select distinct m from Member m join m.techStacks ts";
         boolean isFirstCondition = true;
 
         if (enterpriseSearchOption.getNation() != null) {
