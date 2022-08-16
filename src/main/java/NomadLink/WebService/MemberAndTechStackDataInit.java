@@ -35,7 +35,7 @@ public class MemberAndTechStackDataInit {
 
             TechStack member1TechStack1 = createTechStack("Spring");
             em.persist(member1TechStack1);
-            TechStack member1TechStack2 = createTechStack("Spring Boot");
+            TechStack member1TechStack2 = createTechStack("Spring boot");
             em.persist(member1TechStack2);
             TechStack member1TechStack3 = createTechStack("Jpa");
             em.persist(member1TechStack3);
@@ -169,6 +169,66 @@ public class MemberAndTechStackDataInit {
             member6.setTechStack(member6TechStack4);
             member6.setTechStack(member6TechStack5);
             //== member6 end ==//
+
+            //== member7 start ==//
+            Member member7 = createMember("test7UserId", "Kartik Divya", "test7Password", Annual.EIGHTTOTEN, "010-0000-0000", "test7@gmail.com", Role.SERVER, Nation.INDIA, EmployeeType.FREELANCER);
+            em.persist(member7);
+
+            TechStack member7TechStack1 = createTechStack("Java");
+            em.persist(member7TechStack1);
+            TechStack member7TechStack2 = createTechStack("Spring");
+            em.persist(member7TechStack2);
+            TechStack member7TechStack3 = createTechStack("Spring boot");
+            em.persist(member7TechStack3);
+            TechStack member7TechStack4 = createTechStack("Jpa");
+            em.persist(member7TechStack4);
+            TechStack member7TechStack5 = createTechStack("queryDSL");
+            em.persist(member7TechStack5);
+            TechStack member7TechStack6 = createTechStack("Docker");
+            em.persist(member7TechStack6);
+            TechStack member7TechStack7 = createTechStack("Kubernetes");
+            em.persist(member7TechStack7);
+            TechStack member7TechStack8 = createTechStack("Github action");
+            em.persist(member7TechStack8);
+
+            member7.setTechStack(member7TechStack1);
+            member7.setTechStack(member7TechStack2);
+            member7.setTechStack(member7TechStack3);
+            member7.setTechStack(member7TechStack4);
+            member7.setTechStack(member7TechStack5);
+            member7.setTechStack(member7TechStack6);
+            member7.setTechStack(member7TechStack7);
+            member7.setTechStack(member7TechStack8);
+            //== member7 end ==//
+
+            //== member8 start ==//
+            Member member8 = createMember("test8UserId", "Yang Xu Chen", "test8Password", Annual.ZEROTOONE, "010-0000-0000", "test8@gmail.com", Role.SERVER, Nation.CHINA, EmployeeType.FULLTIME);
+            em.persist(member8);
+
+            TechStack member8TechStack1 = createTechStack("Python");
+            em.persist(member8TechStack1);
+            TechStack member8TechStack2 = createTechStack("Django");
+            em.persist(member8TechStack2);
+            TechStack member8TechStack3 = createTechStack("Flask");
+            em.persist(member8TechStack3);
+            TechStack member8TechStack4 = createTechStack("Fast api");
+            em.persist(member8TechStack4);
+            TechStack member8TechStack5 = createTechStack("Jinja");
+            em.persist(member8TechStack5);
+            TechStack member8TechStack6 = createTechStack("Nginx");
+            em.persist(member8TechStack6);
+            TechStack member8TechStack7 = createTechStack("PostgreSQL");
+            em.persist(member8TechStack7);
+
+
+            member8.setTechStack(member8TechStack1);
+            member8.setTechStack(member8TechStack2);
+            member8.setTechStack(member8TechStack3);
+            member8.setTechStack(member8TechStack4);
+            member8.setTechStack(member8TechStack5);
+            member8.setTechStack(member8TechStack6);
+            member8.setTechStack(member8TechStack7);
+            //== member8 end ==//
         }
 
         private Member createMember(String userId, String realName, String password, Annual annual, String phoneNumber, String Email, Role role, Nation nation, EmployeeType employeeType) {
