@@ -44,6 +44,7 @@ public class MemberAndTechStackApiController {
                 .map(member -> new MemberWithTechStacksResponseDto(member))
                 .collect(Collectors.toList());
 
+        // ?nation=~&employeeType=~&techStack=~ 가 url뒤에 추가된다.
         redirectAttributes.addAttribute("nation", nation);
         redirectAttributes.addAttribute("employeeType", employeeType);
         redirectAttributes.addAttribute("techStack", techStack);
