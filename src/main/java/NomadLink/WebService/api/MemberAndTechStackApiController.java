@@ -6,7 +6,9 @@ import NomadLink.WebService.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -18,43 +20,18 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MemberAndTechStackApiController {
 
-    private List<MemberWithTechStacksResponseDto> collect = new ArrayList<>();
     private final MemberRepository memberRepository;
 
     @ResponseBody
     @GetMapping("/enterprise/recruit/developers")
-    public List<MemberWithTechStacksResponseDto> allMembersWithTeckStacks() { // application.yml의 default_batch_fetch_size 확인, OneToOne, ManyToOne은 그냥 페치 조인을 하고 ToMany(컬렉션 조회)는 페치 조인시 데이터 뻥튀기 문제가 발생한다. => default_batch_fetch_size 이용해야한다.
-        List<Member> members = memberRepository.findAll();
-
-        List<MemberWithTechStacksResponseDto> collect = members.stream()
-                                .map(member -> new MemberWithTechStacksResponseDto(member))
-                                .collect(Collectors.toList());
-
-        return collect;
-    }
-
-    @PostMapping("/enterprise/recruit/developers")
-    public String findMembersWithTechStacksByOption(RedirectAttributes redirectAttributes, @RequestParam("nation") Nation nation, @RequestParam("employeeType") EmployeeType employeeType, @RequestParam("techStack") String techStack) {
+    public List<MemberWithTechStacksResponseDto> findMembersWithTechStacksByOption(@RequestParam("nation") @Nullable Nation nation, @RequestParam("employeeType") @Nullable EmployeeType employeeType, @RequestParam("techStack") @Nullable String techStack) {
         EnterpriseSearchOption enterpriseSearchOption = new EnterpriseSearchOption(nation, employeeType, techStack);
 
         List<Member> members = memberRepository.findByOption(enterpriseSearchOption);
 
-        collect.clear();
-        collect = members.stream()
-                .map(member -> new MemberWithTechStacksResponseDto(member))
-                .collect(Collectors.toList());
-
-        // ?nation=~&employeeType=~&techStack=~ 가 url뒤에 추가된다.
-        redirectAttributes.addAttribute("nation", nation);
-        redirectAttributes.addAttribute("employeeType", employeeType);
-        redirectAttributes.addAttribute("techStack", techStack);
-
-        return "redirect:/enterprise/recruit/developers/bySearch";
-    }
-
-    @ResponseBody
-    @GetMapping("/enterprise/recruit/developers/bySearch")
-    public List<MemberWithTechStacksResponseDto> findMembersWithTechStacksByOption(@RequestParam("nation") Nation nation, @RequestParam("employeeType") EmployeeType employeeType, @RequestParam("techStack") String techStack) {
+        List<MemberWithTechStacksResponseDto> collect = members.stream()
+                                .map(member -> new MemberWithTechStacksResponseDto(member))
+                                .collect(Collectors.toList());
 
         return collect;
     }
