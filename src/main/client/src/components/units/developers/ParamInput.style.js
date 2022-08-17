@@ -37,6 +37,8 @@ export const InputSkillSet = styled.input`
   }
 `;
 export const muiSearchIcon = {
+    width: "22px",
+    height: "22px",
     zIndex: "1000",
     backgroundColor: "#fff",
     marginTop: "10px",
@@ -47,5 +49,5 @@ export const muiSearchIcon = {
     opacity: "1",
     "&:hover": {
       opacity: "0.5",
-    },
+    }
   }

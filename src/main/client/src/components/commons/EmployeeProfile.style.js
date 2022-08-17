@@ -8,6 +8,7 @@ export const Div = styled.div`
   background-color: ${(props)=> (props.unitColor)};
   border: 2px solid #000;
   border-radius: 20px;
+  color: ${({ theme }) => theme.textSection};
 `;
 export const ProfileImage = styled.img`
   width: 192px;

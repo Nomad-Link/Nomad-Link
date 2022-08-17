@@ -5,9 +5,11 @@ export const Section = styled.section`
   text-align: center;
   margin: 0 auto;
   padding: 20px 0;
-  background-color: #fbecec;
+  background-color: ${({ theme }) => theme.bgSection};
+  border-bottom: 1px solid ${({ theme }) => theme.borderBottom};
 `;
 export const Title = styled.p`
+  color: ${({ theme }) => theme.textSection};
   font-size: 15px;
   margin-top: 10px;
 `;

@@ -4,7 +4,7 @@ export const Section = styled.section`
   width: 950px;
   text-align: center;
   margin: 50px auto;
-  background-color: #e7e7e7;
+  background-color: ${({ theme }) => theme.bgSection};
   border-radius: 20px;
 `;
 export const BoxFlex = styled.div`
@@ -22,9 +22,11 @@ export const InputDiv = styled.div`
   margin: 10px auto;
 `;
 export const Title = styled.h2`
+  color: ${({ theme }) => theme.textSection};
   padding: 30px;
 `;
 export const Label = styled.label`
+  color: ${({ theme }) => theme.textSection};
   display: block;
   text-align: left;
   margin-bottom: 5px;
@@ -43,6 +45,7 @@ export const InputS = styled.input`
   outline: none;
 
   ::placeholder {
+    color: ${({ theme }) => theme.textSection};
     opacity: 0.7;
   }
 `;
@@ -68,6 +71,7 @@ export const InputL = styled.textarea`
   outline: none;
 
   ::placeholder {
+    color: ${({ theme }) => theme.textSection};
     opacity: 0.7;
   }
 `;

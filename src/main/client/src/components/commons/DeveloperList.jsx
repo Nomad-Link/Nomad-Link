@@ -1,17 +1,17 @@
 import { Section } from "./DeveloperList.style";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useStateValue } from "../../store/StateProvider";
+import { useStateValue } from "store/StateProvider";
 import EmployeeProfile from "./EmployeeProfile";
 
-function DeveloperList({ bgColor, unitColor }) {
+function DeveloperList({ endPoint, bgColor, unitColor }) {
   const [initialState] = useStateValue();
   const [user, setUser] = useState([]);
-  const [completeData, setCompleteData] = useState([]);
 
   useEffect(() => {
+    const url = `/enterprise/recruit/${endPoint}`;
     axios
-      .get(`/enterprise/recruit/developers`, {
+      .get(url, {
         params: {
           nation: initialState.nation,
           employeeType: initialState.employeeType,
@@ -20,14 +20,8 @@ function DeveloperList({ bgColor, unitColor }) {
       })
       .then((response) => setUser(response.data))
       .catch((error) => console.log(error));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState]);
-
-  useEffect(() => {
-    axios
-      .get(`/enterprise/recruit/complete`)
-      .then((response) => setCompleteData(response.data))
-      .catch((error) => console.log(error));
-  }, []);
   
   return (
     <Section bgColor={bgColor}>
@@ -53,12 +47,6 @@ function DeveloperList({ bgColor, unitColor }) {
         rows={45}
         cols={100}
         value={JSON.stringify(user, null, 3)}
-        readOnly={true}
-      />
-      <textarea
-        rows={45}
-        cols={100}
-        value={JSON.stringify(completeData, null, 3)}
         readOnly={true}
       />
     </Section>
