@@ -1,8 +1,8 @@
-import { Main } from "pages/Page.style";
-import Population from "components/units/developers/Population";
-import ParamInput from "components/units/developers/ParamInput";
-import ParamHashtag from "components/units/developers/ParamHashtag";
-import DeveloperList from "components/commons/DeveloperList";
+import { Main } from "../../Page.style";
+import Population from "../../../components/units/developers/Population";
+import ParamInput from "../../../components/units/developers/ParamInput";
+import ParamHashtag from "../../../components/units/developers/ParamHashtag";
+import DeveloperList from "../../../components/commons/DeveloperList";
 
 function RecruitDevelopers() {
   return (
@@ -10,11 +10,7 @@ function RecruitDevelopers() {
       <Population />
       <ParamInput />
       <ParamHashtag />
-      <DeveloperList
-        endPoint={"developers"}
-        bgColor={({ theme }) => theme.bgSection}
-        unitColor={({ theme }) => theme.bgUnit}
-      />
+      <DeveloperList bgColor={"#E9E9E9"} unitColor={"#F9F9F9"} />
     </Main>
   );
 }

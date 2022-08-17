@@ -1,6 +1,6 @@
 import { Section, Title, TagBox, Tag } from "./ParamHashtag.style";
 import { useState } from "react";
-import { useStateValue } from "store/StateProvider";
+import { useStateValue } from "../../../store/StateProvider";
 
 function ParamHashtag() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars

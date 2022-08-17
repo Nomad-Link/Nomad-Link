@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ResFooter = styled.footer`
   min-width: 1000px;
-  background-color: ${({ theme }) => theme.bgFooter};
+  background-color: #E7E7E7;
 `;
 export const FooterDiv = styled.div`
   width: 1000px;
