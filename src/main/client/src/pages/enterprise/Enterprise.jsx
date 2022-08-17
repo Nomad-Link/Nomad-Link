@@ -1,4 +1,4 @@
-import { Main, Title } from "../Page.style";
+import { Main, Title } from "pages/Page.style";
 
 function Enterprise() {
   return (

@@ -5,7 +5,7 @@ export const ResHeader = styled.header`
   min-width: 1000px;
   border-bottom: 1px solid #d9d9d9;
   padding-bottom: 10px;
-`
+`;
 export const HeaderDiv = styled.div`
   width: 1000px;
   justify-content: center;
@@ -43,7 +43,7 @@ export const Logo = styled.h1`
 `;
 export const SearchBox = styled.div`
   position: relative;
-`
+`;
 export const Search = styled.input`
   width: 200px;
   height: 25px;
@@ -59,8 +59,8 @@ export const muiSearchIcon = {
   marginTop: "3px",
   marginLeft: "-38px",
   fontSize: "22px",
-  opacity: "0.7"
-}
+  opacity: "0.7",
+};
 export const Login = styled.button`
   width: 70px;
   height: 30px;

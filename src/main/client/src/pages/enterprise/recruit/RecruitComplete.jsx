@@ -1,5 +1,5 @@
-import { Main, Title, Text } from "../../Page.style";
-import DeveloperList from "../../../components/commons/DeveloperList";
+import { Main, Title, Text } from "pages/Page.style";
+import DeveloperList from "components/commons/DeveloperList";
 
 function RecruitComplete() {
   return (
@@ -11,7 +11,7 @@ function RecruitComplete() {
         <p>기타 문의 사항은 nomadlink@abc.com 으로 보내주세요.</p>
       </Title>
       <Text>이런 개발자는 어떠세요?</Text>
-      <DeveloperList bgColor={"#FFF"} unitColor={"#F1F1F1"} />
+      <DeveloperList endPoint={"complete"} bgColor={"#FFF"} unitColor={"#F1F1F1"} />
     </Main>
   );
 }
