@@ -21,8 +21,13 @@ import {
   muiServiceIcon,
 } from "./Header.style";
 import TestLink from "./TestLink";
+import ThemeToggle from "./ThemeToggle";
+
+import { useTheme } from 'store/ThemeProvider';
 
 function Header() {
+  const [ThemeMode, toggleTheme] = useTheme();
+
   return (
     <ResHeader>
       <HeaderDiv>
@@ -64,7 +69,10 @@ function Header() {
           </DivRight>
         </Box>
       </HeaderDiv>
+      <div style={{display: "flex"}}>
       <TestLink />
+      <ThemeToggle toggle={toggleTheme} mode={ThemeMode} />
+      </div>
     </ResHeader>
   );
 }

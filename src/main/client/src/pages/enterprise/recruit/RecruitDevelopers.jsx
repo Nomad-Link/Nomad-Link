@@ -10,7 +10,11 @@ function RecruitDevelopers() {
       <Population />
       <ParamInput />
       <ParamHashtag />
-      <DeveloperList endPoint={"developers"} bgColor={"#E9E9E9"} unitColor={"#F9F9F9"} />
+      <DeveloperList
+        endPoint={"developers"}
+        bgColor={({ theme }) => theme.bgSection}
+        unitColor={({ theme }) => theme.bgUnit}
+      />
     </Main>
   );
 }

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 export const ResHeader = styled.header`
   min-width: 1000px;
-  border-bottom: 1px solid #d9d9d9;
+  background-color: ${({ theme }) => theme.bgHeader};
+  border-bottom: 1px solid ${({ theme }) => theme.borderBottom};
   padding-bottom: 10px;
 `;
 export const HeaderDiv = styled.div`
@@ -35,7 +36,7 @@ export const DivRight = styled.div`
   }
 `;
 export const Logo = styled.h1`
-  color: #000;
+  color: ${({ theme }) => theme.textIndex};
   font-size: 45px;
   font-weight: bold;
   letter-spacing: -1px;
@@ -54,6 +55,7 @@ export const Search = styled.input`
   border: 1px solid #d5d5d5;
 `;
 export const muiSearchIcon = {
+  color: "#282828",
   position: "absolute",
   zIndex: "1000",
   marginTop: "3px",
@@ -84,18 +86,19 @@ export const Menu = styled.ul`
   padding-left: 0;
 `;
 export const muiMenuIcon = {
+  color: "#747474",
   margin: "auto 10px",
   fontSize: "30px",
 };
 export const muiServiceIcon = {
-  color: "#000",
+  color: "#747474",
   marginLeft: "15px",
   marginRight: "-5px",
   fontSize: "30px",
 };
 export const MenuIcon = styled.li`
+  color: ${({ theme }) => theme.textIndex};
   list-style: none;
   margin: auto 10px;
   font-size: 20px;
-  color: #000;
 `;
