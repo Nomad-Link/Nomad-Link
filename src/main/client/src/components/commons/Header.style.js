@@ -55,7 +55,9 @@ export const Search = styled.input`
   border: 1px solid #d5d5d5;
 `;
 export const muiSearchIcon = {
-  color: "#282828",
+  width: "22px",
+  height: "22px",
+  color: "#000",
   position: "absolute",
   zIndex: "1000",
   marginTop: "3px",
@@ -86,12 +88,14 @@ export const Menu = styled.ul`
   padding-left: 0;
 `;
 export const muiMenuIcon = {
-  color: "#747474",
+  width: "27px",
+  height: "27px",
   margin: "auto 10px",
   fontSize: "30px",
 };
 export const muiServiceIcon = {
-  color: "#747474",
+  width: "27px",
+  height: "27px",
   marginLeft: "15px",
   marginRight: "-5px",
   fontSize: "30px",

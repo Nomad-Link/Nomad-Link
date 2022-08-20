@@ -2,7 +2,7 @@ import { Section } from "./DeveloperList.style";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useStateValue } from "store/StateProvider";
-import EmployeeProfile from "./EmployeeProfile";
+import DeveloperProfile from "./DeveloperProfile";
 
 function DeveloperList({ endPoint, bgColor, unitColor }) {
   const [initialState] = useStateValue();
@@ -27,7 +27,7 @@ function DeveloperList({ endPoint, bgColor, unitColor }) {
     <Section bgColor={bgColor}>
       {user.map((m, indexA) => {
         return (
-          <EmployeeProfile
+          <DeveloperProfile
             unitColor={unitColor}
             key={indexA}
             realName={m.realName}

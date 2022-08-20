@@ -1,11 +1,11 @@
-import EnterpriseList from "components/commons/EnterpriseList";
-import { Main } from "pages/Page.style";
-import HomeSlide from "./HomeSlide";
+import EnterpriseList from "components/units/home/EnterpriseList";
+import { Main } from "styles/Pages";
+import Slide from "components/units/home/Slide";
 
 function PageHome() {
   return (
     <Main>
-        <HomeSlide />
+        <Slide />
         <EnterpriseList />
     </Main>
   );

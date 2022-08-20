@@ -10,12 +10,12 @@ import {
   Role,
   TechStackBox,
   TechName,
-} from "./EmployeeProfile.style";
+} from "./DeveloperProfile.style";
 
-function EmployeeProfile({ unitColor, realName, nation, role, techStacks }) {
+function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
   return (
     <Div unitColor={unitColor}>
-      <ProfileImage alt="" src={require("./testimage.jpg")} />
+      <ProfileImage alt="" src={require("components/units/developers/testimage.jpg")} />
       <InformationDiv>
         <TitleBox>
           <Title>
@@ -43,4 +43,4 @@ function EmployeeProfile({ unitColor, realName, nation, role, techStacks }) {
   );
 }
 
-export default EmployeeProfile;
+export default DeveloperProfile;

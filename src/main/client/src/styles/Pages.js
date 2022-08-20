@@ -7,9 +7,3 @@ export const Main = styled.main`
   text-align: center;
   margin: auto;
 `;
-export const Title = styled.section`
-  padding: 100px;
-`;
-export const Text = styled.h3`
-  padding: 10px;
-`;

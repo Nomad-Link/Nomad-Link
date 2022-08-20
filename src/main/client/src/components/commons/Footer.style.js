@@ -14,7 +14,7 @@ export const FooterDiv = styled.div`
   opacity: 0.6;
 `;
 export const Logo = styled.h1`
-  color: #000;
+  color: ${({ theme }) => theme.textIndex};
   font-size: 35px;
   font-weight: bold;
   letter-spacing: -1px;
@@ -24,6 +24,8 @@ export const Information = styled.div`
   font-size: 12px;
 `;
 export const muiInforIcon = {
+  width: "22px",
+  height: "22px",
   margin: "10px"
 };
 export const ServiceLink = styled.div`

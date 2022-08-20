@@ -1,9 +1,9 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Section, Img } from "./HomeSlide.style";
+import { Section, Img } from "./Slide.style";
 
-function HomeSlide() {
+function Slide() {
   const settings = {
     dots: true,
     arrows: true,
@@ -48,4 +48,4 @@ function HomeSlide() {
     </Section>
   );
 }
-export default HomeSlide;
+export default Slide;

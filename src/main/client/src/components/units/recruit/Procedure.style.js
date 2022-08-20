@@ -34,7 +34,8 @@ export const Li = styled.div`
   margin: 0 30px 0 30px;
 `;
 export const muiIcon = {
-  fontSize: "35px",
+  width: "30px",
+  height: "30px",
 };
 export const Phase = styled.h2`
   list-style: none;
