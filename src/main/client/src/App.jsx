@@ -7,17 +7,15 @@ import { GlobalStyle } from "styles/GlobalStyle";
 
 function App() {
   return (
-    <div className="App">
-      <ThemeProvider>
-        <GlobalStyle />
-        <BrowserView>
-          <Desktop />
-        </BrowserView>
-        <MobileView>
-          <Mobile />
-        </MobileView>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider>
+      <GlobalStyle />
+      <BrowserView>
+        <Desktop />
+      </BrowserView>
+      <MobileView>
+        <Mobile />
+      </MobileView>
+    </ThemeProvider>
   );
 }
 export default App;

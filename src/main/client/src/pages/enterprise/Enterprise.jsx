@@ -1,11 +1,9 @@
-import { Main, Title } from "pages/Page.style";
+import { Main } from "styles/Pages";
 
 function Enterprise() {
   return (
     <Main>
-      <Title>
-        <h2>Page Enterprise</h2>
-      </Title>
+      <h2 style={{ padding: "300px" }}>Page Enterprise</h2>
     </Main>
   );
 }

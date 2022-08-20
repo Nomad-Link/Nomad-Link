@@ -21,11 +21,6 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.bgIndex};
     color: ${({ theme }) => theme.textIndex};
  }
-
- code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
- }
  
  h1 {
     font-weight: bold;

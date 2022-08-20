@@ -41,6 +41,7 @@ export const muiSearchIcon = {
     height: "22px",
     zIndex: "1000",
     backgroundColor: "#fff",
+    color: "#000",
     marginTop: "10px",
     marginRight: "10px",
     padding: "5px",

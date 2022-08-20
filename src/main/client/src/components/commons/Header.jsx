@@ -21,13 +21,8 @@ import {
   muiServiceIcon,
 } from "./Header.style";
 import TestLink from "./TestLink";
-import ThemeToggle from "./ThemeToggle";
 
-import { useTheme } from 'store/ThemeProvider';
-
-function Header() {
-  const [ThemeMode, toggleTheme] = useTheme();
-
+function Header({ mode }) {
   return (
     <ResHeader>
       <HeaderDiv>
@@ -49,7 +44,12 @@ function Header() {
         <Box>
           <DivLeft>
             <Menu>
-              <MenuListIcon sx={muiMenuIcon} />
+              <MenuListIcon
+                sx={muiMenuIcon}
+                style={
+                  mode === "dark" ? { color: "#D4D4D4" } : { color: "#000" }
+                }
+              />
               <MenuIcon>채용</MenuIcon>
               <MenuIcon>직무 인터뷰</MenuIcon>
               <MenuIcon>이력서</MenuIcon>
@@ -59,19 +59,28 @@ function Header() {
           </DivLeft>
           <DivRight>
             <SLink to={"/"}>
-              <PersonIcon sx={muiServiceIcon} />
+              <PersonIcon
+                sx={muiServiceIcon}
+                style={
+                  mode === "dark" ? { color: "#D4D4D4" } : { color: "#000" }
+                }
+              />
               <MenuIcon>개인 서비스</MenuIcon>
             </SLink>
             <SLink to={"/enterprise/recruit/form"}>
-              <ApartmentIcon sx={muiServiceIcon} />
+              <ApartmentIcon
+                sx={muiServiceIcon}
+                style={
+                  mode === "dark" ? { color: "#D4D4D4" } : { color: "#000" }
+                }
+              />
               <MenuIcon>기업 서비스</MenuIcon>
             </SLink>
           </DivRight>
         </Box>
       </HeaderDiv>
-      <div style={{display: "flex"}}>
-      <TestLink />
-      <ThemeToggle toggle={toggleTheme} mode={ThemeMode} />
+      <div style={{ display: "flex" }}>
+        <TestLink />
       </div>
     </ResHeader>
   );
