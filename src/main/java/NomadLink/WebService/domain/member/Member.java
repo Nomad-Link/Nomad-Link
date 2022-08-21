@@ -25,6 +25,8 @@ public class Member {
 
     private String phoneNumber;
     private String Email;
+    private String age;
+    private String gender;
 
     @Enumerated(EnumType.STRING)
     private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
