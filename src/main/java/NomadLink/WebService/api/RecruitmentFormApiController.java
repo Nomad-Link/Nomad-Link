@@ -22,7 +22,7 @@ public class RecruitmentFormApiController {
     private final RecruitmentFormService recruitmentFormService;
     private final MemberRepository memberRepository;
 
-    @PostMapping("/enterprise/recruit/form")
+    @PostMapping("api/enterprise/recruit/form")
     public String saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
@@ -47,7 +47,7 @@ public class RecruitmentFormApiController {
     }
 
     @ResponseBody
-    @GetMapping("/enterprise/recruit/complete")
+    @GetMapping("api/enterprise/recruit/complete")
     public  List<MemberWithTechStacksResponseDto> fourDevelopers() {
         List<Member> members = memberRepository.findFourDevelopers();
 

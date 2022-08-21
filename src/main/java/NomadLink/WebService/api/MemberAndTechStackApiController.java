@@ -19,7 +19,7 @@ public class MemberAndTechStackApiController {
     private final MemberRepository memberRepository;
 
     @ResponseBody
-    @GetMapping("/enterprise/recruit/developers")
+    @GetMapping("api/enterprise/recruit/developers")
     public List<MemberWithTechStacksResponseDto> findMembersWithTechStacksByOption(@RequestParam("nation") @Nullable Nation nation, @RequestParam("employeeType") @Nullable EmployeeType employeeType, @RequestParam("techStack") @Nullable String techStack) {
         EnterpriseSearchOption enterpriseSearchOption = new EnterpriseSearchOption(nation, employeeType, techStack);
 
