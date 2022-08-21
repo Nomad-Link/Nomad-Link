@@ -1,18 +1,14 @@
 package NomadLink.WebService.api;
 
-import NomadLink.WebService.domain.*;
+import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.repository.EnterpriseSearchOption;
 import NomadLink.WebService.repository.MemberRepository;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

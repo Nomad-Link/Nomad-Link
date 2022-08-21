@@ -1,5 +1,6 @@
 package NomadLink.WebService.domain;
 
+import NomadLink.WebService.domain.member.Annual;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
