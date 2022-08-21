@@ -1,10 +1,9 @@
 package NomadLink.WebService.repository;
 
-import NomadLink.WebService.domain.EmployeeType;
-import NomadLink.WebService.domain.Nation;
+import NomadLink.WebService.domain.member.EmployeeType;
+import NomadLink.WebService.domain.member.Nation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter

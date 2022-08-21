@@ -1,7 +1,7 @@
 package NomadLink.WebService.repository;
 
-import NomadLink.WebService.domain.Member;
-import NomadLink.WebService.domain.Role;
+import NomadLink.WebService.domain.member.Member;
+import NomadLink.WebService.domain.member.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;

@@ -1,11 +1,10 @@
 package NomadLink.WebService.api;
 
 import NomadLink.WebService.domain.*;
+import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.repository.MemberRepository;
 import NomadLink.WebService.service.RecruitmentFormService;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

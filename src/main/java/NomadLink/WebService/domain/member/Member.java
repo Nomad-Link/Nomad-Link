@@ -1,4 +1,4 @@
-package NomadLink.WebService.domain;
+package NomadLink.WebService.domain.member;
 
 import lombok.Getter;
 import lombok.Setter;
