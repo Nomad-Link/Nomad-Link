@@ -1,6 +1,6 @@
 package NomadLink.WebService.repository;
 
-import NomadLink.WebService.domain.RecruitmentForm;
+import NomadLink.WebService.domain.enterprise.RecruitmentForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

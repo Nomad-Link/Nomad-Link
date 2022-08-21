@@ -1,4 +1,4 @@
-package NomadLink.WebService.domain;
+package NomadLink.WebService.domain.enterprise;
 
 import NomadLink.WebService.domain.member.Annual;
 import lombok.AllArgsConstructor;
