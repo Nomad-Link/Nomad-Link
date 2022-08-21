@@ -41,4 +41,10 @@ public class Notice {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    //== 연관관계 편의 메서드==// (양방향 연관관계인 경우에만 사용)
+    public void setTechStack(TechStack techStack) {
+        techStacks.add(techStack);
+        techStack.setNotice(this);
+    }
+
 }

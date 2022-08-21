@@ -1,6 +1,6 @@
 package NomadLink.WebService.api;
 
-import NomadLink.WebService.domain.*;
+import NomadLink.WebService.domain.enterprise.RecruitmentForm;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.repository.MemberRepository;
 import NomadLink.WebService.service.RecruitmentFormService;
