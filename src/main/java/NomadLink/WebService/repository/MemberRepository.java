@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -30,6 +31,14 @@ public class MemberRepository {
                 .setParameter("realName", realName)
                 .getResultList();
     }
+
+    public Optional<Member> findByLoginId(String loginId) {
+
+        return findAll().stream()
+                .filter(m -> m.getUserId().equals(loginId))
+                .findFirst();
+    }
+
 
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)
