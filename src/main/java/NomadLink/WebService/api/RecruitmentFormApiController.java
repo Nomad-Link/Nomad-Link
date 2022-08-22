@@ -23,7 +23,7 @@ public class RecruitmentFormApiController {
     private final MemberRepository memberRepository;
 
     @PostMapping("api/enterprise/recruit/form") // 기업 서비스의 폼 작성 페이지
-    public String saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
+    public void saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
         recruitmentForm.setCompanyName(recruitmentFormRequestDto.getCompanyName());
@@ -42,8 +42,6 @@ public class RecruitmentFormApiController {
         recruitmentForm.setEtcComment(recruitmentFormRequestDto.getEtcComment());
 
         recruitmentFormService.enroll(recruitmentForm);
-
-        return "redirect:/api/enterprise/recruit/complete"; // PRG 패턴 이용(Post => Redirect => Get)
     }
 
     @ResponseBody
