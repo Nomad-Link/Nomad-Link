@@ -1,7 +1,7 @@
 export const initialState = {
   nation: null,
   employeeType: null,
-  searchParams: null,
+  searchParams: null, // => techStack
   techStacks: [],
 };
 

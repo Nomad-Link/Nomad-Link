@@ -1,12 +1,11 @@
-import { Main, Title } from "../Page.style";
+import Test from "components/units/developers/Test";
+import { Main } from "styles/Pages";
 
 function Enterprise() {
   return (
     <Main>
-      <Title>
-        <h2>Page Enterprise</h2>
-        <h3>2022.08.04</h3>
-      </Title>
+      <h2 style={{ padding: "300px" }}>Page Enterprise</h2>
+      <Test />
     </Main>
   );
 }

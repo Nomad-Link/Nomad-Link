@@ -6,7 +6,7 @@ import {
   muiSearchIcon,
 } from "./ParamInput.style";
 import SearchIcon from "@mui/icons-material/Search";
-import { useStateValue } from "../../../store/StateProvider";
+import { useStateValue } from "store/StateProvider";
 
 function ParamInput() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars

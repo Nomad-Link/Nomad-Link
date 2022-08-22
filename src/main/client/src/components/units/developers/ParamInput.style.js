@@ -29,6 +29,7 @@ export const InputSkillSet = styled.input`
   font-weight: bold;
   width: 200px;
   margin: 10px;
+  margin-right: 0;
   padding: 5px;
 
   ::placeholder {
@@ -36,10 +37,18 @@ export const InputSkillSet = styled.input`
   }
 `;
 export const muiSearchIcon = {
-    position: "absolute",
+    width: "22px",
+    height: "22px",
     zIndex: "1000",
-    marginTop: "15px",
-    marginLeft: "-15px",
+    backgroundColor: "#fff",
+    color: "#000",
+    marginTop: "10px",
+    marginRight: "10px",
+    padding: "5px",
+    paddingBottom: "4px",
     fontSize: "22px",
-    opacity: "0.7"
+    opacity: "1",
+    "&:hover": {
+      opacity: "0.5",
+    }
   }

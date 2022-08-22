@@ -43,15 +43,15 @@ function Form() {
       etcComment: data.etcComment,
     };
     formData(recruitmentFormRequestDto);
+    navigate("/enterprise/recruit/complete");
   };
 
   async function formData(data) {
-    const url = "/enterprise/recruit/form";
+    const url = "api/enterprise/recruit/form";
 
     try {
       const response = await post(url, data);
       console.log(response);
-      navigate("/enterprise/recruit/complete");
     } catch (error) {
       console.error(error);
     }
