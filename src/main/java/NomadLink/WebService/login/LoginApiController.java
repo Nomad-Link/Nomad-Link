@@ -17,22 +17,22 @@ public class LoginApiController {
 
     private final LoginService loginService;
 
-    @PostMapping("/login")
+    @PostMapping("api/login") // 로그인 페이지
     public String login(@RequestBody LoginRequestDto loginRequestDto, @RequestParam(defaultValue = "/") String redirectURL, HttpServletRequest request) {
         Member loginMember = loginService.login(loginRequestDto.getUserId(), loginRequestDto.getPassword());
 
         if(loginMember == null) {
-            return "redirect:/login-error";
+            return "redirect:/api/login-error";
         }
 
         // 로그인 성공 처리
         HttpSession session = request.getSession(true); // 세션이 있으면 있는 세션 반환, 없으면 신규 세션을 생성
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember); // 세션에 로그인 회원 정보 보관, 이후 브라우저의 쿠키 저장소에 응답보냄
 
-        return "redirect:" + redirectURL;
+        return "redirect:/api" + redirectURL;
     }
 
-    @PostMapping("/logout")
+    @PostMapping("api/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false); // 세션이 존재하면 그 세션을 가져오고 없다면 세션을 새로 만들지 않는다.(null 이 반환됨)
 
@@ -40,7 +40,7 @@ public class LoginApiController {
             session.invalidate(); // 세션 정보를 삭제
         }
 
-        return "redirect:/";
+        return "redirect:/api/private";
     }
 
     @Data
