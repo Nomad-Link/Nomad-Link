@@ -22,7 +22,7 @@ public class RecruitmentFormApiController {
     private final RecruitmentFormService recruitmentFormService;
     private final MemberRepository memberRepository;
 
-    @PostMapping("api/enterprise/recruit/form")
+    @PostMapping("api/enterprise/recruit/form") // 기업 서비스의 폼 작성 페이지
     public String saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
@@ -43,11 +43,11 @@ public class RecruitmentFormApiController {
 
         recruitmentFormService.enroll(recruitmentForm);
 
-        return "redirect:/enterprise/recruit/complete"; // PRG 패턴 이용(Post => Redirect => Get)
+        return "redirect:/api/enterprise/recruit/complete"; // PRG 패턴 이용(Post => Redirect => Get)
     }
 
     @ResponseBody
-    @GetMapping("api/enterprise/recruit/complete")
+    @GetMapping("api/enterprise/recruit/complete") // 폼 작성 후 완료 페이지
     public  List<MemberWithTechStacksResponseDto> fourDevelopers() {
         List<Member> members = memberRepository.findFourDevelopers();
 
