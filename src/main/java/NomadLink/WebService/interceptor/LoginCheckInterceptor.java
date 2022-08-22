@@ -1,5 +1,6 @@
 package NomadLink.WebService.interceptor;
 
+import NomadLink.WebService.session.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -7,44 +8,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 @Slf4j
 public class LoginCheckInterceptor implements HandlerInterceptor {
 
-    public static final String LOG_ID = "logId";
-
-    @Override // 핸들러(컨트롤러) 호출전에 동작
+    @Override // 핸들러(컨트롤러) 호출 전에 동작
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
-        String uuid = UUID.randomUUID().toString();
 
-        request.setAttribute(LOG_ID, uuid); // 스프링 인터셉터는 호출 시점이 완전히 분리되어있어서 afterCompletion에서 uuid를 표시하기 위해 request에 uuid값을 넣음
+        log.info("인증 체크 인터셉터 실행 {}", requestURI);
 
-        if(handler instanceof HandlerMethod) {
-            HandlerMethod hm = (HandlerMethod) handler; // 호출할 컨트롤러 메서드의 모든 정보가 포함 되어있다.
+        HttpSession session = request.getSession();
+
+        if(session == null || session.getAttribute(SessionConst.LOGIN_MEMBER) == null) {
+            log.info("미인증 사용자 요청");
+
+            // 로그인으로 redirect
+            response.sendRedirect("/login?redirectURL=" + requestURI);
+            return false;
         }
-
-        log.info("REQUEST [{}][{}][{}]", uuid, requestURI, handler);
 
         return true;
-    }
-
-    @Override // 핸들러(컨트롤러) 호출 후 동작
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.info("postHandle [{}]", modelAndView);
-    }
-
-    @Override // 뷰 렌더링 후 동작 (여기서만 예외 터진 것 표시 가능)
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        String requestURI = request.getRequestURI();
-        String uuid = (String) request.getAttribute(LOG_ID);
-
-        log.info("RESPONSE [{}][{}][{}]", uuid, requestURI, handler);
-
-        if(ex != null) {
-            log.error("afterCompletion error!!", ex);
-        }
     }
 
 }

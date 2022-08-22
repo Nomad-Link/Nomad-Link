@@ -47,7 +47,7 @@ function Form() {
   };
 
   async function formData(data) {
-    const url = "api/enterprise/recruit/form";
+    const url = "/api/enterprise/recruit/form";
 
     try {
       const response = await post(url, data);

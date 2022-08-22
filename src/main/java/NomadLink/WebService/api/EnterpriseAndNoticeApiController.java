@@ -19,7 +19,7 @@ public class EnterpriseAndNoticeApiController {
 
     private final EnterpriseRepository enterpriseRepository;
 
-    @GetMapping("api/private/employ/enterprises") // 개인 서비스에서 회사 목록을 보여주는 페이지
+    @GetMapping("/api/private/employ/enterprises") // 개인 서비스에서 회사 목록을 보여주는 페이지
     public List<EnterpriseAndNoticeDto> allEnterprise() {
         List<Enterprise> enterprises = enterpriseRepository.findAll();
 

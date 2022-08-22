@@ -9,7 +9,7 @@ function DeveloperList({ endPoint, bgColor, unitColor }) {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    const url = `api/enterprise/recruit/${endPoint}`;
+    const url = `/api/enterprise/recruit/${endPoint}`;
     axios
       .get(url, {
         params: {

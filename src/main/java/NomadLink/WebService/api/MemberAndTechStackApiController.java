@@ -19,7 +19,7 @@ public class MemberAndTechStackApiController {
     private final MemberRepository memberRepository;
 
     @ResponseBody
-    @GetMapping("api/enterprise/recruit/developers") // 기업 서비스에서 개발자 목록을 보여주는 페이지
+    @GetMapping("/api/enterprise/recruit/developers") // 기업 서비스에서 개발자 목록을 보여주는 페이지
     public List<MemberWithTechStacksResponseDto> findMembersWithTechStacksByOption(@RequestParam("nation") @Nullable Nation nation, @RequestParam("employeeType") @Nullable EmployeeType employeeType, @RequestParam("techStack") @Nullable String techStack) {
         EnterpriseSearchOption enterpriseSearchOption = new EnterpriseSearchOption(nation, employeeType, techStack);
 

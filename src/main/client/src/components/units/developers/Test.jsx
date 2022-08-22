@@ -5,7 +5,7 @@ function Test() {
   const [testData, setTestData] = useState([]);
   
   useEffect(() => {
-    const url = `api/enterprise/recruit/developers`;
+    const url = `/api/enterprise/recruit/developers`;
     axios
       .get(url)
       .then((response) => setTestData(response.data))

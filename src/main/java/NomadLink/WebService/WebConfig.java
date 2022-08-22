@@ -10,11 +10,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override // 인터셉터 등록
     public void addInterceptors(InterceptorRegistry registry) {
-
         registry.addInterceptor(new LoginCheckInterceptor())
-                .order(2)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/", "/members/add", "/login", "/logout", "/css/**", "/*.ico", "/error");
+                .order(1)
+                .addPathPatterns("/**");
+//                .excludePathPatterns("/api", "/api/enterprise", "/api/private", "/api/login", "/api/logout", "/api/register");
     }
 
 }
