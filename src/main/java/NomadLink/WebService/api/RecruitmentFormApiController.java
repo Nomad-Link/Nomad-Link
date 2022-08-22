@@ -23,7 +23,7 @@ public class RecruitmentFormApiController {
     private final MemberRepository memberRepository;
 
     @PostMapping("/api/enterprise/recruit/form") // 기업 서비스의 폼 작성 페이지
-    public void saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
+    public void saveRecruitForm(@RequestBody RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
         recruitmentForm.setCompanyName(recruitmentFormRequestDto.getCompanyName());
