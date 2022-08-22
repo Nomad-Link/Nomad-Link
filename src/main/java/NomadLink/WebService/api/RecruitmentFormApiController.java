@@ -22,7 +22,7 @@ public class RecruitmentFormApiController {
     private final RecruitmentFormService recruitmentFormService;
     private final MemberRepository memberRepository;
 
-    @PostMapping("api/enterprise/recruit/form") // 기업 서비스의 폼 작성 페이지
+    @PostMapping("/api/enterprise/recruit/form") // 기업 서비스의 폼 작성 페이지
     public void saveRecruitForm(@RequestBody @Valid RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
@@ -45,7 +45,7 @@ public class RecruitmentFormApiController {
     }
 
     @ResponseBody
-    @GetMapping("api/enterprise/recruit/complete") // 폼 작성 후 완료 페이지
+    @GetMapping("/api/enterprise/recruit/complete") // 폼 작성 후 완료 페이지
     public  List<MemberWithTechStacksResponseDto> fourDevelopers() {
         List<Member> members = memberRepository.findFourDevelopers();
 
