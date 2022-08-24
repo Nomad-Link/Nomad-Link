@@ -115,7 +115,7 @@ public class EnterpriseAndNoticeDataInit {
             em.persist(notice4TechStack7);
             TechStack notice4TechStack8 = createTechStack("Jpa");
             em.persist(notice4TechStack8);
-            
+
             notice4.setTechStack(notice4TechStack1);
             notice4.setTechStack(notice4TechStack2);
             notice4.setTechStack(notice4TechStack3);
