@@ -30,7 +30,7 @@ public class MemberAndTechStackDataInit {
 
         public void dbInit1() {
             //== member1 start ==//
-            Member member1 = createMember("test1UserId", "Abraham Kedar", "test1Password", Annual.TWOTOFOUR, "010-0000-0000", "test1@gmail.com", Role.SERVER, Nation.INDIA, EmployeeType.FULLTIME);
+            Member member1 = createMember("admin", "Abraham Kedar", "admin", Annual.TWOTOFOUR, "010-0000-0000", "test1@gmail.com", Role.SERVER, Nation.INDIA, EmployeeType.FULLTIME);
             em.persist(member1);
 
             TechStack member1TechStack1 = createTechStack("Spring");
