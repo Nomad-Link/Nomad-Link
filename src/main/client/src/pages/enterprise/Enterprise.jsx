@@ -4,7 +4,7 @@ function Enterprise() {
   return (
     <Main>
       <div style={{ padding: "200px" }}>
-        <h1>기업 서비스 홈</h1>
+        <h1>기업 서비스 홈 입니다</h1>
         <br />
         <br />
         <br />
