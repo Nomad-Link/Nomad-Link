@@ -1,14 +1,25 @@
-import EnterpriseList from "components/units/home/EnterpriseList";
 import { Main } from "styles/Pages";
-import Slide from "components/units/home/Slide";
 
-function PageHome() {
+function Home() {
   return (
     <Main>
-        <Slide />
-        <EnterpriseList />
+      <div style={{ padding: "200px" }}>
+        <h1>메인 페이지</h1>
+        <br />
+        <br />
+        <br />
+        <button>개인 서비스 이동</button>
+        <button>기업 서비스 이동</button>
+        <br />
+        <br />
+        <h1>개발자 현황</h1>
+        <br />
+        <h1>광고</h1>
+        <br />
+        <h1>이벤트</h1>
+      </div>
     </Main>
   );
 }
 
-export default PageHome;
+export default Home;

@@ -15,7 +15,10 @@ import {
 function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
   return (
     <Div unitColor={unitColor}>
-      <ProfileImage alt="" src={require("components/units/developers/testimage.jpg")} />
+      <ProfileImage
+        alt=""
+        src={require("components/units/developers/testimage.jpg")}
+      />
       <InformationDiv>
         <TitleBox>
           <Title>

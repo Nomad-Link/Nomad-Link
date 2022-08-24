@@ -1,3 +1,4 @@
+import { post } from "axios";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuListIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
@@ -9,7 +10,6 @@ import {
   DivLeft,
   DivRight,
   SLink,
-  Logo,
   SearchBox,
   Search,
   Login,
@@ -21,24 +21,40 @@ import {
   muiServiceIcon,
 } from "./Header.style";
 import TestLink from "./TestLink";
+import Logo from "./Logo";
 
 function Header({ mode }) {
+  async function logout() {
+    const url = "/api/logout";
+
+    try {
+      const response = await post(url);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+    // window.location.reload();
+  }
+
   return (
     <ResHeader>
       <HeaderDiv>
         <Box>
           <DivLeft>
-            <SLink to={"/"}>
-              <Logo>Nomad Link</Logo>
-            </SLink>
+            <Logo fontSize={"45px"} />
           </DivLeft>
           <DivRight>
             <SearchBox>
               <Search />
               <SearchIcon sx={muiSearchIcon} />
             </SearchBox>
-            <Login>로그인</Login>
-            <Register>회원가입</Register>
+            <SLink to={"/login"}>
+              <Login>로그인</Login>
+            </SLink>
+              <Login onClick={()=> logout()}>로그아웃</Login>
+            <SLink to={"/register"}>
+              <Register>회원가입</Register>
+            </SLink>
           </DivRight>
         </Box>
         <Box>

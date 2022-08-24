@@ -5,6 +5,7 @@ export const Button = styled.button`
   position: fixed;
   right: 3%;
   bottom: 5%;
+  z-index: 9999;
   width: 120px;
   height: 50px;
   background-color: ${({ theme }) => theme.bgButton};

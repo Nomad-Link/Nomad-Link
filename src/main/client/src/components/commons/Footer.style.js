@@ -13,12 +13,6 @@ export const FooterDiv = styled.div`
   padding-bottom: 40px;
   opacity: 0.6;
 `;
-export const Logo = styled.h1`
-  color: ${({ theme }) => theme.textIndex};
-  font-size: 35px;
-  font-weight: bold;
-  letter-spacing: -1px;
-`;
 export const Information = styled.div`
   text-align: center;
   font-size: 12px;

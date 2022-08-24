@@ -5,17 +5,17 @@ import AttachEmailIcon from "@mui/icons-material/AttachEmail";
 import {
   ResFooter,
   FooterDiv,
-  Logo,
   Information,
   muiInforIcon,
   ServiceLink,
 } from "./Footer.style";
+import Logo from "./Logo";
 
 function Footer() {
   return (
     <ResFooter>
       <FooterDiv>
-        <Logo>Nomad Link</Logo>
+        <Logo fontSize={"35px"} />
         <Information>
           <p>
             고객센터 : 02-123-4567 (평일 09:00 - 18:00, 점심시간 12:00 - 13:00,
