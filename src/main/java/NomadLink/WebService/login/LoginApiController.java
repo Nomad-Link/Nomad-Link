@@ -30,7 +30,9 @@ public class LoginApiController {
         HttpSession session = request.getSession(true); // 세션이 있으면 있는 세션 반환, 없으면 신규 세션을 생성
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember); // 세션에 로그인 회원 정보 보관, 이후 브라우저의 쿠키 저장소에 응답보냄
 
-        return "login-success";
+        String userId = loginMember.getUserId();
+
+        return userId;
     }
 
     @ResponseBody
