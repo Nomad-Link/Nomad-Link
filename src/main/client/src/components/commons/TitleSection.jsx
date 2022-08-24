@@ -1,10 +1,10 @@
 import { Section } from "./TitleSection.style";
 
-function TitleSection({ middleOne, middleTwo, smallOne, smallTwo }) {
+function TitleSection({ padding, mediumOne, mediumTwo, smallOne, smallTwo }) {
   return (
-    <Section>
-      <h2>{middleOne}</h2>
-      <h2>{middleTwo}</h2>
+    <Section padding={padding}>
+      <h2>{mediumOne}</h2>
+      <h2>{mediumTwo}</h2>
       <br />
       <p>{smallOne}</p>
       <p>{smallTwo}</p>

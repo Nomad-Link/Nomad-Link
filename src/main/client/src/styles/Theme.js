@@ -6,7 +6,7 @@ export const lightTheme = {
   bgUnit: "#fff",
   textIndex: "#000",
   textSection: "#000",
-  borderBottom: "#D9D9D9",
+  border: "#D9D9D9",
   bgButton: "#DBDBDB",
 };
 
@@ -18,7 +18,7 @@ export const darkTheme = {
   bgUnit: "#D4D4D4",
   textIndex: "#D4D4D4",
   textSection: "#121212",
-  borderBottom: "#626262",
+  border: "#626262",
   bgButton: "#C9C9C9",
 };
 

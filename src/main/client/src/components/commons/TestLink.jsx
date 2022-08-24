@@ -6,6 +6,9 @@ function TestLink() {
       <Link to={"/"}>
         <p>"/"</p>
       </Link>
+      <Link to={"/login"}>
+        <p>"/login"</p>
+      </Link>
       <Link to={"/enterprise"}>
         <p>"/enterprise"</p>
       </Link>
@@ -17,6 +20,9 @@ function TestLink() {
       </Link>
       <Link to={"/enterprise/recruit/developers"}>
         <p>"/enterprise/recruit/developers"</p>
+      </Link>
+      <Link to={"/private/employ/enterprises"}>
+        <p>"/private/employ/enterprises"</p>
       </Link>
     </div>
   );

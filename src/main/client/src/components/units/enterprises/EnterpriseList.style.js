@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  padding: ${props => props.padding};
+  display: flex;
+  width: 950px;
+  text-align: center;
+  margin: 20px auto;
 `;

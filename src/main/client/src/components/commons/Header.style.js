@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const ResHeader = styled.header`
   min-width: 1000px;
   background-color: ${({ theme }) => theme.bgHeader};
-  border-bottom: 1px solid ${({ theme }) => theme.borderBottom};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
   padding-bottom: 10px;
 `;
 export const HeaderDiv = styled.div`
@@ -34,13 +34,6 @@ export const DivRight = styled.div`
   ${SLink} {
     display: flex;
   }
-`;
-export const Logo = styled.h1`
-  color: ${({ theme }) => theme.textIndex};
-  font-size: 45px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  margin-left: 10px;
 `;
 export const SearchBox = styled.div`
   position: relative;
