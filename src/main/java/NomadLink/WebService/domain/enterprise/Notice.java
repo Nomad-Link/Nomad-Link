@@ -20,14 +20,14 @@ public class Notice {
     @Column(name = "notice_id")
     private Long id;
 
+    private String enterpriseName;
+
+    private String enterpriseLocation;
+
     private String title;
 
     @Lob
     private String textContent;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "enterprise_id")
-    private Enterprise enterprise;
 
     @OneToMany(mappedBy = "notice")
     private List<TechStack> techStacks = new ArrayList<>();

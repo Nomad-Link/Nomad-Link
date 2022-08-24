@@ -5,6 +5,7 @@ import NomadLink.WebService.domain.enterprise.Notice;
 import NomadLink.WebService.domain.member.Annual;
 import NomadLink.WebService.domain.member.TechStack;
 import NomadLink.WebService.repository.EnterpriseRepository;
+import NomadLink.WebService.repository.NoticeRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,46 +18,32 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EnterpriseAndNoticeApiController {
 
-    private final EnterpriseRepository enterpriseRepository;
+    private final NoticeRepository noticeRepository;
 
     @GetMapping("/api/private/employ/enterprises") // 개인 서비스에서 회사 목록을 보여주는 페이지
-    public List<EnterpriseAndNoticeDto> allEnterprise() {
-        List<Enterprise> enterprises = enterpriseRepository.findAll();
+    public List<NoticeResponseDto> allEnterprise() {
+        List<Notice> notices = noticeRepository.findAll();
 
-        List<EnterpriseAndNoticeDto> collect = enterprises.stream()
-                .map(enterprise -> new EnterpriseAndNoticeDto(enterprise))
+        List<NoticeResponseDto> collect = notices.stream()
+                .map(notice -> new NoticeResponseDto(notice))
                 .collect(Collectors.toList());
 
         return collect;
     }
 
     @Data
-    static class EnterpriseAndNoticeDto {
-
-        private String enterpriseName;
-        private String enterpriseLocation;
-        private List<NoticeResponseDto> notices;
-
-        public EnterpriseAndNoticeDto(Enterprise enterprise) {
-            enterpriseName = enterprise.getEnterpriseName();
-            enterpriseLocation = enterprise.getEnterpriseLocation();
-
-            notices = enterprise.getNotices().stream()
-                    .map(notice -> new NoticeResponseDto(notice))
-                    .collect(Collectors.toList());
-        }
-
-    }
-
-    @Data
     static class NoticeResponseDto {
 
+        private String enterpriseName;
         private String title;
-        private Annual annual;
         private List<TechStackResponseDto> techStacks;
+        private String enterpriseLocation;
+        private Annual annual;
 
         public NoticeResponseDto(Notice notice) {
+            enterpriseName = notice.getEnterpriseName();
             title = notice.getTitle();
+            enterpriseLocation = notice.getEnterpriseLocation();
             annual = notice.getAnnual();
 
             techStacks = notice.getTechStacks().stream()
@@ -68,6 +55,7 @@ public class EnterpriseAndNoticeApiController {
 
     @Data
     static class TechStackResponseDto {
+
         private String techName;
 
         public TechStackResponseDto(TechStack techStack) {

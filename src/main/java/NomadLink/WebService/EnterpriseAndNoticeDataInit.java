@@ -33,110 +33,101 @@ public class EnterpriseAndNoticeDataInit {
 
         public void dbInit1() {
             //== Enterprise1 start ==//
-            Enterprise enterprise1 = createEnterprise("바이오커넥트1", "서초", "010-0000-0000", "test@gmail.com");
-            em.persist(enterprise1);
+            Notice notice1 = createNotice("바이오커넥트1", "서초", "JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
+            em.persist(notice1);
 
-            Notice enterprise1notice1 = createNotice("JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
-            em.persist(enterprise1notice1);
+            TechStack notice1TechStack1 = createTechStack("Spring boot");
+            em.persist(notice1TechStack1);
+            TechStack notice1TechStack2 = createTechStack("Spring");
+            em.persist(notice1TechStack2);
+            TechStack notice1TechStack3 = createTechStack("Java");
+            em.persist(notice1TechStack3);
+            TechStack notice1TechStack4 = createTechStack("Mybatis");
+            em.persist(notice1TechStack4);
 
-            TechStack enterprise1TechStack1 = createTechStack("Spring boot");
-            em.persist(enterprise1TechStack1);
-            TechStack enterprise1TechStack2 = createTechStack("Spring");
-            em.persist(enterprise1TechStack2);
-            TechStack enterprise1TechStack3 = createTechStack("Java");
-            em.persist(enterprise1TechStack3);
-            TechStack enterprise1TechStack4 = createTechStack("Mybatis");
-            em.persist(enterprise1TechStack4);
-
-            enterprise1.setNotice(enterprise1notice1);
-            enterprise1notice1.setTechStack(enterprise1TechStack1);
-            enterprise1notice1.setTechStack(enterprise1TechStack2);
-            enterprise1notice1.setTechStack(enterprise1TechStack3);
-            enterprise1notice1.setTechStack(enterprise1TechStack4);
+            notice1.setTechStack(notice1TechStack1);
+            notice1.setTechStack(notice1TechStack2);
+            notice1.setTechStack(notice1TechStack3);
+            notice1.setTechStack(notice1TechStack4);
             //== Enterprise1 end ==//
 
             //== Enterprise2 start ==//
-            Enterprise enterprise2 = createEnterprise("바이오커넥트2", "서초", "010-0000-0000", "test@gmail.com");
-            em.persist(enterprise2);
+            Notice notice2 = createNotice("바이오커넥트2", "서초", "JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
+            em.persist(notice2);
 
-            Notice enterprise2notice1 = createNotice("JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
-            em.persist(enterprise2notice1);
+            TechStack notice2TechStack1 = createTechStack("Spring boot");
+            em.persist(notice2TechStack1);
+            TechStack notice2TechStack2 = createTechStack("Spring");
+            em.persist(notice2TechStack2);
+            TechStack notice2TechStack3 = createTechStack("Java");
+            em.persist(notice2TechStack3);
+            TechStack notice2TechStack4 = createTechStack("Mybatis");
+            em.persist(notice2TechStack4);
+            TechStack notice2TechStack5 = createTechStack("Jpa");
+            em.persist(notice2TechStack5);
+            TechStack notice2TechStack6 = createTechStack("Thymeleaf");
+            em.persist(notice2TechStack6);
 
-            TechStack enterprise2TechStack1 = createTechStack("Spring boot");
-            em.persist(enterprise2TechStack1);
-            TechStack enterprise2TechStack2 = createTechStack("Spring");
-            em.persist(enterprise2TechStack2);
-            TechStack enterprise2TechStack3 = createTechStack("Java");
-            em.persist(enterprise2TechStack3);
-            TechStack enterprise2TechStack4 = createTechStack("Mybatis");
-            em.persist(enterprise2TechStack4);
-
-            enterprise2.setNotice(enterprise2notice1);
-            enterprise2notice1.setTechStack(enterprise2TechStack1);
-            enterprise2notice1.setTechStack(enterprise2TechStack2);
-            enterprise2notice1.setTechStack(enterprise2TechStack3);
-            enterprise2notice1.setTechStack(enterprise2TechStack4);
+            notice2.setTechStack(notice2TechStack1);
+            notice2.setTechStack(notice2TechStack2);
+            notice2.setTechStack(notice2TechStack3);
+            notice2.setTechStack(notice2TechStack4);
+            notice2.setTechStack(notice2TechStack5);
+            notice2.setTechStack(notice2TechStack6);
             //== Enterprise2 end ==//
 
             //== Enterprise3 start ==//
-            Enterprise enterprise3 = createEnterprise("바이오커넥트3", "서초", "010-0000-0000", "test@gmail.com");
-            em.persist(enterprise3);
+            Notice notice3 = createNotice("바이오커넥트3", "서초", "JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
+            em.persist(notice3);
 
-            Notice enterprise3notice1 = createNotice("JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
-            em.persist(enterprise3notice1);
+            TechStack notice3TechStack1 = createTechStack("Spring boot");
+            em.persist(notice3TechStack1);
+            TechStack notice3TechStack2 = createTechStack("Spring");
+            em.persist(notice3TechStack2);
+            TechStack notice3TechStack3 = createTechStack("Java");
+            em.persist(notice3TechStack3);
+            TechStack notice3TechStack4 = createTechStack("Mybatis");
+            em.persist(notice3TechStack4);
 
-            TechStack enterprise3TechStack1 = createTechStack("Spring boot");
-            em.persist(enterprise3TechStack1);
-            TechStack enterprise3TechStack2 = createTechStack("Spring");
-            em.persist(enterprise3TechStack2);
-            TechStack enterprise3TechStack3 = createTechStack("Java");
-            em.persist(enterprise3TechStack3);
-            TechStack enterprise3TechStack4 = createTechStack("Mybatis");
-            em.persist(enterprise3TechStack4);
-
-            enterprise3.setNotice(enterprise3notice1);
-            enterprise3notice1.setTechStack(enterprise3TechStack1);
-            enterprise3notice1.setTechStack(enterprise3TechStack2);
-            enterprise3notice1.setTechStack(enterprise3TechStack3);
-            enterprise3notice1.setTechStack(enterprise3TechStack4);
+            notice3.setTechStack(notice3TechStack1);
+            notice3.setTechStack(notice3TechStack2);
+            notice3.setTechStack(notice3TechStack3);
+            notice3.setTechStack(notice3TechStack4);
             //== Enterprise3 end ==//
 
             //== Enterprise4 start ==//
-            Enterprise enterprise4 = createEnterprise("바이오커넥트4", "서초", "010-0000-0000", "test@gmail.com");
-            em.persist(enterprise4);
+            Notice notice4 = createNotice("바이오커넥트4", "서초", "JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
+            em.persist(notice4);
 
-            Notice enterprise4notice1 = createNotice("JAVA 웹 개발자 채용", "test textContent", Annual.TWOTOFOUR, EmployeeType.FULLTIME, Role.SERVER);
-            em.persist(enterprise4notice1);
+            TechStack notice4TechStack1 = createTechStack("Spring boot");
+            em.persist(notice4TechStack1);
+            TechStack notice4TechStack2 = createTechStack("Spring");
+            em.persist(notice4TechStack2);
+            TechStack notice4TechStack3 = createTechStack("Java");
+            em.persist(notice4TechStack3);
+            TechStack notice4TechStack4 = createTechStack("Mybatis");
+            em.persist(notice4TechStack4);
+            TechStack notice4TechStack5 = createTechStack("Docker");
+            em.persist(notice4TechStack5);
+            TechStack notice4TechStack6 = createTechStack("K8s");
+            em.persist(notice4TechStack6);
+            TechStack notice4TechStack7 = createTechStack("Jenkins");
+            em.persist(notice4TechStack7);
 
-            TechStack enterprise4TechStack1 = createTechStack("Spring boot");
-            em.persist(enterprise4TechStack1);
-            TechStack enterprise4TechStack2 = createTechStack("Spring");
-            em.persist(enterprise4TechStack2);
-            TechStack enterprise4TechStack3 = createTechStack("Java");
-            em.persist(enterprise4TechStack3);
-            TechStack enterprise4TechStack4 = createTechStack("Mybatis");
-            em.persist(enterprise4TechStack4);
-
-            enterprise4.setNotice(enterprise4notice1);
-            enterprise4notice1.setTechStack(enterprise4TechStack1);
-            enterprise4notice1.setTechStack(enterprise4TechStack2);
-            enterprise4notice1.setTechStack(enterprise4TechStack3);
-            enterprise4notice1.setTechStack(enterprise4TechStack4);
+            notice4.setTechStack(notice4TechStack1);
+            notice4.setTechStack(notice4TechStack2);
+            notice4.setTechStack(notice4TechStack3);
+            notice4.setTechStack(notice4TechStack4);
+            notice4.setTechStack(notice4TechStack5);
+            notice4.setTechStack(notice4TechStack6);
+            notice4.setTechStack(notice4TechStack7);
             //== Enterprise4 end ==//
         }
 
-        private Enterprise createEnterprise(String enterpriseName, String enterpriseLocation, String managerPhoneNumber, String managerEmail) {
-            Enterprise enterprise = new Enterprise();
-            enterprise.setEnterpriseName(enterpriseName);
-            enterprise.setEnterpriseLocation(enterpriseLocation);
-            enterprise.setManagerPhoneNumber(managerPhoneNumber);
-            enterprise.setManagerEmail(managerEmail);
-
-            return enterprise;
-        }
-
-        private Notice createNotice(String title, String textContent, Annual annual, EmployeeType employeeType, Role role) {
+        private Notice createNotice(String enterpriseName, String enterpriseLocation, String title, String textContent, Annual annual, EmployeeType employeeType, Role role) {
             Notice notice = new Notice();
+            notice.setEnterpriseName(enterpriseName);
+            notice.setEnterpriseLocation(enterpriseLocation);
             notice.setTitle(title);
             notice.setTextContent(textContent);
             notice.setAnnual(annual);
