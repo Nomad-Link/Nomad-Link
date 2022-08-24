@@ -3,9 +3,11 @@ import Logo from "./Logo";
 import { useState } from "react";
 import { post } from "axios";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 function LoginForm() {
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['id']);
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,6 +27,8 @@ function LoginForm() {
         password: password,
       });
       console.log(response);
+      console.log(response.data);
+      setCookie('id', response.data);
     } catch (error) {
       console.error(error);
     }
@@ -43,10 +47,8 @@ function LoginForm() {
         <Input type="password" placeholder="비밀번호" onChange={handlePwd} />
         <SendDiv>
           <Button onClick={() => onClick()}>로그인</Button>
-          <Button>회원가입</Button>
+          <Button onClick={() => navigate("/register")}>회원가입</Button>
         </SendDiv>
-        <h1>{userId}</h1>
-        <h1>{password}</h1>
       </div>
     </Section>
   );

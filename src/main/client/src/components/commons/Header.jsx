@@ -22,18 +22,22 @@ import {
 } from "./Header.style";
 import TestLink from "./TestLink";
 import Logo from "./Logo";
+import { useCookies } from "react-cookie";
 
 function Header({ mode }) {
+  const [cookies, setCookie, removeCookie] = useCookies(["id"]);
+
   async function logout() {
     const url = "/api/logout";
 
     try {
       const response = await post(url);
       console.log(response);
+      removeCookie("id");
     } catch (error) {
       console.error(error);
     }
-    // window.location.reload();
+    window.location.reload();
   }
 
   return (
@@ -48,10 +52,14 @@ function Header({ mode }) {
               <Search />
               <SearchIcon sx={muiSearchIcon} />
             </SearchBox>
-            <SLink to={"/login"}>
-              <Login>로그인</Login>
-            </SLink>
-              <Login onClick={()=> logout()}>로그아웃</Login>
+            {cookies.id ? <p>{cookies.id} 님 환영합니다!&nbsp;&nbsp;</p> : null}
+            {cookies.id ? (
+              <Login onClick={() => logout()}>로그아웃</Login>
+            ) : (
+              <SLink to={"/login"}>
+                <Login>로그인</Login>
+              </SLink>
+            )}
             <SLink to={"/register"}>
               <Register>회원가입</Register>
             </SLink>
@@ -74,7 +82,7 @@ function Header({ mode }) {
             </Menu>
           </DivLeft>
           <DivRight>
-            <SLink to={"/"}>
+            <SLink to={"/private"}>
               <PersonIcon
                 sx={muiServiceIcon}
                 style={
@@ -83,7 +91,7 @@ function Header({ mode }) {
               />
               <MenuIcon>개인 서비스</MenuIcon>
             </SLink>
-            <SLink to={"/enterprise/recruit/form"}>
+            <SLink to={"/enterprise"}>
               <ApartmentIcon
                 sx={muiServiceIcon}
                 style={

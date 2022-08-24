@@ -7,6 +7,7 @@ import RoutePrivate from "pages/private/RoutePrivate";
 import ThemeToggle from "components/commons/ThemeToggle";
 import { useTheme } from "store/ThemeProvider";
 import Login from "pages/account/Login";
+import Register from "pages/account/Register";
 
 function Desktop() {
   const [ThemeMode, toggleTheme] = useTheme();
@@ -18,6 +19,7 @@ function Desktop() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/enterprise/*" element={<RouteEnterprise />} />
         <Route path="/private/*" element={<RoutePrivate />} />
       </Routes>
