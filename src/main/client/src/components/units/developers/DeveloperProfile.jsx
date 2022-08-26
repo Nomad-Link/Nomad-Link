@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Div,
   ProfileImage,
@@ -13,6 +14,8 @@ import {
 } from "./DeveloperProfile.style";
 
 function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
+  const navigate = useNavigate();
+
   return (
     <Div unitColor={unitColor}>
       <ProfileImage
@@ -25,7 +28,7 @@ function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
             <Name>{realName}</Name>
             <Nation>{nation}</Nation>
           </Title>
-          <MoreButton>자세히 보기</MoreButton>
+          <MoreButton onClick={()=> navigate(`/${realName}`)}>자세히 보기</MoreButton>
         </TitleBox>
         <Role>{role}</Role>
         <TechStackBox>

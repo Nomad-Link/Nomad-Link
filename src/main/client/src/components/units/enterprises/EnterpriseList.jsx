@@ -16,6 +16,9 @@ function EnterpriseList() {
 
   console.log(JSON.stringify(enterprise, null, 3));
 
+  // 데이터를 shuffle 한다면
+  // const shuffle = enterprise.sort(() => Math.random() - 0.5);
+
   return (
     <Section>
       {enterprise.map((m, indexA) => {
@@ -23,8 +26,10 @@ function EnterpriseList() {
           <EnterpriseProfile
             key={indexA}
             enterpriseName={m.enterpriseName}
-            notices={m.notices}
+            title={m.title}
+            techStacks={m.techStacks}
             enterpriseLocation={m.enterpriseLocation}
+            annual={m.annual}
           />
         );
       })}
