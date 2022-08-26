@@ -1,32 +1,47 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Div, ProfileImage } from "./EnterpriseProfile.style";
 
-function EnterpriseProfile({ enterpriseName, notices, enterpriseLocation }) {
+function EnterpriseProfile({
+  enterpriseName,
+  title,
+  techStacks,
+  enterpriseLocation,
+  annual,
+}) {
+  const navigate = useNavigate();
+
+  const [limit, setLimit] = useState(12);  // eslint-disable-line no-unused-vars
+  const toggleEllipsis = (str, limit) => {
+    return {
+      string: str.slice(0, limit),
+      isShowMore: str.length > limit,
+    };
+  };
+
   return (
-    <Div>
+    <Div onClick={() => navigate(`/${enterpriseName}`)}>
       <ProfileImage
         alt=""
         src={require("components/units/enterprises/testimage.jpeg")}
       />
       <p>{enterpriseName}</p>
-      {notices.map((n, indexB) => {
-        return (
-          <div key={indexB}>
-            <h3>{n.title}</h3>
-            <p>
-              {enterpriseLocation} · {n.annual}
+      <h3>
+        {toggleEllipsis(title, limit).string}
+        {toggleEllipsis(title, limit).isShowMore && <span>...</span>}
+      </h3>
+      {/* <div style={{ display: "flex" }}>
+        {techStacks.map((t, indexB) => {
+          return (
+            <p style={{ fontSize: "12px", margin: "5px" }} key={indexB}>
+              {t.techName}
             </p>
-            <div style={{ display: "flex" }}>
-              {n.techStacks.map((t, indexC) => {
-                return (
-                  <p style={{ fontSize: "12px", margin:"5px" }} key={indexC}>
-                    {t.techName}
-                  </p>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div> */}
+      <p>
+        {enterpriseLocation} · {annual}
+      </p>
     </Div>
   );
 }
