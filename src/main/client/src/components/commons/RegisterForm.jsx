@@ -1,6 +1,7 @@
 import { post } from "axios";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import Logo from "./Logo";
 import {
   Section,
   InputDiv,
@@ -9,10 +10,9 @@ import {
   Error,
   SendButton,
 } from "./RegisterForm.style";
-// import Logo from "./Logo";
 
 function RegisterForm() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,

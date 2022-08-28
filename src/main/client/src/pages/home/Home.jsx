@@ -2,7 +2,11 @@ import { Main } from "styles/Pages";
 
 function Home() {
   return (
-    <Main>
+    <Main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div style={{ padding: "200px" }}>
         <h1>메인 페이지</h1>
         <br />

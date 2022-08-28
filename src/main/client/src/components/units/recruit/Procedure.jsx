@@ -1,8 +1,8 @@
-import ReceiptIcon from "@mui/icons-material/ReceiptLong";
-import ConsultIcon from "@mui/icons-material/Group";
-import WriteIcon from "@mui/icons-material/BorderColor";
-import RecruitStartIcon from "@mui/icons-material/FindInPage";
-import { Section, Box, Circle, Hr, Li, Phase, muiIcon } from "./Procedure.style";
+import { IoReceiptSharp } from "react-icons/io5";
+import { BsPeopleFill } from "react-icons/bs";
+import { FaFileSignature } from "react-icons/fa";
+import { MdFindInPage } from "react-icons/md";
+import { Section, Box, Circle, Hr, Li, Phase } from "./Procedure.style";
 
 function Procedure() {
   return (
@@ -18,19 +18,19 @@ function Procedure() {
       </Box>
       <Box>
         <Li>
-          <ReceiptIcon sx={muiIcon} />
+          <IoReceiptSharp className="react-procedure-icon" />
           <Phase>구인 폼 제출</Phase>
         </Li>
         <Li>
-          <ConsultIcon sx={muiIcon} />
+          <BsPeopleFill className="react-procedure-icon" />
           <Phase>컨설턴트 상담</Phase>
         </Li>
         <Li>
-          <WriteIcon sx={muiIcon} />
+          <FaFileSignature className="react-procedure-icon" />
           <Phase>계약서 작성</Phase>
         </Li>
         <Li>
-          <RecruitStartIcon sx={muiIcon} />
+          <MdFindInPage className="react-procedure-icon" />
           <Phase>채용 시작</Phase>
         </Li>
       </Box>

@@ -5,7 +5,11 @@ import TitleSection from "components/commons/TitleSection";
 
 function RecruitForm() {
   return (
-    <Main>
+    <Main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <TitleSection
         padding={"100px"}
         mediumOne={"간편하게 채용공고를 작성해주세요."}

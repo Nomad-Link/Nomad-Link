@@ -16,12 +16,13 @@ export const FooterDiv = styled.div`
 export const Information = styled.div`
   text-align: center;
   font-size: 12px;
+
+  .react-footer-icon {
+    width: 22px;
+    height: 22px;
+    margin: 10px;
+  }
 `;
-export const muiInforIcon = {
-  width: "22px",
-  height: "22px",
-  margin: "10px"
-};
 export const ServiceLink = styled.div`
   font-size: 12px;
 

@@ -4,7 +4,11 @@ import TitleSection from "components/commons/TitleSection";
 
 function RecruitComplete() {
   return (
-    <Main>
+    <Main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <TitleSection
         padding={"100px"}
         mediumOne={"채용공고 전송이 완료되었습니다."}

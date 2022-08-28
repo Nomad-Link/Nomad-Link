@@ -1,6 +1,6 @@
-import { Section, Title, TagBox, Tag } from "./ParamHashtag.style";
 import { useState } from "react";
 import { useStateValue } from "store/StateProvider";
+import { Section, Title, TagBox, Tag } from "./ParamHashtag.style";
 
 function ParamHashtag() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
@@ -21,14 +21,14 @@ function ParamHashtag() {
     if (!active) {
       dispatch({
         type: `Set${name}`,
-        item: {techName: name},
-        name: name
+        item: { techName: name },
+        name: name,
       });
       setActive(true);
     } else {
       dispatch({
         type: `Del${name}`,
-        name: name
+        name: name,
       });
       setActive(false);
     }

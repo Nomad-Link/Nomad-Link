@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-  width: 210px;
-  height: 200px;
+  width: 310px;
+  height: 250px;
   text-align: center;
   margin: 20px auto;
   border: 1px solid #000;
 `;
 export const ProfileImage = styled.img`
-  width: 200px;
-  height: 115px;
+  width: 300px;
+  height: 169px;
   margin: 5px;
 `;

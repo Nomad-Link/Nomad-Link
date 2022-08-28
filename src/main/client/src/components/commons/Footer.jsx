@@ -1,15 +1,9 @@
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import AttachEmailIcon from "@mui/icons-material/AttachEmail";
-import {
-  ResFooter,
-  FooterDiv,
-  Information,
-  muiInforIcon,
-  ServiceLink,
-} from "./Footer.style";
 import Logo from "./Logo";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { AiFillFacebook } from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
+import { MdEmail } from "react-icons/md";
+import { ResFooter, FooterDiv, Information, ServiceLink } from "./Footer.style";
 
 function Footer() {
   return (
@@ -23,10 +17,10 @@ function Footer() {
           </p>
           <p>이메일 : qwer1234@abc.com / Fax : 02-3344-5566</p>
           <p>Copyright (c) &lt;Nomad Link&gt; All rights reserved.</p>
-          <TwitterIcon sx={muiInforIcon} />
-          <FacebookIcon sx={muiInforIcon} />
-          <InstagramIcon sx={muiInforIcon} />
-          <AttachEmailIcon sx={muiInforIcon} />
+          <AiOutlineTwitter className="react-footer-icon" />
+          <AiFillFacebook className="react-footer-icon" />
+          <AiFillInstagram className="react-footer-icon" />
+          <MdEmail className="react-footer-icon" />
         </Information>
         <ServiceLink>
           <p>서비스 소개</p>

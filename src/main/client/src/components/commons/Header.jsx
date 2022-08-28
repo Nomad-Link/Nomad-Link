@@ -1,8 +1,11 @@
 import { post } from "axios";
-import SearchIcon from "@mui/icons-material/Search";
-import MenuListIcon from "@mui/icons-material/Menu";
-import PersonIcon from "@mui/icons-material/Person";
-import ApartmentIcon from "@mui/icons-material/Apartment";
+import Logo from "./Logo";
+import { useCookies } from "react-cookie";
+import { useState } from "react";
+import { TbSearch } from "react-icons/tb";
+import { FiMenu } from "react-icons/fi";
+import { IoPersonSharp } from "react-icons/io5";
+import { FaBuilding } from "react-icons/fa";
 import {
   ResHeader,
   HeaderDiv,
@@ -12,32 +15,31 @@ import {
   SLink,
   SearchBox,
   Search,
-  Login,
-  Register,
+  Button,
   Menu,
   MenuIcon,
-  muiSearchIcon,
-  muiMenuIcon,
-  muiServiceIcon,
 } from "./Header.style";
 import TestLink from "./TestLink";
-import Logo from "./Logo";
-import { useCookies } from "react-cookie";
 
 function Header({ mode }) {
-  const [cookies, setCookie, removeCookie] = useCookies(["id"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
+  const [testDiv, setTestDiv] = useState(true);
 
   async function logout() {
     const url = "/api/logout";
 
     try {
-      const response = await post(url);
-      console.log(response);
+      const response = await post(url); // eslint-disable-line no-unused-vars
+      // console.log(response);
       removeCookie("id");
     } catch (error) {
       console.error(error);
     }
     window.location.reload();
+  }
+
+  function ActTestLink() {
+    setTestDiv(!testDiv);
   }
 
   return (
@@ -50,30 +52,27 @@ function Header({ mode }) {
           <DivRight>
             <SearchBox>
               <Search />
-              <SearchIcon sx={muiSearchIcon} />
+              <TbSearch className="react-search-icon" />
             </SearchBox>
             {cookies.id ? <p>{cookies.id} 님 환영합니다!&nbsp;&nbsp;</p> : null}
             {cookies.id ? (
-              <Login onClick={() => logout()}>로그아웃</Login>
+              <Button onClick={() => logout()}>로그아웃</Button>
             ) : (
               <SLink to={"/login"}>
-                <Login>로그인</Login>
+                <Button>로그인</Button>
               </SLink>
             )}
             <SLink to={"/register"}>
-              <Register>회원가입</Register>
+              <Button>회원가입</Button>
             </SLink>
           </DivRight>
         </Box>
         <Box>
           <DivLeft>
             <Menu>
-              <MenuListIcon
-                sx={muiMenuIcon}
-                style={
-                  mode === "dark" ? { color: "#D4D4D4" } : { color: "#000" }
-                }
-              />
+              <MenuIcon>
+                <FiMenu className="react-icon" />
+              </MenuIcon>
               <MenuIcon>채용</MenuIcon>
               <MenuIcon>직무 인터뷰</MenuIcon>
               <MenuIcon>이력서</MenuIcon>
@@ -82,30 +81,32 @@ function Header({ mode }) {
             </Menu>
           </DivLeft>
           <DivRight>
+            <button
+              onClick={() => ActTestLink()}
+              style={{ width: "100px", height: "30px" }}
+            >
+              ROUTE {testDiv ? <span>OFF</span> : <span>ON</span>}
+            </button>
             <SLink to={"/private"}>
-              <PersonIcon
-                sx={muiServiceIcon}
-                style={
-                  mode === "dark" ? { color: "#D4D4D4" } : { color: "#000" }
-                }
-              />
-              <MenuIcon>개인 서비스</MenuIcon>
+              <MenuIcon>
+                <IoPersonSharp className="react-icon" />
+                개인 서비스
+              </MenuIcon>
             </SLink>
             <SLink to={"/enterprise"}>
-              <ApartmentIcon
-                sx={muiServiceIcon}
-                style={
-                  mode === "dark" ? { color: "#D4D4D4" } : { color: "#000" }
-                }
-              />
-              <MenuIcon>기업 서비스</MenuIcon>
+              <MenuIcon>
+                <FaBuilding className="react-icon" />
+                기업 서비스
+              </MenuIcon>
             </SLink>
           </DivRight>
         </Box>
       </HeaderDiv>
-      <div style={{ display: "flex" }}>
-        <TestLink />
-      </div>
+      {testDiv ? (
+        <div style={{ display: "flex" }}>
+          <TestLink />
+        </div>
+      ) : null}
     </ResHeader>
   );
 }

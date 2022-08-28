@@ -6,7 +6,11 @@ import DeveloperList from "components/units/developers/DeveloperList";
 
 function RecruitDevelopers() {
   return (
-    <Main>
+    <Main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Population />
       <ParamInput />
       <ParamHashtag />

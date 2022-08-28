@@ -1,14 +1,22 @@
-import {Section, Li, Span} from "./Population.style";
+import { Section, Li, Span } from "./Population.style";
 
 function Population() {
-    return (
-        <Section>
-            <Li>프론트엔드 <Span>120</Span></Li>
-            <Li>백엔드 <Span>98</Span></Li>
-            <Li>안드로이드 <Span>70</Span></Li>
-            <Li>IOS <Span>55</Span></Li>
-        </Section>
-    );
+  return (
+    <Section>
+      <Li>
+        프론트엔드 <Span>120</Span>
+      </Li>
+      <Li>
+        백엔드 <Span>98</Span>
+      </Li>
+      <Li>
+        안드로이드 <Span>70</Span>
+      </Li>
+      <Li>
+        IOS <Span>55</Span>
+      </Li>
+    </Section>
+  );
 }
 
 export default Population;

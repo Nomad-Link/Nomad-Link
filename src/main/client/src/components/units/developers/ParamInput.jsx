@@ -1,12 +1,7 @@
 import { useState } from "react";
-import {
-  Section,
-  Select,
-  InputSkillSet,
-  muiSearchIcon,
-} from "./ParamInput.style";
-import SearchIcon from "@mui/icons-material/Search";
 import { useStateValue } from "store/StateProvider";
+import { TbSearch } from "react-icons/tb";
+import { Section, Select, InputSkillSet } from "./ParamInput.style";
 
 function ParamInput() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
@@ -58,9 +53,12 @@ function ParamInput() {
         <option value="PARTTIME">계약직</option>
         <option value="FREELANCER">프리랜서</option>
       </Select>
-      <InputSkillSet onChange={handleSearch} placeholder="스킬셋을 입력하세요." />
-      <SearchIcon
-        sx={muiSearchIcon}
+      <InputSkillSet
+        onChange={handleSearch}
+        placeholder="스킬셋을 입력하세요."
+      />
+      <TbSearch
+        className="react-search-param-icon"
         onClick={() =>
           dispatch({
             type: `SetInput`,
