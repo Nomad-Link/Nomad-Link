@@ -32,11 +32,13 @@ export const Li = styled.div`
   width: 200px;
   justify-content: center;
   margin: 0 30px 0 30px;
+
+  .react-procedure-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
 `;
-export const muiIcon = {
-  width: "30px",
-  height: "30px",
-};
 export const Phase = styled.h2`
   list-style: none;
   font-size: 24px;

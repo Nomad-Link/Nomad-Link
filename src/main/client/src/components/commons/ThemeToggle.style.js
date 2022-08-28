@@ -18,15 +18,14 @@ export const Button = styled.button`
   span {
     vertical-align: middle;
   }
+  .react-mode-icon {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    color: #292929;
+  }
 
   &:hover {
     background-color: #b7b7b7;
   }
 `;
-
-export const muiModeIcon = {
-  width: "20px",
-  height: "20px",
-  verticalAlign: "middle",
-  color: "#292929",
-};

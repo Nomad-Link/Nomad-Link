@@ -1,13 +1,13 @@
-import { Section, Input, SendDiv, Button } from "./LoginForm.style";
-import Logo from "./Logo";
 import { useState } from "react";
 import { post } from "axios";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
+import Logo from "./Logo";
+import { Section, Input, SendDiv, Button } from "./LoginForm.style";
 
 function LoginForm() {
   const navigate = useNavigate();
-  const [cookies, setCookie] = useCookies(['id']);
+  const [cookies, setCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,9 +26,9 @@ function LoginForm() {
         userId: userId,
         password: password,
       });
-      console.log(response);
-      console.log(response.data);
-      setCookie('id', response.data);
+      // console.log(response);
+      // console.log(response.data);
+      setCookie("id", response.data);
     } catch (error) {
       console.error(error);
     }

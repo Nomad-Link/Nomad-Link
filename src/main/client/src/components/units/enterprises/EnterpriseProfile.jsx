@@ -11,7 +11,7 @@ function EnterpriseProfile({
 }) {
   const navigate = useNavigate();
 
-  const [limit, setLimit] = useState(12);  // eslint-disable-line no-unused-vars
+  const [limit, setLimit] = useState(25); // eslint-disable-line no-unused-vars
   const toggleEllipsis = (str, limit) => {
     return {
       string: str.slice(0, limit),

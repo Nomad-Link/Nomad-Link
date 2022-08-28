@@ -1,8 +1,13 @@
 import { Main } from "styles/Pages";
+import FormOpenButton from "components/commons/FormOpenButton";
 
 function Enterprise() {
   return (
-    <Main>
+    <Main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div style={{ padding: "200px" }}>
         <h1>기업 서비스 홈 입니다</h1>
         <br />
@@ -13,7 +18,7 @@ function Enterprise() {
         <br />
         <h1>개발자 목록 확인하기</h1>
         <br />
-        <h1>기업용 폼 작성하기</h1>
+        <FormOpenButton />
       </div>
     </Main>
   );

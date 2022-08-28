@@ -1,15 +1,15 @@
-import LightModeIcon from "@mui/icons-material/LightMode";
-import ModeNightIcon from "@mui/icons-material/ModeNight";
-import { Button, muiModeIcon } from "./ThemeToggle.style";
+import { MdLightMode } from "react-icons/md";
+import { MdModeNight } from "react-icons/md";
+import { Button } from "./ThemeToggle.style";
 
 function ThemeToggle({ toggle, mode }) {
   return (
     <Button onClick={toggle} mode={mode}>
       {mode === "dark" ? <span>라이트 모드 </span> : <span>다크 모드 </span>}
       {mode === "dark" ? (
-        <LightModeIcon className="light" sx={muiModeIcon} />
+        <MdLightMode className="react-mode-icon" />
       ) : (
-        <ModeNightIcon className="Night" sx={muiModeIcon} />
+        <MdModeNight className="react-mode-icon" />
       )}
     </Button>
   );

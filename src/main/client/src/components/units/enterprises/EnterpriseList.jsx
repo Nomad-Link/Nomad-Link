@@ -1,7 +1,7 @@
-import { Section } from "./EnterpriseList.style";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import EnterpriseProfile from "./EnterpriseProfile";
+import { Section } from "./EnterpriseList.style";
 
 function EnterpriseList() {
   const [enterprise, setEnterprise] = useState([]);

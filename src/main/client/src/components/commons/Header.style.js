@@ -22,14 +22,14 @@ export const DivLeft = styled.div`
   display: flex;
   align-items: center;
   float: left;
-  margin: 20px auto 20px 0;
+  margin: 15px auto 10px 0;
   padding: 0;
 `;
 export const DivRight = styled.div`
   display: flex;
   align-items: center;
   float: right;
-  margin: 20px 0 20px auto;
+  margin: 15px 0 10px auto;
 
   ${SLink} {
     display: flex;
@@ -37,6 +37,18 @@ export const DivRight = styled.div`
 `;
 export const SearchBox = styled.div`
   position: relative;
+
+  .react-search-icon {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0.7;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: #000;
+    margin-top: 4px;
+    margin-left: -36px;
+  }
 `;
 export const Search = styled.input`
   width: 200px;
@@ -47,55 +59,46 @@ export const Search = styled.input`
   border-radius: 20px;
   border: 1px solid #d5d5d5;
 `;
-export const muiSearchIcon = {
-  width: "22px",
-  height: "22px",
-  color: "#000",
-  position: "absolute",
-  zIndex: "1000",
-  marginTop: "3px",
-  marginLeft: "-38px",
-  fontSize: "22px",
-  opacity: "0.7",
-};
-export const Login = styled.button`
+export const Button = styled.button`
   width: 70px;
   height: 30px;
-  margin-right: 10px;
+  margin-right: 5px;
   background-color: #000;
   border-radius: 20px;
   border: 1px solid #fff;
   color: white;
-`;
-export const Register = styled.button`
-  width: 70px;
-  height: 30px;
-  margin-right: 15px;
-  background-color: #fff;
-  border-radius: 20px;
-  border: 1px solid #000;
+
+  &:hover {
+    background-color: #fff;
+    border: 1px solid #000;
+    color: black;
+  }
 `;
 export const Menu = styled.ul`
   display: flex;
   align-items: center;
   padding-left: 0;
 `;
-export const muiMenuIcon = {
-  width: "27px",
-  height: "27px",
-  margin: "auto 10px",
-  fontSize: "30px",
-};
-export const muiServiceIcon = {
-  width: "27px",
-  height: "27px",
-  marginLeft: "15px",
-  marginRight: "-5px",
-  fontSize: "30px",
-};
 export const MenuIcon = styled.li`
   color: ${({ theme }) => theme.textIndex};
   list-style: none;
-  margin: auto 10px;
+  margin: auto 5px;
+  padding: 10px;
+  border-radius: 15px;
   font-size: 20px;
+  transition: all 0.2s;
+
+  .react-icon {
+    vertical-align: middle;
+    width: 22px;
+    height: 22px;
+    font-size: 22px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+  }
+
+  &:hover {
+    color: white;
+    background-color: #252528;
+  }
 `;

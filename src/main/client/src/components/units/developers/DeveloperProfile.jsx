@@ -28,7 +28,9 @@ function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
             <Name>{realName}</Name>
             <Nation>{nation}</Nation>
           </Title>
-          <MoreButton onClick={()=> navigate(`/${realName}`)}>자세히 보기</MoreButton>
+          <MoreButton onClick={() => navigate(`/${realName}`)}>
+            자세히 보기
+          </MoreButton>
         </TitleBox>
         <Role>{role}</Role>
         <TechStackBox>

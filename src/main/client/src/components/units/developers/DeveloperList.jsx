@@ -1,8 +1,8 @@
-import { Section } from "./DeveloperList.style";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useStateValue } from "store/StateProvider";
 import DeveloperProfile from "./DeveloperProfile";
+import { Section } from "./DeveloperList.style";
 
 function DeveloperList({ endPoint, bgColor, unitColor }) {
   const [initialState] = useStateValue();
@@ -20,9 +20,9 @@ function DeveloperList({ endPoint, bgColor, unitColor }) {
       })
       .then((response) => setUser(response.data))
       .catch((error) => console.log(error));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialState]);
-  
+
   return (
     <Section bgColor={bgColor}>
       {user.map((m, indexA) => {

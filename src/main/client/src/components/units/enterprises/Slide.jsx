@@ -37,7 +37,7 @@ function Slide() {
       />
     );
   }
-  
+
   return (
     <Section>
       <Slider {...settings}>
