@@ -21,8 +21,8 @@ public class ResumeService {
         resumeRepository.save(resume);
     }
 
-    public Resume findOneResume(long memberId) {
-        return resumeRepository.findOne(memberId);
+    public Resume findOneResume(long userId) {
+        return resumeRepository.findOne(userId);
     }
 
     public List<Resume> findAllResume() {

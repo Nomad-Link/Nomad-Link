@@ -24,7 +24,7 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume")
-    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto) {
+    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         Resume resume = new Resume();
         resume.setRealName(resumeRequestDto.getRealName());
         resume.setPhoneNumber(resumeRequestDto.getPhoneNumber());
@@ -39,13 +39,17 @@ public class ResumeApiController {
         resume.setEmployeeType(resumeRequestDto.getEmployeeType());
 //        resume.setTechStacks(resumeRequestDto.getTechStacks());
 
+        if (loginMember != null) {
+            resume.setMember(loginMember);
+        }
+
         resumeService.saveResume(resume);
     }
 
     @ResponseBody
-    @GetMapping("/api/mypage/resume/{memberId}")
-    public ResumeResponseDto resumeGet(@PathVariable long memberId) {
-        Resume resume = resumeService.findOneResume(memberId);
+    @GetMapping("/api/mypage/resume/{userId}")
+    public ResumeResponseDto resumeGet(@PathVariable long userId) {
+        Resume resume = resumeService.findOneResume(userId);
 
         ResumeResponseDto response = new ResumeResponseDto();
         response.setRealName(resume.getRealName());

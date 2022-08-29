@@ -49,10 +49,4 @@ public class Member {
         techStack.setMember(this);
     }
 
-    //== 연관관계 편의 메서드==// (양방향 연관관계인 경우에만 사용)
-    public void setResume(Resume resume) {
-        this.resume = resume;
-        resume.setMember(this);
-    }
-
 }
