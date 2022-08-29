@@ -21,7 +21,7 @@ public class ResumeService {
         resumeRepository.save(resume);
     }
 
-    public Resume findOneResume(long userId) {
+    public Resume findOneResume(String userId) {
         return resumeRepository.findOne(userId);
     }
 
