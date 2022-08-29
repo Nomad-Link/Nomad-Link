@@ -17,8 +17,11 @@ public class ResumeRepository {
         em.persist(resume);
     }
 
-    public Resume findOne(long resumeId) {
-        return em.find(Resume.class, resumeId);
+    public Resume findOne(long memberId) {
+        return em.createQuery("select r from Resume r" +
+                                        " join fetch r.member m where m.id = :memberId", Resume.class)
+                .setParameter("memberId", memberId)
+                .getSingleResult();
     }
 
     public List<Resume> findAll() {

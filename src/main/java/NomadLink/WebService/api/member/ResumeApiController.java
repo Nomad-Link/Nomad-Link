@@ -2,6 +2,7 @@ package NomadLink.WebService.api.member;
 
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.service.ResumeService;
+import NomadLink.WebService.session.SessionConst;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class ResumeApiController {
     private final ResumeService resumeService;
 
     @ResponseBody
-    @PostMapping("/api/resume")
+    @PostMapping("/api/mypage/resume")
     public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto) {
         Resume resume = new Resume();
         resume.setRealName(resumeRequestDto.getRealName());
@@ -36,15 +37,15 @@ public class ResumeApiController {
         resume.setRole(resumeRequestDto.getRole());
         resume.setNation(resumeRequestDto.getNation());
         resume.setEmployeeType(resumeRequestDto.getEmployeeType());
-        resume.setTechStacks(resumeRequestDto.getTechStacks());
+//        resume.setTechStacks(resumeRequestDto.getTechStacks());
 
         resumeService.saveResume(resume);
     }
 
     @ResponseBody
-    @GetMapping("/api/resume/{resumeId}")
-    public ResumeResponseDto resumeGet(@PathVariable long resumeId) {
-        Resume resume = resumeService.findOneResume(resumeId);
+    @GetMapping("/api/mypage/resume/{memberId}")
+    public ResumeResponseDto resumeGet(@PathVariable long memberId) {
+        Resume resume = resumeService.findOneResume(memberId);
 
         ResumeResponseDto response = new ResumeResponseDto();
         response.setRealName(resume.getRealName());
@@ -58,13 +59,13 @@ public class ResumeApiController {
         response.setRole(resume.getRole());
         response.setNation(resume.getNation());
         response.setEmployeeType(resume.getEmployeeType());
-        response.setTechStacks(resume.getTechStacks());
+//        response.setTechStacks(resume.getTechStacks());
 
         return response;
     }
 
     @ResponseBody
-    @GetMapping("/api/resume/all")
+    @GetMapping("/api/mypage/resume/all")
     public List<ResumeResponseDto> resumeAllGet() {
         List<Resume> resumes = resumeService.findAllResume();
 
@@ -93,7 +94,7 @@ public class ResumeApiController {
         private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
         private Nation nation;
         private EmployeeType employeeType;
-        private String techStacks;
+//        private String techStacks;
 
     }
 
@@ -112,7 +113,7 @@ public class ResumeApiController {
         private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
         private Nation nation;
         private EmployeeType employeeType;
-        private String techStacks;
+//        private String techStacks;
 
         public ResumeResponseDto(Resume resume) {
             this.realName = resume.getRealName();
@@ -126,7 +127,7 @@ public class ResumeApiController {
             this.role = resume.getRole();
             this.nation = resume.getNation();
             this.employeeType = resume.getEmployeeType();
-            this.techStacks = resume.getTechStacks();
+//            this.techStacks = resume.getTechStacks();
         }
 
     }

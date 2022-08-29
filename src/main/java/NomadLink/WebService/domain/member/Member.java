@@ -37,8 +37,7 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private EmployeeType employeeType;
 
-    @OneToOne(fetch = FetchType.LAZY) // 한명의 개발자는 하나의 이력서만을 가질 수 있다.
-    @JoinColumn(name = "resume_id")
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY) // 한명의 개발자는 하나의 이력서만을 가질 수 있다.
     private Resume resume;
 
     @OneToMany(mappedBy = "member")
