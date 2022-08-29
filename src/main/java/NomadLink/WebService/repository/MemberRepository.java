@@ -3,6 +3,7 @@ package NomadLink.WebService.repository;
 import NomadLink.WebService.domain.member.Member;
 import NomadLink.WebService.domain.member.Role;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -14,11 +15,14 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
+@Slf4j
 public class MemberRepository {
 
     private final EntityManager em;
 
     public void save(Member member) {
+        log.info("member.getEmail() : {}", member.getEmail());
+
         em.persist(member);
     }
 
