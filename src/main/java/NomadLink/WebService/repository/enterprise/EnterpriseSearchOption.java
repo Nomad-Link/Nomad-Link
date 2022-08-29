@@ -1,4 +1,4 @@
-package NomadLink.WebService.repository;
+package NomadLink.WebService.repository.enterprise;
 
 import NomadLink.WebService.domain.member.EmployeeType;
 import NomadLink.WebService.domain.member.Nation;

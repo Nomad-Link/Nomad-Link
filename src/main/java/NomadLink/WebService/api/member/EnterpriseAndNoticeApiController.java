@@ -1,11 +1,9 @@
-package NomadLink.WebService.api;
+package NomadLink.WebService.api.member;
 
-import NomadLink.WebService.domain.enterprise.Enterprise;
 import NomadLink.WebService.domain.enterprise.Notice;
 import NomadLink.WebService.domain.member.Annual;
 import NomadLink.WebService.domain.member.TechStack;
-import NomadLink.WebService.repository.EnterpriseRepository;
-import NomadLink.WebService.repository.NoticeRepository;
+import NomadLink.WebService.repository.member.NoticeRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

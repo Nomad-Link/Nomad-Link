@@ -1,4 +1,4 @@
-package NomadLink.WebService;
+package NomadLink.WebService.testData;
 
 import NomadLink.WebService.domain.member.*;
 import lombok.RequiredArgsConstructor;

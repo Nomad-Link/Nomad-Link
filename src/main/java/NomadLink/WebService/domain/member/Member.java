@@ -37,6 +37,10 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private EmployeeType employeeType;
 
+    @OneToOne(fetch = FetchType.LAZY) // 한명의 개발자는 하나의 이력서만을 가질 수 있다.
+    @JoinColumn(name = "resume_id")
+    private Resume resume;
+
     @OneToMany(mappedBy = "member")
     private List<TechStack> techStacks = new ArrayList<>(); // 일대다 연관관계 매핑 (한명의 개발자는 여러개의 기술 스택을 가질 수 있다.)
 
@@ -44,6 +48,12 @@ public class Member {
     public void setTechStack(TechStack techStack) {
         techStacks.add(techStack);
         techStack.setMember(this);
+    }
+
+    //== 연관관계 편의 메서드==// (양방향 연관관계인 경우에만 사용)
+    public void setResume(Resume resume) {
+        this.resume = resume;
+        resume.setMember(this);
     }
 
 }

@@ -1,7 +1,7 @@
 package NomadLink.WebService.login;
 
 import NomadLink.WebService.domain.member.Member;
-import NomadLink.WebService.repository.MemberRepository;
+import NomadLink.WebService.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

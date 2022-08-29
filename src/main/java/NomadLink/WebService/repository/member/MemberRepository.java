@@ -1,7 +1,8 @@
-package NomadLink.WebService.repository;
+package NomadLink.WebService.repository.member;
 
 import NomadLink.WebService.domain.member.Member;
 import NomadLink.WebService.domain.member.Role;
+import NomadLink.WebService.repository.enterprise.EnterpriseSearchOption;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -21,8 +22,6 @@ public class MemberRepository {
     private final EntityManager em;
 
     public void save(Member member) {
-        log.info("member.getEmail() : {}", member.getEmail());
-
         em.persist(member);
     }
 
