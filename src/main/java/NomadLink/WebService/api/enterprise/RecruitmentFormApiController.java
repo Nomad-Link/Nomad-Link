@@ -1,8 +1,8 @@
-package NomadLink.WebService.api;
+package NomadLink.WebService.api.enterprise;
 
 import NomadLink.WebService.domain.enterprise.RecruitmentForm;
 import NomadLink.WebService.domain.member.*;
-import NomadLink.WebService.repository.MemberRepository;
+import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.service.RecruitmentFormService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 

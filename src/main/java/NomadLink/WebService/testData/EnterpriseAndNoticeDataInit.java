@@ -1,9 +1,7 @@
-package NomadLink.WebService;
+package NomadLink.WebService.testData;
 
-import NomadLink.WebService.domain.enterprise.Enterprise;
 import NomadLink.WebService.domain.enterprise.Notice;
 import NomadLink.WebService.domain.member.*;
-import NomadLink.WebService.repository.EnterpriseRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,8 @@
-package NomadLink.WebService.api;
+package NomadLink.WebService.api.enterprise;
 
 import NomadLink.WebService.domain.member.*;
-import NomadLink.WebService.repository.EnterpriseSearchOption;
-import NomadLink.WebService.repository.MemberRepository;
+import NomadLink.WebService.repository.enterprise.EnterpriseSearchOption;
+import NomadLink.WebService.repository.member.MemberRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
