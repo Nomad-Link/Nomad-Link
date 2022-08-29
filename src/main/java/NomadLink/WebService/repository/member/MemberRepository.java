@@ -26,10 +26,12 @@ public class MemberRepository {
     }
 
     public Member findOne(Long id) {
+
         return em.find(Member.class, id);
     }
 
-    public List<Member> findByName(String realName) {
+    public List<Member> findByRealName(String realName) {
+
         return em.createQuery("select m from Member m where m.realName = :realName", Member.class)
                 .setParameter("realName", realName)
                 .getResultList();
@@ -44,6 +46,7 @@ public class MemberRepository {
 
 
     public List<Member> findAll() {
+
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
     }
