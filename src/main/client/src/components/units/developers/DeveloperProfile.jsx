@@ -37,10 +37,10 @@ function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
           {techStacks.map((p, indexB) => {
             return (
               <TechName key={indexB}>
-                {p.techName.length > 13 ? (
-                  <span style={{ fontSize: "12px" }}>{p.techName}</span>
+                {p.techName.length > 11 ? (
+                  <span style={{ fontSize: "9px" }}>{p.techName}</span>
                 ) : (
-                  <span>{p.techName}</span>
+                  <span style={{ fontSize: "12px" }}>{p.techName}</span>
                 )}
               </TechName>
             );

@@ -2,6 +2,7 @@ import { Main } from "styles/Pages";
 import Procedure from "components/units/recruit/Procedure";
 import Form from "components/units/recruit/Form";
 import TitleSection from "components/commons/TitleSection";
+import HelmetAsync from "HelmetAsync";
 
 function RecruitForm() {
   return (
@@ -10,6 +11,7 @@ function RecruitForm() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <HelmetAsync title={"기업 서비스 : "} />
       <TitleSection
         padding={"100px"}
         mediumOne={"간편하게 채용공고를 작성해주세요."}

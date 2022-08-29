@@ -11,13 +11,13 @@ export const Div = styled.div`
   color: ${({ theme }) => theme.textSection};
 `;
 export const ProfileImage = styled.img`
-  width: 192px;
-  height: 192px;
+  width: 155px;
+  height: 155px;
   border-radius: 30px;
   margin: 20px;
 `;
 export const InformationDiv = styled.div`
-  width: 540px;
+  width: 580px;
   text-align: left;
   margin: 30px 10px;
 `;
@@ -54,10 +54,10 @@ export const TechStackBox = styled.div`
   flex-wrap: wrap;
 `;
 export const TechName = styled.div`
-  width: 100px;
+  width: 70px;
+  height: 20px;
   text-align: center;
-  margin: 5px;
-  padding: 5px;
+  margin: 3px;
   background-color: #FFFFD2;
   border: 1px solid #FAF4C0;
   border-radius: 5px;

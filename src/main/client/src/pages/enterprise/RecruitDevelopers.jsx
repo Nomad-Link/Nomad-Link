@@ -3,6 +3,7 @@ import Population from "components/units/developers/Population";
 import ParamInput from "components/units/developers/ParamInput";
 import ParamHashtag from "components/units/developers/ParamHashtag";
 import DeveloperList from "components/units/developers/DeveloperList";
+import HelmetAsync from "HelmetAsync";
 
 function RecruitDevelopers() {
   return (
@@ -11,6 +12,7 @@ function RecruitDevelopers() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <HelmetAsync title={"기업 서비스 : "} />
       <Population />
       <ParamInput />
       <ParamHashtag />

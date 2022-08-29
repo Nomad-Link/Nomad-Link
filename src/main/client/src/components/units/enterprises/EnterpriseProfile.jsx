@@ -30,15 +30,11 @@ function EnterpriseProfile({
         {toggleEllipsis(title, limit).string}
         {toggleEllipsis(title, limit).isShowMore && <span>...</span>}
       </h3>
-      {/* <div style={{ display: "flex" }}>
-        {techStacks.map((t, indexB) => {
-          return (
-            <p style={{ fontSize: "12px", margin: "5px" }} key={indexB}>
-              {t.techName}
-            </p>
-          );
-        })}
-      </div> */}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <span>#{techStacks[0].techName}&nbsp;</span>
+        <span>#{techStacks[1].techName}&nbsp;</span>
+        <span>#{techStacks[2].techName}&nbsp;</span>
+      </div>
       <p>
         {enterpriseLocation} · {annual}
       </p>
