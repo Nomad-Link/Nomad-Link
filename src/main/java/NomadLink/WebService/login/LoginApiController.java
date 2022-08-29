@@ -5,6 +5,7 @@ import NomadLink.WebService.login.LoginService;
 import NomadLink.WebService.session.SessionConst;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class LoginApiController {
 
     private final LoginService loginService;
@@ -31,6 +33,8 @@ public class LoginApiController {
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember); // 세션에 로그인 회원 정보 보관, 이후 브라우저의 쿠키 저장소에 응답보냄
 
         String userId = loginMember.getUserId();
+        log.info("========loginMember.getUserId() = {}========", userId);
+        log.info("========session = {}========", session);
 
         return userId;
     }
