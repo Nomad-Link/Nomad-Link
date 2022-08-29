@@ -2,6 +2,7 @@ package NomadLink.WebService.login;
 
 import NomadLink.WebService.domain.member.Member;
 import NomadLink.WebService.login.LoginService;
+import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.session.SessionConst;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,13 +20,26 @@ import javax.servlet.http.HttpSession;
 public class LoginApiController {
 
     private final LoginService loginService;
+    private final EntityManager em;
 
     @PostMapping("/api/login") // 로그인 페이지
     @ResponseBody
     public String login(@RequestBody LoginRequestDto loginRequestDto, HttpServletRequest request) {
         Member loginMember = loginService.login(loginRequestDto.getUserId(), loginRequestDto.getPassword());
 
-        if(loginMember == null) {
+        Member memberUserId = em.createQuery("select m from Member m where m.userId = :userId", Member.class)
+                                    .setParameter("userId", loginRequestDto.getUserId())
+                                    .getSingleResult();
+
+        Member memberPassword = em.createQuery("select m from Member m where m.password = :password", Member.class)
+                .setParameter("password", loginRequestDto.getPassword())
+                .getSingleResult();
+
+        if (memberUserId == null) {
+            return "존재하지 않는 아이디 입니다.";
+        } else if (memberPassword == null) {
+            return "비밀번호가 일치 하지 않습니다.";
+        } else if (loginMember == null) {
             return "login-error";
         }
 
