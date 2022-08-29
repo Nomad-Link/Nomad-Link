@@ -18,3 +18,7 @@ function Private() {
 }
 
 export default Private;
+
+
+
+// /api/resume/${cookies.id}
