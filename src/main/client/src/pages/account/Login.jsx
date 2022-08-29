@@ -1,6 +1,7 @@
 import { Main } from "styles/Pages";
 import LoginForm from "components/commons/LoginForm";
 import TitleSection from "components/commons/TitleSection";
+import HelmetAsync from "HelmetAsync";
 
 function Login() {
   return (
@@ -9,6 +10,7 @@ function Login() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <HelmetAsync title={"로그인 : "} />
       <TitleSection padding={"40px"} mediumOne={"로그인"} />
       <LoginForm />
     </Main>

@@ -1,6 +1,7 @@
 import { Main } from "styles/Pages";
 import RegisterForm from "components/commons/RegisterForm";
 import TitleSection from "components/commons/TitleSection";
+import HelmetAsync from "HelmetAsync";
 
 function Register() {
   return (
@@ -9,6 +10,7 @@ function Register() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <HelmetAsync title={"회원가입 : "} />
       <TitleSection padding={"40px"} mediumOne={"회원가입"} />
       <RegisterForm />
     </Main>

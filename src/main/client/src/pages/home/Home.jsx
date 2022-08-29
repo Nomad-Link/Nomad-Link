@@ -1,4 +1,5 @@
 import { Main } from "styles/Pages";
+import HelmetAsync from "HelmetAsync";
 
 function Home() {
   return (
@@ -7,6 +8,7 @@ function Home() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <HelmetAsync title={""} />
       <div style={{ padding: "200px" }}>
         <h1>메인 페이지</h1>
         <br />

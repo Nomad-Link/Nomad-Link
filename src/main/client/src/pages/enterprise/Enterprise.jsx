@@ -1,5 +1,6 @@
 import { Main } from "styles/Pages";
 import FormOpenButton from "components/commons/FormOpenButton";
+import HelmetAsync from "HelmetAsync";
 
 function Enterprise() {
   return (
@@ -8,6 +9,7 @@ function Enterprise() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <HelmetAsync title={"기업 서비스 : "} />
       <div style={{ padding: "200px" }}>
         <h1>기업 서비스 홈 입니다</h1>
         <br />
