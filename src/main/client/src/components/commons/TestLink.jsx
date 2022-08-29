@@ -37,6 +37,11 @@ function TestLink() {
           <p>"/private"</p>
         </Link>
       </div>
+      <div style={{ marginRight: "50px" }}>
+        <Link to={"/mypage/resume"}>
+          <p>"/mypage/resume"</p>
+        </Link>
+      </div>
     </div>
   );
 }

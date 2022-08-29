@@ -9,6 +9,7 @@ import {
   Input,
   Error,
   SendButton,
+  RadioInput,
 } from "./RegisterForm.style";
 
 function RegisterForm() {
@@ -27,6 +28,7 @@ function RegisterForm() {
       realName: data.realName,
       phoneNumber: data.phoneNumber,
       annual: data.annual,
+      nation: data.nation,
     };
     formData(registerRequestDto);
     // navigate("/");
@@ -52,10 +54,10 @@ function RegisterForm() {
         <InputDiv>
           <Label>국가</Label>
           <Input
-            style={errors.annual ? { border: "2px solid #ff0000" } : {}}
-            {...register("annual", { required: true })}
+            style={errors.nation ? { border: "2px solid #ff0000" } : {}}
+            {...register("nation", { required: true })}
           />
-          {errors.annual && <Error>국가를 입력해 주세요.</Error>}
+          {errors.nation && <Error>국가를 입력해 주세요.</Error>}
         </InputDiv>
         <InputDiv>
           <Label>연락처</Label>
@@ -97,6 +99,50 @@ function RegisterForm() {
             {...register("email", { required: true })}
           />
           {errors.email && <Error>이메일을 입력해 주세요.</Error>}
+        </InputDiv>
+        <InputDiv>
+          <Label>경력</Label>
+          <div>
+            <RadioInput
+              {...register("annual", { required: true })}
+              type="radio"
+              name="annual"
+              value="ZEROTOONE"
+            />
+            0-1
+            <RadioInput
+              {...register("annual", { required: true })}
+              type="radio"
+              name="annual"
+              value="TWOTOFOUR"
+            />
+            2-4
+            <RadioInput
+              {...register("annual", { required: true })}
+              type="radio"
+              name="annual"
+              value="FIVETOSEVEN"
+            />
+            5-7
+            <RadioInput
+              {...register("annual", { required: true })}
+              type="radio"
+              name="annual"
+              value="EIGHTTOTEN"
+            />
+            8-10
+            <RadioInput
+              {...register("annual", { required: true })}
+              type="radio"
+              name="annual"
+              value="MORETHANTEN"
+            />
+            10 +
+          </div>
+          <Error>
+            {errors.annual?.type === "required" &&
+              "최소 필요 연차를 선택해 주세요."}
+          </Error>
         </InputDiv>
         <SendButton type="submit" value="가입하기" />
       </form>

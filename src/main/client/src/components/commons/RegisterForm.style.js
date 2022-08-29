@@ -62,6 +62,10 @@ export const Error = styled.p`
   }
   animation: moveError 0.5s ease-in-out;
 `;
+export const RadioInput = styled.input`
+  margin-left: 20px;
+  margin-right: 3px;
+`;
 export const SendButton = styled.input`
   background-color: #000;
   color: #fff;
