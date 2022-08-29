@@ -17,7 +17,7 @@ public class ResumeRepository {
         em.persist(resume);
     }
 
-    public Resume findOne(long userId) {
+    public Resume findOne(String userId) {
         return em.createQuery("select r from Resume r" +
                                         " join fetch r.member m where m.userId = :userId", Resume.class)
                 .setParameter("userId", userId)

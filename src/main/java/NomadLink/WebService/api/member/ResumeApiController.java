@@ -47,8 +47,8 @@ public class ResumeApiController {
     }
 
     @ResponseBody
-    @GetMapping("/api/mypage/resume/{userId}")
-    public ResumeResponseDto resumeGet(@PathVariable long userId) {
+    @GetMapping("/api/mypage/resume/get/{userId}")
+    public ResumeResponseDto resumeGet(@PathVariable String userId) {
         Resume resume = resumeService.findOneResume(userId);
 
         ResumeResponseDto response = new ResumeResponseDto();
