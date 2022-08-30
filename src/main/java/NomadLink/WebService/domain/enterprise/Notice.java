@@ -24,6 +24,8 @@ public class Notice {
 
     private String enterpriseLocation;
 
+    private String companyIntroduction;
+
     private String title;
 
     @Lob
