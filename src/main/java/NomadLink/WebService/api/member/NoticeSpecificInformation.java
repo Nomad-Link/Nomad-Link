@@ -37,6 +37,10 @@ public class NoticeSpecificInformation {
         oneNoticeResponseDto.setAnnual(findedNotice.getAnnual());
         oneNoticeResponseDto.setEmployeeType(findedNotice.getEmployeeType());
         oneNoticeResponseDto.setRole(findedNotice.getRole());
+        List<TechStackResponseDto> techStacks = findedNotice.getTechStacks().stream()
+                            .map(techStack -> new TechStackResponseDto(techStack))
+                            .collect(Collectors.toList());
+        oneNoticeResponseDto.setTechStacks(techStacks);
 
         return oneNoticeResponseDto;
     }
