@@ -1,18 +1,18 @@
 import { Main } from "styles/Pages";
 import HelmetAsync from "HelmetAsync";
-import ResumeForm from "components/units/mypage/ResumeForm";
+import ResumeCheck from "components/units/mypage/ResumeCheck";
 
-function Resume() {
+function MyPage() {
     return (
         <Main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <HelmetAsync title={"이력서 : "} />
-        <ResumeForm />
+        <HelmetAsync title={"마이페이지 : "} />
+        <ResumeCheck />
       </Main>
     );
 }
 
-export default Resume;
+export default MyPage;

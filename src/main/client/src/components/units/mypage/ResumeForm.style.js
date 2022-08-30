@@ -13,9 +13,8 @@ export const BoxFlex = styled.div`
 export const BoxBlock = styled.div`
   margin: 10px 55px;
 `;
-export const Hr = styled.hr`
-  margin: 25px 35px;
-  border: 1px solid #000;
+export const BoxSelect = styled.div`
+  margin-right: 22px;
 `;
 export const InputDiv = styled.div`
   text-align: center;
@@ -30,7 +29,7 @@ export const Label = styled.label`
   margin-bottom: 5px;
   font-size: 18px;
 `;
-export const InputS = styled.input`
+export const Input = styled.input`
   width: 350px;
   height: 30px;
   background-color: ${({ theme }) => theme.bgUnit};
@@ -39,6 +38,7 @@ export const InputS = styled.input`
   padding-left: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
+  font-weight: bold;
   border: 2px solid #000;
   border-radius: 10px;
   outline: none;
@@ -48,32 +48,16 @@ export const InputS = styled.input`
     opacity: 0.7;
   }
 `;
-export const InputM = styled(InputS)`
-  width: 830px;
-`;
-export const InputR = styled.input`
-  margin: 25px;
-  margin-right: 5px;
-`;
-export const InputL = styled.textarea`
-  width: 830px;
-  height: 200px;
+export const Select = styled.select`
+  width: 150px;
+  height: 30px;
   background-color: ${({ theme }) => theme.bgUnit};
-  margin: auto;
-  margin-bottom: 15px;
-  padding-top: 10px;
-  padding-left: 10px;
-  font-family: "Roboto", sans-serif;
+  color: ${({ theme }) => theme.textSection};
+  padding: 5px;
   font-size: 15px;
+  font-weight: bold;
   border: 2px solid #000;
   border-radius: 10px;
-  resize: none;
-  outline: none;
-
-  ::placeholder {
-    color: ${({ theme }) => theme.textSection};
-    opacity: 0.7;
-  }
 `;
 export const SendButton = styled.input`
   background-color: #000;

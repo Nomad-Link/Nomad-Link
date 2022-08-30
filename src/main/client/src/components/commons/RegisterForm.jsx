@@ -42,6 +42,7 @@ function RegisterForm() {
       console.log(response);
     } catch (error) {
       console.error(error);
+      console.error(error.Error);
     }
   }
 

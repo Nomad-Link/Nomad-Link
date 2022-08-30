@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios, { post } from "axios";
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import {
   Section,
   BoxFlex,
@@ -19,9 +20,11 @@ import {
 function ResumeForm() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [useId, setUseId] = useState([]);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -42,19 +45,10 @@ function ResumeForm() {
       .get(`/api/mypage/resume/get/${cookies.id}`)
       .then((res) => setUseId(res.data));
   };
-  
+
   useEffect(() => {
     getResume();
   }, []);
-
-  //   useEffect(() => {
-  //     const url = `/api/mypage/resume/get/${cookies.id}`;
-  //     axios
-  //       .get(url)
-  //       .then((response) => setUseId(response.data))
-  //       .catch((error) => console.log(error));
-  //     eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, [cookies.id]);
 
   console.log(JSON.stringify(useId, null, 3));
 
@@ -73,11 +67,11 @@ function ResumeForm() {
       employeeType: data.employeeType,
     };
     formData(ResumeRequestDto);
-    // window.location.reload();
+    navigate("/mypage");
   };
 
   async function formData(data) {
-    const url = `/api/mypage/resume`;
+    const url = `/api/mypage/resume/update/${cookies.id}`;
 
     try {
       const response = await post(url, data);
@@ -90,12 +84,12 @@ function ResumeForm() {
   return (
     <Section>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Title>이력서 저장 : {cookies.id}</Title>
+        <Title>이력서 수정 : {cookies.id}</Title>
         <BoxBlock>
           <BoxFlex>
             <BoxSelect>
               <Label>국가</Label>
-              <Select {...register("nation")}>
+              <Select {...setValue("nation", useId.nation)} {...register("nation")}>
                 <option value={null}>-- 전체 국가 --</option>
                 <option value="INDIA">인도</option>
                 <option value="CHINA">중국</option>
@@ -106,7 +100,7 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>분야</Label>
-              <Select {...register("role")}>
+              <Select {...setValue("role", useId.role)} {...register("role")}>
                 <option value={null}>-- 전체 분야 --</option>
                 <option value="SERVER">서버</option>
                 <option value="FRONTEND">프론트엔드</option>
@@ -118,7 +112,7 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>유형</Label>
-              <Select {...register("employeeType")}>
+              <Select {...setValue("employeeType", useId.employeeType)} {...register("employeeType")}>
                 <option value={null}>-- 전체 유형 --</option>
                 <option value="FULLTIME">정규직</option>
                 <option value="PARTTIME">계약직</option>
@@ -128,7 +122,7 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>나이</Label>
-              <Select {...register("age")}>
+              <Select {...setValue("age", useId.age)} {...register("age")}>
                 <option value={null}>-- 전체 나이 --</option>
                 {SelectAge()}
               </Select>
@@ -136,7 +130,7 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>성별</Label>
-              <Select {...register("gender")}>
+              <Select {...setValue("gender", useId.gender)} {...register("gender")}>
                 <option value={null}>-- 전체 성별 --</option>
                 <option value="MALE">남자</option>
                 <option value="FEMALE">여자</option>
@@ -150,8 +144,8 @@ function ResumeForm() {
             <Label>이름</Label>
             <Input
               placeholder="ex) 홍길동"
-              // value={id.realName ? id.realName : ""}
               style={errors.realName ? { border: "2px solid #ff0000" } : {}}
+              {...setValue("realName", useId.realName)}
               {...register("realName", { required: true })}
             />
             {errors.realName && <Error>이름을 입력해 주세요.</Error>}
@@ -161,6 +155,7 @@ function ResumeForm() {
             <Input
               placeholder="ex) 010-1234-5678"
               style={errors.phoneNumber ? { border: "2px solid #ff0000" } : {}}
+              {...setValue("phoneNumber", useId.phoneNumber)}
               {...register("phoneNumber", {
                 required: true,
                 pattern: /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/,
@@ -180,6 +175,7 @@ function ResumeForm() {
             <Input
               placeholder="ex) qwer1234@abc.com"
               style={errors.email ? { border: "2px solid #ff0000" } : {}}
+              {...setValue("email", useId.email)}
               {...register("email", {
                 required: true,
                 pattern:
@@ -198,6 +194,7 @@ function ResumeForm() {
             <Input
               placeholder="ex) https://github.com/xxxx"
               style={errors.githubUrl ? { border: "2px solid #ff0000" } : {}}
+              {...setValue("githubUrl", useId.githubUrl)}
               {...register("githubUrl", { required: true })}
             />
             {errors.githubUrl && <Error>링크를 입력해 주세요.</Error>}
@@ -209,6 +206,7 @@ function ResumeForm() {
             <Input
               placeholder="ex) https://velog.io/@xxxx"
               style={errors.blogUrl ? { border: "2px solid #ff0000" } : {}}
+              {...setValue("blogUrl", useId.blogUrl)}
               {...register("blogUrl", { required: true })}
             />
             {errors.blogUrl && <Error>링크를 입력해 주세요.</Error>}
@@ -218,6 +216,7 @@ function ResumeForm() {
             <Input
               placeholder="ex) https://www.notion.so/ko-kr/xxxx"
               style={errors.portfolioUrl ? { border: "2px solid #ff0000" } : {}}
+              {...setValue("portfolioUrl", useId.portfolioUrl)}
               {...register("portfolioUrl", { required: true })}
             />
             {errors.portfolioUrl && <Error>링크를 입력해 주세요.</Error>}
