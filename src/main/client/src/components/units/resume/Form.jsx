@@ -14,14 +14,15 @@ import {
   Select,
   SendButton,
   Error,
-} from "./ResumeForm.style";
+} from "./Form.style";
 
-function ResumeForm() {
+function Form({ type, title, url }) {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
-  const [useId, setUseId] = useState([]);
+  const [userResume, setUserResume] = useState([]);
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -40,23 +41,15 @@ function ResumeForm() {
   const getResume = async () => {
     await axios
       .get(`/api/mypage/resume/get/${cookies.id}`)
-      .then((res) => setUseId(res.data));
+      .then((res) => setUserResume(res.data));
   };
-  
+
   useEffect(() => {
     getResume();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //   useEffect(() => {
-  //     const url = `/api/mypage/resume/get/${cookies.id}`;
-  //     axios
-  //       .get(url)
-  //       .then((response) => setUseId(response.data))
-  //       .catch((error) => console.log(error));
-  //     eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, [cookies.id]);
-
-  console.log(JSON.stringify(useId, null, 3));
+  console.log(JSON.stringify(userResume, null, 3));
 
   const onSubmit = (data) => {
     const ResumeRequestDto = {
@@ -73,12 +66,10 @@ function ResumeForm() {
       employeeType: data.employeeType,
     };
     formData(ResumeRequestDto);
-    // window.location.reload();
+    window.location.replace("/mypage/resume");
   };
 
   async function formData(data) {
-    const url = `/api/mypage/resume`;
-
     try {
       const response = await post(url, data);
       console.log(response);
@@ -90,12 +81,19 @@ function ResumeForm() {
   return (
     <Section>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Title>이력서 저장 : {cookies.id}</Title>
+        <Title>
+          이력서 {title} : {cookies.id}
+        </Title>
         <BoxBlock>
           <BoxFlex>
             <BoxSelect>
               <Label>국가</Label>
-              <Select {...register("nation")}>
+              <Select
+                {...(type === "update"
+                  ? { ...setValue("nation", userResume.nation) }
+                  : null)}
+                {...register("nation")}
+              >
                 <option value={null}>-- 전체 국가 --</option>
                 <option value="INDIA">인도</option>
                 <option value="CHINA">중국</option>
@@ -106,7 +104,12 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>분야</Label>
-              <Select {...register("role")}>
+              <Select
+                {...(type === "update"
+                  ? { ...setValue("role", userResume.role) }
+                  : null)}
+                {...register("role")}
+              >
                 <option value={null}>-- 전체 분야 --</option>
                 <option value="SERVER">서버</option>
                 <option value="FRONTEND">프론트엔드</option>
@@ -118,7 +121,12 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>유형</Label>
-              <Select {...register("employeeType")}>
+              <Select
+                {...(type === "update"
+                  ? { ...setValue("employeeType", userResume.employeeType) }
+                  : null)}
+                {...register("employeeType")}
+              >
                 <option value={null}>-- 전체 유형 --</option>
                 <option value="FULLTIME">정규직</option>
                 <option value="PARTTIME">계약직</option>
@@ -128,7 +136,12 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>나이</Label>
-              <Select {...register("age")}>
+              <Select
+                {...(type === "update"
+                  ? { ...setValue("age", userResume.age) }
+                  : null)}
+                {...register("age")}
+              >
                 <option value={null}>-- 전체 나이 --</option>
                 {SelectAge()}
               </Select>
@@ -136,7 +149,12 @@ function ResumeForm() {
             </BoxSelect>
             <BoxSelect>
               <Label>성별</Label>
-              <Select {...register("gender")}>
+              <Select
+                {...(type === "update"
+                  ? { ...setValue("gender", userResume.gender) }
+                  : null)}
+                {...register("gender")}
+              >
                 <option value={null}>-- 전체 성별 --</option>
                 <option value="MALE">남자</option>
                 <option value="FEMALE">여자</option>
@@ -150,8 +168,10 @@ function ResumeForm() {
             <Label>이름</Label>
             <Input
               placeholder="ex) 홍길동"
-              // value={id.realName ? id.realName : ""}
               style={errors.realName ? { border: "2px solid #ff0000" } : {}}
+              {...(type === "update"
+                ? { ...setValue("realName", userResume.realName) }
+                : null)}
               {...register("realName", { required: true })}
             />
             {errors.realName && <Error>이름을 입력해 주세요.</Error>}
@@ -161,6 +181,9 @@ function ResumeForm() {
             <Input
               placeholder="ex) 010-1234-5678"
               style={errors.phoneNumber ? { border: "2px solid #ff0000" } : {}}
+              {...(type === "update"
+                ? { ...setValue("phoneNumber", userResume.phoneNumber) }
+                : null)}
               {...register("phoneNumber", {
                 required: true,
                 pattern: /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/,
@@ -180,6 +203,9 @@ function ResumeForm() {
             <Input
               placeholder="ex) qwer1234@abc.com"
               style={errors.email ? { border: "2px solid #ff0000" } : {}}
+              {...(type === "update"
+                ? { ...setValue("email", userResume.email) }
+                : null)}
               {...register("email", {
                 required: true,
                 pattern:
@@ -198,6 +224,9 @@ function ResumeForm() {
             <Input
               placeholder="ex) https://github.com/xxxx"
               style={errors.githubUrl ? { border: "2px solid #ff0000" } : {}}
+              {...(type === "update"
+                ? { ...setValue("githubUrl", userResume.githubUrl) }
+                : null)}
               {...register("githubUrl", { required: true })}
             />
             {errors.githubUrl && <Error>링크를 입력해 주세요.</Error>}
@@ -209,6 +238,9 @@ function ResumeForm() {
             <Input
               placeholder="ex) https://velog.io/@xxxx"
               style={errors.blogUrl ? { border: "2px solid #ff0000" } : {}}
+              {...(type === "update"
+                ? { ...setValue("blogUrl", userResume.blogUrl) }
+                : null)}
               {...register("blogUrl", { required: true })}
             />
             {errors.blogUrl && <Error>링크를 입력해 주세요.</Error>}
@@ -218,6 +250,9 @@ function ResumeForm() {
             <Input
               placeholder="ex) https://www.notion.so/ko-kr/xxxx"
               style={errors.portfolioUrl ? { border: "2px solid #ff0000" } : {}}
+              {...(type === "update"
+                ? { ...setValue("portfolioUrl", userResume.portfolioUrl) }
+                : null)}
               {...register("portfolioUrl", { required: true })}
             />
             {errors.portfolioUrl && <Error>링크를 입력해 주세요.</Error>}
@@ -229,4 +264,4 @@ function ResumeForm() {
   );
 }
 
-export default ResumeForm;
+export default Form;

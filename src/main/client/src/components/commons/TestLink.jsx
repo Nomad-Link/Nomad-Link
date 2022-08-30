@@ -38,14 +38,17 @@ function TestLink() {
         </Link>
       </div>
       <div style={{ marginRight: "50px" }}>
+        <Link to={"/mypage"}>
+          <p>"/mypage"</p>
+        </Link>
         <Link to={"/mypage/resume"}>
           <p>"/mypage/resume"</p>
         </Link>
+        <Link to={"/mypage/resume/save"}>
+          <p>"/mypage/resume/save"</p>
+        </Link>
         <Link to={"/mypage/resume/update"}>
           <p>"/mypage/resume/update"</p>
-        </Link>
-        <Link to={"/mypage"}>
-          <p>"/mypage"</p>
         </Link>
       </div>
     </div>
