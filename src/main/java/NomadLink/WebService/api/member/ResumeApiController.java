@@ -1,5 +1,6 @@
 package NomadLink.WebService.api.member;
 
+import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.service.ResumeService;
 import NomadLink.WebService.session.SessionConst;
@@ -72,17 +73,7 @@ public class ResumeApiController {
     @PostMapping("/api/mypage/resume/update/{userId}")
     public void resumeUpdate(@PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) {
         Resume findedResume = resumeService.findOneResume(userId);
-
-        findedResume.setRealName(resumeRequestDto.getRealName());
-        findedResume.setPhoneNumber(resumeRequestDto.getPhoneNumber());
-        findedResume.setEmail(resumeRequestDto.getEmail());
-        findedResume.setAge(resumeRequestDto.getAge());
-        findedResume.setGender(resumeRequestDto.getGender());
-        findedResume.setGithubUrl(resumeRequestDto.getGithubUrl());
-        findedResume.setBlogUrl(resumeRequestDto.getBlogUrl());
-        findedResume.setPortfolioUrl(resumeRequestDto.getPortfolioUrl());
-        findedResume.setNation(resumeRequestDto.getNation());
-        findedResume.setEmployeeType(resumeRequestDto.getEmployeeType());
+        resumeService.updateResume(findedResume, resumeRequestDto);
     }
 
     @ResponseBody
@@ -99,24 +90,6 @@ public class ResumeApiController {
         log.info("/api/resume/all return result : {}", result);
 
         return result;
-    }
-
-    @Data
-    static class ResumeRequestDto {
-
-        private String realName; // 개발자의 실제 이름
-        private String phoneNumber;
-        private String email;
-        private String age;
-        private Gender gender;
-        private String githubUrl;
-        private String blogUrl;
-        private String portfolioUrl;
-        private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
-        private Nation nation;
-        private EmployeeType employeeType;
-//        private String techStacks;
-
     }
 
     @Data
