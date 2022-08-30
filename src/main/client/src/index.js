@@ -9,7 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode> // StrictMode에서 Header Tooltip이 작동되지 않음
     <HelmetProvider>
       <CookiesProvider>
         <StateProvider initialState={initialState} reducer={reducer}>
@@ -17,6 +17,6 @@ root.render(
         </StateProvider>
       </CookiesProvider>
     </HelmetProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 reportWebVitals();

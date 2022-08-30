@@ -20,6 +20,7 @@ import {
   MenuIcon,
 } from "./Header.style";
 import TestLink from "./TestLink";
+import Tooltip from "./Tooltip";
 
 function Header({ mode }) {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
@@ -35,7 +36,9 @@ function Header({ mode }) {
     } catch (error) {
       console.error(error);
     }
-    window.location.reload();
+    window.location.replace("/");
+    window.location.replace("/");
+    window.location.replace("/");
   }
 
   function ActTestLink() {
@@ -54,17 +57,21 @@ function Header({ mode }) {
               <Search />
               <TbSearch className="react-search-icon" />
             </SearchBox>
-            {cookies.id ? <p>{cookies.id} 님 환영합니다!&nbsp;&nbsp;</p> : null}
             {cookies.id ? (
-              <Button onClick={() => logout()}>로그아웃</Button>
+              <Box>
+                <Tooltip userId={cookies.id} />
+                <Button onClick={() => logout()}>로그아웃</Button>
+              </Box>
             ) : (
-              <SLink to={"/login"}>
-                <Button>로그인</Button>
-              </SLink>
+              <Box>
+                <SLink to={"/login"}>
+                  <Button>로그인</Button>
+                </SLink>
+                <SLink to={"/register"}>
+                  <Button>회원가입</Button>
+                </SLink>
+              </Box>
             )}
-            <SLink to={"/register"}>
-              <Button>회원가입</Button>
-            </SLink>
           </DivRight>
         </Box>
         <Box>
@@ -75,7 +82,7 @@ function Header({ mode }) {
               </MenuIcon>
               <MenuIcon>채용</MenuIcon>
               <MenuIcon>직무 인터뷰</MenuIcon>
-              <MenuIcon>이력서</MenuIcon>
+              <MenuIcon>뉴스</MenuIcon>
               <MenuIcon>커뮤니티</MenuIcon>
               <MenuIcon>이벤트</MenuIcon>
             </Menu>
