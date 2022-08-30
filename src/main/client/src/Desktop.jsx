@@ -8,9 +8,11 @@ import Footer from "components/commons/Footer";
 import Home from "pages/home/Home";
 import Login from "pages/account/Login";
 import Register from "pages/account/Register";
-import Resume from "pages/mypage/Resume";
+import ResumeSave from "pages/mypage/ResumeSave";
+import ResumeUpdatePage from "pages/mypage/ResumeUpdatePage";
 import RouteEnterprise from "pages/enterprise/RouteEnterprise";
 import RoutePrivate from "pages/private/RoutePrivate";
+import MyPage from "pages/mypage/MyPage";
 
 function Desktop() {
   const [ThemeMode, toggleTheme] = useTheme();
@@ -24,7 +26,9 @@ function Desktop() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/mypage/resume" element={<Resume />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/mypage/resume" element={<ResumeSave />} />
+          <Route path="/mypage/resume/update" element={<ResumeUpdatePage />} />
           <Route path="/enterprise/*" element={<RouteEnterprise />} />
           <Route path="/private/*" element={<RoutePrivate />} />
         </Routes>

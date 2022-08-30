@@ -41,6 +41,12 @@ function TestLink() {
         <Link to={"/mypage/resume"}>
           <p>"/mypage/resume"</p>
         </Link>
+        <Link to={"/mypage/resume/update"}>
+          <p>"/mypage/resume/update"</p>
+        </Link>
+        <Link to={"/mypage"}>
+          <p>"/mypage"</p>
+        </Link>
       </div>
     </div>
   );
