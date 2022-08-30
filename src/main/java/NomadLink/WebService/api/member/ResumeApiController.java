@@ -69,6 +69,23 @@ public class ResumeApiController {
     }
 
     @ResponseBody
+    @PostMapping("/api/mypage/resume/update/{userId}")
+    public void resumeUpdate(@PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) {
+        Resume findedResume = resumeService.findOneResume(userId);
+
+        findedResume.setRealName(resumeRequestDto.getRealName());
+        findedResume.setPhoneNumber(resumeRequestDto.getPhoneNumber());
+        findedResume.setEmail(resumeRequestDto.getEmail());
+        findedResume.setAge(resumeRequestDto.getAge());
+        findedResume.setGender(resumeRequestDto.getGender());
+        findedResume.setGithubUrl(resumeRequestDto.getGithubUrl());
+        findedResume.setBlogUrl(resumeRequestDto.getBlogUrl());
+        findedResume.setPortfolioUrl(resumeRequestDto.getPortfolioUrl());
+        findedResume.setNation(resumeRequestDto.getNation());
+        findedResume.setEmployeeType(resumeRequestDto.getEmployeeType());
+    }
+
+    @ResponseBody
     @GetMapping("/api/mypage/resume/all")
     public List<ResumeResponseDto> resumeAllGet() {
         List<Resume> resumes = resumeService.findAllResume();
