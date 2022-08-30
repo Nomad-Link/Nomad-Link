@@ -25,7 +25,7 @@ public class MemberService {
             Member findedMembers = memberRepository.findByLoginId(member.getUserId()).get();
 
             if (findedMembers != null) {
-                throw new IllegalStateException("이미 존재하는 회원입니다.");
+                throw new Error("이미 존재하는 회원입니다.");
             }
         }
     }
