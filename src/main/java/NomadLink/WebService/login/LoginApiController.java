@@ -1,18 +1,30 @@
 package NomadLink.WebService.login;
 
+import NomadLink.WebService.api.member.MemberApiController;
 import NomadLink.WebService.domain.member.Member;
 import NomadLink.WebService.login.LoginService;
 import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.session.SessionConst;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,26 +36,27 @@ public class LoginApiController {
 
     @PostMapping("/api/login") // 로그인 페이지
     @ResponseBody
-    public String login(@RequestBody LoginRequestDto loginRequestDto, HttpServletRequest request) {
-        Member loginMember = loginService.login(loginRequestDto.getUserId(), loginRequestDto.getPassword());
+    public Object login(@Valid @RequestBody LoginRequestDto loginRequestDto, BindingResult bindingResult, HttpServletRequest request) {
+        Optional<Member> findedMemberByUserId = loginService.findByLoginId(loginRequestDto.getUserId());
+        Optional<Member> findedMemberByPassword = loginService.findByPassword(loginRequestDto.getPassword());
 
-        Member memberUserId = em.createQuery("select m from Member m where m.userId = :userId", Member.class)
-                                    .setParameter("userId", loginRequestDto.getUserId())
-                                    .getSingleResult();
+        if (!findedMemberByUserId.isPresent()) {
+            return new LoginError().error("존재하지 않는 아이디 입니다.");
+        }
 
-        Member memberPassword = em.createQuery("select m from Member m where m.password = :password", Member.class)
-                .setParameter("password", loginRequestDto.getPassword())
-                .getSingleResult();
+        if (!findedMemberByPassword.isPresent()) {
+            return new LoginError().error("존재하지 않는 패스워드 입니다.");
+        }
 
-        if (memberUserId == null) {
-            return "존재하지 않는 아이디 입니다.";
-        } else if (memberPassword == null) {
-            return "비밀번호가 일치 하지 않습니다.";
-        } else if (loginMember == null) {
-            return "login-error";
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            String errorMessage = allErrors.get(0).getDefaultMessage();
+            return new LoginError().error(errorMessage);
         }
 
         // 로그인 성공 처리
+        Member loginMember = loginService.login(loginRequestDto.getUserId(), loginRequestDto.getPassword());
+
         HttpSession session = request.getSession(true); // 세션이 있으면 있는 세션 반환, 없으면 신규 세션을 생성
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember); // 세션에 로그인 회원 정보 보관, 이후 브라우저의 쿠키 저장소에 응답보냄
 
@@ -51,7 +64,10 @@ public class LoginApiController {
         log.info("========loginMember.getUserId() = {}========", userId);
         log.info("========session = {}========", session);
 
-        return userId;
+        LoginSuccessResponseDto loginSuccessResponseDto = new LoginSuccessResponseDto();
+        loginSuccessResponseDto.setStatus("200 SUCCESS");
+
+        return loginSuccessResponseDto;
     }
 
     @ResponseBody
@@ -69,8 +85,50 @@ public class LoginApiController {
     @Data
     static class LoginRequestDto {
 
+        @NotBlank(message = "아이디 입력은 필수 입니다.")
         private String userId; // 로그인시의 아이디
+
+        @NotBlank(message = "패스워드 입력은 필수 입니다.")
         private String password;
+
+    }
+
+    @Data
+    public class LoginError {
+
+        public ResponseEntity error(String errorMessage) {
+            HttpStatus status = HttpStatus.BAD_REQUEST;
+            CustomErrorResponse errors = new CustomErrorResponse(errorMessage, status.value());
+            return ResponseEntity
+                    .status(status)
+                    .body(errors);
+        }
+
+    }
+
+    @Data
+    public class CustomErrorResponse {
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+        private LocalDateTime time;
+
+        private int status;
+        private String errorMessage;
+
+        public CustomErrorResponse(String errorMessage, int status)
+        {
+            this.time = LocalDateTime.now();
+            this.errorMessage = errorMessage;
+            this.status = status;
+        }
+
+    }
+
+    @Data
+    @NoArgsConstructor
+    static class LoginSuccessResponseDto {
+
+        String status;
 
     }
 
