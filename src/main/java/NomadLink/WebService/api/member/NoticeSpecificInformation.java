@@ -13,19 +13,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class NoticeSpecificInformation {
 
     private final NoticeRepository noticeRepository;
 
-    @GetMapping("/api/notice/{title}")
-    public OneNoticeResponseDto getOneNotice(@PathVariable String title) {
-        Notice findedNotice = noticeRepository.findByTitle(title);
+    @GetMapping("/api/notice/{id}")
+    public OneNoticeResponseDto getOneNotice(@PathVariable long id) {
+        Notice findedNotice = noticeRepository.findOne(id);
 
         OneNoticeResponseDto oneNoticeResponseDto = new OneNoticeResponseDto();
 

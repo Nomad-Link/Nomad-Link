@@ -32,6 +32,7 @@ public class EnterpriseAndNoticeApiController {
     @Data
     static class NoticeResponseDto {
 
+        private Long id;
         private String enterpriseName;
         private String title;
         private List<TechStackResponseDto> techStacks;
@@ -39,6 +40,7 @@ public class EnterpriseAndNoticeApiController {
         private Annual annual;
 
         public NoticeResponseDto(Notice notice) {
+            id = notice.getId();
             enterpriseName = notice.getEnterpriseName();
             title = notice.getTitle();
             enterpriseLocation = notice.getEnterpriseLocation();
