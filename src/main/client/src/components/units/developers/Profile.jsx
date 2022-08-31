@@ -11,9 +11,9 @@ import {
   Role,
   TechStackBox,
   TechName,
-} from "./DeveloperProfile.style";
+} from "./Profile.style";
 
-function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
+function Profile({ unitColor, realName, nation, role, techStacks }) {
   const navigate = useNavigate();
 
   return (
@@ -51,4 +51,4 @@ function DeveloperProfile({ unitColor, realName, nation, role, techStacks }) {
   );
 }
 
-export default DeveloperProfile;
+export default Profile;

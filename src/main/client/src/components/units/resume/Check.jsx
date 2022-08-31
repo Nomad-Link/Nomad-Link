@@ -23,6 +23,8 @@ function Mypage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  ;
+
   return (
     <div>
       {disabled ? (
@@ -39,9 +41,10 @@ function Mypage() {
         </div>
       ) : (
         <div>
-          <h1 style={{margin: "50px" }}>
+          <h1 style={{margin: "50px" }} onClick={()=> console.log(cookies.id)}>
             이력서
           </h1>
+          {/* <h1>{cookies}</h1> */}
           <h2>이름 : {userResume.realName}</h2>
           <h2>연락처 : {userResume.phoneNumber}</h2>
           <h2>이메일 : {userResume.email}</h2>

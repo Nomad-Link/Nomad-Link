@@ -59,7 +59,7 @@ function Header({ mode }) {
             </SearchBox>
             {cookies.id ? (
               <Box>
-                <Tooltip userId={cookies.id} />
+                {/* <Tooltip userId={cookies.id} /> */}
                 <Button onClick={() => logout()}>로그아웃</Button>
               </Box>
             ) : (

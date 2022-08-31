@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useStateValue } from "store/StateProvider";
-import DeveloperProfile from "./DeveloperProfile";
-import { Section } from "./DeveloperList.style";
+import Profile from "./Profile";
+import { Section } from "./List.style";
 
-function DeveloperList({ endPoint, bgColor, unitColor }) {
+function List({ endPoint, bgColor, unitColor }) {
   const [initialState] = useStateValue();
   const [user, setUser] = useState([]);
 
@@ -27,7 +27,7 @@ function DeveloperList({ endPoint, bgColor, unitColor }) {
     <Section bgColor={bgColor}>
       {user.map((m, indexA) => {
         return (
-          <DeveloperProfile
+          <Profile
             unitColor={unitColor}
             key={indexA}
             realName={m.realName}
@@ -53,4 +53,4 @@ function DeveloperList({ endPoint, bgColor, unitColor }) {
   );
 }
 
-export default DeveloperList;
+export default List;
