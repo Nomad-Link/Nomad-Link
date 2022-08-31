@@ -1,14 +1,27 @@
 package NomadLink.WebService.api.member;
 
+import NomadLink.WebService.api.dto.member.request.MemberSaveRequestDto;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.service.MemberService;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,9 +30,20 @@ public class MemberApiController {
 
     private final MemberService memberService;
 
-    @ResponseBody // 리턴 타입이 void이지만 자꾸 Thymeleaf template 관련 에러가 발생해 넣어주었다.
+    @ResponseBody
     @PostMapping("/api/register") // 회원가입
-    public void save(@RequestBody MemberSaveRequestDto memberSaveRequestDto) {
+    public Object save(@Valid @RequestBody MemberSaveRequestDto memberSaveRequestDto, BindingResult bindingResult) {
+        boolean flag = memberService.validateDuplicateUserId(memberSaveRequestDto);
+        if (!flag) {
+            return new CreateError().error("중복된 아이디가 존재합니다.");
+        }
+
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            String errorMessage = allErrors.get(0).getDefaultMessage();
+            return new CreateError().error(errorMessage);
+        }
+
         Member member = new Member();
 
         member.setEmail(memberSaveRequestDto.getEmail());
@@ -31,18 +55,38 @@ public class MemberApiController {
         member.setAnnual(memberSaveRequestDto.getAnnual());
 
         memberService.register(member);
+
+        return member;
     }
 
     @Data
-    static class MemberSaveRequestDto {
+    public class CreateError {
 
-        private String email;
-        private String userId; // 로그인시의 아이디
-        private String password;
-        private String realName; // 개발자의 실제 이름
-        private String phoneNumber;
-        private Nation nation;
-        private Annual annual; // 개발자 연차 (ex - ZEROTOONE, TWOTOFOUR, FIVETOSEVEN, EIGHTTOTEN, MORETHANTEN)
+        public ResponseEntity error(String errorMessage) {
+            HttpStatus status = HttpStatus.BAD_REQUEST;
+            CustomErrorResponse errors = new CustomErrorResponse(errorMessage, status.value());
+            return ResponseEntity
+                    .status(status)
+                    .body(errors);
+        }
+
+    }
+
+    @Data
+    public class CustomErrorResponse {
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+        private LocalDateTime time;
+
+        private int status;
+        private String errorMessage;
+
+        public CustomErrorResponse(String errorMessage, int status)
+        {
+            this.time = LocalDateTime.now();
+            this.errorMessage = errorMessage;
+            this.status = status;
+        }
 
     }
 
