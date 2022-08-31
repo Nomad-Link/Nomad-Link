@@ -1,5 +1,5 @@
 import { Main } from "styles/Pages";
-import DeveloperList from "components/units/developers/DeveloperList";
+import List from "components/units/developers/List";
 import TitleSection from "components/commons/TitleSection";
 import HelmetAsync from "HelmetAsync";
 
@@ -18,7 +18,7 @@ function RecruitComplete() {
         smallOne={"기타 문의 사항은 nomadlink@abc.com 으로 보내주세요."}
       />
       <h3 style={{ padding: "10px" }}>이런 개발자는 어떠세요?</h3>
-      <DeveloperList
+      <List
         endPoint={"complete"}
         bgColor={({ theme }) => theme.bgIndex}
         unitColor={({ theme }) => theme.bgSection}

@@ -1,7 +1,7 @@
 import { post } from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 // import { useNavigate } from "react-router-dom";
-// import Logo from "./Logo";
 import {
   Section,
   InputDiv,
@@ -13,7 +13,7 @@ import {
 } from "./RegisterForm.style";
 
 function RegisterForm() {
-  // const navigate = useNavigate();
+  const [regiError, setRegiError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -41,8 +41,10 @@ function RegisterForm() {
       const response = await post(url, data);
       console.log(response);
     } catch (error) {
-      console.error(error);
-      console.error(error.Error);
+      let errCode = error.response.data.errorMessage;
+      if(errCode === "중복된 아이디가 존재합니다.") {
+        setRegiError(true);
+      }
     }
   }
 
@@ -71,10 +73,11 @@ function RegisterForm() {
         <InputDiv>
           <Label>아이디</Label>
           <Input
-            style={errors.userId ? { border: "2px solid #ff0000" } : {}}
+            style={errors.userId || regiError ? { border: "2px solid #ff0000" } : {}}
             {...register("userId", { required: true })}
           />
           {errors.userId && <Error>아이디를 입력해 주세요.</Error>}
+          {regiError && <Error>중복된 아이디가 존재합니다.</Error>}
         </InputDiv>
         <InputDiv>
           <Label>비밀번호</Label>
@@ -142,7 +145,7 @@ function RegisterForm() {
           </div>
           <Error>
             {errors.annual?.type === "required" &&
-              "최소 필요 연차를 선택해 주세요."}
+              "경력을 선택해 주세요."}
           </Error>
         </InputDiv>
         <SendButton type="submit" value="가입하기" />

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import EnterpriseProfile from "./EnterpriseProfile";
-import { Section } from "./EnterpriseList.style";
+import Profile from "./Profile";
+import { Section } from "./List.style";
 
-function EnterpriseList() {
+function List() {
   const [enterprise, setEnterprise] = useState([]);
 
   useEffect(() => {
@@ -23,8 +23,9 @@ function EnterpriseList() {
     <Section>
       {enterprise.map((m, indexA) => {
         return (
-          <EnterpriseProfile
+          <Profile
             key={indexA}
+            id={m.id}
             enterpriseName={m.enterpriseName}
             title={m.title}
             techStacks={m.techStacks}
@@ -37,4 +38,4 @@ function EnterpriseList() {
   );
 }
 
-export default EnterpriseList;
+export default List;

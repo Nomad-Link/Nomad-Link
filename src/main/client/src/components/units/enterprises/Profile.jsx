@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Div, ProfileImage } from "./EnterpriseProfile.style";
+import { Div, ProfileImage } from "./Profile.style";
 
-function EnterpriseProfile({
+function Profile({
+  id,
   enterpriseName,
   title,
   techStacks,
@@ -20,7 +21,7 @@ function EnterpriseProfile({
   };
 
   return (
-    <Div onClick={() => navigate(`/${enterpriseName}`)}>
+    <Div onClick={() => navigate(`/notice/${id}`)}>
       <ProfileImage
         alt=""
         src={require("components/units/enterprises/testimage.jpeg")}
@@ -42,4 +43,4 @@ function EnterpriseProfile({
   );
 }
 
-export default EnterpriseProfile;
+export default Profile;
