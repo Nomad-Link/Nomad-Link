@@ -20,7 +20,7 @@ public class EnterpriseAndNoticeApiController {
 
     @GetMapping("/api/private/employ/enterprises") // 개인 서비스에서 회사 목록을 보여주는 페이지
     public List<NoticeResponseDto> allEnterprise() {
-        List<Notice> notices = noticeRepository.findAll();
+        List<Notice> notices = noticeRepository.findSix();
 
         List<NoticeResponseDto> collect = notices.stream()
                 .map(notice -> new NoticeResponseDto(notice))
