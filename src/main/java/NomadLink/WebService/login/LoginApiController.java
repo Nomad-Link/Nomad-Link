@@ -65,7 +65,7 @@ public class LoginApiController {
         log.info("========session = {}========", session);
 
         LoginSuccessResponseDto loginSuccessResponseDto = new LoginSuccessResponseDto();
-        loginSuccessResponseDto.setStatus("200 SUCCESS");
+        loginSuccessResponseDto.setUserId(userId);
 
         return loginSuccessResponseDto;
     }
@@ -128,7 +128,7 @@ public class LoginApiController {
     @NoArgsConstructor
     static class LoginSuccessResponseDto {
 
-        String status;
+        String userId;
 
     }
 

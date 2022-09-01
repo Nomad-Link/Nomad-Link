@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -31,6 +32,19 @@ public class NoticeRepository {
     public List<Notice> findAll() {
         return em.createQuery("select n from Notice n", Notice.class)
                 .getResultList();
+    }
+
+    public List<Notice> findSix() {
+        List<Notice> notices = new ArrayList<>();
+
+        notices.add(em.find(Notice.class, Long.valueOf(1)));
+        notices.add(em.find(Notice.class, Long.valueOf(6)));
+        notices.add(em.find(Notice.class, Long.valueOf(13)));
+        notices.add(em.find(Notice.class, Long.valueOf(18)));
+        notices.add(em.find(Notice.class, Long.valueOf(32)));
+        notices.add(em.find(Notice.class, Long.valueOf(39)));
+
+        return notices;
     }
 
 }
