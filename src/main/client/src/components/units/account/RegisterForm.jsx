@@ -1,7 +1,6 @@
 import { post } from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-// import { useNavigate } from "react-router-dom";
 import {
   Section,
   InputDiv,
@@ -13,7 +12,8 @@ import {
 } from "./RegisterForm.style";
 
 function RegisterForm() {
-  const [regiError, setRegiError] = useState(false);
+  const [idOver, setIdOver] = useState(false);
+  const [passwdOver, setPasswdIdOver] = useState(false);
   const {
     register,
     handleSubmit,
@@ -31,7 +31,6 @@ function RegisterForm() {
       nation: data.nation,
     };
     formData(registerRequestDto);
-    // navigate("/");
   };
 
   async function formData(data) {
@@ -40,10 +39,20 @@ function RegisterForm() {
     try {
       const response = await post(url, data);
       console.log(response);
+      window.location.replace("/"); // 예정 - 회원가입 성공 컴포넌트로 보내기.
     } catch (error) {
       let errCode = error.response.data.errorMessage;
-      if(errCode === "중복된 아이디가 존재합니다.") {
-        setRegiError(true);
+      setIdOver(false);
+      setPasswdIdOver(false);
+      if (errCode === "중복된 아이디가 존재합니다.") {
+        setIdOver(true);
+      } else if (
+        errCode ===
+        "비밀번호는 4~15자리의 숫자,문자,특수문자로 이루어져야합니다."
+      ) {
+        setPasswdIdOver(true);
+      } else {
+        console.log(errCode);
       }
     }
   }
@@ -73,20 +82,31 @@ function RegisterForm() {
         <InputDiv>
           <Label>아이디</Label>
           <Input
-            style={errors.userId || regiError ? { border: "2px solid #ff0000" } : {}}
+            style={
+              errors.userId || idOver ? { border: "2px solid #ff0000" } : {}
+            }
             {...register("userId", { required: true })}
           />
           {errors.userId && <Error>아이디를 입력해 주세요.</Error>}
-          {regiError && <Error>중복된 아이디가 존재합니다.</Error>}
+          {idOver && <Error>중복된 아이디가 존재합니다.</Error>}
         </InputDiv>
         <InputDiv>
           <Label>비밀번호</Label>
           <Input
             type="password"
-            style={errors.password ? { border: "2px solid #ff0000" } : {}}
+            style={
+              errors.password || passwdOver
+                ? { border: "2px solid #ff0000" }
+                : {}
+            }
             {...register("password", { required: true })}
           />
           {errors.password && <Error>비밀번호를 입력해 주세요.</Error>}
+          {passwdOver && (
+            <Error>
+              비밀번호는 4~15자리의 숫자,문자,특수문자로 이루어져야합니다.
+            </Error>
+          )}
         </InputDiv>
         <InputDiv>
           <Label>이름</Label>
@@ -144,8 +164,7 @@ function RegisterForm() {
             10 +
           </div>
           <Error>
-            {errors.annual?.type === "required" &&
-              "경력을 선택해 주세요."}
+            {errors.annual?.type === "required" && "경력을 선택해 주세요."}
           </Error>
         </InputDiv>
         <SendButton type="submit" value="가입하기" />

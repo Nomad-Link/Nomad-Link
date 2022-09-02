@@ -1,7 +1,7 @@
 import { Main } from "styles/Pages";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
 import Detail from "components/units/enterprises/Detail";
-import TitleBackButton from "components/commons/TitleBackButton";
+import ContentHeader from "components/commons/ContentHeader";
 
 function Private() {
 
@@ -12,7 +12,7 @@ function Private() {
       exit={{ opacity: 0 }}
     >
       <HelmetAsync title={"채용 공고 : "} />
-      <TitleBackButton title="채용 공고" />
+      <ContentHeader title="채용 공고" button={true} />
       <Detail />
     </Main>
   );

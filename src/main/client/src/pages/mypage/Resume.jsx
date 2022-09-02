@@ -1,5 +1,5 @@
 import { Main } from "styles/Pages";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
 import Check from "components/units/resume/Check";
 
 function Resume() {

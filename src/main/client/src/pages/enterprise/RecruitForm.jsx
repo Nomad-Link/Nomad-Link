@@ -2,7 +2,7 @@ import { Main } from "styles/Pages";
 import Procedure from "components/units/recruit/Procedure";
 import Form from "components/units/recruit/Form";
 import TitleSection from "components/commons/TitleSection";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
 
 function RecruitForm() {
   return (

@@ -26,18 +26,17 @@ function Header({ mode }) {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [testDiv, setTestDiv] = useState(true);
 
-  async function logout() {
+  async function Logout() {
+    window.location.replace("/");
     const url = "/api/logout";
 
     try {
       const response = await post(url); // eslint-disable-line no-unused-vars
-      // console.log(response);
       removeCookie("id");
     } catch (error) {
       console.error(error);
     }
-    window.location.replace("/");
-    window.location.replace("/");
+    removeCookie("id");
     window.location.replace("/");
   }
 
@@ -59,8 +58,8 @@ function Header({ mode }) {
             </SearchBox>
             {cookies.id ? (
               <Box>
-                {/* <Tooltip userId={cookies.id} /> */}
-                <Button onClick={() => logout()}>로그아웃</Button>
+                <Tooltip userId={cookies.id} />
+                <Button onClick={() => Logout()}>로그아웃</Button>
               </Box>
             ) : (
               <Box>

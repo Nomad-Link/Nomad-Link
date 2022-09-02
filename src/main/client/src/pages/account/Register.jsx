@@ -1,7 +1,7 @@
 import { Main } from "styles/Pages";
-import RegisterForm from "components/commons/RegisterForm";
+import RegisterForm from "components/units/account/RegisterForm";
 import TitleSection from "components/commons/TitleSection";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
 
 function Register() {
   return (
