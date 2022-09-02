@@ -2,14 +2,16 @@ import { useState } from "react";
 import { post } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import Logo from "./Logo";
-import { Section, Input, SendDiv, Button } from "./LoginForm.style";
+import Logo from "components/commons/Logo";
+import { Section, Input, SendDiv, Button, Error } from "./LoginForm.style";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const [idOver, setIdOver] = useState(false);
+  const [passwdOver, setPasswdIdOver] = useState(false);
 
   function handleId(e) {
     setUserId(e.target.value);
@@ -18,7 +20,7 @@ function LoginForm() {
     setPassword(e.target.value);
   }
 
-  async function postLogin(userId, password) {
+  async function PostLogin() {
     const url = "/api/login";
 
     try {
@@ -26,28 +28,36 @@ function LoginForm() {
         userId: userId,
         password: password,
       });
-      // console.log(response);
-      // console.log(response.data);
-      setCookie("id", response.data);
+      setCookie("id", response.data.userId);
+      window.location.replace("/");
     } catch (error) {
-      console.error(error);
-      console.error(error.message);
+      let errCode = error.response.data.errorMessage;
+      setIdOver(false);
+      setPasswdIdOver(false);
+      if (errCode === "존재하지 않는 아이디 입니다.") {
+        setIdOver(true);
+      } else if (errCode === "존재하지 않는 패스워드 입니다.") {
+        setPasswdIdOver(true);
+      } else {
+        console.log(errCode);
+      }
     }
   }
-
-  const onClick = () => {
-    postLogin(userId, password);
-    navigate("/");
-  };
 
   return (
     <Section>
       <div style={{ marginTop: "70px" }}>
         <Logo fontSize={"30px"} />
         <Input placeholder="아이디" onChange={handleId} />
+        <div style={{ height: "16px" }}>
+          {idOver && <Error>존재하지 않는 아이디 입니다.</Error>}
+        </div>
         <Input type="password" placeholder="비밀번호" onChange={handlePwd} />
+        <div style={{ height: "16px" }}>
+          {passwdOver && <Error>존재하지 않는 패스워드 입니다.</Error>}
+        </div>
         <SendDiv>
-          <Button onClick={() => onClick()}>로그인</Button>
+          <Button onClick={() => PostLogin()}>로그인</Button>
           <Button onClick={() => navigate("/register")}>회원가입</Button>
         </SendDiv>
       </div>

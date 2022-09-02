@@ -1,7 +1,8 @@
 import { Main } from "styles/Pages";
 import Slide from "components/units/enterprises/Slide";
 import List from "components/units/enterprises/List";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
+import ContentHeader from "components/commons/ContentHeader";
 
 function Private() {
   return (
@@ -12,6 +13,7 @@ function Private() {
     >
       <HelmetAsync title={"개인 서비스 : "} />
       <Slide />
+      <ContentHeader title="현재 채용중인 기업" button={false} />
       <List />
     </Main>
   );

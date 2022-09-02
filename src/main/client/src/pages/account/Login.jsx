@@ -1,7 +1,7 @@
 import { Main } from "styles/Pages";
-import LoginForm from "components/commons/LoginForm";
+import LoginForm from "components/units/account/LoginForm";
 import TitleSection from "components/commons/TitleSection";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
 
 function Login() {
   return (

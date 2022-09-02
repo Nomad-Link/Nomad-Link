@@ -4,7 +4,7 @@ export const Section = styled.section`
   width: 950px;
   height: 300px;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   padding: 20px 20px 0;
 `;
 export const Box = styled.div`

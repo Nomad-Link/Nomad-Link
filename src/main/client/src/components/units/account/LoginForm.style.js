@@ -13,7 +13,7 @@ export const Input = styled.input`
   width: 350px;
   height: 30px;
   background-color: ${({ theme }) => theme.bgUnit};
-  margin: 20px;
+  margin: 20px 20px 7px;
   padding-left: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
@@ -41,4 +41,30 @@ export const Button = styled.button`
   padding: 15px;
   font-size: 20px;
   font-weight: bold;
+`;
+export const Error = styled.p`
+  color: #ff0000;
+  text-align: center;
+  font-weight: bold;
+  @keyframes moveError {
+    0% {
+      transform: translateX(-1%);
+    }
+    20% {
+      transform: translateX(1%);
+    }
+    40% {
+      transform: translateX(-1%);
+    }
+    60% {
+      transform: translateX(1%);
+    }
+    80% {
+      transform: translateX(-1%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  animation: moveError 0.5s ease-in-out;
 `;

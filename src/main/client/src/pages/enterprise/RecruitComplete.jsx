@@ -1,9 +1,12 @@
 import { Main } from "styles/Pages";
+import { useNavigate } from "react-router-dom";
 import List from "components/units/developers/List";
 import TitleSection from "components/commons/TitleSection";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
 
 function RecruitComplete() {
+  const navigate = useNavigate();
+
   return (
     <Main
       initial={{ opacity: 0 }}
@@ -23,6 +26,16 @@ function RecruitComplete() {
         bgColor={({ theme }) => theme.bgIndex}
         unitColor={({ theme }) => theme.bgSection}
       />
+      <div
+        onClick={() =>
+          navigate("/enterprise/recruit/developers")
+        }
+      >
+        <TitleSection
+          padding={"20px"}
+          mediumOne={"> 리스트 전체 보기 <"}
+        />
+      </div>
     </Main>
   );
 }

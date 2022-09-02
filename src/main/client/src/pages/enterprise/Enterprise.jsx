@@ -1,6 +1,6 @@
 import { Main } from "styles/Pages";
 import FormOpenButton from "components/commons/FormOpenButton";
-import HelmetAsync from "HelmetAsync";
+import HelmetAsync from "hooks/HelmetAsync";
 
 function Enterprise() {
   return (

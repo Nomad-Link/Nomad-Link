@@ -37,18 +37,6 @@ function List({ endPoint, bgColor, unitColor }) {
           />
         );
       })}
-      <textarea
-        rows={16}
-        cols={90}
-        value={JSON.stringify(initialState, null, 5)}
-        readOnly={true}
-      />
-      <textarea
-        rows={45}
-        cols={100}
-        value={JSON.stringify(user, null, 3)}
-        readOnly={true}
-      />
     </Section>
   );
 }

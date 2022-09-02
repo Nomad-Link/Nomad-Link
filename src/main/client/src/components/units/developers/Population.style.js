@@ -5,7 +5,7 @@ export const Section = styled.section`
   display: flex;
   justify-content: space-around;
   text-align: center;
-  margin: 50px auto 0;
+  margin: 0 auto 0;
   padding: 20px 0;
   background-color: #574b4b;
   border-bottom: 1px solid #fff;
