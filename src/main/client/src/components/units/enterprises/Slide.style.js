@@ -13,7 +13,7 @@ export const Box = styled.div`
 export const Img = styled.img`
   width: 950px;
   height: 300px;
-  opacity: 0.5;
+  opacity: 0.8;
   position: relative;
 `;
 export const Title = styled.div`
@@ -22,6 +22,8 @@ export const Title = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 2px 2px 2px black;
 `;
 export const HashTag = styled.div`
   margin: 20px;

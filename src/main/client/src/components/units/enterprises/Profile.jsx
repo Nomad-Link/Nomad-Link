@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Div, ProfileImage } from "./Profile.style";
+import { Div, ProfileImage, EntName, Title, TechNameDiv } from "./Profile.style";
 
 function Profile({
   id,
@@ -26,16 +26,16 @@ function Profile({
         alt=""
         src={require("components/units/enterprises/testimage.jpeg")}
       />
-      <p>{enterpriseName}</p>
-      <h3>
+      <EntName>{enterpriseName}</EntName>
+      <Title>
         {toggleEllipsis(title, limit).string}
         {toggleEllipsis(title, limit).isShowMore && <span>...</span>}
-      </h3>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      </Title>
+      <TechNameDiv>
         <span>#{techStacks[0].techName}&nbsp;</span>
         <span>#{techStacks[1].techName}&nbsp;</span>
         <span>#{techStacks[2].techName}&nbsp;</span>
-      </div>
+      </TechNameDiv>
       <p>
         {enterpriseLocation} · {annual}
       </p>

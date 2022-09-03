@@ -26,11 +26,40 @@ function Desktop() {
       <AnimatePresence>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              cookies.id ? (
+                <AccessControl message={null} replace={""} />
+              ) : (
+                <Login />
+              )
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              cookies.id ? (
+                <AccessControl message={null} replace={""} />
+              ) : (
+                <Register />
+              )
+            }
+          />
           <Route
             path="/mypage/*"
-            element={cookies.id ? <RouteMyPage /> : <AccessControl />}
+            element={
+              cookies.id ? (
+                <RouteMyPage />
+              ) : (
+                <AccessControl
+                  message={
+                    "로그인 시 사용 가능한 기능입니다.\n로그인을 해주세요."
+                  }
+                  replace={"login"}
+                />
+              )
+            }
           />
           <Route path="/notice/*" element={<Notice />} />
           <Route path="/enterprise/*" element={<RouteEnterprise />} />

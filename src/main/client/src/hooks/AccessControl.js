@@ -1,6 +1,11 @@
-function Access() {
-  alert("로그인 시 사용 가능한 기능입니다.\n로그인을 해주세요.");
-  window.location.replace("/login");
+function Access({ message, replace }) {
+  if (message === null) {
+    window.location.replace(`/${replace}`);
+  } else {
+    alert(message);
+  }
+
+  window.location.replace(`/${replace}`);
 
   return (
     <div>

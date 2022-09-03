@@ -24,7 +24,7 @@ import Tooltip from "./Tooltip";
 
 function Header({ mode }) {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
-  const [testDiv, setTestDiv] = useState(true);
+  const [testDiv, setTestDiv] = useState(false);
 
   async function Logout() {
     window.location.replace("/");

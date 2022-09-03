@@ -3,12 +3,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Section,
+  BoxFlex,
   InputDiv,
+  OptionDiv,
   Label,
   Input,
+  Select,
   Error,
   SendButton,
-  RadioInput,
 } from "./RegisterForm.style";
 
 function RegisterForm() {
@@ -60,17 +62,35 @@ function RegisterForm() {
   return (
     <Section>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* <Logo fontSize={"30px"} />
-        <h2>회원가입</h2> */}
-        <br />
-        <InputDiv>
-          <Label>국가</Label>
-          <Input
-            style={errors.nation ? { border: "2px solid #ff0000" } : {}}
-            {...register("nation", { required: true })}
-          />
-          {errors.nation && <Error>국가를 입력해 주세요.</Error>}
-        </InputDiv>
+        <BoxFlex>
+          <OptionDiv>
+            <Label>국가</Label>
+            <Select {...register("nation", { required: true })}>
+              <option value="">-- 전체 국가 --</option>
+              <option value="INDIA">인도</option>
+              <option value="CHINA">중국</option>
+              <option value="VIETNAM">베트남</option>
+              <option value="PHILIPPINE">필리핀</option>
+            </Select>
+            {errors.nation?.type === "required" && (
+              <Error>국가를 입력해 주세요.</Error>
+            )}
+          </OptionDiv>
+          <OptionDiv>
+            <Label>개발 경력</Label>
+            <Select {...register("annual", { required: true })}>
+              <option value="">-- 전체 경력 --</option>
+              <option value="ZEROTOONE">0-1</option>
+              <option value="TWOTOFOUR">2-4</option>
+              <option value="FIVETOSEVEN">5-7</option>
+              <option value="EIGHTTOTEN">8-10</option>
+              <option value="MORETHANTEN">10 +</option>
+            </Select>
+            {errors.annual?.type === "required" && (
+              <Error>경력을 입력해 주세요.</Error>
+            )}
+          </OptionDiv>
+        </BoxFlex>
         <InputDiv>
           <Label>연락처</Label>
           <Input
@@ -123,49 +143,6 @@ function RegisterForm() {
             {...register("email", { required: true })}
           />
           {errors.email && <Error>이메일을 입력해 주세요.</Error>}
-        </InputDiv>
-        <InputDiv>
-          <Label>경력</Label>
-          <div>
-            <RadioInput
-              {...register("annual", { required: true })}
-              type="radio"
-              name="annual"
-              value="ZEROTOONE"
-            />
-            0-1
-            <RadioInput
-              {...register("annual", { required: true })}
-              type="radio"
-              name="annual"
-              value="TWOTOFOUR"
-            />
-            2-4
-            <RadioInput
-              {...register("annual", { required: true })}
-              type="radio"
-              name="annual"
-              value="FIVETOSEVEN"
-            />
-            5-7
-            <RadioInput
-              {...register("annual", { required: true })}
-              type="radio"
-              name="annual"
-              value="EIGHTTOTEN"
-            />
-            8-10
-            <RadioInput
-              {...register("annual", { required: true })}
-              type="radio"
-              name="annual"
-              value="MORETHANTEN"
-            />
-            10 +
-          </div>
-          <Error>
-            {errors.annual?.type === "required" && "경력을 선택해 주세요."}
-          </Error>
         </InputDiv>
         <SendButton type="submit" value="가입하기" />
       </form>

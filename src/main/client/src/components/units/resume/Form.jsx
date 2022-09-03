@@ -92,9 +92,9 @@ function Form({ type, title, url }) {
                 {...(type === "update"
                   ? { ...setValue("nation", userResume.nation) }
                   : null)}
-                {...register("nation")}
+                {...register("nation", { required: true })}
               >
-                <option value={null}>-- 전체 국가 --</option>
+                <option value="">-- 전체 국가 --</option>
                 <option value="INDIA">인도</option>
                 <option value="CHINA">중국</option>
                 <option value="VIETNAM">베트남</option>
@@ -108,16 +108,16 @@ function Form({ type, title, url }) {
                 {...(type === "update"
                   ? { ...setValue("role", userResume.role) }
                   : null)}
-                {...register("role")}
+                {...register("role", { required: true })}
               >
-                <option value={null}>-- 전체 분야 --</option>
+                <option value="">-- 전체 분야 --</option>
                 <option value="SERVER">서버</option>
                 <option value="FRONTEND">프론트엔드</option>
                 <option value="ANDROID">안드로이드</option>
                 <option value="IOS">IOS</option>
                 <option value="AI">AI</option>
               </Select>
-              {errors.role && <Error>분야를 입력해 주세요.</Error>}
+              {errors.role?.type === "required" && <Error>분야를 입력해 주세요.</Error>}
             </BoxSelect>
             <BoxSelect>
               <Label>유형</Label>
@@ -125,14 +125,14 @@ function Form({ type, title, url }) {
                 {...(type === "update"
                   ? { ...setValue("employeeType", userResume.employeeType) }
                   : null)}
-                {...register("employeeType")}
+                {...register("employeeType", { required: true })}
               >
-                <option value={null}>-- 전체 유형 --</option>
+                <option value="">-- 전체 유형 --</option>
                 <option value="FULLTIME">정규직</option>
                 <option value="PARTTIME">계약직</option>
                 <option value="FREELANCER">프리랜서</option>
               </Select>
-              {errors.employeeType && <Error>유형을 입력해 주세요.</Error>}
+              {errors.employeeType?.type === "required" && <Error>유형을 입력해 주세요.</Error>}
             </BoxSelect>
             <BoxSelect>
               <Label>나이</Label>
@@ -140,12 +140,12 @@ function Form({ type, title, url }) {
                 {...(type === "update"
                   ? { ...setValue("age", userResume.age) }
                   : null)}
-                {...register("age")}
+                {...register("age", { required: true })}
               >
-                <option value={null}>-- 전체 나이 --</option>
+                <option value="">-- 전체 나이 --</option>
                 {SelectAge()}
               </Select>
-              {errors.age && <Error>나이를 입력해 주세요.</Error>}
+              {errors.age?.type === "required" && <Error>나이를 입력해 주세요.</Error>}
             </BoxSelect>
             <BoxSelect>
               <Label>성별</Label>
@@ -153,13 +153,13 @@ function Form({ type, title, url }) {
                 {...(type === "update"
                   ? { ...setValue("gender", userResume.gender) }
                   : null)}
-                {...register("gender")}
+                {...register("gender", { required: true })}
               >
-                <option value={null}>-- 전체 성별 --</option>
+                <option value="">-- 전체 성별 --</option>
                 <option value="MALE">남자</option>
                 <option value="FEMALE">여자</option>
               </Select>
-              {errors.gender && <Error>성별을 입력해 주세요.</Error>}
+              {errors.gender?.type === "required" && <Error>성별을 입력해 주세요.</Error>}
             </BoxSelect>
           </BoxFlex>
         </BoxBlock>

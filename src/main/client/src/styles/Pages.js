@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 export const Main = styled(motion.main)`
   width: 1000px;
+  min-height: 65vh;
   justify-content: center;
   align-items: center;
   text-align: center;
