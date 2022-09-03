@@ -22,9 +22,8 @@ function Tooltip({ userId }) {
         clickable={true}
         isCapture={true}
       >
-        <Tb onClick={() => navigate(`/mypage`)}>마이페이지</Tb><br />
-        <Tb onClick={() => navigate(`/mypage`)}>마이페이지</Tb><br />
-        <Tb onClick={() => navigate(`/mypage`)}>마이페이지</Tb>
+        <Tb onClick={() => navigate(`/mypage`)}>내 정보</Tb><br />
+        <Tb onClick={() => navigate(`/mypage/resume`)}>이력서</Tb><br />
       </ReactTooltip>
     </Div>
   );

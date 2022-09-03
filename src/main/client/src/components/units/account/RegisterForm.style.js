@@ -8,10 +8,19 @@ export const Section = styled.section`
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: 10px;
 `;
+export const BoxFlex = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+`;
 export const InputDiv = styled.div`
   width: 350px;
   text-align: left;
   margin: 20px auto;
+`;
+export const OptionDiv = styled.div`
+  width: 160px;
+  margin: auto 15px;
 `;
 export const Label = styled.label`
   display: block;
@@ -27,7 +36,7 @@ export const Input = styled.input`
   padding-left: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 10px;
   outline: none;
 
@@ -35,6 +44,17 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.textSection};
     opacity: 0.7;
   }
+`;
+export const Select = styled.select`
+  width: 160px;
+  height: 30px;
+  background-color: ${({ theme }) => theme.bgUnit};
+  color: ${({ theme }) => theme.textSection};
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 10px;
 `;
 export const Error = styled.p`
   color: #ff0000;
@@ -70,6 +90,7 @@ export const SendButton = styled.input`
   background-color: #000;
   color: #fff;
   margin: 30px;
+  margin-top: 10px;
   padding: 15px;
   border: 1px solid #000;
   border-radius: 20px;

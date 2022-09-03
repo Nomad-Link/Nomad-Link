@@ -46,13 +46,14 @@ export const Box = styled.div`
 export const SpanId = styled.span`
   margin-top: 5px;
 `;
-export const Tb = styled.button`
+export const Tb = styled.p`
+  width: 70px;
+  text-align: center;
   border: none;
-  margin: 5px;
+  margin: 10px 0 0;
+  padding: 5px 0;
   font-size: 15px;
-  background-color: ${({ theme }) => theme.bgButton};
-  border: 2px solid ${({ theme }) => theme.border};
-  border-radius: 10px;
+  border-bottom: 1px solid ${({ theme }) => theme.textOpacity};
 
   &:hover {
     color: white;

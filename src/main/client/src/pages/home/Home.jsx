@@ -1,5 +1,6 @@
 import { Main } from "styles/Pages";
 import HelmetAsync from "hooks/HelmetAsync";
+import Reveal from "components/units/home/Reveal";
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
       exit={{ opacity: 0 }}
     >
       <HelmetAsync title={""} />
+      <Reveal />
       <div style={{ padding: "200px" }}>
         <h1>메인 페이지</h1>
         <br />
