@@ -12,6 +12,7 @@ import {
   EntTitle,
   EntTextDiv,
   Strong,
+  Button,
 } from "./Detail.style";
 
 function Detail() {
@@ -26,7 +27,7 @@ function Detail() {
       .catch((error) => console.log(error));
   }, []);
 
-  async function Apply() {
+  async function PostApply() {
     const url = `/api${window.location.pathname}`;
 
     try {
@@ -34,6 +35,25 @@ function Detail() {
       console.log(response);
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  function Apply() {
+    if(cookies.id) {
+      const conf = window.confirm(
+        `${ent.enterpriseName} (${ent.title})\n 정말 지원하시겠습니까?`
+      );
+      if (conf === true) {
+        PostApply();
+        alert("지원 되었습니다.");
+        window.location.replace("/private");
+      } else {
+        alert("취소 되었습니다.");
+      }
+    }
+    else {
+      alert("지원하시려면 로그인을 해주세요.");
+      window.location.replace("/login");
     }
   }
 
@@ -125,13 +145,12 @@ function Detail() {
         ) : (
           <span>로딩에 실패했습니다. 잠시 후 다시 시도해 주세요.</span>
         )}
-        <button
-          style={{ marginLeft: "450px" }}
-          onClick={() => (cookies.id ? Apply() : alert("로그인하셔야 합니다."))}
-        >
-          지원하기
-        </button>
       </TechStackBox>
+      <Button
+        onClick={() => Apply()}
+      >
+        지원하기
+      </Button>
     </Section>
   );
 }

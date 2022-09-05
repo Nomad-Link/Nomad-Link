@@ -6,6 +6,9 @@ export const Section = styled.section`
   justify-content: space-between;
   margin: 20px auto;
 `;
-export const Button = styled.button`
+export const Back = styled.p`
+  margin-top: 7px;
+  font-size: 18px;
   float: right;
+  border-bottom: 1px solid;
 `;

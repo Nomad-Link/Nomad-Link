@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useStateValue } from "store/StateProvider";
 import axios, { post } from "axios";
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
@@ -15,10 +16,13 @@ import {
   SendButton,
   Error,
 } from "./Form.style";
+import TechStack from "components/units/resume/TechStack";
 
 function Form({ type, title, url }) {
+  const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userResume, setUserResume] = useState([]);
+
   const {
     register,
     handleSubmit,
@@ -48,8 +52,6 @@ function Form({ type, title, url }) {
     getResume();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(JSON.stringify(userResume, null, 3));
 
   const onSubmit = (data) => {
     const ResumeRequestDto = {
@@ -117,7 +119,9 @@ function Form({ type, title, url }) {
                 <option value="IOS">IOS</option>
                 <option value="AI">AI</option>
               </Select>
-              {errors.role?.type === "required" && <Error>분야를 입력해 주세요.</Error>}
+              {errors.role?.type === "required" && (
+                <Error>분야를 입력해 주세요.</Error>
+              )}
             </BoxSelect>
             <BoxSelect>
               <Label>유형</Label>
@@ -132,7 +136,9 @@ function Form({ type, title, url }) {
                 <option value="PARTTIME">계약직</option>
                 <option value="FREELANCER">프리랜서</option>
               </Select>
-              {errors.employeeType?.type === "required" && <Error>유형을 입력해 주세요.</Error>}
+              {errors.employeeType?.type === "required" && (
+                <Error>유형을 입력해 주세요.</Error>
+              )}
             </BoxSelect>
             <BoxSelect>
               <Label>나이</Label>
@@ -145,7 +151,9 @@ function Form({ type, title, url }) {
                 <option value="">-- 전체 나이 --</option>
                 {SelectAge()}
               </Select>
-              {errors.age?.type === "required" && <Error>나이를 입력해 주세요.</Error>}
+              {errors.age?.type === "required" && (
+                <Error>나이를 입력해 주세요.</Error>
+              )}
             </BoxSelect>
             <BoxSelect>
               <Label>성별</Label>
@@ -159,7 +167,9 @@ function Form({ type, title, url }) {
                 <option value="MALE">남자</option>
                 <option value="FEMALE">여자</option>
               </Select>
-              {errors.gender?.type === "required" && <Error>성별을 입력해 주세요.</Error>}
+              {errors.gender?.type === "required" && (
+                <Error>성별을 입력해 주세요.</Error>
+              )}
             </BoxSelect>
           </BoxFlex>
         </BoxBlock>
@@ -258,6 +268,13 @@ function Form({ type, title, url }) {
             {errors.portfolioUrl && <Error>링크를 입력해 주세요.</Error>}
           </InputDiv>
         </BoxFlex>
+        <TechStack />
+        {/* <textarea
+          value={JSON.stringify(initialState.techStack, null, 5)}
+          rows="15"
+          cols="25"
+          readOnly
+        /> */}
         <SendButton type="submit" />
       </form>
     </Section>

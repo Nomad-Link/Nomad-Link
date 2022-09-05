@@ -41,7 +41,7 @@ function RegisterForm() {
     try {
       const response = await post(url, data);
       console.log(response);
-      window.location.replace("/"); // 예정 - 회원가입 성공 컴포넌트로 보내기.
+      window.location.replace("/login"); // 예정 - 회원가입 성공 컴포넌트로 보내기.
     } catch (error) {
       let errCode = error.response.data.errorMessage;
       setIdOver(false);
