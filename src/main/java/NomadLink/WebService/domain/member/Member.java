@@ -1,5 +1,6 @@
 package NomadLink.WebService.domain.member;
 
+import NomadLink.WebService.domain.enterprise.Application;
 import NomadLink.WebService.domain.enterprise.Notice;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +46,7 @@ public class Member {
     private List<TechStack> techStacks = new ArrayList<>(); // 일대다 연관관계 매핑 (한명의 개발자는 여러개의 기술 스택을 가질 수 있다.)
 
     @OneToMany(mappedBy = "member")
-    private List<Notice> notices = new ArrayList<>();
+    private List<Application> applications  = new ArrayList<>();
 
     //== 연관관계 편의 메서드==// (양방향 연관관계인 경우에만 사용)
     public void setTechStack(TechStack techStack) {
@@ -53,9 +54,9 @@ public class Member {
         techStack.setMember(this);
     }
 
-    public void setApplyNotice(Notice notice) {
-        notices.add(notice);
-        notice.setMember(this);
+    public void setApplication(Application application) {
+        applications.add(application);
+        application.setMember(this);
     }
 
 }
