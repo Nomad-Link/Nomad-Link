@@ -1,9 +1,6 @@
 package NomadLink.WebService.domain.enterprise;
 
-import NomadLink.WebService.domain.member.Annual;
-import NomadLink.WebService.domain.member.EmployeeType;
-import NomadLink.WebService.domain.member.Role;
-import NomadLink.WebService.domain.member.TechStack;
+import NomadLink.WebService.domain.member.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,6 +39,10 @@ public class Notice {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     //== 연관관계 편의 메서드==// (양방향 연관관계인 경우에만 사용)
     public void setTechStack(TechStack techStack) {
