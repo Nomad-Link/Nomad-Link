@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { useCookies } from "react-cookie";
+import axios, { post } from "axios";
 import {
   Section,
   BoxFlex,
@@ -14,6 +15,7 @@ import {
 } from "./Detail.style";
 
 function Detail() {
+  const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [ent, setEnt] = useState([]);
 
   useEffect(() => {
@@ -23,6 +25,17 @@ function Detail() {
       .then((response) => setEnt(response.data))
       .catch((error) => console.log(error));
   }, []);
+
+  async function Apply() {
+    const url = `/api${window.location.pathname}`;
+
+    try {
+      const response = await post(url);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   function EmployeeType() {
     if (ent.employeeType === "FULLTIME") {
@@ -112,6 +125,12 @@ function Detail() {
         ) : (
           <span>로딩에 실패했습니다. 잠시 후 다시 시도해 주세요.</span>
         )}
+        <button
+          style={{ marginLeft: "450px" }}
+          onClick={() => (cookies.id ? Apply() : alert("로그인하셔야 합니다."))}
+        >
+          지원하기
+        </button>
       </TechStackBox>
     </Section>
   );

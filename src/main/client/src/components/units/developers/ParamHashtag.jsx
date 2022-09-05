@@ -116,6 +116,8 @@ function ParamHashtag() {
           Swift
         </Tag>
       </TagBox>
+      {/* <textarea value={JSON.stringify(initialState.techStacks)}
+          rows="5" cols="33" /> */}
     </Section>
   );
 }

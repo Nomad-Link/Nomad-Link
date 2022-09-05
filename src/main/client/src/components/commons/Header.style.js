@@ -22,14 +22,14 @@ export const DivLeft = styled.div`
   display: flex;
   align-items: center;
   float: left;
-  margin: 15px auto 10px 0;
+  margin: 12px auto 0 0;
   padding: 0;
 `;
 export const DivRight = styled.div`
   display: flex;
   align-items: center;
   float: right;
-  margin: 15px 0 10px auto;
+  margin: 12px 0 0 auto;
 
   ${SLink} {
     display: flex;
@@ -58,15 +58,20 @@ export const Search = styled.input`
   background-color: #d9d9d9;
   border-radius: 20px;
   border: 1px solid #d5d5d5;
+
+  ::placeholder {
+    color: #000;
+    opacity: 0.7;
+  }
 `;
 export const Button = styled.button`
   width: 70px;
   height: 30px;
   margin-right: 5px;
   background-color: #000;
+  color: white;
   border-radius: 20px;
   border: 1px solid #fff;
-  color: white;
 
   &:hover {
     background-color: #fff;
@@ -85,14 +90,15 @@ export const MenuIcon = styled.li`
   margin: auto 5px;
   padding: 10px;
   border-radius: 15px;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
   transition: all 0.2s;
 
   .react-icon {
     vertical-align: middle;
-    width: 22px;
-    height: 22px;
-    font-size: 22px;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
     margin-right: 3px;
     margin-bottom: 3px;
   }

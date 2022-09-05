@@ -53,7 +53,7 @@ function Header({ mode }) {
           </DivLeft>
           <DivRight>
             <SearchBox>
-              <Search />
+              <Search placeholder="검색어를 입력하세요." />
               <TbSearch className="react-search-icon" />
             </SearchBox>
             {cookies.id ? (
