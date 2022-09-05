@@ -4,6 +4,8 @@ import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.service.ResumeService;
 import NomadLink.WebService.session.SessionConst;
+import NomadLink.WebService.testData.SearchTechStack;
+import NomadLink.WebService.testData.SearchTechStackRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 public class ResumeApiController {
 
     private final ResumeService resumeService;
+    private final SearchTechStackRepository searchTechStackRepository;
 
     @ResponseBody
     @PostMapping("/api/mypage/resume")
@@ -90,6 +93,12 @@ public class ResumeApiController {
         log.info("/api/resume/all return result : {}", result);
 
         return result;
+    }
+
+    @ResponseBody
+    @GetMapping("/api/techstack")
+    public List<SearchTechStack> getAllTechStacks() {
+        return searchTechStackRepository.findAll();
     }
 
     @Data

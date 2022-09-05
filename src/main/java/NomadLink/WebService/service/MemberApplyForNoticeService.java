@@ -3,7 +3,7 @@ package NomadLink.WebService.service;
 import NomadLink.WebService.domain.enterprise.Application;
 import NomadLink.WebService.domain.enterprise.Notice;
 import NomadLink.WebService.domain.member.Member;
-import NomadLink.WebService.repository.enterprise.ApplicationRepository;
+import NomadLink.WebService.repository.member.ApplicationRepository;
 import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.repository.member.NoticeRepository;
 import lombok.RequiredArgsConstructor;
