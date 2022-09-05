@@ -21,7 +21,7 @@ function ParamHashtag() {
     if (!active) {
       dispatch({
         type: `Set${name}`,
-        item: { techName: name },
+        item: name,
         name: name,
       });
       setActive(true);
@@ -116,8 +116,8 @@ function ParamHashtag() {
           Swift
         </Tag>
       </TagBox>
-      {/* <textarea value={JSON.stringify(initialState.techStacks)}
-          rows="5" cols="33" /> */}
+      <textarea value={JSON.stringify(initialState, null, 5)}
+          rows="45" cols="90" />
     </Section>
   );
 }

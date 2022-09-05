@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   width: 950px;
+  display: inline-block;
   background-color: ${({ theme }) => theme.bgForm};
   text-align: center;
   border-radius: 20px;
-  margin: 20px auto;
+  margin: 0 auto 20px;
 `;
 export const BoxFlex = styled.div`
   display: flex;
@@ -58,4 +59,13 @@ export const EntTextDiv = styled.div`
 `;
 export const Strong = styled.strong`
   font-weight: bold;
+`;
+export const Button = styled.button`
+  width: 180px;
+  height: 50px;
+  margin: 0 20px 20px;
+  float: right;
+  font-size: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0);
 `;

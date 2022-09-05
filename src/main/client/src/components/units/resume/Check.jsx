@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 import {
   Section,
   BoxFlex,
@@ -17,7 +16,6 @@ function Mypage() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userResume, setUserResume] = useState([]);
   const [disabled, seHeadisabled] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const url = `/api/mypage/resume/get/${cookies.id}`;
@@ -78,7 +76,7 @@ function Mypage() {
           <h1 style={{ margin: "50px" }}>이력서가 존재하지 않습니다.</h1>
           <button
             style={{ fontSize: "35px", margin: "80px" }}
-            onClick={() => navigate("/mypage/resume/save")}
+            onClick={() => window.location.replace("/mypage/resume/save")}
           >
             이력서 작성하기
           </button>
@@ -140,7 +138,7 @@ function Mypage() {
                 alt=""
                 src={require("components/units/developers/testimage.jpg")}
               />
-              <UpdateButton onClick={()=> navigate("/mypage/resume/update")}>이력서 수정</UpdateButton>
+              <UpdateButton onClick={()=> window.location.replace("/mypage/resume/update")}>이력서 수정</UpdateButton>
             </div>
           </BoxFlex>
         </Section>
