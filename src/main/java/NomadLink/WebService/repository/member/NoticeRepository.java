@@ -47,4 +47,8 @@ public class NoticeRepository {
         return notices;
     }
 
+//    public List<Notice> findWithMember() {
+//        return em.createQuery()
+//    }
+
 }
