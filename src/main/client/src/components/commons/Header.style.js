@@ -64,21 +64,6 @@ export const Search = styled.input`
     opacity: 0.7;
   }
 `;
-export const Button = styled.button`
-  width: 70px;
-  height: 30px;
-  margin-right: 5px;
-  background-color: #000;
-  color: white;
-  border-radius: 20px;
-  border: 1px solid #fff;
-
-  &:hover {
-    background-color: #fff;
-    border: 1px solid #000;
-    color: black;
-  }
-`;
 export const Menu = styled.ul`
   display: flex;
   align-items: center;

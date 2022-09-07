@@ -86,14 +86,3 @@ export const RadioInput = styled.input`
   margin-left: 20px;
   margin-right: 3px;
 `;
-export const SendButton = styled.input`
-  background-color: #000;
-  color: #fff;
-  margin: 30px;
-  margin-top: 10px;
-  padding: 15px;
-  border: 1px solid #000;
-  border-radius: 20px;
-  font-size: 25px;
-  font-weight: bold;
-`;

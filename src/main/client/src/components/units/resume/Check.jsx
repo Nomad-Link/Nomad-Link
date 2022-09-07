@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { Button } from "styles/Button";
 import {
   Section,
   BoxFlex,
@@ -9,7 +10,6 @@ import {
   Head,
   Text,
   ProfileImage,
-  UpdateButton,
 } from "./Check.style";
 
 function Mypage() {
@@ -74,12 +74,12 @@ function Mypage() {
       {disabled ? (
         <Section>
           <h1 style={{ margin: "50px" }}>이력서가 존재하지 않습니다.</h1>
-          <button
-            style={{ fontSize: "35px", margin: "80px" }}
+          <Button
+            style={{ width: "200px" }}
             onClick={() => window.location.replace("/mypage/resume/save")}
           >
             이력서 작성하기
-          </button>
+          </Button>
         </Section>
       ) : (
         <Section>
@@ -133,12 +133,16 @@ function Mypage() {
                 </Tr>
               </tbody>
             </Table>
-            <div style={{ width: "550px"}}>
+            <div style={{ width: "550px" }}>
               <ProfileImage
                 alt=""
                 src={require("components/units/developers/testimage.jpg")}
               />
-              <UpdateButton onClick={()=> window.location.replace("/mypage/resume/update")}>이력서 수정</UpdateButton>
+              <Button
+                onClick={() => window.location.replace("/mypage/resume/update")}
+              >
+                이력서 수정
+              </Button>
             </div>
           </BoxFlex>
         </Section>

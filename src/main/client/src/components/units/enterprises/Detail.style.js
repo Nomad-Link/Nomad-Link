@@ -60,12 +60,3 @@ export const EntTextDiv = styled.div`
 export const Strong = styled.strong`
   font-weight: bold;
 `;
-export const Button = styled.button`
-  width: 180px;
-  height: 50px;
-  margin: 0 20px 20px;
-  float: right;
-  font-size: 20px;
-  border-radius: 15px;
-  border: 1px solid rgba(0, 0, 0);
-`;

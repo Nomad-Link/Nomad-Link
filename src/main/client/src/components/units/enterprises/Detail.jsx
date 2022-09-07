@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import axios, { post } from "axios";
+import { Button } from "styles/Button";
 import {
   Section,
   BoxFlex,
@@ -12,7 +13,6 @@ import {
   EntTitle,
   EntTextDiv,
   Strong,
-  Button,
 } from "./Detail.style";
 
 function Detail() {

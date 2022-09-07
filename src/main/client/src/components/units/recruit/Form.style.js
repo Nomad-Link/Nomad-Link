@@ -75,16 +75,6 @@ export const InputL = styled.textarea`
     opacity: 0.7;
   }
 `;
-export const SendButton = styled.input`
-  background-color: #000;
-  color: #fff;
-  margin: 30px;
-  padding: 15px;
-  border: 1px solid #000;
-  border-radius: 20px;
-  font-size: 25px;
-  font-weight: bold;
-`;
 export const Error = styled.p`
   color: #ff0000;
   font-weight: bold;

@@ -1,6 +1,7 @@
 import { post } from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ButtonInput } from "styles/Button";
 import {
   Section,
   BoxFlex,
@@ -10,7 +11,6 @@ import {
   Input,
   Select,
   Error,
-  SendButton,
 } from "./RegisterForm.style";
 
 function RegisterForm() {
@@ -144,7 +144,7 @@ function RegisterForm() {
           />
           {errors.email && <Error>이메일을 입력해 주세요.</Error>}
         </InputDiv>
-        <SendButton type="submit" value="가입하기" />
+        <ButtonInput type="submit" value="가입하기" />
       </form>
     </Section>
   );
