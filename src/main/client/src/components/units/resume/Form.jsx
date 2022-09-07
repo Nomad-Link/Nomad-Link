@@ -3,6 +3,7 @@ import { useStateValue } from "store/StateProvider";
 import axios, { post } from "axios";
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
+import { ButtonInput } from "styles/Button";
 import {
   Section,
   BoxFlex,
@@ -13,7 +14,6 @@ import {
   Label,
   Input,
   Select,
-  SendButton,
   Error,
 } from "./Form.style";
 import TechStack from "components/units/resume/TechStack";
@@ -275,7 +275,7 @@ function Form({ type, title, url }) {
           cols="25"
           readOnly
         /> */}
-        <SendButton type="submit" />
+        <ButtonInput type="submit" />
       </form>
     </Section>
   );

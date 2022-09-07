@@ -6,6 +6,7 @@ import { TbSearch } from "react-icons/tb";
 import { FiMenu } from "react-icons/fi";
 import { IoPersonSharp } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa";
+import {ButtonMini} from "styles/Button";
 import {
   ResHeader,
   HeaderDiv,
@@ -15,7 +16,6 @@ import {
   SLink,
   SearchBox,
   Search,
-  Button,
   Menu,
   MenuIcon,
 } from "./Header.style";
@@ -59,15 +59,15 @@ function Header({ mode }) {
             {cookies.id ? (
               <Box>
                 <Tooltip userId={cookies.id} />
-                <Button onClick={() => Logout()}>로그아웃</Button>
+                <ButtonMini onClick={() => Logout()}>로그아웃</ButtonMini>
               </Box>
             ) : (
               <Box>
                 <SLink to={"/login"}>
-                  <Button>로그인</Button>
+                  <ButtonMini>로그인</ButtonMini>
                 </SLink>
                 <SLink to={"/register"}>
-                  <Button>회원가입</Button>
+                  <ButtonMini>회원가입</ButtonMini>
                 </SLink>
               </Box>
             )}

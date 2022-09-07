@@ -3,7 +3,8 @@ import { post } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import Logo from "components/commons/Logo";
-import { Section, Input, SendDiv, Button, Error } from "./LoginForm.style";
+import { Button } from "styles/Button";
+import { Section, Input, SendDiv, Error } from "./LoginForm.style";
 
 function LoginForm() {
   const navigate = useNavigate();

@@ -1,16 +1,37 @@
 import { useNavigate } from "react-router-dom";
+import { Button } from "styles/Button";
 import { Section, Div } from "./BannerFat.style";
 
-function BannerFat({ bgColor, lineOne, lineTwo, lineThree, button, link }) {
+function BannerFat({
+  bgColor,
+  color,
+  textAlign,
+  height,
+  lineOne,
+  lineTwo,
+  lineThree,
+  lineFour,
+  button,
+  buttonName,
+  link,
+}) {
   const navigate = useNavigate();
 
   return (
     <Section bgColor={bgColor}>
-      <Div>
+      <Div style={{ textAlign: `${textAlign}` }} color={color} height={height}>
         <h1>{lineOne}</h1>
-        <h3>{lineTwo}</h3>
+        <h1>{lineTwo}</h1>
         <h3>{lineThree}</h3>
-        <button onClick={() => navigate(`/${link}`)}>{button}</button>
+        <h3>{lineFour}</h3>
+        {button ? (
+          <Button
+            style={{ margin: "25px 0" }}
+            onClick={() => navigate(`/${link}`)}
+          >
+            {buttonName}
+          </Button>
+        ) : null}
       </Div>
     </Section>
   );

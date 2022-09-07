@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  width: 100vw;
+  width: 99vw;
   background-color: ${(props) => props.bgColor};
+  background-size: 100%;
   margin: 0;
   animation: 0.7s ease-in-out loadEffect;
   animation-delay: 0.3s;
@@ -20,24 +21,16 @@ export const Section = styled.section`
 `;
 export const Div = styled.div`
   width: 1000px;
-  height: 300px;
-  justify-content: center;
+  height: ${(props) => props.height};
+  display: inline-block;
+  align-items: center;
   margin: auto;
-  color: black;
+  color: ${(props) => props.color};
 
   h1 {
-    padding-top: 70px;
-    padding-bottom: 20px;
+    margin: 40px 5px;
   }
   h3 {
-    margin: 10px;
-  }
-  button {
-    width: 100px;
-    height: 30px;
-    margin: 20px;
-    border: 1px solid black;
-    border-radius: 12px;
-    font-size: 15px;
+    margin: 10px 0;
   }
 `;

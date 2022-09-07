@@ -1,6 +1,7 @@
 import { post } from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { ButtonInput } from "styles/Button";
 import {
   Section,
   BoxFlex,
@@ -13,7 +14,6 @@ import {
   InputM,
   InputR,
   InputL,
-  SendButton,
   Error,
 } from "./Form.style";
 
@@ -325,7 +325,7 @@ function Form() {
             {errors.etcComment && <Error>기타 코멘트를 입력해 주세요.</Error>}
           </BoxBlock>
         </div>
-        <SendButton type="submit" />
+        <ButtonInput type="submit" />
       </form>
     </Section>
   );

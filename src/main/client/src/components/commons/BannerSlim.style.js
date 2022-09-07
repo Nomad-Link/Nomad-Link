@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  width: 100vw;
+  width: 99vw;
   background-color: ${(props) => props.bgColor};
   margin: 0;
 `;
