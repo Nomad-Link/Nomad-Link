@@ -21,10 +21,6 @@ public class TechStack {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "notice_id")
-    private Notice notice;
-
     private String techName;
 
     @ManyToOne(fetch = FetchType.LAZY)
