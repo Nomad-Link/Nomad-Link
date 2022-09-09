@@ -6,7 +6,6 @@ import {
   Section,
   BoxFlex,
   BoxBlock,
-  Hr,
   InputDiv,
   Title,
   Label,
@@ -15,7 +14,7 @@ import {
   InputR,
   InputL,
   Error,
-} from "./Form.style";
+} from "styles/Form";
 
 function Form() {
   const navigate = useNavigate();
@@ -68,7 +67,7 @@ function Form() {
               <InputS
                 placeholder="ex) 노마드 링크"
                 style={
-                  errors.companyName ? { border: "2px solid #ff0000" } : {}
+                  errors.companyName ? { borderBottom: "2px solid #ff0000" } : {}
                 }
                 {...register("companyName", { required: true })}
               />
@@ -79,7 +78,7 @@ function Form() {
               <InputS
                 placeholder="ex) 홍길동"
                 style={
-                  errors.managerName ? { border: "2px solid #ff0000" } : {}
+                  errors.managerName ? { borderBottom: "2px solid #ff0000" } : {}
                 }
                 {...register("managerName", { required: true })}
               />
@@ -95,7 +94,7 @@ function Form() {
                 placeholder="ex) 010-1234-5678"
                 style={
                   errors.managerPhoneNumber
-                    ? { border: "2px solid #ff0000" }
+                    ? { borderBottom: "2px solid #ff0000" }
                     : {}
                 }
                 {...register("managerPhoneNumber", {
@@ -117,7 +116,7 @@ function Form() {
               <InputS
                 placeholder="ex) qwer1234@abc.com"
                 style={
-                  errors.managerEmail ? { border: "2px solid #ff0000" } : {}
+                  errors.managerEmail ? { borderBottom: "2px solid #ff0000" } : {}
                 }
                 {...register("managerEmail", {
                   required: true,
@@ -136,7 +135,7 @@ function Form() {
             </InputDiv>
           </BoxFlex>
         </div>
-        <Hr />
+
         <div>
           <BoxFlex>
             <InputDiv>
@@ -145,7 +144,7 @@ function Form() {
                 placeholder="ex) Spring 개발자"
                 style={
                   errors.recruitmentPosition
-                    ? { border: "2px solid #ff0000" }
+                    ? { borderBottom: "2px solid #ff0000" }
                     : {}
                 }
                 {...register("recruitmentPosition", { required: true })}
@@ -159,7 +158,7 @@ function Form() {
               <InputS
                 placeholder="ex) 웹 페이지의 서버 개발 담당"
                 style={
-                  errors.roleDescription ? { border: "2px solid #ff0000" } : {}
+                  errors.roleDescription ? { borderBottom: "2px solid #ff0000" } : {}
                 }
                 {...register("roleDescription", { required: true })}
               />
@@ -175,7 +174,7 @@ function Form() {
                 placeholder="ex) 상품 관리 시스템"
                 style={
                   errors.projectDescription
-                    ? { border: "2px solid #ff0000" }
+                    ? { borderBottom: "2px solid #ff0000" }
                     : {}
                 }
                 {...register("projectDescription", { required: true })}
@@ -189,7 +188,7 @@ function Form() {
               <InputS
                 placeholder="ex) 정규직 or 계약직 or 프리랜서"
                 style={
-                  errors.recruitmentType ? { border: "2px solid #ff0000" } : {}
+                  errors.recruitmentType ? { borderBottom: "2px solid #ff0000" } : {}
                 }
                 {...register("recruitmentType", { required: true })}
               />
@@ -199,7 +198,7 @@ function Form() {
             </InputDiv>
           </BoxFlex>
         </div>
-        <Hr />
+
         <div>
           <BoxBlock>
             <Label>최소 필요 연차</Label>
@@ -256,7 +255,7 @@ function Form() {
             </Error>
           </BoxBlock>
         </div>
-        <Hr />
+
         <div>
           <BoxBlock>
             <Label>필수적 기술 스택</Label>
@@ -264,7 +263,7 @@ function Form() {
               placeholder="ex) Spring, Spring Boot, JPA, Thymeleaf, Lombok, MySQL"
               style={
                 errors.essentialSkillStack
-                  ? { border: "2px solid #ff0000" }
+                  ? { borderBottom: "2px solid #ff0000" }
                   : {}
               }
               {...register("essentialSkillStack", { required: true })}
@@ -278,7 +277,7 @@ function Form() {
             <InputL
               placeholder="ex) AWS EC2, React.JS"
               style={
-                errors.optionalSkillStack ? { border: "2px solid #ff0000" } : {}
+                errors.optionalSkillStack ? { borderBottom: "2px solid #ff0000" } : {}
               }
               {...register("optionalSkillStack", { required: true })}
             />
@@ -287,14 +286,14 @@ function Form() {
             )}
           </BoxBlock>
         </div>
-        <Hr />
+
         <div>
           <BoxFlex>
             <InputDiv>
               <Label>채용 공고 상 키워드</Label>
               <InputS
                 placeholder="ex) Spring Developer"
-                style={errors.keywords ? { border: "2px solid #ff0000" } : {}}
+                style={errors.keywords ? { borderBottom: "2px solid #ff0000" } : {}}
                 {...register("keywords", { required: true })}
               />
               {errors.keywords && (
@@ -306,7 +305,7 @@ function Form() {
               <InputS
                 placeholder="ex) 연 2500만원"
                 style={
-                  errors.maximumSalary ? { border: "2px solid #ff0000" } : {}
+                  errors.maximumSalary ? { borderBottom: "2px solid #ff0000" } : {}
                 }
                 {...register("maximumSalary", { required: true })}
               />
@@ -319,7 +318,7 @@ function Form() {
             <Label>기타 코멘트</Label>
             <InputM
               placeholder="ex) 학사 졸업자 우대"
-              style={errors.etcComment ? { border: "2px solid #ff0000" } : {}}
+              style={errors.etcComment ? { borderBottom: "2px solid #ff0000" } : {}}
               {...register("etcComment", { required: true })}
             />
             {errors.etcComment && <Error>기타 코멘트를 입력해 주세요.</Error>}

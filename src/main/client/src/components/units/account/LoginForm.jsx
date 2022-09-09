@@ -3,8 +3,9 @@ import { post } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import Logo from "components/commons/Logo";
+import { InputS, ErrDiv, Error } from "styles/Form";
 import { Button } from "styles/Button";
-import { Section, Input, SendDiv, Error } from "./LoginForm.style";
+import { Section, Div, BoxFlex } from "./LoginForm.style";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -47,21 +48,28 @@ function LoginForm() {
 
   return (
     <Section>
-      <div style={{ marginTop: "70px" }}>
+      <Div>
         <Logo fontSize={"30px"} />
-        <Input placeholder="아이디" onChange={handleId} />
-        <div style={{ height: "16px" }}>
-          {idOver && <Error>존재하지 않는 아이디 입니다.</Error>}
-        </div>
-        <Input type="password" placeholder="비밀번호" onChange={handlePwd} />
-        <div style={{ height: "16px" }}>
+        <InputS
+          style={{ margin: "40px 0 10px" }}
+          placeholder="아이디"
+          onChange={handleId}
+        />
+        <ErrDiv>{idOver && <Error>존재하지 않는 아이디 입니다.</Error>}</ErrDiv>
+        <InputS
+          style={{ margin: "20px 0 10px" }}
+          type="password"
+          placeholder="비밀번호"
+          onChange={handlePwd}
+        />
+        <ErrDiv>
           {passwdOver && <Error>존재하지 않는 패스워드 입니다.</Error>}
-        </div>
-        <SendDiv>
+        </ErrDiv>
+        <BoxFlex>
           <Button onClick={() => PostLogin()}>로그인</Button>
           <Button onClick={() => navigate("/register")}>회원가입</Button>
-        </SendDiv>
-      </div>
+        </BoxFlex>
+      </Div>
     </Section>
   );
 }

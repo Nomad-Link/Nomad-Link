@@ -12,10 +12,10 @@ import {
   InputDiv,
   Title,
   Label,
-  Input,
+  InputS,
   Select,
   Error,
-} from "./Form.style";
+} from "styles/Form";
 import TechStack from "components/units/resume/TechStack";
 
 function Form({ type, title, url }) {
@@ -177,7 +177,7 @@ function Form({ type, title, url }) {
         <BoxFlex>
           <InputDiv>
             <Label>이름</Label>
-            <Input
+            <InputS
               placeholder="ex) 홍길동"
               style={errors.realName ? { border: "2px solid #ff0000" } : {}}
               {...(type === "update"
@@ -189,7 +189,7 @@ function Form({ type, title, url }) {
           </InputDiv>
           <InputDiv>
             <Label>연락처</Label>
-            <Input
+            <InputS
               placeholder="ex) 010-1234-5678"
               style={errors.phoneNumber ? { border: "2px solid #ff0000" } : {}}
               {...(type === "update"
@@ -211,7 +211,7 @@ function Form({ type, title, url }) {
         <BoxFlex>
           <InputDiv>
             <Label>이메일</Label>
-            <Input
+            <InputS
               placeholder="ex) qwer1234@abc.com"
               style={errors.email ? { border: "2px solid #ff0000" } : {}}
               {...(type === "update"
@@ -232,7 +232,7 @@ function Form({ type, title, url }) {
           </InputDiv>
           <InputDiv>
             <Label>GitHub 링크</Label>
-            <Input
+            <InputS
               placeholder="ex) https://github.com/xxxx"
               style={errors.githubUrl ? { border: "2px solid #ff0000" } : {}}
               {...(type === "update"
@@ -246,7 +246,7 @@ function Form({ type, title, url }) {
         <BoxFlex>
           <InputDiv>
             <Label>Blog 링크</Label>
-            <Input
+            <InputS
               placeholder="ex) https://velog.io/@xxxx"
               style={errors.blogUrl ? { border: "2px solid #ff0000" } : {}}
               {...(type === "update"
@@ -258,7 +258,7 @@ function Form({ type, title, url }) {
           </InputDiv>
           <InputDiv>
             <Label>포트폴리오 링크</Label>
-            <Input
+            <InputS
               placeholder="ex) https://www.notion.so/ko-kr/xxxx"
               style={errors.portfolioUrl ? { border: "2px solid #ff0000" } : {}}
               {...(type === "update"

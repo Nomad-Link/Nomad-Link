@@ -3,6 +3,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 import { Section, Box, Img, Title, HashTag, MsLoading } from "./Slide.style";
 
 function Slide() {
@@ -40,6 +41,7 @@ function Slide() {
     );
   }
 
+  const navigate = useNavigate();
   const [ent, setEnt] = useState([]);
 
   useEffect(() => {
@@ -54,7 +56,7 @@ function Slide() {
     <Section>
       {ent[0] ? (
         <Slider {...settings}>
-          <Box>
+          <Box onClick={() => navigate(`/notice/${ent[0].id}`)}>
             <Img src={require("./SlideSample1.jpg")} alt="" />
             <Title>
               <h1>{ent[0].enterpriseName}</h1>
@@ -66,7 +68,7 @@ function Slide() {
               </HashTag>
             </Title>
           </Box>
-          <Box>
+          <Box onClick={() => navigate(`/notice/${ent[1].id}`)}>
             <Img src={require("./SlideSample2.jpg")} alt="" />
             <Title>
               <h1>{ent[1].enterpriseName}</h1>
@@ -78,7 +80,7 @@ function Slide() {
               </HashTag>
             </Title>
           </Box>
-          <Box>
+          <Box onClick={() => navigate(`/notice/${ent[2].id}`)}>
             <Img src={require("./SlideSample3.jpg")} alt="" />
             <Title>
               <h1>{ent[2].enterpriseName}</h1>

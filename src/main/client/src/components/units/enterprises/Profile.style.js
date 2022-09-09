@@ -7,6 +7,12 @@ export const Div = styled.div`
   margin: 0 auto 20px;
   background-color: ${({ theme }) => theme.bgProfile};
   border: 1px solid ${({ theme }) => theme.textOpacity};
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.bgProfileHover};
+    color: ${({ theme }) => theme.textIndexHover};
+  }
 `;
 export const ProfileImage = styled.img`
   width: 310px;
