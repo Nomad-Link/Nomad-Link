@@ -2,6 +2,7 @@ package NomadLink.WebService.api.member;
 
 import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
+import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.service.ResumeService;
 import NomadLink.WebService.session.SessionConst;
 import NomadLink.WebService.testData.SearchTechStack;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +27,7 @@ public class ResumeApiController {
 
     private final ResumeService resumeService;
     private final SearchTechStackRepository searchTechStackRepository;
+    private final MemberRepository memberRepository;
 
     @ResponseBody
     @PostMapping("/api/mypage/resume")
@@ -41,7 +44,15 @@ public class ResumeApiController {
         resume.setRole(resumeRequestDto.getRole());
         resume.setNation(resumeRequestDto.getNation());
         resume.setEmployeeType(resumeRequestDto.getEmployeeType());
-//        resume.setTechStacks(resumeRequestDto.getTechStacks());
+        String[] techStacksArray = resumeRequestDto.getTechStacks();
+        ArrayList techStacksList = new ArrayList(Arrays.asList(techStacksArray)); // String[]을 List로 변환
+        techStacksList.stream()
+                .map(techStack -> new TechStack((String) techStack))
+                .collect(Collectors.toList());
+        resume.setTechStacks(techStacksList);
+
+        Member findedMember = memberRepository.findOne(loginMember.getId()); // member 테이블에도 techStacks 저장
+        findedMember.setTechStacks(techStacksList);
 
         if (loginMember != null) {
             resume.setMember(loginMember);
@@ -116,7 +127,7 @@ public class ResumeApiController {
         private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
         private Nation nation;
         private EmployeeType employeeType;
-//        private String techStacks;
+        private String[] techStacks;
 
         public ResumeResponseDto(Resume resume) {
             this.realName = resume.getRealName();
