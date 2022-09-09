@@ -25,9 +25,6 @@ public class Resume {
     private String blogUrl;
     private String portfolioUrl;
 
-//    @Lob
-//    private String techStacks;
-
     @Enumerated(EnumType.STRING)
     private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
 
@@ -40,6 +37,9 @@ public class Resume {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @OneToMany(mappedBy = "resume")
+    private List<TechStack> techStacks = new ArrayList<>();
 
     //== 연관관계 편의 메서드==// (양방향 연관관계인 경우에만 사용)
     public void setMember(Member member) {

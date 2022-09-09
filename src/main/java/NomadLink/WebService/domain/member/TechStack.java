@@ -27,4 +27,15 @@ public class TechStack {
 
     private String techName;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "resume_id")
+    private Resume resume;
+
+    public TechStack(String techName) {
+        this.techName = techName;
+    }
+
+    public TechStack() {
+
+    }
 }

@@ -20,6 +20,6 @@ public class ResumeRequestDto {
     private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
     private Nation nation;
     private EmployeeType employeeType;
-//        private String techStacks;
+    private String[] techStacks;
 
 }
