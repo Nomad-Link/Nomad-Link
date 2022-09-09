@@ -3,15 +3,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ButtonInput } from "styles/Button";
 import {
-  Section,
   BoxFlex,
   InputDiv,
-  OptionDiv,
   Label,
-  Input,
+  InputS,
   Select,
+  ErrDiv,
   Error,
-} from "./RegisterForm.style";
+} from "styles/Form";
+import { Section, Form, OptionDiv } from "./RegisterForm.style";
 
 function RegisterForm() {
   const [idOver, setIdOver] = useState(false);
@@ -41,7 +41,7 @@ function RegisterForm() {
     try {
       const response = await post(url, data);
       console.log(response);
-      window.location.replace("/login"); // 예정 - 회원가입 성공 컴포넌트로 보내기.
+      window.location.replace("/register/complete");
     } catch (error) {
       let errCode = error.response.data.errorMessage;
       setIdOver(false);
@@ -61,7 +61,7 @@ function RegisterForm() {
 
   return (
     <Section>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <BoxFlex>
           <OptionDiv>
             <Label>국가</Label>
@@ -72,9 +72,11 @@ function RegisterForm() {
               <option value="VIETNAM">베트남</option>
               <option value="PHILIPPINE">필리핀</option>
             </Select>
-            {errors.nation?.type === "required" && (
-              <Error>국가를 입력해 주세요.</Error>
-            )}
+            <ErrDiv style={{ marginTop: "10px" }}>
+              {errors.nation?.type === "required" && (
+                <Error>국가를 입력해 주세요.</Error>
+              )}
+            </ErrDiv>
           </OptionDiv>
           <OptionDiv>
             <Label>개발 경력</Label>
@@ -86,66 +88,103 @@ function RegisterForm() {
               <option value="EIGHTTOTEN">8-10</option>
               <option value="MORETHANTEN">10 +</option>
             </Select>
-            {errors.annual?.type === "required" && (
-              <Error>경력을 입력해 주세요.</Error>
-            )}
+            <ErrDiv style={{ marginTop: "10px" }}>
+              {errors.annual?.type === "required" && (
+                <Error>경력을 입력해 주세요.</Error>
+              )}
+            </ErrDiv>
           </OptionDiv>
         </BoxFlex>
         <InputDiv>
-          <Label>연락처</Label>
-          <Input
-            style={errors.phoneNumber ? { border: "2px solid #ff0000" } : {}}
-            {...register("phoneNumber", { required: true })}
-          />
-          {errors.phoneNumber && <Error>연락처를 입력해 주세요.</Error>}
-        </InputDiv>
-        <InputDiv>
           <Label>아이디</Label>
-          <Input
+          <InputS
             style={
-              errors.userId || idOver ? { border: "2px solid #ff0000" } : {}
+              errors.userId || idOver
+                ? { borderBottom: "2px solid #ff0000" }
+                : {}
             }
             {...register("userId", { required: true })}
           />
-          {errors.userId && <Error>아이디를 입력해 주세요.</Error>}
-          {idOver && <Error>중복된 아이디가 존재합니다.</Error>}
+          <ErrDiv>
+            {errors.userId && <Error>아이디를 입력해 주세요.</Error>}
+            {idOver && <Error>중복된 아이디가 존재합니다.</Error>}
+          </ErrDiv>
         </InputDiv>
         <InputDiv>
           <Label>비밀번호</Label>
-          <Input
+          <InputS
             type="password"
             style={
               errors.password || passwdOver
-                ? { border: "2px solid #ff0000" }
+                ? { borderBottom: "2px solid #ff0000" }
                 : {}
             }
             {...register("password", { required: true })}
           />
           {errors.password && <Error>비밀번호를 입력해 주세요.</Error>}
-          {passwdOver && (
-            <Error>
-              비밀번호는 4~15자리의 숫자,문자,특수문자로 이루어져야합니다.
-            </Error>
-          )}
+          <ErrDiv>
+            {passwdOver && (
+              <Error>
+                비밀번호는 4~15자리의 숫자,문자,특수문자로 이루어져야합니다.
+              </Error>
+            )}
+          </ErrDiv>
         </InputDiv>
         <InputDiv>
           <Label>이름</Label>
-          <Input
-            style={errors.realName ? { border: "2px solid #ff0000" } : {}}
+          <InputS
+            style={errors.realName ? { borderBottom: "2px solid #ff0000" } : {}}
             {...register("realName", { required: true })}
           />
-          {errors.realName && <Error>이름을 입력해 주세요.</Error>}
+          <ErrDiv>
+            {errors.realName && <Error>이름을 입력해 주세요.</Error>}
+          </ErrDiv>
+        </InputDiv>
+        <InputDiv>
+          <Label>연락처</Label>
+          <InputS
+            style={
+              errors.phoneNumber ? { borderBottom: "2px solid #ff0000" } : {}
+            }
+            {...register("phoneNumber", {
+              required: true,
+              pattern: /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/,
+            })}
+          />
+          <ErrDiv>
+            {errors.phoneNumber && errors.phoneNumber.type === "required" && (
+              <Error>연락처를 입력해 주세요.</Error>
+            )}
+            {errors.phoneNumber && errors.phoneNumber.type === "pattern" && (
+              <Error>연락처 형식에 맞게 작성해 주세요. (지역번호 X)</Error>
+            )}
+          </ErrDiv>
         </InputDiv>
         <InputDiv>
           <Label>이메일</Label>
-          <Input
-            style={errors.email ? { border: "2px solid #ff0000" } : {}}
-            {...register("email", { required: true })}
+          <InputS
+            style={errors.email ? { borderBottom: "2px solid #ff0000" } : {}}
+            {...register("email", {
+              required: true,
+              pattern:
+                /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
+            })}
           />
-          {errors.email && <Error>이메일을 입력해 주세요.</Error>}
+          <ErrDiv>
+            {errors.email && errors.email.type === "required" && (
+              <Error>이메일을 작성해 주세요.</Error>
+            )}
+            {errors.email && errors.email.type === "pattern" && (
+              <Error>이메일 형식에 맞게 작성해 주세요.</Error>
+            )}
+          </ErrDiv>
         </InputDiv>
-        <ButtonInput type="submit" value="가입하기" />
-      </form>
+        <ButtonInput
+          style={{ marginBottom: "0" }}
+          type="submit"
+          value="가입하기"
+        />
+      </Form>
     </Section>
   );
 }

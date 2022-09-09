@@ -14,6 +14,7 @@ import RouteEnterprise from "pages/enterprise/RouteEnterprise";
 import RoutePrivate from "pages/private/RoutePrivate";
 import RouteMyPage from "pages/mypage/RouteMyPage";
 import AccessControl from "hooks/AccessControl";
+import RegisterComplete from "pages/account/RegisterComplete";
 
 function Desktop() {
   const [ThemeMode, toggleTheme] = useTheme();
@@ -47,17 +48,22 @@ function Desktop() {
             }
           />
           <Route
+            path="/register/complete"
+            element={
+              cookies.id ? (
+                <AccessControl message={null} replace={""} />
+              ) : (
+                <RegisterComplete />
+              )
+            }
+          />
+          <Route
             path="/mypage/*"
             element={
               cookies.id ? (
                 <RouteMyPage />
               ) : (
-                <AccessControl
-                  message={
-                    "로그인 시 사용 가능한 기능입니다.\n로그인을 해주세요."
-                  }
-                  replace={"login"}
-                />
+                <AccessControl message={null} replace={"login"} />
               )
             }
           />

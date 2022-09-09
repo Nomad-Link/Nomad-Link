@@ -1,3 +1,5 @@
+import { Main } from "styles/Pages";
+
 function Access({ message, replace }) {
   if (message === null) {
     window.location.replace(`/${replace}`);
@@ -8,9 +10,9 @@ function Access({ message, replace }) {
   window.location.replace(`/${replace}`);
 
   return (
-    <div>
-      <h1>Login Access</h1>
-    </div>
+    <Main>
+      <h1 style={{margin: "200px"}}>Loading ...</h1>
+    </Main>
   );
 }
 

@@ -6,7 +6,7 @@ import { TbSearch } from "react-icons/tb";
 import { FiMenu } from "react-icons/fi";
 import { IoPersonSharp } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa";
-import {ButtonMini} from "styles/Button";
+import { ButtonMini } from "styles/Button";
 import {
   ResHeader,
   HeaderDiv,
@@ -27,17 +27,15 @@ function Header({ mode }) {
   const [testDiv, setTestDiv] = useState(false);
 
   async function Logout() {
-    window.location.replace("/");
     const url = "/api/logout";
 
     try {
       const response = await post(url); // eslint-disable-line no-unused-vars
-      removeCookie("id");
+      removeCookie("id", {path: "/"});
+      window.location.replace("/");
     } catch (error) {
       console.error(error);
     }
-    removeCookie("id");
-    window.location.replace("/");
   }
 
   function ActTestLink() {

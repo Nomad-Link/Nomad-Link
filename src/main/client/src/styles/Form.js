@@ -13,9 +13,8 @@ export const BoxFlex = styled.div`
 export const BoxBlock = styled.div`
   margin: 10px 55px;
 `;
-export const Hr = styled.hr`
-  margin: 25px 35px;
-  border: 1px solid #000;
+export const BoxSelect = styled.div`
+  margin-right: 22px;
 `;
 export const InputDiv = styled.div`
   text-align: center;
@@ -41,15 +40,31 @@ export const InputS = styled.input`
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   border: none;
-  border-bottom: 2px solid ${({ theme }) => theme.bgUnit};
+  border-bottom: 2px solid ${({ theme }) => theme.textOpacity};
   border-radius: 4px;
   outline: none;
   transition: all 0.3s;
 
   ::placeholder {
     color: ${({ theme }) => theme.textSection};
-    opacity: 0.7;
+    opacity: 0.5;
   }
+  &:focus {
+    border-bottom: 2px solid #4641d9;
+  }
+`;
+export const Select = styled.select`
+  width: 150px;
+  height: 36px;
+  background-color: ${({ theme }) => theme.bgUnit};
+  padding-left: 10px;
+  font-size: 15px;
+  border: none;
+  border-bottom: 2px solid ${({ theme }) => theme.textOpacity};
+  border-radius: 4px;
+  outline: 0;
+  transition: all 0.3s;
+  
   &:focus {
     border-bottom: 2px solid #4641d9;
   }
@@ -67,12 +82,12 @@ export const InputL = styled.textarea`
   background-color: ${({ theme }) => theme.bgUnit};
   margin: auto;
   margin-bottom: 15px;
-  padding-top: 5px;
+  padding-top: 7px;
   padding-left: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   border: none;
-  border-bottom: 2px solid ${({ theme }) => theme.bgUnit};
+  border-bottom: 2px solid ${({ theme }) => theme.textOpacity};
   border-radius: 4px;
   outline: none;
   resize: none;
@@ -80,11 +95,14 @@ export const InputL = styled.textarea`
 
   ::placeholder {
     color: ${({ theme }) => theme.textSection};
-    opacity: 0.7;
+    opacity: 0.5;
   }
   &:focus {
     border-bottom: 2px solid #4641d9;
   }
+`;
+export const ErrDiv = styled.div`
+  height: 16px;
 `;
 export const Error = styled.p`
   color: #ff0000;
