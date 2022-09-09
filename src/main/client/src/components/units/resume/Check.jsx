@@ -138,7 +138,7 @@ function Mypage() {
                 alt=""
                 src={require("components/units/developers/testimage.jpg")}
               />
-              <Button
+              <Button style={{ fontSize: "18px" }}
                 onClick={() => window.location.replace("/mypage/resume/update")}
               >
                 이력서 수정

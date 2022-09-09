@@ -8,16 +8,27 @@ function TechStack() {
   const [stack, setStack] = useState([]);
   const [error, setError] = useState(false);
 
+  // const testArr = [
+  //   { techName: "apple" },
+  //   { techName: "banana" },
+  //   { techName: "grape" },
+  //   { techName: "orange" },
+  //   { techName: "tomato" },
+  // ];
+
   useEffect(() => {
     const url = `/api/techstack`;
     axios
       .get(url)
       .then((response) => setStack(response.data))
       .catch((error) => console.log(error));
-    dispatch({
-      type: `SaveStack`,
-      item: "Html",
-    });
+
+    // for (let index in testArr) {
+    //   dispatch({
+    //     type: `SaveStack`,
+    //     item: testArr[index].techName,
+    //   });
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

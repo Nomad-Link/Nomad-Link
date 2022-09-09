@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { ButtonMini } from "styles/Button";
 import {
   Div,
   ProfileImage,
@@ -7,7 +8,6 @@ import {
   Title,
   Name,
   Nation,
-  MoreButton,
   Role,
   TechStackBox,
   TechName,
@@ -28,9 +28,9 @@ function Profile({ unitColor, realName, nation, role, techStacks }) {
             <Name>{realName}</Name>
             <Nation>{nation}</Nation>
           </Title>
-          <MoreButton onClick={() => navigate(`/${realName}`)}>
-            자세히 보기
-          </MoreButton>
+          <ButtonMini onClick={() => navigate(`/${realName}`)}>
+            More
+          </ButtonMini>
         </TitleBox>
         <Role>{role}</Role>
         <TechStackBox>

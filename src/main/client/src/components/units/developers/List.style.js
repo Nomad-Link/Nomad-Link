@@ -5,5 +5,6 @@ export const Section = styled.section`
   text-align: center;
   margin: 0 auto;
   padding-top: 10px;
+  padding-bottom: 10px;
   background-color: ${(props)=> (props.bgColor)};
 `;

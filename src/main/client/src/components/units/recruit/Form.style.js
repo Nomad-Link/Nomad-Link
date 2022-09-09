@@ -27,7 +27,7 @@ export const Title = styled.h2`
 export const Label = styled.label`
   display: block;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 18px;
 `;
 export const InputS = styled.input`
@@ -36,16 +36,22 @@ export const InputS = styled.input`
   background-color: ${({ theme }) => theme.bgUnit};
   margin: auto;
   margin-bottom: 15px;
+  padding-top: 3px;
   padding-left: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
-  border: 2px solid #000;
-  border-radius: 10px;
+  border: none;
+  border-bottom: 2px solid ${({ theme }) => theme.bgUnit};
+  border-radius: 4px;
   outline: none;
+  transition: all 0.3s;
 
   ::placeholder {
     color: ${({ theme }) => theme.textSection};
     opacity: 0.7;
+  }
+  &:focus {
+    border-bottom: 2px solid #4641d9;
   }
 `;
 export const InputM = styled(InputS)`
@@ -61,18 +67,23 @@ export const InputL = styled.textarea`
   background-color: ${({ theme }) => theme.bgUnit};
   margin: auto;
   margin-bottom: 15px;
-  padding-top: 10px;
+  padding-top: 5px;
   padding-left: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
-  border: 2px solid #000;
-  border-radius: 10px;
-  resize: none;
+  border: none;
+  border-bottom: 2px solid ${({ theme }) => theme.bgUnit};
+  border-radius: 4px;
   outline: none;
+  resize: none;
+  transition: all 0.3s;
 
   ::placeholder {
     color: ${({ theme }) => theme.textSection};
     opacity: 0.7;
+  }
+  &:focus {
+    border-bottom: 2px solid #4641d9;
   }
 `;
 export const Error = styled.p`

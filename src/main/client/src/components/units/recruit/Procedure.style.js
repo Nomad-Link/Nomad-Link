@@ -15,9 +15,9 @@ export const Box = styled.div`
 export const Circle = styled.div`
   width: 30px;
   height: 30px;
-  text-align: center;
-  font-size: 24px;
+  font-size: 25px;
   font-weight: bold;
+  line-height: 27px;
   background-color: #b778ff;
   color: #fff;
   border-radius: 100%;

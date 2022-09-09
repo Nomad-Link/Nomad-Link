@@ -1,6 +1,7 @@
 import { MainWide } from "styles/Pages";
 import HelmetAsync from "hooks/HelmetAsync";
 import BannerSlim from "components/commons/BannerSlim";
+import Information from "components/units/enterprises/Information";
 
 function Enterprise() {
   return (
@@ -16,6 +17,7 @@ function Enterprise() {
         button={"폼 작성하기"}
         link={"enterprise/recruit/form"}
       />
+      <Information />
     </MainWide>
   );
 }

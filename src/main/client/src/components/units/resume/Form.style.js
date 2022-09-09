@@ -45,7 +45,7 @@ export const Input = styled.input`
 
   ::placeholder {
     color: ${({ theme }) => theme.textSection};
-    opacity: 0.7;
+    opacity: 0.5;
   }
 `;
 export const Select = styled.select`

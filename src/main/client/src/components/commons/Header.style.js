@@ -74,10 +74,8 @@ export const MenuIcon = styled.li`
   list-style: none;
   margin: auto 5px;
   padding: 10px;
-  border-radius: 15px;
   font-size: 18px;
   font-weight: bold;
-  transition: all 0.2s;
 
   .react-icon {
     vertical-align: middle;
@@ -89,7 +87,6 @@ export const MenuIcon = styled.li`
   }
 
   &:hover {
-    color: white;
-    background-color: #252528;
+    color: #4641d9;
   }
 `;
