@@ -27,9 +27,8 @@ export const Div = styled.div`
 export const Box = styled.div`
   display: flex;
   padding-left: 10px;
-  margin-right: 5px;
+  margin: 3px;
   border-radius: 15px;
-  transition: all 0.2s;
   z-index: 2000;
 
   .react-caret-icon {
@@ -39,8 +38,8 @@ export const Box = styled.div`
   }
 
   &:hover {
-    color: white;
-    background-color: #252528;
+    background-color: #8e89ff;
+    color: #000;
   }
 `;
 export const SpanId = styled.span`
@@ -56,7 +55,8 @@ export const Tb = styled.p`
   border-bottom: 1px solid ${({ theme }) => theme.textOpacity};
 
   &:hover {
-    color: white;
-    background-color: #252528;
+    background-color: #8e89ff;
+    color: #000;
+    border-bottom: 1px solid #8e89ff;
   }
 `;

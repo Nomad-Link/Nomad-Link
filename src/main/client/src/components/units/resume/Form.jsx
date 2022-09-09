@@ -66,6 +66,7 @@ function Form({ type, title, url }) {
       role: data.role,
       nation: data.nation,
       employeeType: data.employeeType,
+      techStacks: initialState.techStack,
     };
     formData(ResumeRequestDto);
     window.location.replace("/mypage/resume");
@@ -269,12 +270,12 @@ function Form({ type, title, url }) {
           </InputDiv>
         </BoxFlex>
         <TechStack />
-        {/* <textarea
+        <textarea
           value={JSON.stringify(initialState.techStack, null, 5)}
           rows="15"
           cols="25"
           readOnly
-        /> */}
+        />
         <ButtonInput type="submit" />
       </form>
     </Section>

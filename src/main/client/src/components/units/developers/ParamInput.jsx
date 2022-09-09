@@ -31,13 +31,15 @@ function ParamInput() {
     }
   };
 
-  // const SetInput = () => {
-  //   dispatch({
-  //     type: `SetInput`,
-  //     nation: nation,
-  //     employeeType: employeeType,
-  //   });
-  // };
+  function SetInput() {
+    dispatch({
+      type: `SetInput`,
+      nation: nation,
+      employeeType: employeeType,
+      searchParams: searchParams,
+    });
+  }
+
   return (
     <Section>
       <Select onChange={handleNation}>
@@ -59,14 +61,7 @@ function ParamInput() {
       />
       <TbSearch
         className="react-search-param-icon"
-        onClick={() =>
-          dispatch({
-            type: `SetInput`,
-            nation: nation,
-            employeeType: employeeType,
-            searchParams: searchParams,
-          })
-        }
+        onClick={() => SetInput()}
       />
     </Section>
   );

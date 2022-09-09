@@ -13,6 +13,20 @@ export const Section = styled.section`
     font-size: 35px;
     margin: -20px 0 20px;
   }
+
+  animation: 0.7s ease-in-out loadEffect;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+
+  @keyframes loadEffect {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 export const Circle = styled.div`
   position: absolute;
@@ -60,21 +74,22 @@ export const Circle = styled.div`
   }
 
   li:nth-child(1) {
-    left: 25%;
+    left: 30%;
     width: 120px;
     height: 120px;
+    animation-duration: 7.5s;
   }
   li:nth-child(2) {
     left: -3%;
     width: 195px;
     height: 195px;
-    animation-duration: 9s;
+    animation-duration: 8.25s;
   }
   li:nth-child(3) {
-    left: 30%;
+    left: 35%;
     width: 150px;
     height: 150px;
-    animation-duration: 3s;
+    animation-duration: 3.5s;
   }
   li:nth-child(4) {
     left: 70%;
@@ -83,37 +98,37 @@ export const Circle = styled.div`
     animation-duration: 4s;
   }
   li:nth-child(5) {
-    left: 65%;
-    width: 70px;
-    height: 70px;
-    animation-duration: 5s;
+    left: 60%;
+    width: 90px;
+    height: 90px;
+    animation-duration: 3.75s;
   }
   li:nth-child(6) {
-    left: 75%;
+    left: 80%;
     width: 80px;
     height: 80px;
-    animation-duration: 6s;
+    animation-duration: 5.5s;
   }
   li:nth-child(7) {
     left: 90%;
     width: 210px;
     height: 210px;
-    animation-duration: 11s;
+    animation-duration: 6s;
   }
   li:nth-child(8) {
     left: 20%;
     width: 250px;
     height: 250px;
-    animation-duration: 7s;
+    animation-duration: 6.5s;
   }
   li:nth-child(9) {
-    left: 35%;
+    left: 40%;
     width: 135px;
     height: 135px;
-    animation-duration: 9s;
+    animation-duration: 5.75s;
   }
   li:nth-child(10) {
-    left: 85%;
+    left: 97%;
     width: 145px;
     height: 145px;
     animation-duration: 7s;
@@ -122,13 +137,13 @@ export const Circle = styled.div`
     left: 55%;
     width: 115px;
     height: 115px;
-    animation-duration: 12s;
+    animation-duration: 11.5s;
   }
   li:nth-child(12) {
     left: 65%;
     width: 130px;
     height: 130px;
-    animation-duration: 11s;
+    animation-duration: 8.5s;
   }
   li:nth-child(13) {
     left: 25%;
@@ -137,28 +152,28 @@ export const Circle = styled.div`
     animation-duration: 5s;
   }
   li:nth-child(14) {
-    left: 5%;
+    left: 10%;
     width: 140px;
     height: 140px;
-    animation-duration: 6s;
+    animation-duration: 5.25s;
   }
   li:nth-child(15) {
     left: 75%;
     width: 210px;
     height: 210px;
-    animation-duration: 4s;
+    animation-duration: 4.5s;
   }
   li:nth-child(16) {
-    left: 65%;
+    left: 50%;
     width: 200px;
     height: 200px;
-    animation-duration: 7s;
+    animation-duration: 6.25s;
   }
   li:nth-child(17) {
     left: 5%;
     width: 220px;
     height: 220px;
-    animation-duration: 10s;
+    animation-duration: 9.5s;
   }
   li:nth-child(18) {
     left: 45%;

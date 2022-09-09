@@ -6,7 +6,7 @@ export const Section = styled.section`
   background-size: 100%;
   margin: 0;
   animation: 0.7s ease-in-out loadEffect;
-  animation-delay: 0.3s;
+  animation-delay: 0.4s;
   animation-fill-mode: forwards;
   opacity: 0;
 
