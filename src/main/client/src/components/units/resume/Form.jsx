@@ -66,10 +66,10 @@ function Form({ type, title, url }) {
       role: data.role,
       nation: data.nation,
       employeeType: data.employeeType,
-      techStacks: initialState.techStack,
+      techStacks: JSON.stringify(initialState.techStack),
     };
     formData(ResumeRequestDto);
-    window.location.replace("/mypage/resume");
+    // window.location.replace("/mypage/resume");
   };
 
   async function formData(data) {
@@ -276,6 +276,7 @@ function Form({ type, title, url }) {
           cols="25"
           readOnly
         />
+        <p>{JSON.stringify(initialState.techStack)}</p>
         <ButtonInput type="submit" />
       </form>
     </Section>
