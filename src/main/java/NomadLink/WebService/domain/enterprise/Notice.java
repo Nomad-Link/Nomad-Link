@@ -29,7 +29,7 @@ public class Notice {
     private String textContent;
 
     @OneToMany(mappedBy = "notice")
-    private List<TechStack> techStacks = new ArrayList<>();
+    private List<NoticeTechStack> techStacks = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private Annual annual;
@@ -44,7 +44,7 @@ public class Notice {
     private Application application;
 
     //== 연관관계 편의 메서드==// (양방향 연관관계인 경우에만 사용)
-    public void setTechStack(TechStack techStack) {
+    public void setTechStack(NoticeTechStack techStack) {
         techStacks.add(techStack);
         techStack.setNotice(this);
     }

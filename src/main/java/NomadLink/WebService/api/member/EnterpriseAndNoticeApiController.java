@@ -1,6 +1,7 @@
 package NomadLink.WebService.api.member;
 
 import NomadLink.WebService.domain.enterprise.Notice;
+import NomadLink.WebService.domain.enterprise.NoticeTechStack;
 import NomadLink.WebService.domain.member.Annual;
 import NomadLink.WebService.domain.member.TechStack;
 import NomadLink.WebService.repository.member.NoticeRepository;
@@ -58,7 +59,7 @@ public class EnterpriseAndNoticeApiController {
 
         private String techName;
 
-        public TechStackResponseDto(TechStack techStack) {
+        public TechStackResponseDto(NoticeTechStack techStack) {
             techName = techStack.getTechName();
         }
 

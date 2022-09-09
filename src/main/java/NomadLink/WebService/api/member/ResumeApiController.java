@@ -28,6 +28,7 @@ public class ResumeApiController {
     private final ResumeService resumeService;
     private final SearchTechStackRepository searchTechStackRepository;
     private final MemberRepository memberRepository;
+    private final EntityManager em;
 
     @ResponseBody
     @PostMapping("/api/mypage/resume")
@@ -44,15 +45,25 @@ public class ResumeApiController {
         resume.setRole(resumeRequestDto.getRole());
         resume.setNation(resumeRequestDto.getNation());
         resume.setEmployeeType(resumeRequestDto.getEmployeeType());
+
         String[] techStacksArray = resumeRequestDto.getTechStacks();
         ArrayList techStacksList = new ArrayList(Arrays.asList(techStacksArray)); // String[]을 List로 변환
         techStacksList.stream()
                 .map(techStack -> new TechStack((String) techStack))
                 .collect(Collectors.toList());
-        resume.setTechStacks(techStacksList);
+//        resume.setTechStacks(techStacksList);
+
+        techStacksList.stream()
+                .forEach(t -> em.persist(t));
 
         Member findedMember = memberRepository.findOne(loginMember.getId()); // member 테이블에도 techStacks 저장
-        findedMember.setTechStacks(techStacksList);
+//        findedMember.setTechStacks(techStacksList);
+
+        techStacksList.stream()
+                .forEach(t -> findedMember.setTechStack((TechStack) t));
+
+        techStacksList.stream()
+                .forEach(t -> resume.setTechStack((TechStack) t));
 
         if (loginMember != null) {
             resume.setMember(loginMember);
