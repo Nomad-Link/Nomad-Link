@@ -1,6 +1,7 @@
 package NomadLink.WebService.testData;
 
 import NomadLink.WebService.domain.member.*;
+import NomadLink.WebService.repository.member.ResumeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,7 @@ public class MemberAndTechStackDataInit {
     static class InitService {
 
         private final EntityManager em;
+        private final ResumeRepository resumeRepository;
 
         public void dbInit1() {
             //== member1 start ==//
