@@ -14,6 +14,7 @@ public class ResumeRequestDto {
     private String email;
     private String age;
     private Gender gender;
+    private String developerIntroduction;
     private String githubUrl;
     private String blogUrl;
     private String portfolioUrl;
