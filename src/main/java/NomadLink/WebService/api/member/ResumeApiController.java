@@ -4,6 +4,7 @@ import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.service.ResumeService;
+import NomadLink.WebService.service.TechStackService;
 import NomadLink.WebService.session.SessionConst;
 import NomadLink.WebService.testData.SearchTechStack;
 import NomadLink.WebService.testData.SearchTechStackRepository;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,7 +30,7 @@ public class ResumeApiController {
     private final ResumeService resumeService;
     private final SearchTechStackRepository searchTechStackRepository;
     private final MemberRepository memberRepository;
-    private final EntityManager em;
+    private final TechStackService techStackService;
 
     @ResponseBody
     @PostMapping("/api/mypage/resume")
@@ -46,23 +48,25 @@ public class ResumeApiController {
         resume.setNation(resumeRequestDto.getNation());
         resume.setEmployeeType(resumeRequestDto.getEmployeeType());
 
-        String[] techStacksArray = resumeRequestDto.getTechStacks();
-        ArrayList techStacksList = new ArrayList(Arrays.asList(techStacksArray)); // String[]을 List로 변환
-        techStacksList.stream()
+        String[] techStacks = resumeRequestDto.getTechStacks();
+        log.info("resumeRequestDto.getTechStacks() : {}",techStacks);
+        List<String> techStacksList =  Arrays.asList(techStacks); // String[]을 List로 변환
+        List<TechStack> lastTechStacksList = techStacksList.stream()
                 .map(techStack -> new TechStack((String) techStack))
                 .collect(Collectors.toList());
-//        resume.setTechStacks(techStacksList);
+        log.info("lastTechStacksList : {}",lastTechStacksList);
+//        resume.setTechStacks(lastTechStacksList);
 
-        techStacksList.stream()
-                .forEach(t -> em.persist(t));
+        lastTechStacksList.stream()
+                .forEach(t -> techStackService.saveTechStack((TechStack) t));
 
         Member findedMember = memberRepository.findOne(loginMember.getId()); // member 테이블에도 techStacks 저장
-//        findedMember.setTechStacks(techStacksList);
+//        findedMember.setTechStacks(lastTechStacksList);
 
-        techStacksList.stream()
+        lastTechStacksList.stream()
                 .forEach(t -> findedMember.setTechStack((TechStack) t));
 
-        techStacksList.stream()
+        lastTechStacksList.stream()
                 .forEach(t -> resume.setTechStack((TechStack) t));
 
         if (loginMember != null) {
@@ -74,8 +78,8 @@ public class ResumeApiController {
 
     @ResponseBody
     @GetMapping("/api/mypage/resume/get/{userId}")
-    public ResumeResponseDto resumeGet(@PathVariable String userId) {
-        Resume resume = resumeService.findOneResume(userId);
+    public ResumeResponseDto resumeGet(@PathVariable String userId, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
+        Resume resume = resumeService.findOneResume(loginMember.getId());
 
         ResumeResponseDto response = new ResumeResponseDto();
         response.setRealName(resume.getRealName());
@@ -96,8 +100,8 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume/update/{userId}")
-    public void resumeUpdate(@PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) {
-        Resume findedResume = resumeService.findOneResume(userId);
+    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) {
+        Resume findedResume = resumeService.findOneResume(loginMember.getId());
         resumeService.updateResume(findedResume, resumeRequestDto);
     }
 
