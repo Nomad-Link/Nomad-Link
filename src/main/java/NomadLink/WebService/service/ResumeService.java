@@ -42,6 +42,7 @@ public class ResumeService {
         findedResume.setEmail(resumeRequestDto.getEmail());
         findedResume.setAge(resumeRequestDto.getAge());
         findedResume.setGender(resumeRequestDto.getGender());
+        findedResume.setDeveloperIntroduction(resumeRequestDto.getDeveloperIntroduction());
         findedResume.setGithubUrl(resumeRequestDto.getGithubUrl());
         findedResume.setBlogUrl(resumeRequestDto.getBlogUrl());
         findedResume.setPortfolioUrl(resumeRequestDto.getPortfolioUrl());

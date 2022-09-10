@@ -41,6 +41,7 @@ public class ResumeApiController {
         resume.setEmail(resumeRequestDto.getEmail());
         resume.setAge(resumeRequestDto.getAge());
         resume.setGender(resumeRequestDto.getGender());
+        resume.setDeveloperIntroduction(resumeRequestDto.getDeveloperIntroduction());
         resume.setGithubUrl(resumeRequestDto.getGithubUrl());
         resume.setBlogUrl(resumeRequestDto.getBlogUrl());
         resume.setPortfolioUrl(resumeRequestDto.getPortfolioUrl());
@@ -88,6 +89,7 @@ public class ResumeApiController {
         response.setEmail(resume.getEmail());
         response.setAge(resume.getAge());
         response.setGender(resume.getGender());
+        response.setDeveloperIntroduction(resume.getDeveloperIntroduction());
         response.setGithubUrl(resume.getGithubUrl());
         response.setBlogUrl(resume.getBlogUrl());
         response.setPortfolioUrl(resume.getPortfolioUrl());
@@ -139,6 +141,7 @@ public class ResumeApiController {
         private String email;
         private String age;
         private Gender gender;
+        private String developerIntroduction;
         private String githubUrl;
         private String blogUrl;
         private String portfolioUrl;

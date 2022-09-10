@@ -21,6 +21,10 @@ public class Resume {
     private String email;
     private String age;
     private Gender gender;
+
+    @Lob
+    private String developerIntroduction;
+
     private String githubUrl;
     private String blogUrl;
     private String portfolioUrl;
