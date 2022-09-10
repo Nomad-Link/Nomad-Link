@@ -80,6 +80,7 @@ public class ResumeApiController {
     @GetMapping("/api/mypage/resume/get/{userId}")
     public ResumeResponseDto resumeGet(@PathVariable String userId, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         Resume resume = resumeService.findOneResume(loginMember.getId());
+        List<TechStack> techStacks = resumeService.findAllTechStacks(resume.getId());
 
         ResumeResponseDto response = new ResumeResponseDto();
         response.setRealName(resume.getRealName());
@@ -93,7 +94,9 @@ public class ResumeApiController {
         response.setRole(resume.getRole());
         response.setNation(resume.getNation());
         response.setEmployeeType(resume.getEmployeeType());
-//        response.setTechStacks(resume.getTechStacks());
+        response.setTechStacks(techStacks.stream()
+                                            .map(t -> new TechStackResponseDto(t))
+                                            .collect(Collectors.toList()));
 
         return response;
     }
@@ -142,7 +145,7 @@ public class ResumeApiController {
         private Role role; // 구직을 원하는 개발자의 역할 (ex - SERVER,  FRONTEND, ANDROID, IOS, AI)
         private Nation nation;
         private EmployeeType employeeType;
-        private String[] techStacks;
+        private List<TechStackResponseDto> techStacks;
 
         public ResumeResponseDto(Resume resume) {
             this.realName = resume.getRealName();
@@ -156,7 +159,17 @@ public class ResumeApiController {
             this.role = resume.getRole();
             this.nation = resume.getNation();
             this.employeeType = resume.getEmployeeType();
-//            this.techStacks = resume.getTechStacks();
+        }
+
+    }
+
+    @Data
+    static class TechStackResponseDto {
+
+        String techName;
+
+        public TechStackResponseDto(TechStack techStack) {
+            this.techName = techStack.getTechName();
         }
 
     }
