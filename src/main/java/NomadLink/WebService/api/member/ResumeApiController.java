@@ -159,6 +159,10 @@ public class ResumeApiController {
             this.role = resume.getRole();
             this.nation = resume.getNation();
             this.employeeType = resume.getEmployeeType();
+
+            this.techStacks = resume.getTechStacks().stream()
+                    .map(t -> new TechStackResponseDto(t))
+                    .collect(Collectors.toList());
         }
 
     }
