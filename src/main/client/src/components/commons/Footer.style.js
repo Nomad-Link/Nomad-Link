@@ -31,3 +31,6 @@ export const ServiceLink = styled.div`
     margin-bottom: 7px;
   }
 `;
+export const SvButton = styled.p`
+  cursor: pointer;
+`;

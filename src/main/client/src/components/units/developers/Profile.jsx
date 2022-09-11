@@ -12,25 +12,21 @@ import {
   TechStackBox,
   TechName,
 } from "./Profile.style";
+import DeveloperSample from "assets/DeveloperSample.jpg";
 
 function Profile({ unitColor, realName, nation, role, techStacks }) {
   const navigate = useNavigate();
 
   return (
     <Div unitColor={unitColor}>
-      <ProfileImage
-        alt=""
-        src={require("components/units/developers/testimage.jpg")}
-      />
+      <ProfileImage alt="" src={DeveloperSample} />
       <InformationDiv>
         <TitleBox>
           <Title>
             <Name>{realName}</Name>
             <Nation>{nation}</Nation>
           </Title>
-          <ButtonMini onClick={() => navigate(`/${realName}`)}>
-            More
-          </ButtonMini>
+          <ButtonMini onClick={() => navigate(`/${realName}`)}>More</ButtonMini>
         </TitleBox>
         <Role>{role}</Role>
         <TechStackBox>

@@ -17,6 +17,7 @@ export const Img = styled.img`
   position: relative;
 `;
 export const Title = styled.div`
+  cursor: pointer;
   position: absolute;
   z-index: 1500;
   top: 50%;

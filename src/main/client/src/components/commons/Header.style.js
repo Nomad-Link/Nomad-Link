@@ -39,6 +39,7 @@ export const SearchBox = styled.div`
   position: relative;
 
   .react-search-icon {
+    cursor: pointer;
     position: absolute;
     z-index: 1000;
     opacity: 0.7;
@@ -70,6 +71,7 @@ export const Menu = styled.ul`
   padding-left: 0;
 `;
 export const MenuIcon = styled.li`
+  cursor: pointer;
   color: ${({ theme }) => theme.textIndex};
   list-style: none;
   margin: auto 5px;

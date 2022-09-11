@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import ThemeToggle from "components/commons/ThemeToggle";
 import { useTheme } from "store/ThemeProvider";
 import { AnimatePresence } from "framer-motion";
@@ -13,7 +18,6 @@ import Notice from "pages/notice/Notice";
 import RouteEnterprise from "pages/enterprise/RouteEnterprise";
 import RoutePrivate from "pages/private/RoutePrivate";
 import RouteMyPage from "pages/mypage/RouteMyPage";
-import AccessControl from "hooks/AccessControl";
 import RegisterComplete from "pages/account/RegisterComplete";
 
 function Desktop() {
@@ -29,42 +33,22 @@ function Desktop() {
           <Route path="/" element={<Home />} />
           <Route
             path="/login"
-            element={
-              cookies.id ? (
-                <AccessControl message={null} replace={""} />
-              ) : (
-                <Login />
-              )
-            }
+            element={cookies.id ? <Navigate replace to="/" /> : <Login />}
           />
           <Route
             path="/register"
-            element={
-              cookies.id ? (
-                <AccessControl message={null} replace={""} />
-              ) : (
-                <Register />
-              )
-            }
+            element={cookies.id ? <Navigate replace to="/" /> : <Register />}
           />
           <Route
             path="/register/complete"
             element={
-              cookies.id ? (
-                <AccessControl message={null} replace={""} />
-              ) : (
-                <RegisterComplete />
-              )
+              cookies.id ? <Navigate replace to="/" /> : <RegisterComplete />
             }
           />
           <Route
             path="/mypage/*"
             element={
-              cookies.id ? (
-                <RouteMyPage />
-              ) : (
-                <AccessControl message={null} replace={"login"} />
-              )
+              cookies.id ? <RouteMyPage /> : <Navigate replace to="/login" />
             }
           />
           <Route path="/notice/*" element={<Notice />} />

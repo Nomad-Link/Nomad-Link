@@ -7,6 +7,7 @@ export const Section = styled.section`
   margin: 20px auto;
 `;
 export const Back = styled.p`
+  cursor: pointer;
   margin-top: 7px;
   font-size: 18px;
   float: right;

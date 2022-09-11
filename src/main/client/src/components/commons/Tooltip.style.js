@@ -25,6 +25,7 @@ export const Div = styled.div`
   }
 `;
 export const Box = styled.div`
+  cursor: pointer;
   display: flex;
   padding-left: 10px;
   margin: 3px;
@@ -46,6 +47,7 @@ export const SpanId = styled.span`
   margin-top: 5px;
 `;
 export const Tb = styled.p`
+  cursor: pointer;
   width: 70px;
   text-align: center;
   border: none;
