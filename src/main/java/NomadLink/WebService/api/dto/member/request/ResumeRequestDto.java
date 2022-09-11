@@ -5,10 +5,12 @@ import NomadLink.WebService.domain.member.Gender;
 import NomadLink.WebService.domain.member.Nation;
 import NomadLink.WebService.domain.member.Role;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class ResumeRequestDto {
 
+    private MultipartFile attachFile; // 이력서 사진
     private String realName; // 개발자의 실제 이름
     private String phoneNumber;
     private String email;

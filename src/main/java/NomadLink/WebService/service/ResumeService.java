@@ -2,6 +2,8 @@ package NomadLink.WebService.service;
 
 import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
+import NomadLink.WebService.file.FileStore;
+import NomadLink.WebService.file.UploadFile;
 import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.repository.member.ResumeRepository;
 import lombok.Data;
@@ -9,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +27,7 @@ public class ResumeService {
     private final ResumeRepository resumeRepository;
     private final TechStackService techStackService;
     private final MemberRepository memberRepository;
+    private final FileStore fileStore;
 
     public void saveResume(Resume resume) {
         resumeRepository.save(resume);
@@ -36,7 +41,11 @@ public class ResumeService {
         return resumeRepository.findAllTechStacks(resumeId);
     }
 
-    public void updateResume(Resume findedResume, ResumeRequestDto resumeRequestDto) {
+    public void updateResume(Resume findedResume, ResumeRequestDto resumeRequestDto) throws IOException {
+        MultipartFile file = resumeRequestDto.getAttachFile();
+        UploadFile attachFile = fileStore.storeFile(file);
+
+        findedResume.setAttachFile(attachFile);
         findedResume.setRealName(resumeRequestDto.getRealName());
         findedResume.setPhoneNumber(resumeRequestDto.getPhoneNumber());
         findedResume.setEmail(resumeRequestDto.getEmail());

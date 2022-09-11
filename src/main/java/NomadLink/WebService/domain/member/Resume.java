@@ -1,5 +1,6 @@
 package NomadLink.WebService.domain.member;
 
+import NomadLink.WebService.file.UploadFile;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,8 @@ public class Resume {
     @Column(name = "resume_id")
     private Long id;
 
+    @Embedded
+    private UploadFile attachFile; // 이력서 사진
     private String realName; // 개발자의 실제 이름
     private String phoneNumber;
     private String email;

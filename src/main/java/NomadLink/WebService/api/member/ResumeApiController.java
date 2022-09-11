@@ -2,6 +2,8 @@ package NomadLink.WebService.api.member;
 
 import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
+import NomadLink.WebService.file.FileStore;
+import NomadLink.WebService.file.UploadFile;
 import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.service.ResumeService;
 import NomadLink.WebService.service.TechStackService;
@@ -12,10 +14,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -31,11 +38,17 @@ public class ResumeApiController {
     private final SearchTechStackRepository searchTechStackRepository;
     private final MemberRepository memberRepository;
     private final TechStackService techStackService;
+    private final FileStore fileStore;
 
     @ResponseBody
     @PostMapping("/api/mypage/resume")
-    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
+    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
         Resume resume = new Resume();
+
+        MultipartFile file = resumeRequestDto.getAttachFile();
+        UploadFile attachFile = fileStore.storeFile(file);
+
+        resume.setAttachFile(attachFile);
         resume.setRealName(resumeRequestDto.getRealName());
         resume.setPhoneNumber(resumeRequestDto.getPhoneNumber());
         resume.setEmail(resumeRequestDto.getEmail());
@@ -84,6 +97,7 @@ public class ResumeApiController {
         List<TechStack> techStacks = resumeService.findAllTechStacks(resume.getId());
 
         ResumeResponseDto response = new ResumeResponseDto();
+        response.setStoreFileName(resume.getAttachFile().getStoreFileName());
         response.setRealName(resume.getRealName());
         response.setPhoneNumber(resume.getPhoneNumber());
         response.setEmail(resume.getEmail());
@@ -109,7 +123,7 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume/update/{userId}")
-    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) {
+    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) throws IOException {
         Resume findedResume = resumeService.findOneResume(loginMember.getId());
         resumeService.updateResume(findedResume, resumeRequestDto);
     }
@@ -136,10 +150,17 @@ public class ResumeApiController {
         return searchTechStackRepository.findAll();
     }
 
+    @ResponseBody
+    @GetMapping("/api/mypage/resume/image/{filename}") // 이력서 사진
+    public Resource viewImage(@PathVariable String filename) throws MalformedURLException {
+        return new UrlResource("file:" + fileStore.getFullPath(filename));
+    }
+
     @Data
     @NoArgsConstructor
     static class ResumeResponseDto {
 
+        private String storeFileName;
         private String realName; // 개발자의 실제 이름
         private String phoneNumber;
         private String email;
