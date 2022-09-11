@@ -14,6 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.graalvm.compiler.nodes.memory.MemoryCheckpoint;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
@@ -41,11 +42,11 @@ public class ResumeApiController {
     private final FileStore fileStore;
 
     @ResponseBody
-    @PostMapping("/api/mypage/resume")
-    public void resumePost(@ModelAttribute ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
+    @PostMapping("/api/mypage/resume") // 사진 파일은 multipart/form-data이므로 @RequestBody가 아닌 @ModelAttribute로 받아야한다.
+    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @RequestParam MultipartFile imageFile, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
         Resume resume = new Resume();
 
-        MultipartFile file = resumeRequestDto.getAttachFile();
+        MultipartFile file = imageFile;
         UploadFile attachFile = fileStore.storeFile(file);
 
         resume.setAttachFile(attachFile);
@@ -123,9 +124,9 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume/update/{userId}")
-    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @ModelAttribute ResumeRequestDto resumeRequestDto) throws IOException {
+    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto, @RequestParam MultipartFile imageFile) throws IOException {
         Resume findedResume = resumeService.findOneResume(loginMember.getId());
-        resumeService.updateResume(findedResume, resumeRequestDto);
+        resumeService.updateResume(findedResume, resumeRequestDto, imageFile);
     }
 
     @ResponseBody
