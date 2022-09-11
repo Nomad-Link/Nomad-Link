@@ -96,9 +96,13 @@ public class ResumeApiController {
         response.setRole(resume.getRole());
         response.setNation(resume.getNation());
         response.setEmployeeType(resume.getEmployeeType());
-        response.setTechStacks(techStacks.stream()
-                                            .map(t -> new TechStackResponseDto(t))
-                                            .collect(Collectors.toList()));
+        if (techStacks.size() == 0) {
+            response.setTechStacks(null);
+        }else if(techStacks.size() != 0) {
+            response.setTechStacks(techStacks.stream()
+                    .map(t -> new TechStackResponseDto(t))
+                    .collect(Collectors.toList()));
+        }
 
         return response;
     }
