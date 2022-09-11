@@ -42,7 +42,7 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume")
-    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
+    public void resumePost(@ModelAttribute ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
         Resume resume = new Resume();
 
         MultipartFile file = resumeRequestDto.getAttachFile();
@@ -123,7 +123,7 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume/update/{userId}")
-    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) throws IOException {
+    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @ModelAttribute ResumeRequestDto resumeRequestDto) throws IOException {
         Resume findedResume = resumeService.findOneResume(loginMember.getId());
         resumeService.updateResume(findedResume, resumeRequestDto);
     }
