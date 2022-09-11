@@ -97,7 +97,7 @@ public class ResumeApiController {
         List<TechStack> techStacks = resumeService.findAllTechStacks(resume.getId());
 
         ResumeResponseDto response = new ResumeResponseDto();
-        response.setStoreFileName(resume.getAttachFile().getStoreFileName());
+//        response.setStoreFileName(resume.getAttachFile().getStoreFileName());
         response.setRealName(resume.getRealName());
         response.setPhoneNumber(resume.getPhoneNumber());
         response.setEmail(resume.getEmail());
