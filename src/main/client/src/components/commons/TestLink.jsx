@@ -51,6 +51,14 @@ function TestLink() {
           <p>"/mypage/resume/update"</p>
         </Link>
       </div>
+      <div style={{ marginRight: "50px" }}>
+        <Link to={"/notice/6"}>
+          <p>"/notice/6"</p>
+        </Link>
+        <Link to={"/register/complete"}>
+          <p>"/register/complete"</p>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -13,7 +13,9 @@ import {
   Title,
   Label,
   InputS,
+  InputL,
   Select,
+  ErrDiv,
   Error,
 } from "styles/Form";
 import TechStack from "components/units/resume/TechStack";
@@ -54,6 +56,7 @@ function Form({ type, title, url }) {
   }, []);
 
   const onSubmit = (data) => {
+    const techStacks = initialState.techStack;
     const ResumeRequestDto = {
       realName: data.realName,
       age: data.age,
@@ -66,9 +69,11 @@ function Form({ type, title, url }) {
       role: data.role,
       nation: data.nation,
       employeeType: data.employeeType,
-      techStacks: JSON.stringify(initialState.techStack),
+      techStacks: techStacks,
+      developerIntroduction: data.developerIntroduction,
     };
     formData(ResumeRequestDto);
+    console.log(techStacks);
     // window.location.replace("/mypage/resume");
   };
 
@@ -103,7 +108,9 @@ function Form({ type, title, url }) {
                 <option value="VIETNAM">베트남</option>
                 <option value="PHILIPPINE">필리핀</option>
               </Select>
-              {errors.nation && <Error>국가를 입력해 주세요.</Error>}
+              <ErrDiv style={{ marginTop: "10px" }}>
+                {errors.nation && <Error>국가를 입력해 주세요.</Error>}
+              </ErrDiv>
             </BoxSelect>
             <BoxSelect>
               <Label>분야</Label>
@@ -120,9 +127,11 @@ function Form({ type, title, url }) {
                 <option value="IOS">IOS</option>
                 <option value="AI">AI</option>
               </Select>
-              {errors.role?.type === "required" && (
-                <Error>분야를 입력해 주세요.</Error>
-              )}
+              <ErrDiv style={{ marginTop: "10px" }}>
+                {errors.role?.type === "required" && (
+                  <Error>분야를 입력해 주세요.</Error>
+                )}
+              </ErrDiv>
             </BoxSelect>
             <BoxSelect>
               <Label>유형</Label>
@@ -137,9 +146,11 @@ function Form({ type, title, url }) {
                 <option value="PARTTIME">계약직</option>
                 <option value="FREELANCER">프리랜서</option>
               </Select>
-              {errors.employeeType?.type === "required" && (
-                <Error>유형을 입력해 주세요.</Error>
-              )}
+              <ErrDiv style={{ marginTop: "10px" }}>
+                {errors.employeeType?.type === "required" && (
+                  <Error>유형을 입력해 주세요.</Error>
+                )}
+              </ErrDiv>
             </BoxSelect>
             <BoxSelect>
               <Label>나이</Label>
@@ -152,9 +163,11 @@ function Form({ type, title, url }) {
                 <option value="">-- 전체 나이 --</option>
                 {SelectAge()}
               </Select>
-              {errors.age?.type === "required" && (
-                <Error>나이를 입력해 주세요.</Error>
-              )}
+              <ErrDiv style={{ marginTop: "10px" }}>
+                {errors.age?.type === "required" && (
+                  <Error>나이를 입력해 주세요.</Error>
+                )}
+              </ErrDiv>
             </BoxSelect>
             <BoxSelect>
               <Label>성별</Label>
@@ -168,9 +181,11 @@ function Form({ type, title, url }) {
                 <option value="MALE">남자</option>
                 <option value="FEMALE">여자</option>
               </Select>
-              {errors.gender?.type === "required" && (
-                <Error>성별을 입력해 주세요.</Error>
-              )}
+              <ErrDiv style={{ marginTop: "10px" }}>
+                {errors.gender?.type === "required" && (
+                  <Error>성별을 입력해 주세요.</Error>
+                )}
+              </ErrDiv>
             </BoxSelect>
           </BoxFlex>
         </BoxBlock>
@@ -179,7 +194,9 @@ function Form({ type, title, url }) {
             <Label>이름</Label>
             <InputS
               placeholder="ex) 홍길동"
-              style={errors.realName ? { border: "2px solid #ff0000" } : {}}
+              style={
+                errors.realName ? { borderBottom: "2px solid #ff0000" } : {}
+              }
               {...(type === "update"
                 ? { ...setValue("realName", userResume.realName) }
                 : null)}
@@ -191,7 +208,9 @@ function Form({ type, title, url }) {
             <Label>연락처</Label>
             <InputS
               placeholder="ex) 010-1234-5678"
-              style={errors.phoneNumber ? { border: "2px solid #ff0000" } : {}}
+              style={
+                errors.phoneNumber ? { borderBottom: "2px solid #ff0000" } : {}
+              }
               {...(type === "update"
                 ? { ...setValue("phoneNumber", userResume.phoneNumber) }
                 : null)}
@@ -213,7 +232,7 @@ function Form({ type, title, url }) {
             <Label>이메일</Label>
             <InputS
               placeholder="ex) qwer1234@abc.com"
-              style={errors.email ? { border: "2px solid #ff0000" } : {}}
+              style={errors.email ? { borderBottom: "2px solid #ff0000" } : {}}
               {...(type === "update"
                 ? { ...setValue("email", userResume.email) }
                 : null)}
@@ -234,7 +253,9 @@ function Form({ type, title, url }) {
             <Label>GitHub 링크</Label>
             <InputS
               placeholder="ex) https://github.com/xxxx"
-              style={errors.githubUrl ? { border: "2px solid #ff0000" } : {}}
+              style={
+                errors.githubUrl ? { borderBottom: "2px solid #ff0000" } : {}
+              }
               {...(type === "update"
                 ? { ...setValue("githubUrl", userResume.githubUrl) }
                 : null)}
@@ -248,7 +269,9 @@ function Form({ type, title, url }) {
             <Label>Blog 링크</Label>
             <InputS
               placeholder="ex) https://velog.io/@xxxx"
-              style={errors.blogUrl ? { border: "2px solid #ff0000" } : {}}
+              style={
+                errors.blogUrl ? { borderBottom: "2px solid #ff0000" } : {}
+              }
               {...(type === "update"
                 ? { ...setValue("blogUrl", userResume.blogUrl) }
                 : null)}
@@ -260,7 +283,9 @@ function Form({ type, title, url }) {
             <Label>포트폴리오 링크</Label>
             <InputS
               placeholder="ex) https://www.notion.so/ko-kr/xxxx"
-              style={errors.portfolioUrl ? { border: "2px solid #ff0000" } : {}}
+              style={
+                errors.portfolioUrl ? { borderBottom: "2px solid #ff0000" } : {}
+              }
               {...(type === "update"
                 ? { ...setValue("portfolioUrl", userResume.portfolioUrl) }
                 : null)}
@@ -270,6 +295,7 @@ function Form({ type, title, url }) {
           </InputDiv>
         </BoxFlex>
         <TechStack />
+
         <textarea
           value={JSON.stringify(initialState.techStack, null, 5)}
           rows="15"
@@ -277,6 +303,27 @@ function Form({ type, title, url }) {
           readOnly
         />
         <p>{JSON.stringify(initialState.techStack)}</p>
+        <BoxBlock>
+          <Label>자기 소개</Label>
+          <InputL
+            placeholder="내용을 입력하세요."
+            style={
+              errors.developerIntroduction
+                ? { borderBottom: "2px solid #ff0000" }
+                : {}
+            }
+            {...(type === "update"
+              ? {
+                  ...setValue(
+                    "developerIntroduction",
+                    userResume.developerIntroduction
+                  ),
+                }
+              : null)}
+            {...register("developerIntroduction", { required: true })}
+          />
+          {errors.developerIntroduction && <Error>내용을 입력하세요.</Error>}
+        </BoxBlock>
         <ButtonInput type="submit" />
       </form>
     </Section>

@@ -14,6 +14,7 @@ import {
   EntTextDiv,
   Strong,
 } from "./Detail.style";
+import EnterpriseSample from "assets/EnterpriseSample.jpeg";
 
 function Detail() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
@@ -39,7 +40,7 @@ function Detail() {
   }
 
   function Apply() {
-    if(cookies.id) {
+    if (cookies.id) {
       const conf = window.confirm(
         `${ent.enterpriseName} (${ent.title})\n 정말 지원하시겠습니까?`
       );
@@ -50,8 +51,7 @@ function Detail() {
       } else {
         alert("취소 되었습니다.");
       }
-    }
-    else {
+    } else {
       alert("지원하시려면 로그인을 해주세요.");
       window.location.replace("/login");
     }
@@ -102,10 +102,7 @@ function Detail() {
   return (
     <Section>
       <BoxFlex>
-        <DetailImage
-          alt=""
-          src={require("components/units/enterprises/testimage.jpeg")}
-        />
+        <DetailImage alt="" src={EnterpriseSample} />
         <Info>
           <EntName>{ent.enterpriseName}</EntName>
           <EntTitle>{ent.title}</EntTitle>
@@ -146,11 +143,7 @@ function Detail() {
           <span>로딩에 실패했습니다. 잠시 후 다시 시도해 주세요.</span>
         )}
       </TechStackBox>
-      <Button
-        onClick={() => Apply()}
-      >
-        지원하기
-      </Button>
+      <Button onClick={() => Apply()}>지원하기</Button>
     </Section>
   );
 }

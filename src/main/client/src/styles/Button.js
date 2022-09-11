@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
+  cursor: pointer;
   width: 120px;
   height: 60px;
   background-color: #4641d9;
@@ -18,6 +19,7 @@ export const Button = styled.button`
   }
 `;
 export const ButtonInput = styled.input`
+  cursor: pointer;
   width: 120px;
   height: 60px;
   background-color: #4641d9;
@@ -35,6 +37,7 @@ export const ButtonInput = styled.input`
   }
 `;
 export const ButtonMini = styled.button`
+  cursor: pointer;
   width: 70px;
   height: 30px;
   background-color: #4641d9;

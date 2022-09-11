@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Div, ProfileImage, EntName, Title, TechNameDiv } from "./Profile.style";
+import {
+  Div,
+  ProfileImage,
+  EntName,
+  Title,
+  TechNameDiv,
+} from "./Profile.style";
+import EnterpriseSample from "assets/EnterpriseSample.jpeg";
 
 function Profile({
   id,
@@ -22,10 +29,7 @@ function Profile({
 
   return (
     <Div onClick={() => navigate(`/notice/${id}`)}>
-      <ProfileImage
-        alt=""
-        src={require("components/units/enterprises/testimage.jpeg")}
-      />
+      <ProfileImage alt="" src={EnterpriseSample} />
       <EntName>{enterpriseName}</EntName>
       <Title>
         {toggleEllipsis(title, limit).string}

@@ -11,6 +11,7 @@ export const Section = styled.section`
   border-bottom: #fbf6f6;
 
   .react-search-param-icon {
+    cursor: pointer;
     width: 20px;
     height: 20px;
     z-index: 1000;

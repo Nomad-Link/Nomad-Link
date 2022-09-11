@@ -11,6 +11,7 @@ import {
   Text,
   ProfileImage,
 } from "./Check.style";
+import DeveloperSample from "assets/DeveloperSample.jpg";
 
 function Mypage() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
@@ -28,6 +29,7 @@ function Mypage() {
           console.log("resume is empty");
         }
       });
+      console.log(userResume);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -134,11 +136,9 @@ function Mypage() {
               </tbody>
             </Table>
             <div style={{ width: "550px" }}>
-              <ProfileImage
-                alt=""
-                src={require("components/units/developers/testimage.jpg")}
-              />
-              <Button style={{ fontSize: "18px" }}
+              <ProfileImage alt="" src={DeveloperSample} />
+              <Button
+                style={{ fontSize: "18px" }}
                 onClick={() => window.location.replace("/mypage/resume/update")}
               >
                 이력서 수정

@@ -32,9 +32,9 @@ function Private() {
       <HelmetAsync title={"개인 서비스 : "} />
       {!data ? (
         <BannerSlim
-          bgColor={"#B2EBF4"}
+          bgColor={"#FFFF8F"}
           lineOne={"아직 이력서 작성은 안하셨나요?"}
-          button={"이력서 작성하기"}
+          button={">> 이력서 작성하기"}
           link={"mypage/resume/save"}
         />
       ) : null}

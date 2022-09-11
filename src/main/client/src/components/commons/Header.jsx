@@ -31,7 +31,9 @@ function Header({ mode }) {
 
     try {
       const response = await post(url); // eslint-disable-line no-unused-vars
-      removeCookie("id", {path: "/"});
+      if (cookies.id) {
+        setTimeout(removeCookie("id", { path: "/" }), 1);
+      }
       window.location.replace("/");
     } catch (error) {
       console.error(error);

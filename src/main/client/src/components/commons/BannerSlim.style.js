@@ -11,17 +11,23 @@ export const Div = styled.div`
   display: flex;
   justify-content: space-between;
   margin: auto;
-  color: black;
+  color: #282828;
+  font-size: 15px;
+  font-weight: bold;
 
   p {
-    font-size: 18px;
-    padding: 5px;
+    padding: 7px;
   }
   span {
-    font-size: 15px;
+    cursor: pointer;
     height: 15px;
-    margin: 7px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid black;
+    margin: 3px;
+    padding: 3px 7px;
+    border-radius: 5px;
+  }
+  span:hover {
+    background-color: #4641d9;
+    border: 2px solid #8e89ff;
+    color: #fff;
   }
 `;

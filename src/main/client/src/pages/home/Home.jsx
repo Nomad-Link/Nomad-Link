@@ -24,7 +24,7 @@ function Home({mode}) {
         lineThree={"Nomad Link로 원하는 IT 기업에 지원"}
         lineFour={"해외 개발자의 적응을 돕기 위한 서비스 제공"}
         button={true}
-        buttonName={"바로가기"}F1ECE6
+        buttonName={"바로가기"}
         link={"private"}
       />
       <BannerFat

@@ -14,6 +14,7 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [idOver, setIdOver] = useState(false);
   const [passwdOver, setPasswdIdOver] = useState(false);
+  const [loginErr, setLoginErr] = useState(false);
 
   function handleId(e) {
     setUserId(e.target.value);
@@ -36,11 +37,13 @@ function LoginForm() {
       let errCode = error.response.data.errorMessage;
       setIdOver(false);
       setPasswdIdOver(false);
+      setLoginErr(false);
       if (errCode === "존재하지 않는 아이디 입니다.") {
         setIdOver(true);
       } else if (errCode === "존재하지 않는 패스워드 입니다.") {
         setPasswdIdOver(true);
       } else {
+        setLoginErr(true);
         console.log(errCode);
       }
     }
@@ -64,6 +67,7 @@ function LoginForm() {
         />
         <ErrDiv>
           {passwdOver && <Error>존재하지 않는 패스워드 입니다.</Error>}
+          {loginErr && <Error>오류가 발생했습니다.</Error>}
         </ErrDiv>
         <BoxFlex>
           <Button onClick={() => PostLogin()}>로그인</Button>

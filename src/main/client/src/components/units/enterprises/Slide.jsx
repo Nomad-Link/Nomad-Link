@@ -5,6 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
 import { Section, Box, Img, Title, HashTag, MsLoading } from "./Slide.style";
+import SlideSample1 from "assets/SlideSample1.jpg";
+import SlideSample2 from "assets/SlideSample2.jpg";
+import SlideSample3 from "assets/SlideSample3.jpg";
 
 function Slide() {
   const settings = {
@@ -57,7 +60,7 @@ function Slide() {
       {ent[0] ? (
         <Slider {...settings}>
           <Box onClick={() => navigate(`/notice/${ent[0].id}`)}>
-            <Img src={require("./SlideSample1.jpg")} alt="" />
+            <Img src={SlideSample1} alt="" />
             <Title>
               <h1>{ent[0].enterpriseName}</h1>
               <h1>{ent[0].title}</h1>
@@ -69,7 +72,7 @@ function Slide() {
             </Title>
           </Box>
           <Box onClick={() => navigate(`/notice/${ent[1].id}`)}>
-            <Img src={require("./SlideSample2.jpg")} alt="" />
+            <Img src={SlideSample2} alt="" />
             <Title>
               <h1>{ent[1].enterpriseName}</h1>
               <h1>{ent[1].title}</h1>
@@ -81,7 +84,7 @@ function Slide() {
             </Title>
           </Box>
           <Box onClick={() => navigate(`/notice/${ent[2].id}`)}>
-            <Img src={require("./SlideSample3.jpg")} alt="" />
+            <Img src={SlideSample3} alt="" />
             <Title>
               <h1>{ent[2].enterpriseName}</h1>
               <h1>{ent[2].title}</h1>

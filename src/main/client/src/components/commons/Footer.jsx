@@ -3,7 +3,7 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
-import { ResFooter, FooterDiv, Information, ServiceLink } from "./Footer.style";
+import { ResFooter, FooterDiv, Information, ServiceLink, SvButton } from "./Footer.style";
 
 function Footer() {
   return (
@@ -23,14 +23,14 @@ function Footer() {
           <MdEmail className="react-footer-icon" />
         </Information>
         <ServiceLink>
-          <p>서비스 소개</p>
-          <p>개인 서비스</p>
-          <p>기업 서비스</p>
+          <SvButton>서비스 소개</SvButton>
+          <SvButton>개인 서비스</SvButton>
+          <SvButton>기업 서비스</SvButton>
         </ServiceLink>
         <ServiceLink>
-          <p>이용 약관</p>
-          <p>개인정보처리방침</p>
-          <p>FAQ</p>
+          <SvButton>이용 약관</SvButton>
+          <SvButton>개인정보처리방침</SvButton>
+          <SvButton>FAQ</SvButton>
         </ServiceLink>
       </FooterDiv>
     </ResFooter>
