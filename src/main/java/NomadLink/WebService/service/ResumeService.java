@@ -41,11 +41,11 @@ public class ResumeService {
         return resumeRepository.findAllTechStacks(resumeId);
     }
 
-    public void updateResume(Resume findedResume, ResumeRequestDto resumeRequestDto, MultipartFile imageFile) throws IOException {
-        MultipartFile file = imageFile;
-        UploadFile attachFile = fileStore.storeFile(file);
+    public void updateResume(Resume findedResume, ResumeRequestDto resumeRequestDto) throws IOException {
+//        MultipartFile file = imageFile;
+//        UploadFile attachFile = fileStore.storeFile(file);
 
-        findedResume.setAttachFile(attachFile);
+//        findedResume.setAttachFile(attachFile);
         findedResume.setRealName(resumeRequestDto.getRealName());
         findedResume.setPhoneNumber(resumeRequestDto.getPhoneNumber());
         findedResume.setEmail(resumeRequestDto.getEmail());

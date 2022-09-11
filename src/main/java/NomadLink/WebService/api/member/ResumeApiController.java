@@ -42,13 +42,13 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume") // 사진 파일은 multipart/form-data이므로 @RequestBody가 아닌 @ModelAttribute로 받아야한다.
-    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @RequestParam MultipartFile imageFile, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
+    public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
         Resume resume = new Resume();
 
-        MultipartFile file = imageFile;
-        UploadFile attachFile = fileStore.storeFile(file);
+//        MultipartFile file = imageFile;
+//        UploadFile attachFile = fileStore.storeFile(file);
 
-        resume.setAttachFile(attachFile);
+//        resume.setAttachFile(attachFile);
         resume.setRealName(resumeRequestDto.getRealName());
         resume.setPhoneNumber(resumeRequestDto.getPhoneNumber());
         resume.setEmail(resumeRequestDto.getEmail());
@@ -123,9 +123,9 @@ public class ResumeApiController {
 
     @ResponseBody
     @PostMapping("/api/mypage/resume/update/{userId}")
-    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto, @RequestParam MultipartFile imageFile) throws IOException {
+    public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) throws IOException {
         Resume findedResume = resumeService.findOneResume(loginMember.getId());
-        resumeService.updateResume(findedResume, resumeRequestDto, imageFile);
+        resumeService.updateResume(findedResume, resumeRequestDto);
     }
 
     @ResponseBody
@@ -160,7 +160,7 @@ public class ResumeApiController {
     @NoArgsConstructor
     static class ResumeResponseDto {
 
-        private String storeFileName;
+//        private String storeFileName;
         private String realName; // 개발자의 실제 이름
         private String phoneNumber;
         private String email;
