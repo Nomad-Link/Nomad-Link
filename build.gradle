@@ -24,7 +24,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
-	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1' // 이미지 파일 데이터를 받기 위해서 필요
+	/** 이미지 파일 데이터를 받기 위해서 필요 **/
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.2.2'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
