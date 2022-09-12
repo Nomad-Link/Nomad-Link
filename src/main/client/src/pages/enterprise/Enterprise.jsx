@@ -23,10 +23,20 @@ function Enterprise() {
       />
       <Information />
       <BannerFat
-        bgColor={ThemeMode === "dark" ? "#989898" : "#F1ECE6"}
+        bgColor={ThemeMode === "dark" ? "#AAAAAA" : "#F4F2F0"}
         textAlign={"right"}
         height={"240px"}
         color={"#030066"}
+        lineOne={"개발자 리스트"}
+        button={true}
+        buttonName={"바로가기"}
+        link={"enterprise/recruit/developers"}
+      />
+      <BannerFat
+        bgColor={ThemeMode === "dark" ? "#989898" : "#F1ECE6"}
+        textAlign={"left"}
+        height={"240px"}
+        color={"#001054"}
         lineOne={"메타버스 사무실"}
         button={true}
         buttonName={"바로가기"}

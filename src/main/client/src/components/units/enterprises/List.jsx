@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useStateValue } from "store/StateProvider";
 import Profile from "./Profile";
 import { Section } from "./List.style";
 
-function List() {
+function List({ endPoint }) {
+  const [initialState] = useStateValue();
   const [enterprise, setEnterprise] = useState([]);
 
   useEffect(() => {
-    const url = `/api/private/employ/enterprises`;
+    const url = `/api/private/employ/enterprises/${endPoint}`;
     axios
-      .get(url)
+      .get(url, {
+        params: {
+          role: initialState.role,
+          employeeType: initialState.employeeType,
+        },
+      })
       .then((response) => setEnterprise(response.data))
       .catch((error) => console.log(error));
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialState]);
 
   console.log(JSON.stringify(enterprise, null, 3));
 

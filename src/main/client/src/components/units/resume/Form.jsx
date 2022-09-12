@@ -24,6 +24,7 @@ function Form({ type, title, url }) {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userResume, setUserResume] = useState([]);
+  const [updateStack, SetUpdateStack] = useState(false);
 
   const {
     register,
@@ -44,14 +45,12 @@ function Form({ type, title, url }) {
     return arr;
   }
 
-  const getResume = async () => {
-    await axios
-      .get(`/api/mypage/resume/get/${cookies.id}`)
-      .then((res) => setUserResume(res.data));
-  };
-
   useEffect(() => {
-    getResume();
+    const url = `/api/mypage/resume/get/${cookies.id}`;
+    axios
+      .get(url)
+      .then((response) => setUserResume(response.data))
+      .catch((error) => console.log(error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -73,8 +72,7 @@ function Form({ type, title, url }) {
       developerIntroduction: data.developerIntroduction,
     };
     formData(ResumeRequestDto);
-    console.log(techStacks);
-    // window.location.replace("/mypage/resume");
+    window.location.replace("/mypage/resume");
   };
 
   async function formData(data) {
@@ -85,6 +83,21 @@ function Form({ type, title, url }) {
       console.error(error);
     }
   }
+
+  useEffect(() => {
+    dispatch({ type: `DelStackAll` });
+    for (let index in userResume.techStacks) {
+      dispatch({
+        type: `SaveStack`,
+        item: userResume.techStacks[index].techName,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateStack]);
+
+  setTimeout(function () {
+    SetUpdateStack(true);
+  }, 100);
 
   return (
     <Section>
@@ -294,15 +307,6 @@ function Form({ type, title, url }) {
             {errors.portfolioUrl && <Error>링크를 입력해 주세요.</Error>}
           </InputDiv>
         </BoxFlex>
-        <TechStack />
-
-        <textarea
-          value={JSON.stringify(initialState.techStack, null, 5)}
-          rows="15"
-          cols="25"
-          readOnly
-        />
-        <p>{JSON.stringify(initialState.techStack)}</p>
         <BoxBlock>
           <Label>자기 소개</Label>
           <InputL
