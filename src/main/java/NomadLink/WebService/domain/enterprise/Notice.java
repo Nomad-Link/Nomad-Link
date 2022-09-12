@@ -21,6 +21,8 @@ public class Notice {
 
     private String enterpriseLocation;
 
+    private String country;
+
     private String companyIntroduction;
 
     private String title;
