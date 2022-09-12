@@ -23,6 +23,12 @@ function LoginForm() {
     setPassword(e.target.value);
   }
 
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      PostLogin(); // Enter 입력 시 로그인
+    }
+  }
+
   async function PostLogin() {
     const url = "/api/login";
 
@@ -57,6 +63,7 @@ function LoginForm() {
           style={{ margin: "40px 0 10px" }}
           placeholder="아이디"
           onChange={handleId}
+          onKeyPress={handleKeyPress}
         />
         <ErrDiv>{idOver && <Error>존재하지 않는 아이디 입니다.</Error>}</ErrDiv>
         <InputS
@@ -64,6 +71,7 @@ function LoginForm() {
           type="password"
           placeholder="비밀번호"
           onChange={handlePwd}
+          onKeyPress={handleKeyPress}
         />
         <ErrDiv>
           {passwdOver && <Error>존재하지 않는 패스워드 입니다.</Error>}

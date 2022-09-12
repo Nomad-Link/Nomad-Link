@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useStateValue } from "store/StateProvider";
-import { Error } from "./TechStack.style";
+import { TechSearch, TechName, DelButton, Error } from "./TechStack.style";
 
-function TechStack() {
+function TechStack({ uTech, type }) {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [stack, setStack] = useState([]);
   const [error, setError] = useState(false);
-
-  // const testArr = [
-  //   { techName: "apple" },
-  //   { techName: "banana" },
-  //   { techName: "grape" },
-  //   { techName: "orange" },
-  //   { techName: "tomato" },
-  // ];
 
   useEffect(() => {
     const url = `/api/techstack`;
@@ -22,13 +14,17 @@ function TechStack() {
       .get(url)
       .then((response) => setStack(response.data))
       .catch((error) => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    // for (let index in testArr) {
-    //   dispatch({
-    //     type: `SaveStack`,
-    //     item: testArr[index].techName,
-    //   });
-    // }
+  useEffect(() => {
+    dispatch({ type: `DelStackAll` });
+    for (let index in uTech) {
+      dispatch({
+        type: `SaveStack`,
+        item: uTech[index].techName,
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -86,8 +82,8 @@ function TechStack() {
   }
   return (
     <div>
-      <input
-        placeholder="Search"
+      <TechSearch
+        placeholder="기술 스택을 검색하여 추가하세요."
         value={keyword || ""}
         onChange={(e) => updateField("keyword", e.target.value)}
       />
@@ -96,22 +92,18 @@ function TechStack() {
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {initialState.techStack.map((techName, index) => {
           return (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                backgroundColor: "#242",
-                color: "#fff",
-                margin: "10px",
-              }}
-            >
-              <h3 style={{ margin: "20px" }}>{techName}</h3>
-              <span
+            <TechName key={index}>
+              {techName.length > 13 ? (
+                <p style={{ marginTop: "8px", fontSize: "12px" }}>{techName}</p>
+              ) : (
+                <p style={{ marginTop: "6px"}}>{techName}</p>
+              )}
+              <DelButton
                 onClick={() => dispatch({ type: `DelStack`, item: techName })}
               >
                 X
-              </span>
-            </div>
+              </DelButton>
+            </TechName>
           );
         })}
       </div>

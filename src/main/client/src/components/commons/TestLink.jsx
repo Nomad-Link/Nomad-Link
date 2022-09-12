@@ -19,22 +19,8 @@ function TestLink() {
         <Link to={"/register"}>
           <p>"/register"</p>
         </Link>
-        <Link to={"/enterprise"}>
-          <p>"/enterprise"</p>
-        </Link>
-      </div>
-      <div style={{ marginRight: "50px" }}>
-        <Link to={"/enterprise/recruit/form"}>
-          <p>"/enterprise/recruit/form"</p>
-        </Link>
-        <Link to={"/enterprise/recruit/complete"}>
-          <p>"/enterprise/recruit/complete"</p>
-        </Link>
-        <Link to={"/enterprise/recruit/developers"}>
-          <p>"/enterprise/recruit/developers"</p>
-        </Link>
-        <Link to={"/private"}>
-          <p>"/private"</p>
+        <Link to={"/register/complete"}>
+          <p>"/register/complete"</p>
         </Link>
       </div>
       <div style={{ marginRight: "50px" }}>
@@ -52,11 +38,30 @@ function TestLink() {
         </Link>
       </div>
       <div style={{ marginRight: "50px" }}>
+        <Link to={"/enterprise"}>
+          <p>"/enterprise"</p>
+        </Link>
+        <Link to={"/enterprise/recruit/form"}>
+          <p>"/enterprise/recruit/form"</p>
+        </Link>
+        <Link to={"/enterprise/recruit/complete"}>
+          <p>"/enterprise/recruit/complete"</p>
+        </Link>
+        <Link to={"/enterprise/recruit/developers"}>
+          <p>"/enterprise/recruit/developers"</p>
+        </Link>
+      </div>
+      <div style={{ marginRight: "50px" }}>
+        <Link to={"/private"}>
+          <p>"/private"</p>
+        </Link>
+        <Link to={"/private/employ/enterprises"}>
+          <p>"/private/employ/enterprises"</p>
+        </Link>
+      </div>
+      <div style={{ marginRight: "50px" }}>
         <Link to={"/notice/6"}>
           <p>"/notice/6"</p>
-        </Link>
-        <Link to={"/register/complete"}>
-          <p>"/register/complete"</p>
         </Link>
       </div>
     </div>
