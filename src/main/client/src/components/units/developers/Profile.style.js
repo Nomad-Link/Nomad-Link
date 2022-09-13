@@ -54,7 +54,7 @@ export const TechStackBox = styled.div`
   flex-wrap: wrap;
 `;
 export const TechName = styled.div`
-  width: 70px;
+  width: 77px;
   height: 20px;
   text-align: center;
   margin: 3px;

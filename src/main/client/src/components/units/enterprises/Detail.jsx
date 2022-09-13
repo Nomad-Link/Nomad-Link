@@ -7,6 +7,7 @@ import {
   BoxFlex,
   DetailImage,
   Info,
+  TechStackTitle,
   TechStackBox,
   TechName,
   EntName,
@@ -14,7 +15,6 @@ import {
   EntTextDiv,
   Strong,
 } from "./Detail.style";
-import EnterpriseSample from "assets/EnterpriseSample.jpeg";
 
 function Detail() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
@@ -32,8 +32,7 @@ function Detail() {
     const url = `/api${window.location.pathname}`;
 
     try {
-      const response = await post(url);
-      console.log(response);
+      const response = await post(url); // eslint-disable-line no-unused-vars
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +45,7 @@ function Detail() {
       );
       if (conf === true) {
         PostApply();
-        alert("지원 되었습니다.");
+        alert("지원이 완료되었습니다.\n마이페이지에서 조회 가능합니다.");
         window.location.replace("/private");
       } else {
         alert("취소 되었습니다.");
@@ -99,10 +98,16 @@ function Detail() {
     }
   }
 
+  // 기업 샘플 이미지 랜덤 생성
+  const randNum = Math.floor(Math.random() * 15) + 1;
+
   return (
     <Section>
       <BoxFlex>
-        <DetailImage alt="" src={EnterpriseSample} />
+        <DetailImage
+          alt=""
+          src={require(`../../../assets/EnterpriseSample${randNum}.jpg`)}
+        />
         <Info>
           <EntName>{ent.enterpriseName}</EntName>
           <EntTitle>{ent.title}</EntTitle>
@@ -126,6 +131,7 @@ function Detail() {
           </BoxFlex>
         </Info>
       </BoxFlex>
+      <TechStackTitle>&#128736; 기술 스택</TechStackTitle>
       <TechStackBox>
         {ent.techStacks ? (
           ent.techStacks.map((p, indexB) => {

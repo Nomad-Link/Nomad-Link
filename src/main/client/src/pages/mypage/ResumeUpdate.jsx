@@ -1,5 +1,6 @@
 import { Main } from "styles/Pages";
 import HelmetAsync from "hooks/HelmetAsync";
+import ContentHeader from "components/commons/ContentHeader";
 import { useCookies } from "react-cookie";
 import Form from "components/units/resume/Form";
 
@@ -12,7 +13,14 @@ function Resume() {
       exit={{ opacity: 0 }}
     >
       <HelmetAsync title={"이력서 수정 : "} />
-      <Form type="update" title="수정" url={`/api/mypage/resume/update/${cookies.id}`} />
+      <ContentHeader title="이력서 수정" button={false} />
+      <div style={{ marginTop: "-30px" }}>
+        <Form
+          type="update"
+          title="수정"
+          url={`/api/mypage/resume/update/${cookies.id}`}
+        />
+      </div>
     </Main>
   );
 }

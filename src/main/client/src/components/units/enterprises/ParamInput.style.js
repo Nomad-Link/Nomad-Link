@@ -37,15 +37,16 @@ export const Infor = styled.h3`
   height: 45px;
   text-align: left;
   line-height: 47px;
+  color: #fff;
 `;
 export const Select = styled.select`
-  background-color: #392f31;
-  color: #fff;
-  font-size: 18px;
-  border: none;
-  font-weight: bold;
   width: 150px;
   height: 30px;
+  background-color: #392f31;
+  color: #fff;
   margin: 10px;
   padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
 `;

@@ -1,7 +1,6 @@
 import { post } from "axios";
 import Logo from "./Logo";
 import { useCookies } from "react-cookie";
-import { useState } from "react";
 import { TbSearch } from "react-icons/tb";
 import { FiMenu } from "react-icons/fi";
 import { IoPersonSharp } from "react-icons/io5";
@@ -19,12 +18,10 @@ import {
   Menu,
   MenuIcon,
 } from "./Header.style";
-import TestLink from "./TestLink";
 import Tooltip from "./Tooltip";
 
 function Header({ mode }) {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
-  const [testDiv, setTestDiv] = useState(false);
 
   async function Logout() {
     const url = "/api/logout";
@@ -38,10 +35,6 @@ function Header({ mode }) {
     } catch (error) {
       console.error(error);
     }
-  }
-
-  function ActTestLink() {
-    setTestDiv(!testDiv);
   }
 
   return (
@@ -87,12 +80,12 @@ function Header({ mode }) {
             </Menu>
           </DivLeft>
           <DivRight>
-            <button
+            {/* <button
               onClick={() => ActTestLink()}
               style={{ width: "100px", height: "30px" }}
             >
               ROUTE {testDiv ? <span>OFF</span> : <span>ON</span>}
-            </button>
+            </button> */}
             <SLink to={"/private"}>
               <MenuIcon>
                 <IoPersonSharp className="react-icon" />
@@ -108,11 +101,6 @@ function Header({ mode }) {
           </DivRight>
         </Box>
       </HeaderDiv>
-      {testDiv ? (
-        <div style={{ display: "flex" }}>
-          <TestLink />
-        </div>
-      ) : null}
     </ResHeader>
   );
 }

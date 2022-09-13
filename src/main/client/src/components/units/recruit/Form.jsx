@@ -49,8 +49,7 @@ function Form() {
     const url = "/api/enterprise/recruit/form";
 
     try {
-      const response = await post(url, data);
-      console.log(response);
+      const response = await post(url, data); // eslint-disable-line no-unused-vars
     } catch (error) {
       console.error(error);
     }

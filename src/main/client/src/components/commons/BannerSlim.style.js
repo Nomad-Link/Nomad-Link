@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
+  cursor: default;
   width: 99vw;
   background-color: ${(props) => props.bgColor};
   margin: 0;

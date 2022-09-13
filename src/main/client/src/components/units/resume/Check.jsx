@@ -33,12 +33,10 @@ function Mypage() {
       .get(url)
       .then((response) => {
         setUserResume(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         if (error.response.status === 500) {
           seHeadisabled(true);
-          console.log("resume is empty");
         }
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,16 +60,15 @@ function Mypage() {
       developerIntroduction: userResume.developerIntroduction,
     };
     formData(ResumeRequestDto);
-    window.location.replace("/mypage/resume");
+    alert("저장되었습니다.");
   };
 
   async function formData(data) {
     try {
-      const response = await post(
+      const response = await post( // eslint-disable-line no-unused-vars
         `/api/mypage/resume/update/${cookies.id}`,
         data
       );
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -129,10 +126,12 @@ function Mypage() {
       return "#000";
     }
   }
-  const style = {
+  const labelStyle = {
+    fontWeight: "bold",
+  };
+  const inputStyle = {
     backgroundColor: bgColor(),
     color: color(),
-    fontWeight: "bold",
     appearance: "none",
     borderRadius: "0",
     borderBottom: "2px solid #4641d9",
@@ -175,32 +174,32 @@ function Mypage() {
           <BoxBlock>
             <BoxFlex>
               <BoxSelect>
-                <Label>국가</Label>
-                <Select style={style} disabled>
+                <Label style={labelStyle}>국가</Label>
+                <Select style={inputStyle} disabled>
                   <option>{userResume.nation}</option>
                 </Select>
               </BoxSelect>
               <BoxSelect>
-                <Label>분야</Label>
-                <Select style={style} disabled>
+                <Label style={labelStyle}>분야</Label>
+                <Select style={inputStyle} disabled>
                   <option>{Role()}</option>
                 </Select>
               </BoxSelect>
               <BoxSelect>
-                <Label>유형</Label>
-                <Select style={style} disabled>
+                <Label style={labelStyle}>유형</Label>
+                <Select style={inputStyle} disabled>
                   <option>{EmployeeType()}</option>
                 </Select>
               </BoxSelect>
               <BoxSelect>
-                <Label>나이</Label>
-                <Select style={style} disabled>
+                <Label style={labelStyle}>나이</Label>
+                <Select style={inputStyle} disabled>
                   <option>{userResume.age}</option>
                 </Select>
               </BoxSelect>
               <BoxSelect>
-                <Label>성별</Label>
-                <Select style={style} disabled>
+                <Label style={labelStyle}>성별</Label>
+                <Select style={inputStyle} disabled>
                   <option>{Gender()}</option>
                 </Select>
               </BoxSelect>
@@ -208,17 +207,17 @@ function Mypage() {
           </BoxBlock>
           <BoxFlex>
             <InputDiv>
-              <Label>이름</Label>
+              <Label style={labelStyle}>이름</Label>
               <InputS
-                style={style}
+                style={inputStyle}
                 defaultValue={userResume.realName}
                 readOnly
               />
             </InputDiv>
             <InputDiv>
-              <Label>연락처</Label>
+              <Label style={labelStyle}>연락처</Label>
               <InputS
-                style={style}
+                style={inputStyle}
                 defaultValue={userResume.phoneNumber}
                 readOnly
               />
@@ -226,13 +225,17 @@ function Mypage() {
           </BoxFlex>
           <BoxFlex>
             <InputDiv>
-              <Label>이메일</Label>
-              <InputS style={style} defaultValue={userResume.email} readOnly />
+              <Label style={labelStyle}>이메일</Label>
+              <InputS
+                style={inputStyle}
+                defaultValue={userResume.email}
+                readOnly
+              />
             </InputDiv>
             <InputDiv>
-              <Label>GitHub 링크</Label>
+              <Label style={labelStyle}>GitHub 링크</Label>
               <InputS
-                style={style}
+                style={inputStyle}
                 defaultValue={userResume.githubUrl}
                 readOnly
               />
@@ -240,26 +243,26 @@ function Mypage() {
           </BoxFlex>
           <BoxFlex>
             <InputDiv>
-              <Label>Blog 링크</Label>
+              <Label style={labelStyle}>Blog 링크</Label>
               <InputS
-                style={style}
+                style={inputStyle}
                 defaultValue={userResume.blogUrl}
                 readOnly
               />
             </InputDiv>
             <InputDiv>
-              <Label>포트폴리오 링크</Label>
+              <Label style={labelStyle}>포트폴리오 링크</Label>
               <InputS
-                style={style}
+                style={inputStyle}
                 defaultValue={userResume.portfolioUrl}
                 readOnly
               />
             </InputDiv>
           </BoxFlex>
           <BoxBlock style={{ paddingBottom: "30px" }}>
-            <Label>자기 소개</Label>
+            <Label style={labelStyle}>자기 소개</Label>
             <InputL
-              style={style}
+              style={inputStyle}
               defaultValue={userResume.developerIntroduction}
               readOnly
             />
