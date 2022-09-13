@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import { useStateValue } from "store/StateProvider";
 import { TbSearch } from "react-icons/tb";
-import { Section, Select } from "./ParamInput.style";
+import { Section, Infor, Select } from "./ParamInput.style";
 
 function ParamInput() {
+  const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [role, setRole] = useState(null);
   const [employeeType, setEmployeeType] = useState(null);
@@ -33,6 +35,11 @@ function ParamInput() {
 
   return (
     <Section>
+      {cookies.id ? (
+        <Infor>&#9989;로그인 중입니다. 원하시는 기업에 지원해보세요.</Infor>
+      ) : (
+        <Infor>&#9888; 지원 신청을 하려면 로그인하셔야 합니다.</Infor>
+      )}
       <Select onChange={handleNation}>
         <option value="null">-- 전체 분야 --</option>
         <option value="SERVER">서버</option>
@@ -51,7 +58,6 @@ function ParamInput() {
         className="react-search-param-icon"
         onClick={() => SetInput()}
       />
-      <p>{JSON.stringify(initialState, null, 5)}</p>
     </Section>
   );
 }

@@ -14,7 +14,7 @@ function EmployEnterprises() {
       <HelmetAsync title={"개인 서비스 : "} />
       <ContentHeader title="기업 리스트" button={true} />
       <ParamInput />
-      <List endPoint={""} />
+      <List bgColor={({ theme }) => theme.bgSection} endPoint={""} />
     </Main>
   );
 }

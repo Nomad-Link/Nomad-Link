@@ -1,6 +1,8 @@
 import { post } from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import { ButtonInput } from "styles/Button";
 import {
   BoxFlex,
@@ -14,6 +16,8 @@ import {
 import { Section, Form, OptionDiv } from "./RegisterForm.style";
 
 function RegisterForm() {
+  const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
+  const navigate = useNavigate();
   const [idOver, setIdOver] = useState(false);
   const [passwdOver, setPasswdIdOver] = useState(false);
   const {
@@ -41,7 +45,8 @@ function RegisterForm() {
     try {
       const response = await post(url, data);
       console.log(response);
-      window.location.replace("/register/complete");
+      removeCookie("id");
+      navigate("/register/complete");
     } catch (error) {
       let errCode = error.response.data.errorMessage;
       setIdOver(false);

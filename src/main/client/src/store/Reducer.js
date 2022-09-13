@@ -21,6 +21,8 @@ const reducer = (state, action) => {
         role: action.role,
         employeeType: action.employeeType,
       };
+    case `Delete`:
+      return initialState;
     case `SaveStack`:
       return { ...state, techStack: [...state.techStack, action.item] };
     case `DelStack`:

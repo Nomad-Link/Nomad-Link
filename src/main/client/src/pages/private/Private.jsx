@@ -39,8 +39,14 @@ function Private() {
         />
       ) : null}
       <Slide />
-      <ContentHeader title="현재 채용중인 기업" link={"/private/employ/enterprises"} linkName={"전체보기"} />
-      <List endPoint={"part"} />
+      <ContentHeader
+        title="현재 채용중인 기업"
+        link={"/private/employ/enterprises"}
+        linkName={"전체보기"}
+      />
+      <div style={{ marginTop: "-20px" }}>
+        <List endPoint={"part"} />
+      </div>
     </MainWide>
   );
 }

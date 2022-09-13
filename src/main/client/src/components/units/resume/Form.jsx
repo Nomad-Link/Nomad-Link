@@ -18,7 +18,6 @@ import {
   ErrDiv,
   Error,
 } from "styles/Form";
-import TechStack from "components/units/resume/TechStack";
 
 function Form({ type, title, url }) {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
@@ -35,7 +34,7 @@ function Form({ type, title, url }) {
 
   function SelectAge() {
     var arr = [];
-    for (var i = 1; i <= 100; i++) {
+    for (var i = 15; i <= 70; i++) {
       arr.push(
         <option key={i} value={i}>
           {i}

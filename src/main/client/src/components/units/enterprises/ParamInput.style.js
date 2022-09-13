@@ -6,8 +6,10 @@ export const Section = styled.section`
   justify-content: right;
   text-align: center;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 10px 20px;
   background-color: #574b4b;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   border-bottom: #fbf6f6;
 
   .react-search-param-icon {
@@ -29,6 +31,13 @@ export const Section = styled.section`
     opacity: 0.7;
   }
 `;
+export const Infor = styled.h3`
+  cursor: default;
+  width: 570px;
+  height: 45px;
+  text-align: left;
+  line-height: 47px;
+`;
 export const Select = styled.select`
   background-color: #392f31;
   color: #fff;
@@ -39,19 +48,4 @@ export const Select = styled.select`
   height: 30px;
   margin: 10px;
   padding: 5px;
-`;
-export const InputSkillSet = styled.input`
-  background-color: #ae9d9d;
-  color: #fff;
-  font-size: 18px;
-  border: none;
-  font-weight: bold;
-  width: 200px;
-  margin: 10px;
-  margin-right: 0;
-  padding: 5px;
-
-  ::placeholder {
-    color: #fbecec;
-  }
 `;
