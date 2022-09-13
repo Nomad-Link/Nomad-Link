@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
+  cursor: pointer;
   position: -webkit-fixed;
   position: fixed;
   right: 3%;

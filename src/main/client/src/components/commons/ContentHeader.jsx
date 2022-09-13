@@ -6,7 +6,7 @@ function ContentHeader({ title, button, link, linkName }) {
 
   return (
     <Section>
-      <h1>{title}</h1>
+      <h1 style={{ cursor: "default" }}>{title}</h1>
       {button ? <Back onClick={() => navigate(-1)}>돌아가기</Back> : null}
       {link ? <Back onClick={() => navigate(link)}>{linkName}</Back> : null}
     </Section>

@@ -5,8 +5,17 @@ import Profile from "./Profile";
 import { Section } from "./List.style";
 
 function List({ endPoint, bgColor, unitColor }) {
-  const [initialState] = useStateValue();
+  const [initialState, dispatch] = useStateValue();
   const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    setTimeout(function () {
+      dispatch({
+        type: `Delete`,
+      });
+    }, 10);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const url = `/api/enterprise/recruit/${endPoint}`;
@@ -28,8 +37,8 @@ function List({ endPoint, bgColor, unitColor }) {
       {user.map((m, indexA) => {
         return (
           <Profile
-            unitColor={unitColor}
             key={indexA}
+            unitColor={unitColor}
             realName={m.realName}
             nation={m.nation}
             role={m.role}

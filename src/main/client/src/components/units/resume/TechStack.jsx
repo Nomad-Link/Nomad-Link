@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useStateValue } from "store/StateProvider";
-import { TechSearch, TechName, DelButton, Error } from "./TechStack.style";
+import {
+  Div,
+  BoxSearch,
+  TechSearch,
+  Result,
+  ResultText,
+  BoxStack,
+  TechName,
+  DelButton,
+  Error,
+} from "./TechStack.style";
 
 function TechStack({ uTech, type }) {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
@@ -81,22 +91,29 @@ function TechStack({ uTech, type }) {
     });
   }
   return (
-    <div>
-      <TechSearch
-        placeholder="기술 스택을 검색하여 추가하세요."
-        value={keyword || ""}
-        onChange={(e) => updateField("keyword", e.target.value)}
-      />
-      <div>{renderResults}</div>
-      {error ? <Error>이미 등록된 기술스택입니다.</Error> : null}
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <Div>
+      <BoxSearch>
+        <TechSearch
+          placeholder="기술 스택을 검색하여 추가하세요."
+          value={keyword || ""}
+          onChange={(e) => updateField("keyword", e.target.value)}
+        />
+        <Result>
+          {renderResults}
+          {error ? <Error>이미 등록된 기술스택입니다.</Error> : null}
+        </Result>
+      </BoxSearch>
+      <BoxStack style={{ display: "flex", flexWrap: "wrap" }}>
+        {initialState.techStack.length === 0 ? (
+          <h1 style={{color:"#000087"}}>등록된 기술스택이 없습니다. 추가해주세요.</h1>
+        ) : null}
         {initialState.techStack.map((techName, index) => {
           return (
             <TechName key={index}>
               {techName.length > 13 ? (
                 <p style={{ marginTop: "8px", fontSize: "12px" }}>{techName}</p>
               ) : (
-                <p style={{ marginTop: "6px"}}>{techName}</p>
+                <p style={{ marginTop: "6px" }}>{techName}</p>
               )}
               <DelButton
                 onClick={() => dispatch({ type: `DelStack`, item: techName })}
@@ -106,22 +123,13 @@ function TechStack({ uTech, type }) {
             </TechName>
           );
         })}
-      </div>
-    </div>
+      </BoxStack>
+    </Div>
   );
 }
 
 function SearchView({ name, updateText }) {
-  return (
-    <div
-      style={{ justifyContent: "center", margin: "auto", width: "140px" }}
-      onClick={() => updateText(name)}
-    >
-      <p style={{ backgroundColor: "#D9D9D9", color: "#000", padding: "5px" }}>
-        {name}
-      </p>
-    </div>
-  );
+  return <ResultText onClick={() => updateText(name)}>{name}</ResultText>;
 }
 
 export default TechStack;

@@ -4,9 +4,18 @@ import { useStateValue } from "store/StateProvider";
 import Profile from "./Profile";
 import { Section } from "./List.style";
 
-function List({ endPoint }) {
-  const [initialState] = useStateValue();
+function List({ bgColor, endPoint }) {
+  const [initialState, dispatch] = useStateValue();
   const [enterprise, setEnterprise] = useState([]);
+
+  useEffect(() => {
+    setTimeout(function () {
+      dispatch({
+        type: `Delete`,
+      });
+    }, 10);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const url = `/api/private/employ/enterprises/${endPoint}`;
@@ -28,7 +37,7 @@ function List({ endPoint }) {
   // const shuffle = enterprise.sort(() => Math.random() - 0.5);
 
   return (
-    <Section>
+    <Section bgColor={bgColor}>
       {enterprise.map((m, indexA) => {
         return (
           <Profile

@@ -3,8 +3,8 @@ import axios, { post } from "axios";
 import { useCookies } from "react-cookie";
 import { useTheme } from "store/ThemeProvider";
 import { useStateValue } from "store/StateProvider";
+import TitleSection from "components/commons/TitleSection";
 import { Button, ButtonMini } from "styles/Button";
-import { ProfileImage } from "./Check.style";
 import {
   Section,
   BoxFlex,
@@ -17,8 +17,8 @@ import {
   InputL,
   Select,
 } from "styles/Form";
-import DeveloperSample from "assets/DeveloperSample.jpg";
 import TechStack from "./TechStack";
+import ContentHeader from "components/commons/ContentHeader";
 
 function Mypage() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
@@ -62,7 +62,6 @@ function Mypage() {
       developerIntroduction: userResume.developerIntroduction,
     };
     formData(ResumeRequestDto);
-    console.log(techStacks);
     window.location.replace("/mypage/resume");
   };
 
@@ -116,24 +115,37 @@ function Mypage() {
     }
   }
 
-  function theme() {
+  function bgColor() {
     if (ThemeMode === "dark") {
-      return "#9F9F9F";
+      return "#333333";
     } else {
-      return "#D5D5D5";
+      return "#E7E7E7";
+    }
+  }
+  function color() {
+    if (ThemeMode === "dark") {
+      return "#FFF";
+    } else {
+      return "#000";
     }
   }
   const style = {
-    backgroundColor: theme(),
-    color: "#000",
+    backgroundColor: bgColor(),
+    color: color(),
+    fontWeight: "bold",
     appearance: "none",
+    borderRadius: "0",
     borderBottom: "2px solid #4641d9",
   };
 
   if (disabled) {
     return (
-      <Section>
-        <h1 style={{ margin: "50px" }}>이력서가 존재하지 않습니다.</h1>
+      <Section style={{ marginTop: "20px" }}>
+        <TitleSection
+          padding={"50px"}
+          mediumOne={"등록된 이력서가 없습니다."}
+          smallOne={"작성하신 이력서는 개발자 리스트에 업로드됩니다."}
+        />
         <Button
           style={{ width: "200px" }}
           onClick={() => window.location.replace("/mypage/resume/save")}
@@ -253,28 +265,23 @@ function Mypage() {
             />
           </BoxBlock>
         </Section>
-        <Section>
+        <ContentHeader title="기술 스택" button={false} />
+        <Section style={{ height: "290px", marginTop: "0" }}>
           {userResume.techStacks ? (
             <TechStack uTech={userResume.techStacks} />
           ) : (
             <div>
-              <h3>등록된 기술스택이 없습니다. 추가하세요.</h3>
               <TechStack uTech={userResume.techStacks} />
             </div>
           )}
-          <ButtonMini onClick={() => onTechStack()}>저장</ButtonMini>
-          {/* {userResume.storeFileName ? (
-            <ProfileImage
-              alt=""
-              src={`/api/mypage/resume/image/${userResume.storeFileName}`}
-            />
-          ) : (
-            <ProfileImage alt="" src={DeveloperSample} />
-          )} */}
+          <div
+            style={{ textAlign: "left", padding: "20px", marginTop: "-74px" }}
+          >
+            <ButtonMini onClick={() => onTechStack()}>저장</ButtonMini>
+          </div>
         </Section>
       </section>
     );
   }
 }
-
 export default Mypage;
