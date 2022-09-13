@@ -11,7 +11,11 @@ function Resume() {
       exit={{ opacity: 0 }}
     >
       <HelmetAsync title={"이력서 : "} />
-      <ContentHeader title="이력서" button={false} />
+      <ContentHeader
+        title="이력서"
+        link={"/mypage"}
+        linkName={"마이페이지로 이동"}
+      />
       <Check />
     </Main>
   );

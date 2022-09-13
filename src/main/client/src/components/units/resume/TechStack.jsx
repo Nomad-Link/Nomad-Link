@@ -105,7 +105,9 @@ function TechStack({ uTech, type }) {
       </BoxSearch>
       <BoxStack style={{ display: "flex", flexWrap: "wrap" }}>
         {initialState.techStack.length === 0 ? (
-          <h1 style={{color:"#000087"}}>등록된 기술스택이 없습니다. 추가해주세요.</h1>
+          <h1 style={{ color: "#000087" }}>
+            등록된 기술스택이 없습니다. 추가해주세요.
+          </h1>
         ) : null}
         {initialState.techStack.map((techName, index) => {
           return (

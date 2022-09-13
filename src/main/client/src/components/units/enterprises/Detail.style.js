@@ -26,6 +26,10 @@ export const Info = styled.div`
   border-top: 1px solid ${({ theme }) => theme.textOpacity};
   border-bottom: 1px solid ${({ theme }) => theme.textOpacity};
 `;
+export const TechStackTitle = styled.h3`
+  text-align: left;
+  margin: 0 20px -5px;
+`
 export const TechStackBox = styled.div`
   display: flex;
   flex-wrap: wrap;

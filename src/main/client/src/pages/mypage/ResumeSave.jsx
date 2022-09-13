@@ -1,5 +1,6 @@
 import { Main } from "styles/Pages";
 import HelmetAsync from "hooks/HelmetAsync";
+import ContentHeader from "components/commons/ContentHeader";
 import Form from "components/units/resume/Form";
 
 function Resume() {
@@ -10,7 +11,10 @@ function Resume() {
       exit={{ opacity: 0 }}
     >
       <HelmetAsync title={"이력서 저장 : "} />
-      <Form type="save" title="저장" url="/api/mypage/resume" />
+      <ContentHeader title="이력서 저장" button={false} />
+      <div style={{ marginTop: "-30px" }}>
+        <Form type="save" title="저장" url="/api/mypage/resume" />
+      </div>
     </Main>
   );
 }

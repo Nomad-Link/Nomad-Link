@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
+  cursor: default;
   display: flex;
   width: 950px;
   justify-content: space-between;
@@ -12,4 +13,8 @@ export const Back = styled.p`
   font-size: 18px;
   float: right;
   border-bottom: 1px solid;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;

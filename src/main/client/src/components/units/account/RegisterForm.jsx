@@ -43,8 +43,7 @@ function RegisterForm() {
     const url = "/api/register";
 
     try {
-      const response = await post(url, data);
-      console.log(response);
+      const response = await post(url, data); // eslint-disable-line no-unused-vars
       removeCookie("id");
       navigate("/register/complete");
     } catch (error) {

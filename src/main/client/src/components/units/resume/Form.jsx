@@ -76,8 +76,7 @@ function Form({ type, title, url }) {
 
   async function formData(data) {
     try {
-      const response = await post(url, data);
-      console.log(response);
+      const response = await post(url, data); // eslint-disable-line no-unused-vars
     } catch (error) {
       console.error(error);
     }
@@ -101,9 +100,9 @@ function Form({ type, title, url }) {
   return (
     <Section>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Title>
-          이력서 {title} : {cookies.id}
-        </Title>
+        <div style={{ width: "400px", textAlign: "left", marginLeft: "20px" }}>
+          <Title style={{ paddingTop: "30px" }}>{cookies.id} 님</Title>
+        </div>
         <BoxBlock>
           <BoxFlex>
             <BoxSelect>

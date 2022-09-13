@@ -60,6 +60,7 @@ export const BoxStack = styled.div`
   width: 610px;
   height: 210px;
   align-items: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   background-color: ${({ theme }) => theme.bgUnit};
   border: 1px solid ${({ theme }) => theme.border};
@@ -78,7 +79,7 @@ export const TechName = styled.div`
   padding: 5px;
   background-color: #C4DEFF;
   border: 1px solid #A0BAED;
-  color: ${({ theme }) => theme.textSection};
+  color: #221DB5;
   font-size: 18px;
   font-weight: bold;
   border-radius: 5px;

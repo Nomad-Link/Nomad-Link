@@ -36,7 +36,7 @@ function ParamInput() {
   return (
     <Section>
       {cookies.id ? (
-        <Infor>&#9989;로그인 중입니다. 원하시는 기업에 지원해보세요.</Infor>
+        <Infor>&#9989; 로그인 중입니다. 원하시는 기업에 지원해보세요.</Infor>
       ) : (
         <Infor>&#9888; 지원 신청을 하려면 로그인하셔야 합니다.</Infor>
       )}
