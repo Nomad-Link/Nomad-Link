@@ -1,6 +1,12 @@
 <img width="500" alt="Logo" src="https://user-images.githubusercontent.com/96750543/188251461-3fbf1c8b-9bc5-4e11-b4bb-f65c10746b34.png">
 
-## 개요
+## Readme Link
+
+[:ballot_box_with_check: README BackEnd](https://github.com/Nomad-Link/Nomad-Link/tree/master/src)
+
+[:ballot_box_with_check: README FrontEnd](https://github.com/Nomad-Link/Nomad-Link/tree/master/src/main/client)
+
+## 프로젝트 개요
 
 * 명칭 : Nomad Link
 * 개발 인원 : 2명
@@ -19,9 +25,5 @@
     * https://www.figma.com/file/X0JGe5W5aC89QhZWsNqRsx/Nomad-Link2
     * https://www.figma.com/file/rmzWwuyKfFeb2F3wTogfue/Nomad-Link?node-id=12%3A54
 * 시연 영상 : [YOUTUBE Link](https://www.youtube.com/watch?v=dGk1JYH1eB8&t=18s)
-
-[:ballot_box_with_check: README BackEnd](https://github.com/Nomad-Link/Nomad-Link/tree/master/src)
-
-[:ballot_box_with_check: README FrontEnd](https://github.com/Nomad-Link/Nomad-Link/tree/master/src/main/client)
 
 [:ballot_box_with_check: Pull requests](https://github.com/Nomad-Link/Nomad-Link/pulls?q=is%3Apr+is%3Aclosed)
