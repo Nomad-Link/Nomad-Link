@@ -1,4 +1,4 @@
-# Nomad Link FrontEnd
+# Nomad Link BackEnd
 
 [:ballot_box_with_check: README FrontEnd](https://github.com/Nomad-Link/Nomad-Link/tree/master/src/main/client)
 
