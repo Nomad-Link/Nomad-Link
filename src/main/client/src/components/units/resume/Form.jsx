@@ -19,12 +19,16 @@ import {
   Error,
 } from "styles/Form";
 
+// 이력서 폼 컴포넌트
+// props로 받은 type이 save인 경우 input이 비어있고, update인 경우 input에 기존 이력서 값이 부여됨
 function Form({ type, title, url }) {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userResume, setUserResume] = useState([]);
   const [updateStack, SetUpdateStack] = useState(false);
 
+    // react-hook-form Method
+  // register: form의 value 이름 설정, required와 pattern 등의 조건 부여 가능
   const {
     register,
     handleSubmit,
@@ -32,6 +36,7 @@ function Form({ type, title, url }) {
     formState: { errors },
   } = useForm();
 
+  // 나이 옵션을 반복문으로 출력
   function SelectAge() {
     var arr = [];
     for (var i = 15; i <= 70; i++) {
@@ -44,6 +49,7 @@ function Form({ type, title, url }) {
     return arr;
   }
 
+  // type = update인 경우 요청할 이력서 데이터
   useEffect(() => {
     const url = `/api/mypage/resume/get/${cookies.id}`;
     axios
@@ -53,6 +59,7 @@ function Form({ type, title, url }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // form submit 시 실행
   const onSubmit = (data) => {
     const techStacks = initialState.techStack;
     const ResumeRequestDto = {
@@ -74,6 +81,7 @@ function Form({ type, title, url }) {
     window.location.replace("/mypage/resume");
   };
 
+  // 이력서 폼 전송 함수
   async function formData(data) {
     try {
       const response = await post(url, data); // eslint-disable-line no-unused-vars
@@ -82,6 +90,7 @@ function Form({ type, title, url }) {
     }
   }
 
+  // 기술 스택을 담아두는 함수
   useEffect(() => {
     dispatch({ type: `DelStackAll` });
     for (let index in userResume.techStacks) {

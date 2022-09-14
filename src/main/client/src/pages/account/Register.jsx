@@ -3,6 +3,7 @@ import RegisterForm from "components/units/account/RegisterForm";
 import TitleSection from "components/commons/TitleSection";
 import HelmetAsync from "hooks/HelmetAsync";
 
+// 회원가입 페이지
 function Register() {
   return (
     <Main

@@ -16,10 +16,12 @@ import {
   Strong,
 } from "./Detail.style";
 
+// 기업 리스트 클릭 시 나오는 채용 공고 컴포넌트
 function Detail() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [ent, setEnt] = useState([]);
 
+  // 해당 기업의 정보 요청
   useEffect(() => {
     const url = `/api${window.location.pathname}`;
     axios
@@ -28,6 +30,7 @@ function Detail() {
       .catch((error) => console.log(error));
   }, []);
 
+  // 기업 지원 요청 함수
   async function PostApply() {
     const url = `/api${window.location.pathname}`;
 
@@ -38,6 +41,7 @@ function Detail() {
     }
   }
 
+  // 지원하기 클릭 시 조건에 따라 지원 요청 처리
   function Apply() {
     if (cookies.id) {
       const conf = window.confirm(

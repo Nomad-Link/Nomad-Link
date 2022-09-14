@@ -5,10 +5,12 @@ import Profile from "./Profile";
 import TitleSection from "components/commons/TitleSection";
 import { Section } from "./List.style";
 
+// 개발자 리스트 컴포넌트
 function List({ endPoint, bgColor, unitColor }) {
   const [initialState, dispatch] = useStateValue();
   const [user, setUser] = useState([]);
 
+  // params를 dispatch로 초기화 (기업 리스트에서 개발자 리스트로 넘어올 경우 params가 남아있기 때문)
   useEffect(() => {
     setTimeout(function () {
       dispatch({
@@ -18,10 +20,12 @@ function List({ endPoint, bgColor, unitColor }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 개발자 리스트 요청
   useEffect(() => {
     const url = `/api/enterprise/recruit/${endPoint}`;
     axios
       .get(url, {
+        // params에 따라 리스트 조건부 요청
         params: {
           nation: initialState.nation,
           employeeType: initialState.employeeType,

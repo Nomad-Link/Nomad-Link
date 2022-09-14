@@ -8,10 +8,13 @@ import HelmetAsync from "hooks/HelmetAsync";
 import ContentHeader from "components/commons/ContentHeader";
 import BannerSlim from "components/commons/BannerSlim";
 
+// 개인 서비스 메인 페이지
 function Private() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [data, setData] = useState(false);
 
+  // 이력서 데이터 요청
+  // "아직 이력서 작성은 안하셨나요?" 배너의 경우 이미 이력서를 작성했을 경우 나오지 않음
   useEffect(() => {
     const url = `/api/mypage/resume/get/${cookies.id}`;
     axios
@@ -52,5 +55,3 @@ function Private() {
 }
 
 export default Private;
-
-// /api/resume/${cookies.id}

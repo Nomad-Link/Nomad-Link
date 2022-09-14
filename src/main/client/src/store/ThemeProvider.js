@@ -1,9 +1,11 @@
+// 다크 모드 Provider 설정
 import React, { createContext, useState, useContext, useCallback } from "react";
 import { lightTheme, darkTheme } from "styles/Theme";
 import { ThemeProvider as StyledProvider } from "styled-components";
 
 const ThemeContext = createContext({});
 
+// 로컬 스토리지를 통해 dark, light을 업데이트 (추후 접속 시에도 상태가 유지됨)
 const ThemeProvider = ({ children }) => {
   const LocalTheme = window.localStorage.getItem("theme") || "light";
   const [themeMode, setThemeMode] = useState(LocalTheme);

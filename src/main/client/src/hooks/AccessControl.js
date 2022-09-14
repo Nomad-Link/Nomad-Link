@@ -1,5 +1,6 @@
 import { Main } from "styles/Pages";
 
+// Page의 접근성을 관리하기 위해 만든 로직
 function Access({ message, replace }) {
   if (message === null) {
     window.location.replace(`/${replace}`);

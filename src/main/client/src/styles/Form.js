@@ -1,3 +1,5 @@
+// Form 스타일 지정
+
 import styled from "styled-components";
 
 export const Section = styled.section`

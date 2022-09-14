@@ -4,6 +4,7 @@ import { useStateValue } from "store/StateProvider";
 import { TbSearch } from "react-icons/tb";
 import { Section, Infor, Select } from "./ParamInput.style";
 
+// 기업 리스트 검색 컴포넌트
 function ParamInput() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
@@ -25,6 +26,7 @@ function ParamInput() {
     }
   };
 
+  // 분야, 유형을 dispatch => params에 저장 => 리스트 요청
   function SetInput() {
     dispatch({
       type: `SetInputEnt`,

@@ -9,7 +9,9 @@ import SlideSample1 from "assets/SlideSample1.jpg";
 import SlideSample2 from "assets/SlideSample2.jpg";
 import SlideSample3 from "assets/SlideSample3.jpg";
 
+// 개인 서비스 메인의 기업 슬라이드 컴포넌트
 function Slide() {
+  // react-slick Method
   const settings = {
     dots: true,
     arrows: true,
@@ -23,6 +25,7 @@ function Slide() {
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   };
+  // Slide 왼쪽 화살표 style
   function PrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -33,6 +36,7 @@ function Slide() {
       />
     );
   }
+  // Slide 오른쪽 화살표 style
   function NextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -47,6 +51,7 @@ function Slide() {
   const navigate = useNavigate();
   const [ent, setEnt] = useState([]);
 
+  // 슬라이드에 실을 기업 데이터 요청
   useEffect(() => {
     const url = `/api/private/employ/enterprises`;
     axios

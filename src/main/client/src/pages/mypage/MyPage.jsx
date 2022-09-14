@@ -3,6 +3,7 @@ import HelmetAsync from "hooks/HelmetAsync";
 import ContentHeader from "components/commons/ContentHeader";
 import MyInformation from "components/units/mypage/MyInformation";
 
+// 마이페이지 페이지
 function MyPage() {
   return (
     <Main

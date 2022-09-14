@@ -2,13 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import EmployEnterprises from "./EmployEnterprises";
 import Private from "./Private";
 
-function RouteEnterprise() {
+// private 자식 Route
+function RoutePrivate() {
   return (
-      <Routes>
-        <Route path="/" element={<Private />} />
-        <Route path="/employ/enterprises" element={<EmployEnterprises />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Private />} />
+      <Route path="/employ/enterprises" element={<EmployEnterprises />} />
+    </Routes>
   );
 }
 
-export default RouteEnterprise;
+export default RoutePrivate;

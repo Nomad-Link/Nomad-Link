@@ -3,6 +3,7 @@ import { useStateValue } from "store/StateProvider";
 import { TbSearch } from "react-icons/tb";
 import { Section, Select, InputSkillSet } from "./ParamInput.style";
 
+// 개발자 리스트 검색 컴포넌트
 function ParamInput() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [nation, setNation] = useState(null);
@@ -31,6 +32,7 @@ function ParamInput() {
     }
   };
 
+  // 국가, 유형, 스킬셋 검색을 dispatch => params에 저장 => 리스트 요청
   function SetInput() {
     dispatch({
       type: `SetInputDev`,

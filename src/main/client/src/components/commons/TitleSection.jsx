@@ -1,5 +1,6 @@
 import { Section } from "./TitleSection.style";
 
+// 컨텐츠에 일정 공간을 차지하는 텍스트를 띄우는 컴포넌트
 function TitleSection({ padding, largeOne, largeTwo, mediumOne, mediumTwo, smallOne, smallTwo }) {
   return (
     <Section padding={padding}>

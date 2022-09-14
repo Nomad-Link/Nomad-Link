@@ -20,15 +20,18 @@ import {
 } from "./Header.style";
 import Tooltip from "./Tooltip";
 
+// 웹 Header
 function Header({ mode }) {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
 
+  // 로그아웃 함수
   async function Logout() {
     const url = "/api/logout";
 
     try {
       const response = await post(url); // eslint-disable-line no-unused-vars
       if (cookies.id) {
+        // 바로 요청을 하면 로그아웃 상태가 되지 않는 오류가 있어서 setTimeout을 주어서 removeCookie 실행
         setTimeout(removeCookie("id", { path: "/" }), 1);
       }
       window.location.replace("/");
@@ -80,12 +83,6 @@ function Header({ mode }) {
             </Menu>
           </DivLeft>
           <DivRight>
-            {/* <button
-              onClick={() => ActTestLink()}
-              style={{ width: "100px", height: "30px" }}
-            >
-              ROUTE {testDiv ? <span>OFF</span> : <span>ON</span>}
-            </button> */}
             <SLink to={"/private"}>
               <MenuIcon>
                 <IoPersonSharp className="react-icon" />

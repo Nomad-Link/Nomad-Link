@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "styles/Button";
 import { Section, Div } from "./BannerFat.style";
 
+// 메인 곳곳에서 사용되는 배너 넓은 버전
 function BannerFat({
   bgColor,
   color,

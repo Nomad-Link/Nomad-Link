@@ -14,6 +14,8 @@ import {
 } from "./Profile.style";
 import DeveloperSample from "assets/DeveloperSample.jpg";
 
+// 개발자 리스트 프로필 컴포넌트
+// List에서 DB에 있는 개수만큼 map으로 반복되어 렌더링
 function Profile({ unitColor, realName, nation, role, techStacks }) {
   const navigate = useNavigate();
 

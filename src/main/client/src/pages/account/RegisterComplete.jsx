@@ -4,6 +4,7 @@ import TitleSection from "components/commons/TitleSection";
 import HelmetAsync from "hooks/HelmetAsync";
 import { Button } from "styles/Button";
 
+// 회원가입 완료 페이지
 function RegisterComplete() {
   const navigate = useNavigate();
 

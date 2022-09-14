@@ -1,3 +1,5 @@
+// 페이지 스타일 지정
+
 import styled from "styled-components";
 import { motion } from "framer-motion";
 

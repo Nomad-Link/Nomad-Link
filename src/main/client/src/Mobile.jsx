@@ -1,3 +1,4 @@
+// Mobile 전체 컴포넌트
 function Mobile() {
   return (
     <div

@@ -15,17 +15,24 @@ import {
 } from "styles/Form";
 import { Section, Form, OptionDiv } from "./RegisterForm.style";
 
+// 회원가입 폼 컴포넌트
 function RegisterForm() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const navigate = useNavigate();
+
+  // Error 상태 state
   const [idOver, setIdOver] = useState(false);
   const [passwdOver, setPasswdIdOver] = useState(false);
+
+  // react-hook-form Method
+  // register: form의 value 이름 설정, required와 pattern 등의 조건 부여 가능
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // form submit 시 실행
   const onSubmit = (data) => {
     const registerRequestDto = {
       userId: data.userId,
@@ -39,6 +46,7 @@ function RegisterForm() {
     formData(registerRequestDto);
   };
 
+  // 회원가입 전송 함수
   async function formData(data) {
     const url = "/api/register";
 
@@ -47,6 +55,7 @@ function RegisterForm() {
       removeCookie("id");
       navigate("/register/complete");
     } catch (error) {
+      // Error state를 먼저 초기화 후 조건부 출력
       let errCode = error.response.data.errorMessage;
       setIdOver(false);
       setPasswdIdOver(false);
