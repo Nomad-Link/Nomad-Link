@@ -1,5 +1,6 @@
 import { Section, Li, Span } from "./Population.style";
 
+// 분야 통계 컴포넌트
 function Population() {
   return (
     <Section>

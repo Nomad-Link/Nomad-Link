@@ -1,6 +1,7 @@
 import { Section, Div, Title, InforImage } from "./Information.style";
 import EnterpriseInformation from "assets/EnterpriseInformation.png";
 
+// 기업 서비스 메인 타이틀 컴포넌트
 function Information() {
   return (
     <Section bgColor={"#1F469A"}>

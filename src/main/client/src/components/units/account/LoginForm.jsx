@@ -7,10 +7,13 @@ import { InputS, ErrDiv, Error } from "styles/Form";
 import { Button } from "styles/Button";
 import { Section, Div, BoxFlex } from "./LoginForm.style";
 
+// 로그인 폼 컴포넌트
 function LoginForm() {
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userId, setUserId] = useState("");
+
+  // Error 상태 state
   const [password, setPassword] = useState("");
   const [idOver, setIdOver] = useState(false);
   const [passwdOver, setPasswdIdOver] = useState(false);
@@ -23,12 +26,14 @@ function LoginForm() {
     setPassword(e.target.value);
   }
 
+  // Enter 입력 시 로그인
   function handleKeyPress(e) {
     if (e.key === "Enter") {
-      PostLogin(); // Enter 입력 시 로그인
+      PostLogin();
     }
   }
 
+  // 로그인 요청 함수
   async function PostLogin() {
     const url = "/api/login";
 
@@ -40,6 +45,7 @@ function LoginForm() {
       setCookie("id", response.data.userId);
       window.location.replace("/");
     } catch (error) {
+      // Error state를 먼저 초기화 후 조건부 출력
       let errCode = error.response.data.errorMessage;
       setIdOver(false);
       setPasswdIdOver(false);

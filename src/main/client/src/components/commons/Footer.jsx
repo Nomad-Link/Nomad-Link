@@ -3,8 +3,15 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
-import { ResFooter, FooterDiv, Information, ServiceLink, SvButton } from "./Footer.style";
+import {
+  ResFooter,
+  FooterDiv,
+  Information,
+  ServiceLink,
+  SvButton,
+} from "./Footer.style";
 
+// 웹 Footer
 function Footer() {
   return (
     <ResFooter>

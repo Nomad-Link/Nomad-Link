@@ -5,6 +5,7 @@ import Mobile from "./Mobile";
 import { ThemeProvider } from "store/ThemeProvider";
 import { GlobalStyle } from "styles/GlobalStyle";
 
+// Desktop, Mobile 구분
 function App() {
   return (
     <ThemeProvider>

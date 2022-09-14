@@ -5,8 +5,11 @@ import ApplyProfile from "./ApplyProfile";
 import TitleSection from "components/commons/TitleSection";
 import { Button } from "styles/Button";
 
+// 마이페이지 지원 내역 기업 리스트 컴포넌트
 function MyInformation() {
   const [data, setData] = useState([]);
+
+  // 지원한 기업 데이터 요청
   useEffect(() => {
     const url = `/api/member/mypage`;
     axios

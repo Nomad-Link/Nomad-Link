@@ -5,6 +5,7 @@ import List from "components/units/developers/List";
 import HelmetAsync from "hooks/HelmetAsync";
 import ContentHeader from "components/commons/ContentHeader";
 
+// 개발자 리스트 페이지
 function RecruitDevelopers() {
   return (
     <Main

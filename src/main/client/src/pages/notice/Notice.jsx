@@ -3,8 +3,8 @@ import HelmetAsync from "hooks/HelmetAsync";
 import Detail from "components/units/enterprises/Detail";
 import ContentHeader from "components/commons/ContentHeader";
 
-function Private() {
-
+// 채용 공고 페이지
+function Notice() {
   return (
     <Main
       initial={{ opacity: 0 }}
@@ -18,4 +18,4 @@ function Private() {
   );
 }
 
-export default Private;
+export default Notice;

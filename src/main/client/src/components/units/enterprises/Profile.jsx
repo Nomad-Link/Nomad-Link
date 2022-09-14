@@ -9,6 +9,8 @@ import {
   TechName,
 } from "./Profile.style";
 
+// 기업 리스트 프로필 컴포넌트
+// List에서 DB에 있는 개수만큼 map으로 반복되어 렌더링
 function Profile({
   id,
   enterpriseName,
@@ -19,6 +21,7 @@ function Profile({
 }) {
   const navigate = useNavigate();
 
+  // 프로필 width를 넘어가는 제목의 경우 이상 부분을 "..." 으로 줄여서 처리하는 함수
   const [limit, setLimit] = useState(25); // eslint-disable-line no-unused-vars
   const toggleEllipsis = (str, limit) => {
     return {

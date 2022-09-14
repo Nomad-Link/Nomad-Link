@@ -13,11 +13,15 @@ import {
   Error,
 } from "./TechStack.style";
 
-function TechStack({ uTech, type }) {
+// 기술 스택 컴포넌트
+// Check 컴포넌트 내부에 위치
+// Reducer에 담아놓은 기술스택 값이 이력서 폼 전송 시 같이 전송됨
+function TechStack({ uTech }) {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [stack, setStack] = useState([]);
   const [error, setError] = useState(false);
 
+  // 기술 스택을 요청
   useEffect(() => {
     const url = `/api/techstack`;
     axios
@@ -27,6 +31,8 @@ function TechStack({ uTech, type }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 기존에 담겨있는 기술스택을 초기화
+  // DB에서 요청받은 이력서의 기술스택, 추가한 기술스택을 dispatch
   useEffect(() => {
     dispatch({ type: `DelStackAll` });
     for (let index in uTech) {
@@ -40,6 +46,7 @@ function TechStack({ uTech, type }) {
 
   const [keyword, setKeyword] = useState();
   const [results, setResult] = useState([]);
+
   const updateField = (field, value, update = true) => {
     if (update) onSearch(value);
     if (field === "keyword") {
@@ -49,6 +56,8 @@ function TechStack({ uTech, type }) {
       setResult(value);
     }
   };
+
+  // 검색 시 요청 받은 기술 스택과 입력값을 대조
   const onSearch = (text) => {
     var results = stack.filter(
       (item) => true === matchName(item.techName, text)
@@ -61,6 +70,9 @@ function TechStack({ uTech, type }) {
     if (keyword === "") return false;
     return name === keyword.toString().toLowerCase();
   };
+
+  // 검색 결과를 클릭 시 필드에 추가된 기술스택 생성
+  // overlap을 통해 중복 발생 시 에러 처리
   const updateText = (text) => {
     updateField("keyword", "");
     updateField("results", []);

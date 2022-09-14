@@ -3,6 +3,7 @@ import HelmetAsync from "hooks/HelmetAsync";
 import Check from "components/units/resume/Check";
 import ContentHeader from "components/commons/ContentHeader";
 
+// 이력서 페이지
 function Resume() {
   return (
     <Main

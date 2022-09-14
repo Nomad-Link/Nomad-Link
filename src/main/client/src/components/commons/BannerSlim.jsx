@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Section, Div } from "./BannerSlim.style";
 
+// 메인 곳곳에서 사용되는 배너 얇은 버전
 function BannerSlim({ bgColor, lineOne, button, link }) {
   const navigate = useNavigate();
 

@@ -4,6 +4,7 @@ import ContentHeader from "components/commons/ContentHeader";
 import List from "components/units/enterprises/List";
 import ParamInput from "components/units/enterprises/ParamInput";
 
+// 기업 리스트 페이지
 function EmployEnterprises() {
   return (
     <Main

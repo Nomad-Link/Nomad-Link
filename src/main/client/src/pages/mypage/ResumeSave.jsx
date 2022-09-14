@@ -3,7 +3,8 @@ import HelmetAsync from "hooks/HelmetAsync";
 import ContentHeader from "components/commons/ContentHeader";
 import Form from "components/units/resume/Form";
 
-function Resume() {
+// 이력서 초기 저장 페이지
+function ResumeSave() {
   return (
     <Main
       initial={{ opacity: 0 }}
@@ -19,4 +20,4 @@ function Resume() {
   );
 }
 
-export default Resume;
+export default ResumeSave;

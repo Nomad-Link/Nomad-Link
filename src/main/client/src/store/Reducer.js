@@ -1,3 +1,4 @@
+// Reducer 초기 상태
 export const initialState = {
   nation: null,
   role: null,
@@ -8,6 +9,7 @@ export const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    // 개발자 리스트 state params
     case `SetInputDev`:
       return {
         ...state,
@@ -15,16 +17,20 @@ const reducer = (state, action) => {
         employeeType: action.employeeType,
         searchParams: action.searchParams,
       };
+    // 기업 리스트 state params
     case `SetInputEnt`:
       return {
         ...state,
         role: action.role,
         employeeType: action.employeeType,
       };
+    // 삭제, 초기화
     case `Delete`:
       return initialState;
+    // 기술 스택 state 저장
     case `SaveStack`:
       return { ...state, techStack: [...state.techStack, action.item] };
+    // 기술 스택 state 삭제
     case `DelStack`:
       const indexB = state.techStack.findIndex(
         (techStackItem) => techStackItem === action.item
@@ -35,6 +41,7 @@ const reducer = (state, action) => {
         ...state,
         techStack: newtechStack,
       };
+    // state의 기술 스택 state 모두 삭제
     case `DelStackAll`:
       return { ...state, techStack: [] };
     default:

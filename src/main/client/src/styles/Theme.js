@@ -1,3 +1,6 @@
+// 다크모드 스타일
+// css에서 형식 ${({ theme }) => theme.이름}; 으로 작용
+
 export const lightTheme = {
   bgIndex: "#fff",
   bgHeader: "#fff",

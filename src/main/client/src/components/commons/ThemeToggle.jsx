@@ -2,6 +2,7 @@ import { MdLightMode } from "react-icons/md";
 import { MdModeNight } from "react-icons/md";
 import { Button } from "./ThemeToggle.style";
 
+// 다크모드 토글 버튼 (상시 화면 우측 하단에 고정)
 function ThemeToggle({ toggle, mode }) {
   return (
     <Button onClick={toggle} mode={mode}>

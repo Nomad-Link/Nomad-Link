@@ -4,6 +4,7 @@ import BannerSlim from "components/commons/BannerSlim";
 import Information from "components/units/enterprises/Information";
 import BannerFat from "components/commons/BannerFat";
 
+// 기업 서비스 메인 페이지
 function Enterprise() {
   return (
     <MainWide

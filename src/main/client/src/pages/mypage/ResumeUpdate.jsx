@@ -4,7 +4,8 @@ import ContentHeader from "components/commons/ContentHeader";
 import { useCookies } from "react-cookie";
 import Form from "components/units/resume/Form";
 
-function Resume() {
+// 이력서 수정 페이지
+function ResumeUpdate() {
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   return (
     <Main
@@ -25,4 +26,4 @@ function Resume() {
   );
 }
 
-export default Resume;
+export default ResumeUpdate;

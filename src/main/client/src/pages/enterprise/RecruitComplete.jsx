@@ -3,8 +3,8 @@ import List from "components/units/developers/List";
 import TitleSection from "components/commons/TitleSection";
 import HelmetAsync from "hooks/HelmetAsync";
 
+// 구인 폼 전송 완료 페이지
 function RecruitComplete() {
-
   return (
     <Main
       initial={{ opacity: 0 }}

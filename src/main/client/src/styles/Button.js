@@ -1,3 +1,5 @@
+// Button 스타일 지정
+
 import styled from "styled-components";
 
 export const Button = styled.button`

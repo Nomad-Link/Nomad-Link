@@ -20,13 +20,15 @@ import {
 import TechStack from "./TechStack";
 import ContentHeader from "components/commons/ContentHeader";
 
-function Mypage() {
+// 이력서 확인 컴포넌트
+function Check() {
   const [initialState, dispatch] = useStateValue(); // eslint-disable-line no-unused-vars
   const [ThemeMode, toggleTheme] = useTheme(); // eslint-disable-line no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars
   const [userResume, setUserResume] = useState([]);
-  const [disabled, seHeadisabled] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
+  // 이력서 데이터 요청
   useEffect(() => {
     const url = `/api/mypage/resume/get/${cookies.id}`;
     axios
@@ -36,12 +38,14 @@ function Mypage() {
       })
       .catch((error) => {
         if (error.response.status === 500) {
-          seHeadisabled(true);
+          // disabled 시 "등록된 이력서가 없습니다." 출력되게함
+          setDisabled(true);
         }
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 기술 스택을 담는 함수 (나머지 값은 기존 값으로 전달됨)
   const onTechStack = () => {
     const techStacks = initialState.techStack;
     const ResumeRequestDto = {
@@ -63,6 +67,7 @@ function Mypage() {
     alert("저장되었습니다.");
   };
 
+  // 기술 스택 데이터 전송 함수
   async function formData(data) {
     try {
       const response = await post( // eslint-disable-line no-unused-vars
@@ -112,6 +117,7 @@ function Mypage() {
     }
   }
 
+  // 이력서 확인 페이지에서 input과 label의 디자인이 다르게끔 설정
   function bgColor() {
     if (ThemeMode === "dark") {
       return "#333333";
@@ -287,4 +293,4 @@ function Mypage() {
     );
   }
 }
-export default Mypage;
+export default Check;

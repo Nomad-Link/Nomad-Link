@@ -4,6 +4,7 @@ import Form from "components/units/recruit/Form";
 import TitleSection from "components/commons/TitleSection";
 import HelmetAsync from "hooks/HelmetAsync";
 
+// 구인 폼 작성 페이지
 function RecruitForm() {
   return (
     <Main

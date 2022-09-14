@@ -4,6 +4,7 @@ import { FaFileSignature } from "react-icons/fa";
 import { MdFindInPage } from "react-icons/md";
 import { Section, Box, Circle, Hr, Li, Phase } from "./Procedure.style";
 
+// 구인 폼에서 진행도를 설명하는 컴포넌트
 function Procedure() {
   return (
     <Section>

@@ -4,6 +4,7 @@ import HelmetAsync from "hooks/HelmetAsync";
 import BannerFat from "components/commons/BannerFat";
 import CircleEffect from "components/units/home/CircleEffect";
 
+// 메인 페이지
 function Home({mode}) {
   const [ThemeMode] = useTheme();
 

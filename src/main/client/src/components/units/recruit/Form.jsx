@@ -16,14 +16,19 @@ import {
   Error,
 } from "styles/Form";
 
+// 구인 폼 컴포넌트
 function Form() {
   const navigate = useNavigate();
+
+  // react-hook-form Method
+  // register: form의 value 이름 설정, required와 pattern 등의 조건 부여 가능
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // form submit 시 실행
   const onSubmit = (data) => {
     const recruitmentFormRequestDto = {
       companyName: data.companyName,
@@ -45,6 +50,7 @@ function Form() {
     navigate("/enterprise/recruit/complete");
   };
 
+  // 구인 폼 전송 함수
   async function formData(data) {
     const url = "/api/enterprise/recruit/form";
 
@@ -66,7 +72,9 @@ function Form() {
               <InputS
                 placeholder="ex) 노마드 링크"
                 style={
-                  errors.companyName ? { borderBottom: "2px solid #ff0000" } : {}
+                  errors.companyName
+                    ? { borderBottom: "2px solid #ff0000" }
+                    : {}
                 }
                 {...register("companyName", { required: true })}
               />
@@ -77,7 +85,9 @@ function Form() {
               <InputS
                 placeholder="ex) 홍길동"
                 style={
-                  errors.managerName ? { borderBottom: "2px solid #ff0000" } : {}
+                  errors.managerName
+                    ? { borderBottom: "2px solid #ff0000" }
+                    : {}
                 }
                 {...register("managerName", { required: true })}
               />
@@ -115,7 +125,9 @@ function Form() {
               <InputS
                 placeholder="ex) qwer1234@abc.com"
                 style={
-                  errors.managerEmail ? { borderBottom: "2px solid #ff0000" } : {}
+                  errors.managerEmail
+                    ? { borderBottom: "2px solid #ff0000" }
+                    : {}
                 }
                 {...register("managerEmail", {
                   required: true,
@@ -157,7 +169,9 @@ function Form() {
               <InputS
                 placeholder="ex) 웹 페이지의 서버 개발 담당"
                 style={
-                  errors.roleDescription ? { borderBottom: "2px solid #ff0000" } : {}
+                  errors.roleDescription
+                    ? { borderBottom: "2px solid #ff0000" }
+                    : {}
                 }
                 {...register("roleDescription", { required: true })}
               />
@@ -187,7 +201,9 @@ function Form() {
               <InputS
                 placeholder="ex) 정규직 or 계약직 or 프리랜서"
                 style={
-                  errors.recruitmentType ? { borderBottom: "2px solid #ff0000" } : {}
+                  errors.recruitmentType
+                    ? { borderBottom: "2px solid #ff0000" }
+                    : {}
                 }
                 {...register("recruitmentType", { required: true })}
               />
@@ -276,7 +292,9 @@ function Form() {
             <InputL
               placeholder="ex) AWS EC2, React.JS"
               style={
-                errors.optionalSkillStack ? { borderBottom: "2px solid #ff0000" } : {}
+                errors.optionalSkillStack
+                  ? { borderBottom: "2px solid #ff0000" }
+                  : {}
               }
               {...register("optionalSkillStack", { required: true })}
             />
@@ -292,7 +310,9 @@ function Form() {
               <Label>채용 공고 상 키워드</Label>
               <InputS
                 placeholder="ex) Spring Developer"
-                style={errors.keywords ? { borderBottom: "2px solid #ff0000" } : {}}
+                style={
+                  errors.keywords ? { borderBottom: "2px solid #ff0000" } : {}
+                }
                 {...register("keywords", { required: true })}
               />
               {errors.keywords && (
@@ -304,7 +324,9 @@ function Form() {
               <InputS
                 placeholder="ex) 연 2500만원"
                 style={
-                  errors.maximumSalary ? { borderBottom: "2px solid #ff0000" } : {}
+                  errors.maximumSalary
+                    ? { borderBottom: "2px solid #ff0000" }
+                    : {}
                 }
                 {...register("maximumSalary", { required: true })}
               />
@@ -317,7 +339,9 @@ function Form() {
             <Label>기타 코멘트</Label>
             <InputM
               placeholder="ex) 학사 졸업자 우대"
-              style={errors.etcComment ? { borderBottom: "2px solid #ff0000" } : {}}
+              style={
+                errors.etcComment ? { borderBottom: "2px solid #ff0000" } : {}
+              }
               {...register("etcComment", { required: true })}
             />
             {errors.etcComment && <Error>기타 코멘트를 입력해 주세요.</Error>}

@@ -3,6 +3,7 @@ import ReactTooltip from "react-tooltip";
 import { MdArrowDropDown } from "react-icons/md";
 import { Div, Box, SpanId, Tb } from "./Tooltip.style";
 
+// 로그인 시 ID 클릭하면 보이는 툴팁 박스
 function Tooltip({ userId }) {
   const navigate = useNavigate();
 

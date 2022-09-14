@@ -20,6 +20,8 @@ import RoutePrivate from "pages/private/RoutePrivate";
 import RouteMyPage from "pages/mypage/RouteMyPage";
 import RegisterComplete from "pages/account/RegisterComplete";
 
+// Desktop 전체 컴포넌트
+// 세션에 ID가 없을 경우 승인되지 않는 페이지 설정
 function Desktop() {
   const [ThemeMode, toggleTheme] = useTheme();
   const [cookies, setCookie, removeCookie] = useCookies(["id"]); // eslint-disable-line no-unused-vars

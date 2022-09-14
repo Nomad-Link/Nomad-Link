@@ -7,6 +7,8 @@ import {
   Title,
 } from "./ApplyProfile.style";
 
+// 마이페이지 지원 내역 기업 프로필 컴포넌트
+// List에서 DB에 있는 개수만큼 map으로 반복되어 렌더링
 function ApplyProfile({ id, enterpriseName, title, enterpriseLocation }) {
   const navigate = useNavigate();
 
