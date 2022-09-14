@@ -1,6 +1,6 @@
 # Nomad Link FrontEnd
 
-[:ballot_box_with_check: README BackEnd](https://github.com/Nomad-Link/Nomad-Link/tree/master/src)
+[:ballot_box_with_check: README FrontEnd](https://github.com/Nomad-Link/Nomad-Link/tree/master/src/main/client)
 
 ## 개요
 
