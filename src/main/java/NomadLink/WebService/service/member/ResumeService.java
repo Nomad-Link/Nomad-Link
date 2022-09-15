@@ -1,17 +1,14 @@
-package NomadLink.WebService.service;
+package NomadLink.WebService.service.member;
 
 import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.file.FileStore;
-import NomadLink.WebService.file.UploadFile;
 import NomadLink.WebService.repository.member.MemberRepository;
 import NomadLink.WebService.repository.member.ResumeRepository;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -22,7 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class ResumeService {
+public class ResumeService { // 이력서 엔티티 관련 비즈니스 로직
 
     private final ResumeRepository resumeRepository;
     private final TechStackService techStackService;

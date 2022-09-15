@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
-public class Application {
+public class Application { // 구인글 등록 기능을 위한 엔티티
 
     @Id
     @GeneratedValue

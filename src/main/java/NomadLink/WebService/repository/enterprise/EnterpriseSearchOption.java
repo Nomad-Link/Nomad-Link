@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @AllArgsConstructor
-public class EnterpriseSearchOption {
+public class EnterpriseSearchOption { // 기업이 개발자 이력서 검색시 사용될 프로퍼티
 
     private Nation nation; // 국가이름
     private EmployeeType employeeType; // 근무타입

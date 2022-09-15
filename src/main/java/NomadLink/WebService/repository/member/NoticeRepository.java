@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class NoticeRepository {
+public class NoticeRepository { // 구인글 엔티티 관련 DAO
 
     private final EntityManager em;
 

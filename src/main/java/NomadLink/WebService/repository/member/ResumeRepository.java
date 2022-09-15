@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ResumeRepository {
+public class ResumeRepository { // 이력서 엔티티 관련 DAO
 
     private final EntityManager em;
 

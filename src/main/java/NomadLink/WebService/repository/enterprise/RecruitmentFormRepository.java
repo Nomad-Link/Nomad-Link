@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 
 @Repository
 @RequiredArgsConstructor
-public class RecruitmentFormRepository {
+public class RecruitmentFormRepository { // 개발자 구인 폼 등록을 위한 DAO
 
     private final EntityManager em;
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @Table(name = "NOTICE_TECHSTACKS")
-public class NoticeTechStack {
+public class NoticeTechStack { // 기업 구인글의 기술스택 엔티티
 
     @Id
     @GeneratedValue

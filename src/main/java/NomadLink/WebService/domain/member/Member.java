@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Member {
+public class Member { // 회원 엔티티
 
     @Id
     @GeneratedValue

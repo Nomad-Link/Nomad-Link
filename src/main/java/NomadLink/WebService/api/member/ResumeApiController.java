@@ -3,10 +3,9 @@ package NomadLink.WebService.api.member;
 import NomadLink.WebService.api.dto.member.request.ResumeRequestDto;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.file.FileStore;
-import NomadLink.WebService.file.UploadFile;
 import NomadLink.WebService.repository.member.MemberRepository;
-import NomadLink.WebService.service.ResumeService;
-import NomadLink.WebService.service.TechStackService;
+import NomadLink.WebService.service.member.ResumeService;
+import NomadLink.WebService.service.member.TechStackService;
 import NomadLink.WebService.session.SessionConst;
 import NomadLink.WebService.testData.SearchTechStack;
 import NomadLink.WebService.testData.SearchTechStackRepository;
@@ -18,14 +17,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +36,7 @@ public class ResumeApiController {
     private final FileStore fileStore;
 
     @ResponseBody
-    @PostMapping("/api/mypage/resume") // 사진 파일은 multipart/form-data이므로 @RequestBody가 아닌 @ModelAttribute로 받아야한다.
+    @PostMapping("/api/mypage/resume") // 이력서 등록 기능 (사진 파일은 multipart/form-data이므로 @RequestBody가 아닌 @ModelAttribute로 받아야한다)
     public void resumePost(@RequestBody ResumeRequestDto resumeRequestDto, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) throws IOException {
         Resume resume = new Resume();
 
@@ -91,7 +86,7 @@ public class ResumeApiController {
     }
 
     @ResponseBody
-    @GetMapping("/api/mypage/resume/get/{userId}")
+    @GetMapping("/api/mypage/resume/get/{userId}") // 특정 이력서 조회 기능
     public ResumeResponseDto resumeGet(@PathVariable String userId, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         Resume resume = resumeService.findOneResume(loginMember.getId());
         List<TechStack> techStacks = resumeService.findAllTechStacks(resume.getId());
@@ -122,14 +117,14 @@ public class ResumeApiController {
     }
 
     @ResponseBody
-    @PostMapping("/api/mypage/resume/update/{userId}")
+    @PostMapping("/api/mypage/resume/update/{userId}") // 이력서 업데이트 기능
     public void resumeUpdate(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, @PathVariable String userId, @RequestBody ResumeRequestDto resumeRequestDto) throws IOException {
         Resume findedResume = resumeService.findOneResume(loginMember.getId());
         resumeService.updateResume(findedResume, resumeRequestDto);
     }
 
     @ResponseBody
-    @GetMapping("/api/mypage/resume/all")
+    @GetMapping("/api/mypage/resume/all") // 모든 이력서 확인 기능
     public List<ResumeResponseDto> resumeAllGet() {
         List<Resume> resumes = resumeService.findAllResume();
 
@@ -158,7 +153,7 @@ public class ResumeApiController {
 
     @Data
     @NoArgsConstructor
-    static class ResumeResponseDto {
+    static class ResumeResponseDto { // 이력서 확인 페이지 response dto
 
 //        private String storeFileName;
         private String realName; // 개발자의 실제 이름

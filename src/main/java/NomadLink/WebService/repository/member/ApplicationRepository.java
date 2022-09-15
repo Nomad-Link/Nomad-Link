@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ApplicationRepository {
+public class ApplicationRepository { // 구인글 지원을 위한 application 엔티티의 DAO
 
     private final EntityManager em;
 

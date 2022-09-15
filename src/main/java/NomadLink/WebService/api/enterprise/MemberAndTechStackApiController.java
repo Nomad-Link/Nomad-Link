@@ -19,7 +19,7 @@ public class MemberAndTechStackApiController {
     private final MemberRepository memberRepository;
 
     @ResponseBody
-    @GetMapping("/api/enterprise/recruit/developers") // 기업 서비스에서 개발자 목록을 보여주는 페이지
+    @GetMapping("/api/enterprise/recruit/developers") // 기업 서비스에서 개발자 목록을 보여주는 페이지(검색 기능 포함)
     public List<MemberWithTechStacksResponseDto> findMembersWithTechStacksByOption(@RequestParam("nation") @Nullable Nation nation, @RequestParam("employeeType") @Nullable EmployeeType employeeType, @RequestParam("techStack") @Nullable String techStack) {
         EnterpriseSearchOption enterpriseSearchOption = new EnterpriseSearchOption(nation, employeeType, techStack);
 
@@ -33,7 +33,7 @@ public class MemberAndTechStackApiController {
     }
 
     @Data
-    static class MemberWithTechStacksResponseDto {
+    static class MemberWithTechStacksResponseDto { // 개발자 목록 페이지에서의 response dto
 
         private Long id;
         private String realName;

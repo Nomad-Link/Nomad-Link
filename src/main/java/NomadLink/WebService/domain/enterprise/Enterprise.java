@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Enterprise {
+public class Enterprise { // 기업 정보 엔티티
 
     @Id
     @GeneratedValue

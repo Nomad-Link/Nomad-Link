@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @Table(name = "TECHSTACKS")
-public class TechStack {
+public class TechStack { // 기술 스택 엔티티
 
     @Id
     @GeneratedValue

@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class LoginService {
+public class LoginService { // 로그인 기능을 위한 비즈니스 로직
 
     private final MemberRepository memberRepository;
     private final EntityManager em;
