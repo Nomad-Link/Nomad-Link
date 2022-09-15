@@ -1,4 +1,4 @@
-package NomadLink.WebService.service;
+package NomadLink.WebService.service.member;
 
 import NomadLink.WebService.domain.enterprise.Application;
 import NomadLink.WebService.domain.enterprise.Notice;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class MemberApplyForNoticeService {
+public class MemberApplyForNoticeService { // 구인글 지원 관련 비즈니스 로직
 
     private final NoticeRepository noticeRepository;
     private final MemberRepository memberRepository;

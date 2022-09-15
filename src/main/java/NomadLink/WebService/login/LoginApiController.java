@@ -29,7 +29,7 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class LoginApiController {
+public class LoginApiController { // 로그인 기능을 위한 컨트롤러
 
     private final LoginService loginService;
     private final EntityManager em;

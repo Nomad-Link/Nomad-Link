@@ -1,4 +1,4 @@
-package NomadLink.WebService.service;
+package NomadLink.WebService.service.member;
 
 import NomadLink.WebService.api.dto.member.request.MemberSaveRequestDto;
 import NomadLink.WebService.domain.member.Member;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class MemberService {
+public class MemberService { // 회원 엔티티 관련 비즈니스 로직
 
     private final MemberRepository memberRepository;
 

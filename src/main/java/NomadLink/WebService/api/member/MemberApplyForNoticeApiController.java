@@ -1,9 +1,7 @@
 package NomadLink.WebService.api.member;
 
-import NomadLink.WebService.domain.enterprise.Notice;
 import NomadLink.WebService.domain.member.Member;
-import NomadLink.WebService.repository.member.NoticeRepository;
-import NomadLink.WebService.service.MemberApplyForNoticeService;
+import NomadLink.WebService.service.member.MemberApplyForNoticeService;
 import NomadLink.WebService.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +15,7 @@ public class MemberApplyForNoticeApiController {
 
     private final MemberApplyForNoticeService memberApplyForNoticeService;
 
-    @PostMapping("/api/notice/{noticeId}")
+    @PostMapping("/api/notice/{noticeId}") // 특정 구인글에 지원하기
     public void applyPost(@PathVariable long noticeId, @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember) {
         memberApplyForNoticeService.memberApplyForNotice(noticeId, loginMember);
     }

@@ -17,7 +17,7 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 @Slf4j
-public class MemberRepository {
+public class MemberRepository { // 회원 엔티티 관련 DAO
 
     private final EntityManager em;
 

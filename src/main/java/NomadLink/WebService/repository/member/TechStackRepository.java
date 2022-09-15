@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 
 @Repository
 @RequiredArgsConstructor
-public class TechStackRepository {
+public class TechStackRepository { // 기술 스택 관련 DAO
 
     private final EntityManager em;
 

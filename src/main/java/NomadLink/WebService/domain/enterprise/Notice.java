@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Notice {
+public class Notice { // 기업 구인글 엔티티
 
     @Id
     @GeneratedValue

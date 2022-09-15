@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class EnterpriseRepository {
+public class EnterpriseRepository { // 기업 엔티티의 DAO
 
     private final EntityManager em;
 

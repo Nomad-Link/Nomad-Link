@@ -49,7 +49,7 @@ public class EnterpriseAndNoticeApiController {
     }
 
     @Data
-    static class NoticeResponseDto {
+    static class NoticeResponseDto { // 구인글 response dto
 
         private Long id;
         private String enterpriseName;

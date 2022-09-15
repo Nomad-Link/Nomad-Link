@@ -1,9 +1,10 @@
 package NomadLink.WebService.api.enterprise;
 
+import NomadLink.WebService.api.dto.enterprise.request.RecruitmentFormRequestDto;
 import NomadLink.WebService.domain.enterprise.RecruitmentForm;
 import NomadLink.WebService.domain.member.*;
 import NomadLink.WebService.repository.member.MemberRepository;
-import NomadLink.WebService.service.RecruitmentFormService;
+import NomadLink.WebService.service.enterprise.RecruitmentFormService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class RecruitmentFormApiController {
     private final RecruitmentFormService recruitmentFormService;
     private final MemberRepository memberRepository;
 
-    @PostMapping("/api/enterprise/recruit/form") // 기업 서비스의 폼 작성 페이지
+    @PostMapping("/api/enterprise/recruit/form") // 기업 서비스의 구인 폼 작성 페이지
     public void saveRecruitForm(@RequestBody RecruitmentFormRequestDto recruitmentFormRequestDto) {
         RecruitmentForm recruitmentForm = new RecruitmentForm();
 
@@ -56,28 +57,7 @@ public class RecruitmentFormApiController {
     }
 
     @Data
-    static class RecruitmentFormRequestDto { // Request DTO ...
-
-        private String companyName; // 회사명
-        private String managerName; // 담당자명
-        private String managerPhoneNumber; // 담당자 전화번호
-        private String managerEmail; // 담당자 이메일
-        private String recruitmentPosition; // 채용 직책
-        private String projectDescription; // 프로젝트 설명
-        private String recruitmentType; // 채용 유형
-        private String roleDescription; // 역할 설명
-        @Enumerated(EnumType.STRING)
-        private Annual minimumAnnual; // 최소 연차
-        private String essentialSkillStack; // 필수 기술 스택
-        private String optionalSkillStack; // 선택적 기술 스택
-        private String keywords; // 채용 공고상 키워드
-        private String maximumSalary; // 연봉 상한선
-        private String etcComment; // 기타 코멘트
-
-    }
-
-    @Data
-    static class MemberWithTechStacksResponseDto {
+    static class MemberWithTechStacksResponseDto { // 폼 작성 후 이동되는 페이지에서의 response dto
 
         private Long id;
         private String realName;

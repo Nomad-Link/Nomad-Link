@@ -2,7 +2,7 @@ package NomadLink.WebService.api.member;
 
 import NomadLink.WebService.api.dto.member.request.MemberSaveRequestDto;
 import NomadLink.WebService.domain.member.*;
-import NomadLink.WebService.service.MemberService;
+import NomadLink.WebService.service.member.MemberService;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.List;
 

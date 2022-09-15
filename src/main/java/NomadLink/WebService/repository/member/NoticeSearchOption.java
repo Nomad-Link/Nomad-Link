@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @AllArgsConstructor
-public class NoticeSearchOption {
+public class NoticeSearchOption { // 구인글 검색시 사용될 프로퍼티
 
     private Role role; // 기술스택
     private EmployeeType employeeType; // 근무타입

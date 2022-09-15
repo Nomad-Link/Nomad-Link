@@ -1,5 +1,6 @@
 package NomadLink.WebService.api.member;
 
+import NomadLink.WebService.api.dto.member.response.MemberMypageResponseDto;
 import NomadLink.WebService.domain.enterprise.Application;
 import NomadLink.WebService.domain.enterprise.Notice;
 import NomadLink.WebService.domain.member.*;
@@ -26,7 +27,7 @@ public class MemberMypage {
     private final ApplicationRepository applicationRepository;
 
     @ResponseBody
-    @GetMapping("/api/member/mypage")
+    @GetMapping("/api/member/mypage") // 마이페이지 확인하기
     public List<MemberMypageResponseDto> memberMypage(@SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember) {
         List<Application> applications = applicationRepository.findApplicationsByMember(loginMember.getId());
 
@@ -35,23 +36,6 @@ public class MemberMypage {
                 .collect(Collectors.toList());
 
         return results;
-    }
-
-    @Data
-    static class MemberMypageResponseDto {
-
-        private String enterpriseName;
-        private String enterpriseLocation;
-        private String noticeTitle;
-        private Long noticeId;
-
-        public MemberMypageResponseDto(Application application) {
-            enterpriseName = application.getEnterpriseName();
-            enterpriseLocation = application.getEnterpriseLocation();
-            noticeTitle = application.getNoticeTitle();
-            noticeId = application.getNotice().getId();
-        }
-
     }
 
 }

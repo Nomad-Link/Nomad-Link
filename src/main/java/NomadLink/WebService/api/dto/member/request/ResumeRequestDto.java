@@ -8,7 +8,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-public class ResumeRequestDto {
+public class ResumeRequestDto { // 이력서 등록시 request dto
 
     private MultipartFile attachFile; // 이력서 사진
     private String realName; // 개발자의 실제 이름

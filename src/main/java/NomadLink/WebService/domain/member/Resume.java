@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Resume {
+public class Resume { // 이력서 엔티티
 
     @Id
     @GeneratedValue

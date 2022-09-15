@@ -22,7 +22,7 @@ public class NoticeSpecificInformation {
 
     private final NoticeRepository noticeRepository;
 
-    @GetMapping("/api/notice/{id}")
+    @GetMapping("/api/notice/{id}") // 특정 구인글 조회
     public OneNoticeResponseDto getOneNotice(@PathVariable long id) {
         Notice findedNotice = noticeRepository.findOne(id);
 
@@ -46,7 +46,7 @@ public class NoticeSpecificInformation {
 
     @Data
     @NoArgsConstructor
-    static class OneNoticeResponseDto {
+    static class OneNoticeResponseDto { // 특정 구인글 response dto
 
         private String enterpriseName;
         private String enterpriseLocation;

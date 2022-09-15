@@ -1,23 +1,14 @@
-package NomadLink.WebService.domain.enterprise;
+package NomadLink.WebService.api.dto.enterprise.request;
 
 import NomadLink.WebService.domain.member.Annual;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
-@Entity
-@Getter @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class RecruitmentForm { // 기업 구인 폼 등록시 엔티티
+@Data
+public class RecruitmentFormRequestDto { // 개발자 구인 폼 등록시 이용할 request dto
 
-    @Id
-    @GeneratedValue
-    @Column(name = "RECRUITMENT_FORM_ID")
-    private Long id; // 테이블 상 id
     private String companyName; // 회사명
     private String managerName; // 담당자명
     private String managerPhoneNumber; // 담당자 전화번호
