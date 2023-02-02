@@ -24,6 +24,6 @@
   * Figma
     * https://www.figma.com/file/X0JGe5W5aC89QhZWsNqRsx/Nomad-Link2
     * https://www.figma.com/file/rmzWwuyKfFeb2F3wTogfue/Nomad-Link?node-id=12%3A54
-* 시연 영상 : [YOUTUBE Link](https://www.youtube.com/watch?v=dGk1JYH1eB8&t=18s)
+* 시연 영상 : [YOUTUBE Link](https://www.youtube.com/watch?v=q_i1nkkVJ18&list=LL&index=2&t=7s)
 
 [:ballot_box_with_check: Pull requests](https://github.com/Nomad-Link/Nomad-Link/pulls?q=is%3Apr+is%3Aclosed)
